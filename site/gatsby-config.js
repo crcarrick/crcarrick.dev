@@ -8,25 +8,39 @@ module.exports = {
     title: 'crcarrick.dev',
   },
   plugins: [
+    // General
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-styled-components',
     {
-      resolve: 'gatsby-source-sanity',
+      resolve: 'gatsby-plugin-layout',
       options: {
-        projectId: 'dk2xl75v',
-        dataset: 'production',
+        component: require.resolve('./src/components/layout/layout.js'),
       },
     },
-    'gatsby-plugin-styled-components',
-    'gatsby-plugin-image',
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
         trackingId: process.env.GOOGLE_TRACKING_ID,
       },
     },
-    'gatsby-plugin-react-helmet',
-    'gatsby-plugin-mdx',
+
+    // Images
+    'gatsby-plugin-image',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
+
+    // MDX
+    'gatsby-plugin-mdx',
+
+    // Sources
+    {
+      resolve: 'gatsby-source-contentful',
+      options: {
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        environment: process.env.CONTENTFUL_ENV || process.env.NODE_ENV,
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+      },
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {

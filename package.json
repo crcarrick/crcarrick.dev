@@ -6,23 +6,15 @@
   "author": "Chris Carrick",
   "scripts": {
     "develop": "yarn workspace site start",
-    "start:site": "lerna run --scope site start",
-    "build:site": "lerna run --scope site build",
-    "start:studio": "lerna run --scope studio start",
-    "build:studio": "lerna run --scope studio build",
-    "start": "lerna run start --parallel",
-    "build": "lerna run build --parallel"
+    "start": "yarn workspace site start",
+    "build": "yarn workspace site build"
   },
   "keywords": [
     "gatsby",
-    "sanity",
-    "lerna"
+    "contentful"
   ],
-  "devDependencies": {
-    "lerna": "^4.0.0"
-  },
+  "devDependencies": {},
   "workspaces": [
-    "site",
-    "studio"
+    "site"
   ]
 }
