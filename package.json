@@ -1,0 +1,28 @@
+{
+  "name": "crcarrick.dev",
+  "private": true,
+  "version": "0.0.0",
+  "description": "crcarrick.dev monorepo",
+  "author": "Chris Carrick",
+  "scripts": {
+    "develop": "yarn workspace site start",
+    "start:site": "lerna run --scope site start",
+    "build:site": "lerna run --scope site build",
+    "start:studio": "lerna run --scope studio start",
+    "build:studio": "lerna run --scope studio build",
+    "start": "lerna run start --parallel",
+    "build": "lerna run build --parallel"
+  },
+  "keywords": [
+    "gatsby",
+    "sanity",
+    "lerna"
+  ],
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  },
+  "workspaces": [
+    "site",
+    "studio"
+  ]
+}

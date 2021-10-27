@@ -1,0 +1,9 @@
+/site/node_modules/
+/site/.cache/
+/site/public
+
+/studio/node_modules
+
+/node_modules
+
+/**/*/.env.*
