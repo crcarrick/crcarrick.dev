@@ -2,6 +2,8 @@ import React from 'react';
 
 import styled from 'styled-components';
 
+import { Layout } from '@layout';
+
 import SittingSVG from '@svg/hero/sitting.svg';
 import StandingSVG from '@svg/hero/standing.svg';
 
@@ -28,8 +30,10 @@ export default function IndexPage() {
   const Hero = Math.random() < 0.5 ? SittingHero : StandingHero;
 
   return (
-    <IndexWrapper>
-      <Hero />
-    </IndexWrapper>
+    <Layout>
+      <IndexWrapper>
+        <Hero />
+      </IndexWrapper>
+    </Layout>
   );
 }

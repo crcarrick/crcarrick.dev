@@ -10,7 +10,7 @@ import * as S from './style';
 export const Layout = ({ children, path }) => {
   return (
     <S.PageWrapper>
-      <Seo path={path} />
+      <Seo path={path} title="Chris Carrick - Developer" />
       <Nav />
       <S.Main>{children}</S.Main>
       <Footer />

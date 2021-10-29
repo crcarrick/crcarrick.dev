@@ -3,6 +3,8 @@ import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { Helmet } from 'react-helmet';
 
+import favicon from '../../images/favicon.ico';
+
 export const Seo = ({ path = '', title }) => {
   const data = useStaticQuery(graphql`
     query {
@@ -10,6 +12,7 @@ export const Seo = ({ path = '', title }) => {
         siteMetadata {
           description
           imageUrl
+          tagLine
           title
           twitter
           url
@@ -23,12 +26,13 @@ export const Seo = ({ path = '', title }) => {
   const seoTitle = title ?? metadata.title;
   const url = new URL(path ?? '/', metadata.url);
 
-  const { description, imageUrl, twitter } = metadata;
+  const { description, imageUrl, tagLine, twitter } = metadata;
 
   return (
-    <Helmet title={seoTitle}>
+    <Helmet title={tagLine}>
       <html lang="en" />
       <link rel="canonical" href={url} />
+      <link rel="icon" href={favicon} />
 
       {/* Basic */}
       <meta name="description" content={description} />

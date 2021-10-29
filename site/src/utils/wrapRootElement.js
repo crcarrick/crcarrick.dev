@@ -12,8 +12,6 @@ const shortCodes = {
   pre: (props) => <div {...props} />,
 };
 
-export const wrapRootElement = ({ element }) => {
-  console.log(RestComponents);
-
-  return <MDXProvider components={shortCodes}>{element}</MDXProvider>;
-};
+export const wrapRootElement = ({ element }) => (
+  <MDXProvider components={shortCodes}>{element}</MDXProvider>
+);

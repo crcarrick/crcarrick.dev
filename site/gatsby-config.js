@@ -57,7 +57,7 @@ module.exports = {
   siteMetadata: {
     url: 'https://www.crcarrick.dev',
     title: 'Chris Carrick',
-    description: 'Software Engineer',
+    description: 'Developer',
     twitter: 'crcarrick',
     github: 'crcarrick',
     twitch: 'tapzww',

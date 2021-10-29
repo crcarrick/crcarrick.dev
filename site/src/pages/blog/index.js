@@ -1,4 +1,6 @@
-// import React from 'react';
+import React from 'react';
+
+import FourOhFour from '../404';
 
 export default function BlogPage() {
   // const data = useStaticQuery(graphql`
@@ -14,5 +16,5 @@ export default function BlogPage() {
 
   // const posts = get(data, 'posts.nodes', []);
 
-  return null;
+  return <FourOhFour />;
 }

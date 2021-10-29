@@ -2,6 +2,8 @@ import React from 'react';
 
 import styled from 'styled-components';
 
+import { Layout } from '@layout';
+
 import FourOhFourSVG from '@svg/hero/fourohfour.svg';
 
 const FourOhFourWrapper = styled.div`
@@ -18,8 +20,10 @@ const Hero = styled(FourOhFourSVG)`
 
 export default function FourOhFour() {
   return (
-    <FourOhFourWrapper>
-      <Hero />
-    </FourOhFourWrapper>
+    <Layout>
+      <FourOhFourWrapper>
+        <Hero />
+      </FourOhFourWrapper>
+    </Layout>
   );
 }
