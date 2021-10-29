@@ -1,13 +1,31 @@
-// import React from 'react';
+import React from 'react';
 
-// import { Layout } from '@layout';
-import { wrapRootElement as wrapRootElementFn } from '@utils';
+import { MDXProvider } from '@mdx-js/react';
+import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 
-import 'normalize.css/normalize.css';
-import '@assets/style/global.css';
+import * as Components from '@components';
+import { GlobalStyle } from '@style/global.style';
+import { Theme } from '@style/theme';
 
-export const wrapRootElement = wrapRootElementFn;
+const { CodeBlock, ...RestComponents } = Components;
 
-// export const wrapPageElement = ({ element, props }) => {
-//   return <Layout {...props}>{element}</Layout>;
-// };
+const shortCodes = {
+  ...RestComponents,
+  code: CodeBlock,
+  pre: (props) => <div {...props} />,
+};
+
+export const wrapRootElement = ({ element }) => (
+  <Theme.Provider>
+    <Theme.Consumer>
+      {({ styledTheme }) => (
+        <StyledThemeProvider theme={styledTheme}>
+          <MDXProvider components={shortCodes}>
+            <GlobalStyle />
+            {element}
+          </MDXProvider>
+        </StyledThemeProvider>
+      )}
+    </Theme.Consumer>
+  </Theme.Provider>
+);

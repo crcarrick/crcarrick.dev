@@ -1,5 +1,4 @@
 {
-  "eslint.workingDirectories": ["site"],
   "eslint.options": {
     "rulePaths": ["./node_modules/gatsby/dist/utils/eslint-rules"]
   }

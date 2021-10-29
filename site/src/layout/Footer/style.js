@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { breakpoint } from '@utils';
+import { breakpoint, transition } from '@utils/mixins';
 
 export const Footer = styled.footer`
   display: flex;
@@ -12,15 +12,13 @@ export const Footer = styled.footer`
 `;
 
 export const Border = styled.hr`
-  border-top: solid 2px var(--blue);
-  transition: var(--transition);
+  border: none;
+  background-color: var(--text);
+  transition: ${transition('background-color')};
   margin-top: 0.5rem;
   margin-bottom: 1.25rem;
   width: 100%;
-
-  ${Footer}:hover {
-    border-top-color: var(--red);
-  }
+  height: 2px;
 
   ${breakpoint.lg} {
     margin-top: 1rem;

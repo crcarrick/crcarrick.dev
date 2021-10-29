@@ -5,6 +5,8 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { BlogPostCard } from '@components';
 import { Layout } from '@layout';
 
+import * as S from '@style/pages/blog.style';
+
 export default function BlogPage() {
   const data = useStaticQuery(graphql`
     query BlogPage {
@@ -40,13 +42,13 @@ export default function BlogPage() {
 
   return (
     <Layout>
-      <ul>
+      <S.List>
         {posts.map((post, key) => (
-          <li key={key}>
+          <S.ListItem key={key}>
             <BlogPostCard post={post} />
-          </li>
+          </S.ListItem>
         ))}
-      </ul>
+      </S.List>
     </Layout>
   );
 }

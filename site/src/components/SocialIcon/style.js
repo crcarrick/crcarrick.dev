@@ -1,4 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+import { transition } from '@utils/mixins';
 
 import GithubSVG from '@assets/svg/social/github__square.svg';
 import LinkedInSVG from '@assets/svg/social/linkedin__square.svg';
@@ -6,13 +8,13 @@ import SpotifySVG from '@assets/svg/social/spotify__square.svg';
 import TwitchSVG from '@assets/svg/social/twitch__square.svg';
 import TwitterSVG from '@assets/svg/social/twitter__square.svg';
 
-const rect = `
+const rect = css`
   & rect {
-    fill: var(--red)
+    fill: var(--red);
   }
 `;
 
-const style = `
+const style = css`
   width: 30px;
   height: 30px;
 
@@ -21,8 +23,8 @@ const style = `
   }
 
   & rect {
-    transition: var(--transition);
     fill: var(--blue);
+    transition: ${transition('fill')};
   }
 `;
 
