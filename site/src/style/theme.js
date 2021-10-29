@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { useIsSSR } from '@hooks/useIsSSR';
+
 const colors = {
   black: '#21222a',
   dark: '#30323d',
@@ -36,9 +38,17 @@ export const Theme = {
   Context: ThemeContext,
   Consumer: ThemeContext.Consumer,
   Provider: ({ children }) => {
-    const mql = window && window.matchMedia('');
+    const isSSR = useIsSSR();
 
-    const [theme, setTheme] = useState(mql.matches ? 'dark' : 'light');
+    let initTheme = 'light';
+
+    if (!isSSR) {
+      const { matches } = window.matchMedia('(prefers-color-scheme: dark)');
+
+      if (matches) initTheme = darkTheme;
+    }
+
+    const [theme, setTheme] = useState(initTheme);
 
     const toggleTheme = (checked) => setTheme(checked ? 'dark' : 'light');
 
