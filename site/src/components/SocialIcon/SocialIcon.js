@@ -55,7 +55,7 @@ export const SocialIcon = ({ type }) => {
   }
 
   return (
-    <S.SocialLink to={link}>
+    <S.SocialLink href={link}>
       <Component />
     </S.SocialLink>
   );

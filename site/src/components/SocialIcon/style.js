@@ -1,5 +1,3 @@
-import { Link } from 'gatsby';
-
 import styled from 'styled-components';
 
 import GithubSVG from '@svg/social/github__square.svg';
@@ -44,7 +42,7 @@ export const Twitter = styled(TwitterSVG)`
   ${style}
 `;
 
-export const SocialLink = styled(Link)`
+export const SocialLink = styled.a`
   &:focus-visible {
     ${Github} {
       ${rect}
