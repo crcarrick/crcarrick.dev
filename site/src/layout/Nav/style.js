@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import LogoSVG from '@svg/logo.svg';
+import LogoSVG from '@assets/svg/logo.svg';
 
 import { breakpoint } from '@utils';
 

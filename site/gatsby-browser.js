@@ -4,7 +4,7 @@
 import { wrapRootElement as wrapRootElementFn } from '@utils';
 
 import 'normalize.css/normalize.css';
-import '@style/global.css';
+import '@assets/style/global.css';
 
 export const wrapRootElement = wrapRootElementFn;
 

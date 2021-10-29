@@ -1,4 +1,6 @@
-<svg height="512" viewBox="0 0 176 176" width="512" xmlns="http://www.w3.org/2000/svg">
+<svg height="512" viewBox="0 0 176 176" width="512" aria-labelledby="linkedinTitle linkedinDesc" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title id="linkedinTitle">LinkedIn Social Icon</title>
+  <desc id="linkedinDesc">A black linkedin icon that links to my linkedin</desc>
   <g id="Layer_2">
     <g id="linkedin">
       <rect id="background" fill="#0077b5" height="176" rx="24" width="176" />

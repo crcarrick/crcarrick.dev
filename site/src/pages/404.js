@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { Layout } from '@layout';
 
-import FourOhFourSVG from '@svg/hero/fourohfour.svg';
+import FourOhFourSVG from '@assets/svg/hero/fourohfour.svg';
 
 const FourOhFourWrapper = styled.div`
   display: flex;

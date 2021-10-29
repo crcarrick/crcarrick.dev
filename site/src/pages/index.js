@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { Layout } from '@layout';
 
-import SittingSVG from '@svg/hero/sitting.svg';
+import SittingSVG from '@assets/svg/hero/sitting.svg';
 
 const IndexWrapper = styled.div`
   display: flex;
@@ -14,7 +14,7 @@ const IndexWrapper = styled.div`
 `;
 
 const Hero = styled(SittingSVG)`
-  max-width: 100%none;
+  max-width: 100%;
   height: auto;
 `;
 
