@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import { Layout } from '@layout';
 
 import SittingSVG from '@svg/hero/sitting.svg';
-import StandingSVG from '@svg/hero/standing.svg';
 
 const IndexWrapper = styled.div`
   display: flex;
@@ -14,21 +13,12 @@ const IndexWrapper = styled.div`
   flex: 1;
 `;
 
-const heroStyle = `
-  max-width: 100%;
+const Hero = styled(SittingSVG)`
+  max-width: 100%none;
   height: auto;
 `;
 
-const SittingHero = styled(SittingSVG)`
-  ${heroStyle}
-`;
-const StandingHero = styled(StandingSVG)`
-  ${heroStyle}
-`;
-
 export default function IndexPage() {
-  const Hero = Math.random() < 0.5 ? SittingHero : StandingHero;
-
   return (
     <Layout>
       <IndexWrapper>
