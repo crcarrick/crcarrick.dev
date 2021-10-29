@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 import { Layout } from '@layout';
 
-import { Button } from '@components';
 import SittingSVG from '@assets/svg/hero/sitting.svg';
 
 const IndexWrapper = styled.div`
@@ -23,7 +22,6 @@ export default function IndexPage() {
   return (
     <Layout>
       <IndexWrapper>
-        <Button>TEST</Button>
         <Hero />
       </IndexWrapper>
     </Layout>
