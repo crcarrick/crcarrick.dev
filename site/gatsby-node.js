@@ -3,6 +3,8 @@ const get = require('lodash.get');
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
+  const blogPost = require.resolve('./src/templates/blog-post.js');
+
   const result = await graphql(`
     query CreatePages {
       posts: allContentfulBlogPost {
@@ -18,8 +20,25 @@ exports.createPages = async ({ graphql, actions }) => {
 
   posts.forEach((post) =>
     createPage({
-      path: post.slug,
-      component: require.resolve(`./src/templates/post.js`),
-    }),
+      path: `/blog/${post.slug}`,
+      component: require.resolve(blogPost),
+    })
   );
+};
+
+exports.createResolvers = ({ createResolvers }) => {
+  const resolvers = {
+    SiteSiteMetadata: {
+      imageUrl: {
+        type: 'String',
+        resolve: ({ url, image }) => new URL(image ?? '', url),
+      },
+      tagLine: {
+        type: 'String',
+        resolve: ({ title, description }) => `${title} - ${description}`,
+      },
+    },
+  };
+
+  createResolvers(resolvers);
 };
