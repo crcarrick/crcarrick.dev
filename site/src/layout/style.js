@@ -7,6 +7,9 @@ export const PageWrapper = styled.div`
   flex-direction: column;
   max-width: 56rem;
   min-height: 100vh;
+  min-height: -moz-available-;
+  min-height: -webkit-fill-available-;
+  min-height: fill-available;
   margin: 0 auto;
   padding: 0 1rem;
 
