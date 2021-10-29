@@ -6,7 +6,7 @@ import { Theme } from '@style/theme';
 import * as S from './style';
 
 export const Footer = () => {
-  const { styledTheme, theme, toggleTheme } = useContext(Theme.Context);
+  const context = useContext(Theme.Context);
 
   return (
     <Fragment>
@@ -30,18 +30,20 @@ export const Footer = () => {
           </S.ListItem>
         </S.List>
 
-        <S.Toggle
-          aria-label="Toggle dark mode on or off"
-          checked={theme === 'dark'}
-          onChange={toggleTheme}
-          checkedIcon={<S.Sun />}
-          uncheckedIcon={<S.Moon />}
-          onColor={styledTheme.text}
-          onHandleColor={styledTheme.body}
-          offColor={styledTheme.text}
-          offHandleColor={styledTheme.body}
-          handleDiameter={20}
-        />
+        {context && (
+          <S.Toggle
+            aria-label="Toggle dark mode on or off"
+            checked={context.theme === 'dark'}
+            onChange={context.toggleTheme}
+            checkedIcon={<S.Sun />}
+            uncheckedIcon={<S.Moon />}
+            onColor={context.styledTheme.text}
+            onHandleColor={context.styledTheme.body}
+            offColor={context.styledTheme.text}
+            offHandleColor={context.styledTheme.body}
+            handleDiameter={20}
+          />
+        )}
       </S.Footer>
     </Fragment>
   );

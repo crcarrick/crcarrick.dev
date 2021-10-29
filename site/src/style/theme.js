@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { useIsSSR } from '@hooks/useIsSSR';
+import { useTheme } from '@hooks/useTheme';
 
 const colors = {
   black: '#21222a',
@@ -38,26 +38,16 @@ export const Theme = {
   Context: ThemeContext,
   Consumer: ThemeContext.Consumer,
   Provider: ({ children }) => {
-    const isSSR = useIsSSR();
-
-    let initTheme = 'light';
-
-    if (!isSSR) {
-      const { matches } = window.matchMedia('(prefers-color-scheme: dark)');
-
-      if (matches) initTheme = darkTheme;
-    }
-
-    const [theme, setTheme] = useState(initTheme);
+    const [theme, setTheme] = useTheme();
 
     const toggleTheme = (checked) => setTheme(checked ? 'dark' : 'light');
 
-    return (
-      <ThemeContext.Provider
-        value={{ styledTheme: theme === 'dark' ? darkTheme : lightTheme, theme, toggleTheme }}
-      >
-        {children}
-      </ThemeContext.Provider>
-    );
+    const value = {
+      styledTheme: theme === 'dark' ? darkTheme : lightTheme,
+      theme,
+      toggleTheme,
+    };
+
+    return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
   },
 };
