@@ -1,20 +1,54 @@
 import React from 'react';
 
-import FourOhFour from '../404';
+import { graphql, useStaticQuery } from 'gatsby';
+
+import { BlogPostCard } from '@components';
+import { Layout } from '@layout';
+
+import * as S from '@style/pages/blog.style';
 
 export default function BlogPage() {
-  // const data = useStaticQuery(graphql`
-  //   query {
-  //     posts: allContentfulBlogPost {
-  //       nodes {
-  //         title
-  //         slug
-  //       }
-  //     }
-  //   }
-  // `);
+  const data = useStaticQuery(graphql`
+    query BlogPage {
+      posts: allContentfulBlogPost {
+        nodes {
+          author {
+            name
+          }
+          body {
+            childMdx {
+              body
+              excerpt
+              timeToRead
+            }
+          }
+          fromNowDate: publishDate(fromNow: true)
+          rawDate: publishDate
+          title
+          tags
+          slug
+          heroImage {
+            gatsbyImageData(width: 200, placeholder: BLURRED)
+          }
+          description {
+            description
+          }
+        }
+      }
+    }
+  `);
 
-  // const posts = get(data, 'posts.nodes', []);
+  const posts = data.posts.nodes;
 
-  return <FourOhFour />;
+  return (
+    <Layout>
+      <S.List>
+        {posts.map((post, key) => (
+          <S.ListItem key={key}>
+            <BlogPostCard post={post} />
+          </S.ListItem>
+        ))}
+      </S.List>
+    </Layout>
+  );
 }

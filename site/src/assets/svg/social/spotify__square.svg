@@ -1,4 +1,6 @@
-<svg height="512" viewBox="0 0 176 176" width="512" xmlns="http://www.w3.org/2000/svg">
+<svg height="512" viewBox="0 0 176 176" width="512" aria-labelledby="spotifyTitle spotifyDesc" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title id="spotifyTitle">Spotify Social Icon</title>
+  <desc id="spotifyDesc">A black spotify icon that links to my spotify profile</desc>
   <g id="Layer_2">
     <g id="spotify">
       <rect id="background" fill="#12c64b" height="176" rx="24" width="176" />

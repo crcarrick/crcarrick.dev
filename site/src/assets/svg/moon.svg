@@ -1,0 +1,7 @@
+<svg height="512" viewBox="0 0 32 32" width="512" aria-labelledby="moonTitle moonDesc" xmlns="http://www.w3.org/2000/svg">
+  <title id="moonTitle">Moon Icon</title>
+  <desc id="moonDesc">A crescent moon</desc>
+  <g>
+    <path d="m28.8687 22.9393a13.8616 13.8616 0 0 1 -11.9732 7.0607 14.1274 14.1274 0 0 1 -13.8955-14.3185 14.2355 14.2355 0 0 1 9.6406-13.6308 1 1 0 0 1 1.1802 1.4493 12.52 12.52 0 0 0 -1.6567 6.2627 12.1264 12.1264 0 0 0 11.8959 12.3182 11.4776 11.4776 0 0 0 3.625-.5859 1 1 0 0 1 1.1841 1.4443z" />
+  </g>
+</svg>

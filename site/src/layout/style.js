@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { breakpoint } from '@utils';
+import { breakpoint } from '@utils/mixins';
 
 export const PageWrapper = styled.div`
   display: flex;

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import LogoSVG from '@svg/logo.svg';
+import LogoSVG from '@assets/svg/logo.svg';
 
-import { breakpoint } from '@utils';
+import { breakpoint } from '@utils/mixins';
 
 export const Nav = styled.nav`
   display: flex;

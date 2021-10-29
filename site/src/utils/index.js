@@ -1,3 +1,3 @@
 export * from './accessible';
-export * from './media';
-export * from './wrapRootElement';
+export * from './accessible';
+export * from './mixins';

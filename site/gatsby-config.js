@@ -4,55 +4,6 @@ require('dotenv').config({
 
 const path = require('path');
 
-const aliasConfig = {
-  options: {
-    alias: {
-      '@components': path.resolve(__dirname, 'src/components'),
-      '@hooks': path.resolve(__dirname, 'src/hooks'),
-      '@layout': path.resolve(__dirname, 'src/layout'),
-      '@style': path.resolve(__dirname, 'src/style'),
-      '@svg': path.resolve(__dirname, 'src/svg'),
-      '@utils': path.resolve(__dirname, 'src/utils'),
-    },
-  },
-};
-
-const contentfulConfig = {
-  options: {
-    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-    environment: process.env.CONTENTFUL_ENV || process.env.NODE_ENV,
-    spaceId: process.env.CONTENTFUL_SPACE_ID,
-  },
-};
-
-const fileSystemConfig = (name) => ({
-  options: {
-    name,
-    path: `./src/${name}/`,
-  },
-  __key: name,
-});
-
-const googleConfig = {
-  options: {
-    trackingId: process.env.GOOGLE_TRACKING_ID,
-  },
-};
-
-const googleFontsConfig = {
-  options: {
-    fonts: ['Roboto Mono'],
-  },
-};
-
-const svgConfig = {
-  options: {
-    rule: {
-      include: /svg/,
-    },
-  },
-};
-
 module.exports = {
   siteMetadata: {
     url: 'https://www.crcarrick.dev',
@@ -69,23 +20,40 @@ module.exports = {
     // General
     {
       resolve: 'gatsby-plugin-alias-imports',
-      ...aliasConfig,
+      options: {
+        alias: {
+          '@assets': path.resolve(__dirname, 'src/assets'),
+          '@components': path.resolve(__dirname, 'src/components'),
+          '@hooks': path.resolve(__dirname, 'src/hooks'),
+          '@layout': path.resolve(__dirname, 'src/layout'),
+          '@style': path.resolve(__dirname, 'src/style'),
+          '@utils': path.resolve(__dirname, 'src/utils'),
+        },
+      },
     },
     { resolve: 'gatsby-plugin-react-helmet' },
     { resolve: 'gatsby-plugin-styled-components' },
     {
       resolve: 'gatsby-plugin-google-analytics',
-      ...googleConfig,
+      options: {
+        trackingId: process.env.GOOGLE_TRACKING_ID,
+      },
     },
     {
       resolve: 'gatsby-plugin-google-fonts',
-      ...googleFontsConfig,
+      options: {
+        fonts: ['Roboto Mono'],
+      },
     },
 
     // Images
     {
       resolve: 'gatsby-plugin-react-svg',
-      ...svgConfig,
+      options: {
+        rule: {
+          include: /svg/,
+        },
+      },
     },
     { resolve: 'gatsby-plugin-image' },
     { resolve: 'gatsby-plugin-sharp' },
@@ -97,15 +65,27 @@ module.exports = {
     // Sources
     {
       resolve: 'gatsby-source-contentful',
-      ...contentfulConfig,
+      options: {
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        environment: process.env.CONTENTFUL_ENV || process.env.NODE_ENV,
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+      },
     },
     {
       resolve: 'gatsby-source-filesystem',
-      ...fileSystemConfig('images'),
+      options: {
+        name: 'images',
+        path: `./src/assets/images/`,
+      },
+      __key: 'images',
     },
     {
       resolve: 'gatsby-source-filesystem',
-      ...fileSystemConfig('pages'),
+      options: {
+        name: 'pages',
+        path: `./src/pages/`,
+      },
+      __key: 'pages',
     },
   ],
 };

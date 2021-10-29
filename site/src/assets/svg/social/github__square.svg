@@ -1,4 +1,6 @@
-<svg height="512" viewBox="0 0 176 176" width="512" xmlns="http://www.w3.org/2000/svg">
+<svg height="512" viewBox="0 0 176 176" width="512" aria-labelledby="githubTitle githubDesc" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title id="githubTitle">Github Social Icon</title>
+  <desc id="githubDesc">A black github icon that links to my github</desc>
   <g id="Layer_2">
     <g id="github">
       <rect id="background" fill="#262626" height="176" rx="24" width="176" />

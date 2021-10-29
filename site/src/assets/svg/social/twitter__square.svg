@@ -1,4 +1,6 @@
-<svg height="512" viewBox="0 0 176 176" width="512" xmlns="http://www.w3.org/2000/svg">
+<svg height="512" viewBox="0 0 176 176" width="512" aria-labelledby="twitterTitle twitterDesc" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title id="twitterTitle">Twitter Social Icon</title>
+  <desc id="twitterDesc">A black twitter icon that links to my twitter</desc>
   <g id="Layer_2">
     <g id="twitter">
       <rect id="background" fill="#50abf1" height="176" rx="24" width="176" />
