@@ -31,7 +31,7 @@ export const GlobalStyle = createGlobalStyle`
   body,
   #___gatsby,
   #gatsby-focus-wrapper {
-    font-family: var(--systemfont);
+    font-family: var(--monofont);
     font-size: var(--fontsize);
     background-color: var(--body);
     color: var(--text);
@@ -49,5 +49,10 @@ export const GlobalStyle = createGlobalStyle`
     list-style: none;
     margin: 0;
     padding: 0;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
   }
 `;

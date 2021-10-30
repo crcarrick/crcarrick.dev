@@ -10,11 +10,11 @@ export const Nav = styled.nav`
   justify-content: space-between;
   width: 100%;
   margin-top: 1.25rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 
   ${breakpoint.lg} {
     margin-top: 2.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2.5rem;
   }
 `;
 

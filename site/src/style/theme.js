@@ -7,7 +7,7 @@ const colors = {
   dark: '#30323d',
   white: '#f2f2f2',
   blue: '#3f3d56',
-  green: '#a8c256',
+  green: '#57b894',
   red: '#ea676c',
 };
 
@@ -41,9 +41,12 @@ export const Theme = {
     const [theme, setTheme] = useTheme();
 
     const toggleTheme = (checked) => setTheme(checked ? 'dark' : 'light');
+    const styledTheme = Object.assign(theme === 'dark' ? darkTheme : lightTheme, {
+      name: theme,
+    });
 
     const value = {
-      styledTheme: theme === 'dark' ? darkTheme : lightTheme,
+      styledTheme,
       theme,
       toggleTheme,
     };
