@@ -2,7 +2,7 @@
   <title id="deskTitle">Desk</title>
   <desc id="deskDesc">An illustration of a man casually sitting on his desk looking at something on his phone.</desc>
   <defs>
-    <linearGradient id="e507827f-2863-48fa-82fe-b741cb149057-96" x1="-925.56" y1="683.71" x2="-925.56" y2="144.42" gradientTransform="matrix(-1, 0, 0, 1, -573.82, 0)" gradientUnits="userSpaceOnUse">
+    <linearGradient x1="-925.56" y1="683.71" x2="-925.56" y2="144.42" gradientTransform="matrix(-1, 0, 0, 1, -573.82, 0)" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="gray" stop-opacity="0.25" />
       <stop offset="0.54" stop-color="gray" stop-opacity="0.12" />
       <stop offset="1" stop-color="gray" stop-opacity="0.1" />

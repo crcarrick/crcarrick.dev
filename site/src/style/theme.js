@@ -1,14 +1,20 @@
 import React from 'react';
 
 import { useTheme } from '@hooks/useTheme';
+import { adjust } from '@utils/mixins';
 
 const colors = {
   black: '#21222a',
   dark: '#30323d',
   white: '#f2f2f2',
+  red: '#ea676c',
   blue: '#3f3d56',
   green: '#57b894',
-  red: '#ea676c',
+  yellow: '#edd83d',
+  lightblue: '#6c91bf',
+  skyblue: '#87bfff',
+  carolinablue: '#4d9de0',
+  purple: '#947bd3',
 };
 
 const baseTheme = {
@@ -22,14 +28,20 @@ const baseTheme = {
 
 const lightTheme = {
   ...baseTheme,
-  body: colors.white,
-  text: colors.blue,
+  colors: {
+    ...baseTheme.colors,
+    body: colors.white,
+    text: adjust(colors.blue, -5),
+  },
 };
 
 const darkTheme = {
   ...baseTheme,
-  body: colors.blue,
-  text: colors.white,
+  colors: {
+    ...baseTheme.colors,
+    body: colors.blue,
+    text: adjust(colors.white, 10),
+  },
 };
 
 const ThemeContext = React.createContext();

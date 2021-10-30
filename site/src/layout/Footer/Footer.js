@@ -37,10 +37,11 @@ export const Footer = () => {
             onChange={context.toggleTheme}
             checkedIcon={<S.Sun />}
             uncheckedIcon={<S.Moon />}
-            onColor={context.styledTheme.text}
-            onHandleColor={context.styledTheme.body}
-            offColor={context.styledTheme.text}
-            offHandleColor={context.styledTheme.body}
+            activeBoxShadow={`0 0 2px 3px ${context.styledTheme.colors.red}`}
+            onColor={context.styledTheme.colors.text}
+            onHandleColor={context.styledTheme.colors.body}
+            offColor={context.styledTheme.colors.text}
+            offHandleColor={context.styledTheme.colors.body}
             handleDiameter={20}
           />
         )}
