@@ -32,6 +32,18 @@ module.exports = {
       },
     },
     { resolve: 'gatsby-plugin-react-helmet' },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        icon: 'src/assets/svg/logo.svg',
+        name: 'crcarrick.dev',
+        short_name: 'crcarrick.dev',
+        start_url: '/',
+        background_color: '#ffffff',
+        theme_color: '#ffffff',
+        display: 'standalone',
+      },
+    },
     { resolve: 'gatsby-plugin-styled-components' },
     {
       resolve: 'gatsby-plugin-google-analytics',
@@ -67,21 +79,21 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',
-        path: `${__dirname}/src/assets/images/`,
+        path: path.resolve(__dirname, 'src/assets/images'),
       },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'pages',
-        path: `${__dirname}/src/pages/`,
+        path: path.resolve(__dirname, 'src/pages'),
       },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'posts',
-        path: `${__dirname}/src/posts`,
+        path: path.resolve(__dirname, 'src/posts'),
       },
     },
   ],

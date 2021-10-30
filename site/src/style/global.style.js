@@ -1,26 +1,33 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
 import { normalize } from 'styled-normalize';
 
-import { transition } from '@utils/mixins';
+import { adjust, transition } from '@utils/mixins';
 
 export const GlobalStyle = createGlobalStyle`
   ${normalize}
 
   :root {
-    --black: ${({ theme }) => theme.colors.black};
-    --dark: ${({ theme }) => theme.colors.dark};
-    --white: ${({ theme }) => theme.colors.white};
-    --blue: ${({ theme }) => theme.colors.blue};
-    --green: ${({ theme }) => theme.colors.green};
-    --red: ${({ theme }) => theme.colors.red};
+    ${({ theme: { colors, font, name } }) => css`
+      --black: ${colors.black};
+      --white: ${colors.white};
+      --dark: ${colors.dark};
+      --red: ${colors.red};
+      --blue: ${colors.blue};
+      --green: ${colors.green};
+      --yellow: ${colors.yellow};
 
-    --fontsize: ${({ theme }) => theme.font.size};
+      --body: ${colors.body};
+      --text: ${colors.text};
 
-    --monofont: ${({ theme }) => theme.font.mono};
-    --systemfont: ${({ theme }) => theme.font.system};
+      --bg-card: ${adjust(colors.body, name === 'dark' ? 10 : -20)};
 
-    --body: ${({ theme }) => theme.body};
-    --text: ${({ theme }) => theme.text};
+      --font-size: ${font.size};
+      --font-mono: ${font.mono};
+      --font-system: ${font.system};
+
+      --logo-fill: ${name === 'dark' ? colors.green : colors.red};
+      --logo-stroke: ${name === 'dark' ? colors.black : colors.blue};
+    `}
   }
 
   * {
@@ -31,8 +38,8 @@ export const GlobalStyle = createGlobalStyle`
   body,
   #___gatsby,
   #gatsby-focus-wrapper {
-    font-family: var(--monofont);
-    font-size: var(--fontsize);
+    font-family: var(--font-mono);
+    font-size: var(--font-size);
     background-color: var(--body);
     color: var(--text);
     width: 100%;

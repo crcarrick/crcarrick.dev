@@ -68,21 +68,7 @@ export const ListItem = styled.li`
   }
 `;
 
-export const Toggle = styled(Switch)`
-  /* position: absolute !important; // figure out how to get rid of this */
-  /* bottom: 1.25rem;
-  right: 1rem; */
-
-  ${breakpoint.md} {
-    /* right: 2rem; */
-  }
-
-  ${breakpoint.lg} {
-    /* position: fixed !important; */
-    /* bottom: 1rem;
-    right: 1rem; */
-  }
-`;
+export const Toggle = styled(Switch)``;
 
 const icon = css`
   width: 100%;

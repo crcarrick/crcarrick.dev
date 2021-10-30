@@ -18,7 +18,9 @@ const style = css`
   width: 30px;
   height: 30px;
 
-  &:hover {
+  &:active,
+  &:hover,
+  &:focus {
     ${rect}
   }
 
