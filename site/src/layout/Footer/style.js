@@ -13,9 +13,12 @@ export const Footer = styled.footer`
   justify-content: space-between;
   align-items: center;
 
+  ${breakpoint.md} {
+    align-items: flex-end;
+  }
+
   ${breakpoint.lg} {
     margin-bottom: 2.5rem;
-    align-items: flex-end;
   }
 `;
 
