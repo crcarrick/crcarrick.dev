@@ -15,7 +15,9 @@ export const Button = styled.button`
   transition: ${transition('color', 'background-color', 'box-shadow')};
   cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &:focus,
+  &:active {
     color: var(--text);
     background-color: var(--red);
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);

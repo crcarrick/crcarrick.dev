@@ -1,12 +1,12 @@
-<svg width="91px" height="99px" viewBox="0 0 91 99" role="img" aria-labelledby="logoTitle logoDesc" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="543px" height="543px" role="img" aria-labelledby="logoTitle logoDesc" viewBox="0 0 543 543" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title id="logoTitle">My Logo</title>
     <desc id="logoDesc">Two red letter C facing each other with a red star in the middle.  There are rounded blue borders around each shape.</desc>
     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linejoin="round">
-        <g id="logoFillStroke" transform="translate(-555.000000, -526.000000)" fill="#57b894" stroke="#57b894" stroke-width="2">
-            <g transform="translate(557.800000, 528.056200)">
-                <path d="M45.2,-1.73204264 L86.414,22.062647 L86.414,72.519353 L45.2,96.3140426 L45.2,67.6896375 L61.624,58.2076375 L61.624,36.375332 L45.2,26.892332 L45.2,-1.73204264 Z" id="Fill-21"></path>
-                <path d="M43.3,34.1184767 L46.3875811,43.6072931 L56.3799065,43.6072931 L48.2958461,49.4754681 L51.382233,58.966257 L43.3,53.1012425 L35.217767,58.966257 L38.3041539,49.4754681 L30.2200935,43.6072931 L40.2124189,43.6072931 L43.3,34.1184767 Z" id="Fill-23"></path>
-                <path d="M-1,-1.73204264 L40.214,22.062647 L40.214,72.519353 L-1,96.3140426 L-1,67.6896375 L15.424,58.2076375 L15.424,36.375332 L-1,26.892332 L-1,-1.73204264 Z" id="Fill-21" transform="translate(19.607000, 47.291000) scale(-1, 1) translate(-19.607000, -47.291000) "></path>
+        <g id="logoFillStroke" transform="translate(-158.000000, -39.000000)" fill="#EA676C" stroke="#3F3D56" stroke-width="15">
+            <g transform="translate(173.800000, 54.056200)">
+                <path d="M269.438207,-12.3685511 L519.5,118.00911 L519.5,393.99089 L269.438207,524.368551 L269.438207,365.001323 L367.88914,313.672487 L367.88914,198.332705 L269.438207,146.998455 L269.438207,-12.3685511 Z" id="Fill-21"></path>
+                <path d="M259.55464,180.06316 L278.979069,233.972311 L344.619279,233.972311 L291.514817,268.783999 L311.259576,323.614767 L259.55464,289.731109 L207.849704,323.614767 L227.594462,268.783999 L174.490001,233.972311 L240.130211,233.972311 L259.55464,180.06316 Z" id="Fill-23"></path>
+                <path d="M-7.5,-12.3685511 L242.561793,118.00911 L242.561793,393.99089 L-7.5,524.368551 L-7.5,365.001323 L90.9509331,313.672487 L90.9509331,198.332705 L-7.5,146.998455 L-7.5,-12.3685511 Z" id="Fill-21" transform="translate(117.530897, 256.000000) scale(-1, 1) translate(-117.530897, -256.000000) "></path>
             </g>
         </g>
     </g>

@@ -7,12 +7,12 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 import { Layout } from '@layout';
 
-import * as S from '@style/templates/blog-post.style';
+import * as S from '@style/templates/post.style';
 
 export default function BlogPostTemplate({ data }) {
   return (
     <Layout>
-      <article>
+      <S.Article>
         <S.Image
           image={getImage(data.post.frontmatter.featuredImage)}
           alt={data.post.frontmatter.description}
@@ -29,13 +29,10 @@ export default function BlogPostTemplate({ data }) {
         </h1>
         <h4 style={{ marginTop: '0.5rem' }}>
           by {data.post.frontmatter.author} on
-          <span style={{ color: 'var(--green)' }}>
-            {' '}
-            {format(new Date(data.post.frontmatter.published), 'MMM dd yyyy')}
-          </span>
+          <span> {format(new Date(data.post.frontmatter.published), 'MMM dd yyyy')}</span>
         </h4>
         <MDXRenderer>{data.post.body}</MDXRenderer>
-      </article>
+      </S.Article>
     </Layout>
   );
 }

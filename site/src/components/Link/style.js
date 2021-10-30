@@ -1,13 +1,13 @@
 import { Link as GatsbyLink } from 'gatsby';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Link = styled(GatsbyLink)`
-  font-family: var(--monofont);
+import { List as ListNav } from '@layout/Nav/style';
+import { Article as PostArticle } from '@style/templates/post.style';
+
+const style = css`
+  font-family: var(--font-mono);
   font-weight: 700;
-  padding: 0.5rem;
   text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 2.5px;
   color: inherit;
   cursor: pointer;
 
@@ -17,4 +17,27 @@ export const Link = styled(GatsbyLink)`
     outline: none;
     text-decoration: underline var(--red) 3px;
   }
+
+  ${ListNav} & {
+    padding: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+  }
+
+  ${PostArticle} & {
+    color: var(--text);
+    text-decoration: underline var(--red) 3px;
+
+    &:focus {
+      box-shadow: 0 2px 0 0 var(--red);
+    }
+  }
+`;
+
+export const InternalLink = styled(GatsbyLink)`
+  ${style}
+`;
+
+export const ExternalLink = styled.a`
+  ${style}
 `;

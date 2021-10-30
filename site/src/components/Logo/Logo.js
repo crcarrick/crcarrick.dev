@@ -24,8 +24,8 @@ export const Logo = styled(LogoSVG)`
   transition: ${transition('fill', 'stroke')};
 
   g#logoFillStroke {
-    fill: ${({ theme }) => (theme.name === 'dark' ? 'var(--green)' : 'var(--red)')};
-    stroke: ${({ theme }) => (theme.name === 'dark' ? 'var(--black)' : 'var(--blue)')};
+    fill: var(--logo-fill);
+    stroke: var(--logo-stroke);
   }
 
   ${breakpoint.md} {
