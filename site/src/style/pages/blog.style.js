@@ -1,10 +1,37 @@
 import styled from 'styled-components';
+import { Link as GatsbyLink } from 'gatsby';
 
-export const List = styled.ul`
-  display: flex;
+import { adjust, breakpoint, transition } from '@utils/mixins';
+
+export const Post = styled.div``;
+
+export const Link = styled(GatsbyLink)`
+  flex: 1;
+  height: 100%;
+  background-color: var(--text);
+  background-color: ${({ theme }) => adjust(theme.body, theme.name === 'dark' ? 20 : -20)};
+  color: var(--text);
+  transition: ${transition('all')};
+
+  &:active,
+  &:hover,
+  &:focus {
+    transform: translateY(-0.25rem);
+    box-shadow: 0 4px 0 var(--red);
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
+  }
 `;
 
-export const ListItem = styled.li`
-  display: flex;
-  flex: 1;
+export const Posts = styled.div`
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+
+  ${breakpoint.lg} {
+    grid-template-columns: 1fr 1fr;
+  }
 `;

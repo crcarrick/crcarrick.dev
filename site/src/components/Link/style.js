@@ -11,8 +11,10 @@ export const Link = styled(GatsbyLink)`
   color: inherit;
   cursor: pointer;
 
+  &:active,
   &:hover,
-  &:focus-visible {
+  &:focus {
+    outline: none;
     text-decoration: underline var(--red) 3px;
   }
 `;

@@ -64,28 +64,25 @@ module.exports = {
 
     // Sources
     {
-      resolve: 'gatsby-source-contentful',
-      options: {
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-        environment: process.env.CONTENTFUL_ENV || process.env.NODE_ENV,
-        spaceId: process.env.CONTENTFUL_SPACE_ID,
-      },
-    },
-    {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',
-        path: `./src/assets/images/`,
+        path: `${__dirname}/src/assets/images/`,
       },
-      __key: 'images',
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'pages',
-        path: `./src/pages/`,
+        path: `${__dirname}/src/pages/`,
       },
-      __key: 'pages',
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'posts',
+        path: `${__dirname}/src/posts`,
+      },
     },
   ],
 };

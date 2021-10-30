@@ -45,7 +45,11 @@ export const Twitter = styled(TwitterSVG)`
 `;
 
 export const SocialLink = styled.a`
-  &:focus-visible {
+  &:active,
+  &:hover,
+  &:focus {
+    outline: none;
+
     ${Github} {
       ${rect}
     }

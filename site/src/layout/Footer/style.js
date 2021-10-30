@@ -23,13 +23,13 @@ export const Border = styled.hr`
   border: none;
   background-color: var(--text);
   transition: ${transition('background-color')};
-  margin-top: 0.5rem;
+  margin-top: 1.25rem;
   margin-bottom: 1.25rem;
   width: 100%;
   height: 2px;
 
   ${breakpoint.lg} {
-    margin-top: 1rem;
+    margin-top: 2.5rem;
     margin-bottom: 2.5rem;
   }
 `;

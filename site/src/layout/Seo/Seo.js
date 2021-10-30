@@ -7,7 +7,7 @@ import favicon from '@assets/images/favicon.ico';
 
 export const Seo = ({ path = '', title }) => {
   const data = useStaticQuery(graphql`
-    query {
+    query Seo {
       site {
         siteMetadata {
           description
