@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import { MDXProvider } from '@mdx-js/react';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
@@ -21,12 +21,16 @@ export const wrapRootElement = ({ element }) => (
     <Theme.Consumer>
       {({ styledTheme }) => (
         <StyledThemeProvider theme={styledTheme}>
-          <MDXProvider components={shortCodes}>
-            <GlobalStyle />
-            {element}
-          </MDXProvider>
+          <MDXProvider components={shortCodes}>{element}</MDXProvider>
         </StyledThemeProvider>
       )}
     </Theme.Consumer>
   </Theme.Provider>
+);
+
+export const wrapPageElement = ({ element }) => (
+  <Fragment>
+    <GlobalStyle />
+    {element}
+  </Fragment>
 );
