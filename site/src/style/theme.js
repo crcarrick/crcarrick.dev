@@ -20,7 +20,6 @@ const colors = {
 const baseTheme = {
   colors,
   font: {
-    size: '18px',
     mono: `'Roboto Mono', monospace`,
     system: `-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif`,
   },

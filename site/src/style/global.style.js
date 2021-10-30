@@ -1,7 +1,7 @@
 import { createGlobalStyle, css } from 'styled-components';
 import { normalize } from 'styled-normalize';
 
-import { adjust, transition } from '@utils/mixins';
+import { adjust, breakpoint, transition } from '@utils/mixins';
 
 export const GlobalStyle = createGlobalStyle`
   ${normalize}
@@ -21,7 +21,6 @@ export const GlobalStyle = createGlobalStyle`
 
       --bg-card: ${adjust(colors.body, name === 'dark' ? 10 : -20)};
 
-      --font-size: ${font.size};
       --font-mono: ${font.mono};
       --font-system: ${font.system};
 
@@ -39,12 +38,22 @@ export const GlobalStyle = createGlobalStyle`
   #___gatsby,
   #gatsby-focus-wrapper {
     font-family: var(--font-mono);
-    font-size: var(--font-size);
+    font-size: 14px;
+    line-height: 1.6;
     background-color: var(--body);
     color: var(--text);
     width: 100%;
     height: 100%;
     transition: ${transition('background-color', 'color')};
+
+    ${breakpoint.md} {
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
+    ${breakpoint.lg} {
+      font-size: 18px;
+    }
   }
 
   body {
