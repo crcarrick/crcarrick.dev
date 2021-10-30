@@ -1,11 +1,26 @@
 import React from 'react';
 
 import { graphql, useStaticQuery } from 'gatsby';
+import styled from 'styled-components';
 
 import { PostCard } from '@components';
 import { Layout } from '@layout';
 
+import ConstructionSVG from '@assets/svg/hero/construction.svg';
+
 import * as S from '@style/pages/blog.style';
+
+const ConstructionWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+`;
+
+const Hero = styled(ConstructionSVG)`
+  max-width: 100%;
+  height: auto;
+`;
 
 export default function BlogPage() {
   const data = useStaticQuery(graphql`
@@ -36,6 +51,16 @@ export default function BlogPage() {
   `);
 
   const posts = data.posts.nodes;
+
+  if (process.env.NODE_ENV === 'production') {
+    return (
+      <Layout>
+        <ConstructionWrapper>
+          <Hero />
+        </ConstructionWrapper>
+      </Layout>
+    );
+  }
 
   return (
     <Layout>
