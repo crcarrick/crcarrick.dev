@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link as GatsbyLink } from 'gatsby';
 
-import { adjust, breakpoint, transition } from '@utils/mixins';
+import { breakpoint, transition } from '@utils/mixins';
 
 export const Post = styled.div``;
 
@@ -9,7 +9,7 @@ export const Link = styled(GatsbyLink)`
   flex: 1;
   height: 100%;
   background-color: var(--text);
-  background-color: ${({ theme }) => adjust(theme.body, theme.name === 'dark' ? 20 : -20)};
+  background-color: var(--bg-card);
   color: var(--text);
   transition: ${transition('all')};
 

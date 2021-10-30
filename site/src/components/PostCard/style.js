@@ -3,6 +3,13 @@ import { GatsbyImage } from 'gatsby-plugin-image';
 
 import { transition } from '@utils/mixins';
 
+export const Info = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1rem;
+`;
+
 export const Title = styled.h4`
   text-transform: uppercase;
 `;
@@ -12,10 +19,6 @@ export const Card = styled.div`
   flex-direction: column;
   transition: ${transition('text-decoration')};
   color: var(--text);
-
-  &:hover > ${Title} & {
-    text-decoration: underline var(--red) 3px;
-  }
 `;
 
 export const ImageWrapper = styled.div`
@@ -28,16 +31,9 @@ export const Image = styled(GatsbyImage)`
   }
 `;
 
-export const Info = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  padding: 1rem;
-`;
-
 export const Date = styled.div`
   margin-bottom: 1rem;
-  color: ${({ theme }) => (theme.name === 'dark' ? theme.colors.green : theme.colors.text)};
+  color: var(--text);
 `;
 
 export const Description = styled.div``;

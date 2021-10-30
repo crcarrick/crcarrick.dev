@@ -3,7 +3,7 @@ import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { Helmet } from 'react-helmet';
 
-import favicon from '@assets/images/favicon.ico';
+// import favicon from '@assets/images/favicon.ico';
 
 export const Seo = ({ path = '', title }) => {
   const data = useStaticQuery(graphql`
@@ -32,7 +32,6 @@ export const Seo = ({ path = '', title }) => {
     <Helmet title={tagLine}>
       <html lang="en" />
       <link rel="canonical" href={url} />
-      <link rel="icon" href={favicon} />
 
       {/* Basic */}
       <meta name="description" content={description} />
