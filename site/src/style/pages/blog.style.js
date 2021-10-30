@@ -16,13 +16,9 @@ export const Link = styled(GatsbyLink)`
   &:active,
   &:hover,
   &:focus {
+    outline: none;
     transform: translateY(-0.25rem);
     box-shadow: 0 4px 0 var(--red);
-  }
-
-  &:active,
-  &:focus {
-    outline: none;
   }
 `;
 
