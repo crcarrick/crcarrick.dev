@@ -6,7 +6,6 @@ import { Article as PostArticle } from '@style/templates/post.style';
 
 const style = css`
   font-family: var(--font-mono);
-  font-weight: 700;
   text-decoration: none;
   color: inherit;
   cursor: pointer;
@@ -19,6 +18,7 @@ const style = css`
   }
 
   ${ListNav} & {
+    font-weight: 700;
     padding: 0.5rem;
     text-transform: uppercase;
     letter-spacing: 2.5px;
@@ -29,7 +29,7 @@ const style = css`
     text-decoration: underline var(--red) 3px;
 
     &:focus {
-      box-shadow: 0 2px 0 0 var(--red);
+      box-shadow: 0 2px 0 0 var(--yellow);
     }
   }
 `;
