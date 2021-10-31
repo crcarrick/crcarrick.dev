@@ -23,29 +23,43 @@ export const transition = (...properties) => {
 };
 
 export const adjust = (color, amount) => {
-  var usePound = false;
+  let usePound = false;
 
   if (color[0] === '#') {
     color = color.slice(1);
     usePound = true;
   }
 
-  var num = parseInt(color, 16);
+  const num = parseInt(color, 16);
 
-  var r = (num >> 16) + amount;
+  let r = (num >> 16) + amount;
 
   if (r > 255) r = 255;
   else if (r < 0) r = 0;
 
-  var b = ((num >> 8) & 0x00ff) + amount;
+  let b = ((num >> 8) & 0x00ff) + amount;
 
   if (b > 255) b = 255;
   else if (b < 0) b = 0;
 
-  var g = (num & 0x0000ff) + amount;
+  let g = (num & 0x0000ff) + amount;
 
   if (g > 255) g = 255;
   else if (g < 0) g = 0;
 
   return (usePound ? '#' : '') + (g | (b << 8) | (r << 16)).toString(16);
+};
+
+export const hexToRgba = (hex, opacity = 1) => {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+
+  if (result) {
+    const r = parseInt(result[1], 16);
+    const g = parseInt(result[2], 16);
+    const b = parseInt(result[3], 16);
+
+    return `rgb(${r}, ${g}, ${b}, ${opacity})`;
+  }
+
+  return null;
 };

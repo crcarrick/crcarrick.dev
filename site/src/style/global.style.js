@@ -1,7 +1,7 @@
 import { createGlobalStyle, css } from 'styled-components';
 import { normalize } from 'styled-normalize';
 
-import { adjust, breakpoint, transition } from '@utils/mixins';
+import { adjust, breakpoint, hexToRgba, transition } from '@utils/mixins';
 
 export const GlobalStyle = createGlobalStyle`
   ${normalize}
@@ -15,11 +15,22 @@ export const GlobalStyle = createGlobalStyle`
       --blue: ${colors.blue};
       --green: ${colors.green};
       --yellow: ${colors.yellow};
+      --purple: ${colors.purple};
 
       --body: ${colors.body};
       --text: ${colors.text};
 
+      --aside-danger-bg: ${hexToRgba(colors.red, 0.25)};
+      --aside-danger-bd: ${colors.red};
+      --aside-warning-bg: ${hexToRgba(colors.yellow, 0.25)};
+      --aside-warning-bd: ${colors.yellow};
+      --aside-info-bg: ${hexToRgba(name === 'dark' ? colors.purple : colors.blue, 0.25)};
+      --aside-info-bd: ${name === 'dark' ? colors.purple : colors.blue};
+      --aside-success-bg: ${hexToRgba(colors.green, 0.25)};
+      --aside-success-bd: ${colors.green};
+
       --bg-card: ${adjust(colors.body, name === 'dark' ? 10 : -20)};
+      --bg-inline-code: ${adjust(colors.body, name === 'dark' ? 45 : -55)};
 
       --font-mono: ${font.mono};
       --font-system: ${font.system};
@@ -28,6 +39,8 @@ export const GlobalStyle = createGlobalStyle`
       // If I end up not, can remove and just use --red and --dark
       --logo-fill: var(--red);
       --logo-stroke: var(--dark);
+
+      --link-post-underline: ${name === 'dark' ? 'var(--green)' : 'var(--dark)'};
     `}
   }
 

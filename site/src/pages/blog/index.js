@@ -3,7 +3,7 @@ import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 
-import { PostCard } from '@components';
+import { Card } from '@components';
 import { Layout } from '@layout';
 
 import ConstructionSVG from '@assets/svg/hero/construction.svg';
@@ -68,7 +68,7 @@ export default function BlogPage() {
         {posts.map((post, key) => (
           <S.Link key={key} to={`/blog/${post.slug}`}>
             <S.Post>
-              <PostCard post={post} />
+              <Card post={post} />
             </S.Post>
           </S.Link>
         ))}

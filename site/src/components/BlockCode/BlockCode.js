@@ -5,7 +5,7 @@ import theme from 'prism-react-renderer/themes/dracula';
 
 import * as S from './style';
 
-export const CodeBlock = ({ className = 'language-jsx', children }) => {
+export const BlockCode = ({ className = 'language-jsx', children }) => {
   const language = className.replace('language-', '');
 
   return (
