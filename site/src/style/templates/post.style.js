@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 import { GatsbyImage } from 'gatsby-plugin-image';
 
+import { breakpoint } from '@utils/mixins';
+
 export const Article = styled.article`
-  background-color: var(--bg-card);
-  padding: 2rem;
+  ${breakpoint.md} {
+    background-color: var(--bg-card);
+    padding: 2rem;
+  }
 `;
 
 export const Image = styled(GatsbyImage)`
