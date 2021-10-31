@@ -14,7 +14,7 @@ module.exports = {
     twitch: 'tapzww',
     spotify: 'chriscarrick77',
     linkedin: 'crcarrick',
-    image: '/me.png',
+    image: '/logo.png',
   },
   plugins: [
     // General
