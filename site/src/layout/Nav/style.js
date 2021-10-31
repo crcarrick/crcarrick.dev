@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link as GatsbyLink } from 'gatsby';
 
 import { breakpoint } from '@utils/mixins';
 
@@ -18,4 +19,10 @@ export const Nav = styled.nav`
 
 export const List = styled.ul`
   display: flex;
+`;
+
+export const Link = styled(GatsbyLink)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
