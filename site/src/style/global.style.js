@@ -7,41 +7,46 @@ export const GlobalStyle = createGlobalStyle`
   ${normalize}
 
   :root {
-    ${({ theme: { colors, font, name } }) => css`
-      --black: ${colors.black};
-      --white: ${colors.white};
-      --dark: ${colors.dark};
-      --red: ${colors.red};
-      --blue: ${colors.blue};
-      --green: ${colors.green};
-      --yellow: ${colors.yellow};
-      --purple: ${colors.purple};
+    ${({ theme: { colors, font, name } }) => {
+      const darkMode = name === 'dark';
+      const asideOpacity = 0.25;
 
-      --body: ${colors.body};
-      --text: ${colors.text};
+      return css`
+        --black: ${colors.black};
+        --white: ${colors.white};
+        --dark: ${colors.dark};
+        --red: ${colors.red};
+        --blue: ${colors.blue};
+        --green: ${colors.green};
+        --yellow: ${colors.yellow};
+        --purple: ${colors.purple};
 
-      --aside-danger-bg: ${hexToRgba(colors.red, 0.25)};
-      --aside-danger-bd: ${colors.red};
-      --aside-warning-bg: ${hexToRgba(colors.yellow, 0.25)};
-      --aside-warning-bd: ${colors.yellow};
-      --aside-info-bg: ${hexToRgba(name === 'dark' ? colors.purple : colors.blue, 0.25)};
-      --aside-info-bd: ${name === 'dark' ? colors.purple : colors.blue};
-      --aside-success-bg: ${hexToRgba(colors.green, 0.25)};
-      --aside-success-bd: ${colors.green};
+        --body: ${colors.body};
+        --text: ${colors.text};
 
-      --bg-card: ${adjust(colors.body, name === 'dark' ? 10 : -20)};
-      --bg-inline-code: ${adjust(colors.body, name === 'dark' ? 45 : -55)};
+        --aside-danger-bg: ${hexToRgba(colors.red, asideOpacity)};
+        --aside-danger-bd: ${colors.red};
+        --aside-warning-bg: ${hexToRgba(colors.yellow, asideOpacity)};
+        --aside-warning-bd: ${colors.yellow};
+        --aside-info-bg: ${hexToRgba(darkMode ? colors.purple : colors.blue, asideOpacity)};
+        --aside-info-bd: ${darkMode ? colors.purple : colors.blue};
+        --aside-success-bg: ${hexToRgba(colors.green, asideOpacity)};
+        --aside-success-bd: ${colors.green};
 
-      --font-mono: ${font.mono};
-      --font-system: ${font.system};
+        --bg-card: ${adjust(colors.body, darkMode ? 10 : -20)};
+        --bg-inline-code: ${adjust(colors.body, darkMode ? 45 : -55)};
 
-      // Leave this for now in case I want to tweak it
-      // If I end up not, can remove and just use --red and --dark
-      --logo-fill: var(--red);
-      --logo-stroke: var(--dark);
+        --font-mono: ${font.mono};
+        --font-system: ${font.system};
 
-      --link-post-underline: ${name === 'dark' ? 'var(--green)' : 'var(--dark)'};
-    `}
+        // Leave this for now in case I want to tweak it
+        // If I end up not, can remove and just use --red and --dark
+        --logo-fill: var(--red);
+        --logo-stroke: var(--dark);
+
+        --link-post-underline: ${darkMode ? colors.purple : colors.dark};
+      `;
+    }}
   }
 
   * {

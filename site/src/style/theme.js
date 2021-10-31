@@ -11,9 +11,6 @@ const colors = {
   blue: '#3f3d56',
   green: '#57b894',
   yellow: '#edd83d',
-  lightblue: '#6c91bf',
-  skyblue: '#87bfff',
-  carolinablue: '#4d9de0',
   purple: '#947bd3',
 };
 
