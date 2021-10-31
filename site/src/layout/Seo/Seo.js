@@ -47,13 +47,13 @@ export const Seo = ({ path = '', title }) => {
       <meta property="og:url" content={url} />
 
       {/* Twitter */}
-      <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:creator" content={`@${twitter}`} />
-      <meta property="twitter:description" content={description} />
-      <meta property="twitter:image" content={imageUrl} />
-      <meta property="twitter:image:alt" content={description} />
-      <meta property="twitter:site" content={`@${twitter}`} />
-      <meta property="twitter:title" content={title} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:creator" content={`@${twitter}`} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={imageUrl} />
+      <meta name="twitter:image:alt" content={description} />
+      <meta name="twitter:site" content={`@${twitter}`} />
+      <meta name="twitter:title" content={title} />
     </Helmet>
   );
 };
