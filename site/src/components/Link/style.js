@@ -29,7 +29,7 @@ const style = css`
     text-decoration: underline var(--red) 3px;
 
     &:focus {
-      box-shadow: 0 2px 0 0 var(--yellow);
+      box-shadow: 0 3px 0 0 var(--link-post-underline);
     }
   }
 `;

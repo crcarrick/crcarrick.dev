@@ -7,7 +7,7 @@ import { Tag } from '../Tag/Tag';
 
 import * as S from './style';
 
-export const PostCard = ({ post }) => (
+export const Card = ({ post }) => (
   <S.Card>
     <S.ImageWrapper>
       <S.Image
@@ -22,7 +22,7 @@ export const PostCard = ({ post }) => (
     </S.Info>
     <S.Tags>
       {post.frontmatter.tags.map((tag) => (
-        <Tag key={tag} name={tag} />
+        <Tag key={tag}>{tag}</Tag>
       ))}
     </S.Tags>
   </S.Card>

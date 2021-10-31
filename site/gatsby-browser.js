@@ -7,12 +7,13 @@ import * as Components from '@components';
 import { GlobalStyle } from '@style/global.style';
 import { Theme } from '@style/theme';
 
-const { CodeBlock, Link, ...RestComponents } = Components;
+const { BlockCode, InlineCode, Link, ...RestComponents } = Components;
 
 const shortCodes = {
   ...RestComponents,
   a: Link,
-  code: CodeBlock,
+  code: BlockCode,
+  inlineCode: InlineCode,
   pre: (props) => <div {...props} />,
 };
 
