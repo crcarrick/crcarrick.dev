@@ -13,21 +13,21 @@ export const Footer = () => {
       <S.Border />
       <S.Footer>
         <S.List>
-          <S.ListItem>
+          <li>
             <SocialIcon type="github" />
-          </S.ListItem>
-          <S.ListItem>
+          </li>
+          <li>
             <SocialIcon type="linkedin" />
-          </S.ListItem>
-          <S.ListItem>
+          </li>
+          <li>
             <SocialIcon type="spotify" />
-          </S.ListItem>
-          {/* <S.ListItem>
+          </li>
+          {/* <li>
             <SocialIcon type="twitch" />
-          </S.ListItem> */}
-          <S.ListItem>
+          </li> */}
+          <li>
             <SocialIcon type="twitter" />
-          </S.ListItem>
+          </li>
         </S.List>
 
         {context && (

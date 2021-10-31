@@ -47,6 +47,11 @@ export const Twitter = styled(TwitterSVG)`
 `;
 
 export const SocialLink = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
   &:active,
   &:hover,
   &:focus {

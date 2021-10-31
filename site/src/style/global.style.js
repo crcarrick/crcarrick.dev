@@ -24,8 +24,10 @@ export const GlobalStyle = createGlobalStyle`
       --font-mono: ${font.mono};
       --font-system: ${font.system};
 
-      --logo-fill: ${name === 'dark' ? colors.green : colors.red};
-      --logo-stroke: ${name === 'dark' ? colors.black : colors.blue};
+      // Leave this for now in case I want to tweak it
+      // If I end up not, can remove and just use --red and --dark
+      --logo-fill: var(--red);
+      --logo-stroke: var(--dark);
     `}
   }
 
@@ -38,18 +40,13 @@ export const GlobalStyle = createGlobalStyle`
   #___gatsby,
   #gatsby-focus-wrapper {
     font-family: var(--font-mono);
-    font-size: 14px;
-    line-height: 1.6;
+    font-size: 16px;
+    line-height: 1.75;
     background-color: var(--body);
     color: var(--text);
     width: 100%;
     height: 100%;
     transition: ${transition('background-color', 'color')};
-
-    ${breakpoint.md} {
-      font-size: 16px;
-      line-height: 1.4;
-    }
 
     ${breakpoint.lg} {
       font-size: 18px;
