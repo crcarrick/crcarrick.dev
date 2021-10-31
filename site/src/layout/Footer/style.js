@@ -6,6 +6,21 @@ import { breakpoint, transition } from '@utils/mixins';
 import SunSVG from '@assets/svg/sun.svg';
 import MoonSVG from '@assets/svg/moon.svg';
 
+export const Border = styled.hr`
+  border: none;
+  background-color: var(--text);
+  transition: ${transition('background-color')};
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  width: 100%;
+  height: 2px;
+
+  ${breakpoint.lg} {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+`;
+
 export const Footer = styled.footer`
   display: flex;
   position: relative;
@@ -22,49 +37,13 @@ export const Footer = styled.footer`
   }
 `;
 
-export const Border = styled.hr`
-  border: none;
-  background-color: var(--text);
-  transition: ${transition('background-color')};
-  margin-top: 1.25rem;
-  margin-bottom: 1.25rem;
-  width: 100%;
-  height: 2px;
-
-  ${breakpoint.lg} {
-    margin-top: 2.5rem;
-    margin-bottom: 2.5rem;
-  }
-`;
-
 export const List = styled.ul`
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 4px;
 
   ${breakpoint.md} {
-    flex-direction: column;
-  }
-`;
-
-export const ListItem = styled.li`
-  margin-left: 2px;
-  margin-right: 2px;
-
-  &:first-child {
-    margin-left: 0;
-  }
-
-  ${breakpoint.md} {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 2px;
-    margin-bottom: 2px;
-
-    &:first-child {
-      margin-top: 0;
-    }
-    &:last-child {
-      margin-bottom: 0;
-    }
+    grid-template-columns: 1fr;
   }
 `;
 
