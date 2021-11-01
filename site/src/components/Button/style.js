@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { transition } from '@utils/mixins';
 
 export const Button = styled.button`
-  font-family: var(--font);
+  font-family: var(--font-mono);
   font-weight: 700;
   padding: 0.5rem 1.5rem;
   text-transform: uppercase;
@@ -19,7 +19,7 @@ export const Button = styled.button`
   &:focus,
   &:active {
     color: var(--text);
-    background-color: var(--red);
+    background-color: var(--primary);
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   }
 `;

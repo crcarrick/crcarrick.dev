@@ -22,10 +22,47 @@ These is your very first content with Contentful, pulled in JSON format using th
 ## Your first steps
 
 ```jsx
+const Component = () => {
+  const language = className.replace('language-', '');
+
+  return (
+    <Highlight {...props} language={language} code={children}>
+      {({ className, style, tokens, getLineProps, getTokenProps }) => {
+        const lines = tokens.length >= 2 ? tokens.slice(0, -1) : tokens;
+
+        return (
+          <S.Pre className={className} style={style}>
+            {lines.map((line, index) => {
+              const lineProps = getLineProps({ line, key: index });
+
+              return (
+                <div {...lineProps}>
+                  {line.map((token, idx) => {
+                    const tokenProps = getTokenProps({ token, key: idx });
+
+                    return <span {...tokenProps} />;
+                  })}
+                </div>
+              );
+            })}
+          </S.Pre>
+        );
+      }}
+    </Highlight>
+  );
+};
+```
+
+```jsx {12-15}
 import React, { createContext } from 'react';
 import { from, Subject } from 'rxjs';
 
 const MeactReduxContext = createContext();
+
+const variable = 'Hello World!';
+const template = `Testing ${1234}`;
+
+var variable = '';
 
 export class ClassProvider extends React.Component {
   state = {
@@ -67,7 +104,7 @@ export class ClassProvider extends React.Component {
   }
 ```
 
-Building with Contentful is `easy`. First take a moment to get [the basics of content modelling](https://www.contentful.com/r/knowledgebase/content-modelling-basics/ 'the basics of content modelling'), which you can set up in the [Contentful Web app](https://app.contentful.com/ 'Contentful Web app'). Once you get that, feel free to drop by the [Documentation](https://www.contentful.com/developers/docs/ 'Documentation') to learn a bit more about how to build your app with Contentful, in particular the [API basics](https://www.contentful.com/developers/docs/concepts/apis/ 'API basics') and each one of our four APIs, as shown below.
+Building with Contentful is `yarn add gatsby`. First take a moment to get [the basics of content modelling](https://www.contentful.com/r/knowledgebase/content-modelling-basics/ 'the basics of content modelling'), which you can set up in the [Contentful Web app](https://app.contentful.com/ 'Contentful Web app'). Once you get that, feel free to drop by the [Documentation](https://www.contentful.com/developers/docs/ 'Documentation') to learn a bit more about how to build your app with Contentful, in particular the [API basics](https://www.contentful.com/developers/docs/concepts/apis/ 'API basics') and each one of our four APIs, as shown below.
 
 ### Content Delivery API
 

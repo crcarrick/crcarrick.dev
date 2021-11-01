@@ -7,14 +7,14 @@ import * as Components from '@components';
 import { GlobalStyle } from '@style/global.style';
 import { Theme } from '@style/theme';
 
-const { BlockCode, InlineCode, Link, ...RestComponents } = Components;
+const { Code, CodeHighlight, InlineCode, Link, ...RestComponents } = Components;
 
 const shortCodes = {
   ...RestComponents,
   a: Link,
-  code: BlockCode,
+  code: Code,
   inlineCode: InlineCode,
-  pre: (props) => <div {...props} />,
+  pre: CodeHighlight,
 };
 
 export const wrapRootElement = ({ element }) => (

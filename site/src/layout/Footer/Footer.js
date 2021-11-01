@@ -30,6 +30,7 @@ export const Footer = () => {
           </li>
         </S.List>
 
+        {/* TODO: Is there some way I can just use my css variables here instead of the context??? */}
         {context && (
           <S.Toggle
             aria-label="Toggle dark mode on or off"
@@ -37,7 +38,11 @@ export const Footer = () => {
             onChange={context.toggleTheme}
             checkedIcon={<S.Sun />}
             uncheckedIcon={<S.Moon />}
-            activeBoxShadow={`0 0 2px 3px ${context.styledTheme.colors.red}`}
+            activeBoxShadow={`0 0 2px 3px ${
+              context.theme === 'dark'
+                ? context.styledTheme.colors.purple
+                : context.styledTheme.colors.red
+            }`}
             onColor={context.styledTheme.colors.text}
             onHandleColor={context.styledTheme.colors.body}
             offColor={context.styledTheme.colors.text}
