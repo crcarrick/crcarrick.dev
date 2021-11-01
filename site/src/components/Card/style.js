@@ -1,7 +1,14 @@
 import styled from 'styled-components';
 import { GatsbyImage } from 'gatsby-plugin-image';
 
-import { transition } from '@utils/mixins';
+export const Card = styled.div`
+  flex: 1;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--text);
+  background-color: var(--bg-card);
+  color: var(--text);
+`;
 
 export const Info = styled.div`
   display: flex;
@@ -12,13 +19,6 @@ export const Info = styled.div`
 
 export const Title = styled.h4`
   text-transform: uppercase;
-`;
-
-export const Card = styled.div`
-  display: flex;
-  flex-direction: column;
-  transition: ${transition('text-decoration')};
-  color: var(--text);
 `;
 
 export const ImageWrapper = styled.div`
