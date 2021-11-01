@@ -12,6 +12,8 @@ const colors = {
   green: '#57b894',
   yellow: '#edd83d',
   purple: '#947bd3',
+  teal: '#08b6ce',
+  pink: '#ff79c6',
 };
 
 const baseTheme = {

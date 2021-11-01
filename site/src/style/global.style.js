@@ -11,7 +11,19 @@ export const GlobalStyle = createGlobalStyle`
       const darkMode = name === 'dark';
       const asideOpacity = 0.25;
 
+      // Colors
+      const bodyColor = darkMode ? colors.blue : colors.white;
+      const textColor = darkMode ? adjust(colors.white, 10) : adjust(colors.blue, -5);
+      const primaryColor = darkMode ? colors.purple : colors.red;
+      const secondaryColor = darkMode ? colors.purple : colors.red;
+      const dangerColor = colors.red;
+      const warningColor = colors.yellow;
+      const infoColor = darkMode ? colors.purple : colors.blue;
+      const successColor = colors.green;
+
       return css`
+        // Base colors.  Shouldn't use these much
+        // Should use the main color palette (body / text / primary / secondary / danger / etc)
         --black: ${colors.black};
         --white: ${colors.white};
         --dark: ${colors.dark};
@@ -20,31 +32,37 @@ export const GlobalStyle = createGlobalStyle`
         --green: ${colors.green};
         --yellow: ${colors.yellow};
         --purple: ${colors.purple};
+        --teal: ${colors.teal};
+        --pink: ${colors.pink};
 
-        --body: ${colors.body};
-        --text: ${colors.text};
+        --body: ${bodyColor};
+        --text: ${textColor};
+        --primary: ${primaryColor};
+        --secondary: ${secondaryColor};
+        --danger: ${dangerColor};
+        --warning: ${warningColor};
+        --info: ${infoColor};
+        --success: ${successColor};
 
-        --aside-danger-bg: ${hexToRgba(colors.red, asideOpacity)};
-        --aside-danger-bd: ${colors.red};
-        --aside-warning-bg: ${hexToRgba(colors.yellow, asideOpacity)};
-        --aside-warning-bd: ${colors.yellow};
-        --aside-info-bg: ${hexToRgba(darkMode ? colors.purple : colors.blue, asideOpacity)};
-        --aside-info-bd: ${darkMode ? colors.purple : colors.blue};
-        --aside-success-bg: ${hexToRgba(colors.green, asideOpacity)};
-        --aside-success-bd: ${colors.green};
-
+        --bg-aside-danger: ${hexToRgba(dangerColor, asideOpacity)};
+        --bg-aside-warning: ${hexToRgba(warningColor, asideOpacity)};
+        --bg-aside-info: ${hexToRgba(infoColor, asideOpacity)};
+        --bg-aside-success: ${hexToRgba(successColor, asideOpacity)};
         --bg-card: ${adjust(colors.body, darkMode ? 10 : -20)};
         --bg-inline-code: ${adjust(colors.body, darkMode ? 45 : -55)};
 
         --font-mono: ${font.mono};
         --font-system: ${font.system};
 
+        --hero-shadow: ${adjust(primaryColor, -15)};
+        --hero-chair: ${hexToRgba(adjust(primaryColor, 25), 0.5)};
+
         // Leave this for now in case I want to tweak it
-        // If I end up not, can remove and just use --red and --dark
-        --logo-fill: var(--red);
+        // If I end up not, can remove and just use --primary and --dark
+        --logo-fill: var(--primary);
         --logo-stroke: var(--dark);
 
-        --link-post-underline: ${darkMode ? colors.purple : colors.dark};
+        --link-post-underline: ${darkMode ? colors.red : colors.dark};
       `;
     }}
   }

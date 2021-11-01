@@ -4,20 +4,20 @@ import styled, { css } from 'styled-components';
 
 const callouts = {
   danger: {
-    bg: 'var(--aside-danger-bg)',
-    bd: 'var(--aside-danger-bd)',
+    bg: 'var(--bg-aside-danger)',
+    bd: 'var(--danger)',
   },
   warning: {
-    bg: 'var(--aside-warning-bg)',
-    bd: 'var(--aside-warning-bd)',
+    bg: 'var(--bg-aside-warning)',
+    bd: 'var(--warning)',
   },
   info: {
-    bg: 'var(--aside-info-bg)',
-    bd: 'var(--aside-info-bd)',
+    bg: 'var(--bg-aside-info)',
+    bd: 'var(--info)',
   },
   success: {
-    bg: 'var(--aside-success-bg)',
-    bd: 'var(--aside-success-bd)',
+    bg: 'var(--bg-aside-success)',
+    bd: 'var(--success)',
   },
 };
 

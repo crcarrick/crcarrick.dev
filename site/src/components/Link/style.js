@@ -14,7 +14,7 @@ const style = css`
   &:hover,
   &:focus {
     outline: none;
-    text-decoration: underline var(--red) 3px;
+    text-decoration: underline var(--primary) 3px;
   }
 
   ${ListNav} & {
@@ -26,7 +26,7 @@ const style = css`
 
   ${PostArticle} & {
     color: var(--text);
-    text-decoration: underline var(--red) 3px;
+    text-decoration: underline var(--primary) 3px;
 
     &:focus {
       box-shadow: 0 3px 0 0 var(--link-post-underline);

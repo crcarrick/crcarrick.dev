@@ -18,7 +18,7 @@ export const Link = styled(GatsbyLink)`
   &:focus {
     outline: none;
     transform: translateY(-0.25rem);
-    box-shadow: 0 4px 0 var(--red);
+    box-shadow: 0 4px 0 var(--primary);
   }
 `;
 
