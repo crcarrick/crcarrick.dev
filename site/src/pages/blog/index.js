@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, Link, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 
 import { Card } from '@components';
@@ -27,6 +27,7 @@ export default function BlogPage() {
     query BlogPage {
       posts: allMdx {
         nodes {
+          id
           slug
           body
           wordCount {
@@ -65,12 +66,10 @@ export default function BlogPage() {
   return (
     <Layout>
       <S.Posts>
-        {posts.map((post, key) => (
-          <S.Link key={key} to={`/blog/${post.slug}`}>
-            <S.Post>
-              <Card post={post} />
-            </S.Post>
-          </S.Link>
+        {posts.map((post) => (
+          <S.PostLink key={post.id} to={`/blog/${post.slug}`}>
+            <Card post={post} />
+          </S.PostLink>
         ))}
       </S.Posts>
     </Layout>
