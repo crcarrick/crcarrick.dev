@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Layout } from '@layout';
+import { transition } from '@utils/mixins';
 
 import DeskSVG from '@assets/svg/hero/desk.svg';
 
@@ -13,11 +14,20 @@ const IndexWrapper = styled.div`
   flex: 1;
 `;
 
+const Hero = styled(DeskSVG)`
+  width: 100%;
+  height: auto;
+
+  [fill] {
+    transition: ${transition('fill')};
+  }
+`;
+
 export default function IndexPage() {
   return (
     <Layout>
       <IndexWrapper>
-        <DeskSVG style={{ width: '100%', height: 'auto' }} />
+        <Hero />
       </IndexWrapper>
     </Layout>
   );
