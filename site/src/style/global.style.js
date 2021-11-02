@@ -2,67 +2,69 @@ import { createGlobalStyle, css } from 'styled-components';
 import { normalize } from 'styled-normalize';
 
 import { adjust, breakpoint, hexToRgba, transition } from '@utils/mixins';
+import { rhythm } from '@utils/typography';
 
 export const GlobalStyle = createGlobalStyle`
-  ${normalize}
+  /* ${normalize} */
 
   :root {
-    ${({ theme: { colors, font, name } }) => {
-      const darkMode = name === 'dark';
+    ${({ theme: { color, mode, typography } }) => {
+      const darkMode = mode.name === 'dark';
       const asideOpacity = 0.25;
-
-      // Colors
-      const bodyColor = darkMode ? colors.blue : colors.white;
-      const textColor = darkMode ? adjust(colors.white, 10) : adjust(colors.blue, -5);
-      const primaryColor = darkMode ? colors.purple : colors.red;
-      const secondaryColor = darkMode ? colors.purple : colors.red;
-      const dangerColor = colors.red;
-      const warningColor = colors.yellow;
-      const infoColor = darkMode ? colors.purple : colors.blue;
-      const successColor = colors.green;
 
       return css`
         // Base colors.  Shouldn't use these much
         // Should use the main color palette (body / text / primary / secondary / danger / etc)
-        --black: ${colors.black};
-        --white: ${colors.white};
-        --dark: ${colors.dark};
-        --red: ${colors.red};
-        --blue: ${colors.blue};
-        --green: ${colors.green};
-        --yellow: ${colors.yellow};
-        --purple: ${colors.purple};
-        --teal: ${colors.teal};
-        --pink: ${colors.pink};
+        --black: ${color.black};
+        --white: ${color.white};
+        --red: ${color.red};
+        --blue: ${color.blue};
+        --green: ${color.green};
+        --yellow: ${color.yellow};
+        --purple: ${color.purple};
+        --pink: ${color.pink};
 
-        --body: ${bodyColor};
-        --text: ${textColor};
-        --primary: ${primaryColor};
-        --secondary: ${secondaryColor};
-        --danger: ${dangerColor};
-        --warning: ${warningColor};
-        --info: ${infoColor};
-        --success: ${successColor};
+        --dark: ${color.dark};
+        --body: ${color.body};
+        --text: ${color.text};
+        --primary: ${color.primary};
+        --secondary: ${color.primary};
+        --danger: ${color.danger};
+        --warning: ${color.warning};
+        --info: ${color.info};
+        --success: ${color.success};
 
-        --bg-aside-danger: ${hexToRgba(dangerColor, asideOpacity)};
-        --bg-aside-warning: ${hexToRgba(warningColor, asideOpacity)};
-        --bg-aside-info: ${hexToRgba(infoColor, asideOpacity)};
-        --bg-aside-success: ${hexToRgba(successColor, asideOpacity)};
-        --bg-card: ${adjust(colors.body, darkMode ? 10 : -20)};
-        --bg-inline-code: ${adjust(colors.body, darkMode ? 45 : -55)};
+        --bg-aside-danger: ${hexToRgba(color.danger, asideOpacity)};
+        --bg-aside-warning: ${hexToRgba(color.warning, asideOpacity)};
+        --bg-aside-info: ${hexToRgba(color.info, asideOpacity)};
+        --bg-aside-success: ${hexToRgba(color.success, asideOpacity)};
+        --bg-card: ${adjust(color.body, darkMode ? 10 : -20)};
+        --bg-code: ${color.dracula};
+        --bg-code-highlight: ${hexToRgba(adjust(color.dracula, 30), 0.75)};
+        --bg-inline-code: ${adjust(color.body, darkMode ? 45 : -55)};
 
-        --font-mono: ${font.mono};
-        --font-system: ${font.system};
+        --font-heading: ${typography.heading.family};
+        --font-body: ${typography.body.family};
+        --font-code: ${typography.code.font};
+        --font-system: ${typography.system.family};
 
-        --hero-shadow: ${adjust(primaryColor, -15)};
-        --hero-chair: ${hexToRgba(adjust(primaryColor, 25), 0.5)};
+        --hero-shadow: ${adjust(color.primary, -15)};
+        --hero-chair: ${hexToRgba(adjust(color.primary, 25), 0.5)};
+
+        --link-post-underline: ${darkMode ? color.red : color.dark};
 
         // Leave this for now in case I want to tweak it
         // If I end up not, can remove and just use --primary and --dark
         --logo-fill: var(--primary);
         --logo-stroke: var(--dark);
 
-        --link-post-underline: ${darkMode ? colors.red : colors.dark};
+        --padding: ${rhythm(1 / 1.4)};
+        --margin: ${rhythm(1 / 1.4)};
+
+        ${breakpoint.lg} {
+          --padding: ${rhythm(1)};
+          --margin: ${rhythm(1)};
+        }
       `;
     }}
   }
@@ -75,18 +77,11 @@ export const GlobalStyle = createGlobalStyle`
   body,
   #___gatsby,
   #gatsby-focus-wrapper {
-    font-family: var(--font-mono);
-    font-size: 16px;
-    line-height: 1.75;
     background-color: var(--body);
     color: var(--text);
     width: 100%;
     height: 100%;
     transition: ${transition('background-color', 'color')};
-
-    ${breakpoint.lg} {
-      font-size: 18px;
-    }
   }
 
   body {
@@ -100,6 +95,10 @@ export const GlobalStyle = createGlobalStyle`
     list-style: none;
     margin: 0;
     padding: 0;
+  }
+
+  li {
+    margin: 0;
   }
 
   a {

@@ -47,9 +47,9 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-google-fonts',
+      resolve: 'gatsby-plugin-typography',
       options: {
-        fonts: ['Roboto Mono'],
+        pathToConfigModule: path.resolve(__dirname, 'src/utils/typography'),
       },
     },
 

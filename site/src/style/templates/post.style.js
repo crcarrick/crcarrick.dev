@@ -1,12 +1,18 @@
 import styled from 'styled-components';
 import { GatsbyImage } from 'gatsby-plugin-image';
 
+import { Heading } from '@components/Heading/Heading';
 import { breakpoint } from '@utils/mixins';
+import { rhythm } from '@utils/typography';
 
 export const Article = styled.article`
   ${breakpoint.md} {
     background-color: var(--bg-card);
-    padding: 2rem;
+    padding: ${rhythm(1)};
+  }
+
+  *:last-child {
+    margin-bottom: 0;
   }
 `;
 
@@ -16,13 +22,13 @@ export const Image = styled(GatsbyImage)`
   }
 `;
 
-export const Title = styled.h1`
-  margin-top: 4rem;
-  margin-bottom: 0.5rem;
+export const Title = styled(Heading.H1)`
   text-transform: uppercase;
-  font-size: 3rem;
+  margin: ${rhythm(1)} 0 ${rhythm(1 / 4)} 0;
 `;
 
-export const Author = styled.h4`
-  margin-top: 0.5rem;
+export const Author = styled(Heading.H6)`
+  &:before {
+    content: '- ';
+  }
 `;

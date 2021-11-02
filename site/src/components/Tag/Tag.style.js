@@ -1,17 +1,24 @@
 import styled, { css } from 'styled-components';
 
-import { breakpoint, transition } from '@utils/mixins';
+import { transition } from '@utils/mixins';
+import { rhythm, scale } from '@utils/typography';
 
-const style = css`
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  border: solid 1.5px var(--primary);
-  margin: 0 0.25rem 0.25rem 0;
-  padding: 0.4rem;
-  white-space: nowrap;
-  line-height: 1;
-`;
+const style = () => {
+  const { fontSize, lineHeight } = scale(-1 / 2);
+  const margin = rhythm(1 / 10);
+  const padding = rhythm(1 / 5);
+
+  return css`
+    font-size: ${fontSize};
+    line-height: ${lineHeight};
+    margin: 0 ${margin} ${margin} 0;
+    padding: ${padding};
+    text-transform: uppercase;
+    border: solid 1.5px var(--primary);
+    white-space: nowrap;
+    line-height: 1;
+  `;
+};
 
 export const Tag = styled.div`
   ${style}
@@ -31,6 +38,6 @@ export const TagButton = styled.button`
   &:focus,
   &:hover {
     outline: none;
-    transform: translateY(-0.15rem);
+    transform: translateY(${rhythm(-1 / 20)});
   }
 `;

@@ -64,3 +64,5 @@ export const Code = ({ className = 'language-jsx', children, metastring }) => {
     </Highlight>
   );
 };
+
+export const CodeWrapper = S.CodeWrapper;

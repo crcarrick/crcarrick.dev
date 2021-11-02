@@ -19,11 +19,11 @@ export const Card = ({ post }) => (
       <S.Title>{post.frontmatter.title}</S.Title>
       <S.Date>{format(new Date(post.frontmatter.published), 'MMM dd yyyy')}</S.Date>
       <S.Description>{post.excerpt}</S.Description>
+      <S.Tags>
+        {post.frontmatter.tags.map((tag) => (
+          <Tag key={tag}>{tag}</Tag>
+        ))}
+      </S.Tags>
     </S.Info>
-    <S.Tags>
-      {post.frontmatter.tags.map((tag) => (
-        <Tag key={tag}>{tag}</Tag>
-      ))}
-    </S.Tags>
   </S.Card>
 );

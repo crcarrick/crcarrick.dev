@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import { rhythm } from '@utils/typography';
+
 const variants = {
   danger: {
     bg: 'var(--bg-aside-danger)',
@@ -20,8 +22,8 @@ const variants = {
 };
 
 export const Callout = styled.aside`
-  padding: 1rem 2rem;
-  margin: 1.5rem auto;
+  padding: ${rhythm(1 / 2)} ${rhythm(1)};
+  margin: ${rhythm(1)} auto;
   width: 100%;
 
   ${({ variant = 'success' }) => {
@@ -29,7 +31,7 @@ export const Callout = styled.aside`
 
     return css`
       background-color: ${callout.bg};
-      border-left: solid 0.25rem ${callout.bd};
+      border-left: solid 4px ${callout.bd};
     `;
   }}
 `;

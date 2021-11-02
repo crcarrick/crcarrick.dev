@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { breakpoint } from '@utils/mixins';
+import { rhythm } from '@utils/typography';
 
 export const PageWrapper = styled.div`
   display: flex;
@@ -11,10 +12,10 @@ export const PageWrapper = styled.div`
   min-height: -webkit-fill-available-;
   min-height: fill-available;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 ${rhythm(1 / 4)};
 
   ${breakpoint.md} {
-    padding: 0 2rem;
+    padding: 0 ${rhythm(1 / 2)};
   }
 
   ${breakpoint.lg} {
