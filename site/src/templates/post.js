@@ -5,7 +5,7 @@ import { graphql } from 'gatsby';
 import { getImage } from 'gatsby-plugin-image';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 
-import { Layout } from '@layout';
+import { Layout } from '@components/Layout';
 
 import * as S from '@style/templates/post.style';
 

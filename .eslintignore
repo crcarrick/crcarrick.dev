@@ -1,1 +1,4 @@
 /node_modules/
+/site/.cache
+/site/public
+/site/node_modules

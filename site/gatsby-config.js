@@ -21,7 +21,6 @@ module.exports = {
           '@assets': path.resolve(__dirname, 'src/assets'),
           '@components': path.resolve(__dirname, 'src/components'),
           '@hooks': path.resolve(__dirname, 'src/hooks'),
-          '@layout': path.resolve(__dirname, 'src/layout'),
           '@style': path.resolve(__dirname, 'src/style'),
           '@utils': path.resolve(__dirname, 'src/utils'),
         },
@@ -31,7 +30,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        icon: 'src/assets/svg/logo.svg',
+        icon: path.resolve(__dirname, 'src/assets/svg/logo.svg'),
         name: 'crcarrick.dev',
         short_name: 'crcarrick.dev',
         start_url: '/',
@@ -89,7 +88,7 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'posts',
-        path: path.resolve(__dirname, 'src/posts'),
+        path: path.resolve(__dirname, 'src/content'),
       },
     },
   ],

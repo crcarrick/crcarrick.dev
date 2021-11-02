@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { Link, Logo } from '@components';
+import { Link } from '@components/Link';
+import { Logo } from '@components/Logo';
 
-import * as S from './style';
+import * as S from './Nav.style';
 
 export const Nav = () => (
   <S.Nav>
