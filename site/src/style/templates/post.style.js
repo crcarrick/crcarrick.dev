@@ -15,3 +15,14 @@ export const Image = styled(GatsbyImage)`
     padding-top: 56.25% !important;
   }
 `;
+
+export const Title = styled.h1`
+  margin-top: 4rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  font-size: 3rem;
+`;
+
+export const Author = styled.h4`
+  margin-top: 0.5rem;
+`;

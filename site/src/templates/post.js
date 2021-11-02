@@ -17,20 +17,11 @@ export default function BlogPostTemplate({ data }) {
           image={getImage(data.post.frontmatter.featuredImage)}
           alt={data.post.frontmatter.description}
         />
-        <h1
-          style={{
-            marginTop: '4rem',
-            marginBottom: '0.5rem',
-            textTransform: 'uppercase',
-            fontSize: '3rem',
-          }}
-        >
-          {data.post.frontmatter.title}
-        </h1>
-        <h4 style={{ marginTop: '0.5rem' }}>
+        <S.Title>{data.post.frontmatter.title}</S.Title>
+        <S.Author>
           by {data.post.frontmatter.author} on
           <span> {format(new Date(data.post.frontmatter.published), 'MMM dd yyyy')}</span>
-        </h4>
+        </S.Author>
         <MDXRenderer>{data.post.body}</MDXRenderer>
       </S.Article>
     </Layout>
