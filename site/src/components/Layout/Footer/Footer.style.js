@@ -10,30 +10,20 @@ export const Border = styled.hr`
   border: none;
   background-color: var(--text);
   transition: ${transition('background-color')};
-  margin-top: 1.25rem;
-  margin-bottom: 1.25rem;
+  margin: var(--margin) 0;
   width: 100%;
   height: 2px;
-
-  ${breakpoint.lg} {
-    margin-top: 2.5rem;
-    margin-bottom: 2.5rem;
-  }
 `;
 
 export const Footer = styled.footer`
   display: flex;
   position: relative;
-  margin-bottom: 1.25rem;
+  margin-bottom: var(--margin);
   justify-content: space-between;
   align-items: center;
 
   ${breakpoint.md} {
     align-items: flex-end;
-  }
-
-  ${breakpoint.lg} {
-    margin-bottom: 2.5rem;
   }
 `;
 

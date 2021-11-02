@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Callout } from '@components/Callout';
-import { breakpoint } from '@utils/mixins';
+import { rhythm } from '@utils/typography';
 
 export const Input = styled.input`
   width: 100%;
-  padding: 0.5rem 1rem;
-  margin-bottom: 1.25rem;
+  padding: ${rhythm(1 / 8)} ${rhythm(1 / 4)};
+  margin-bottom: var(--margin);
   color: var(--dark);
   background-color: var(--white);
   border: solid 1.5px var(--dark);
@@ -15,33 +15,20 @@ export const Input = styled.input`
   &:focus {
     outline: solid 3px var(--primary);
   }
-
-  ${breakpoint.lg} {
-    margin-bottom: 2rem;
-  }
 `;
 
 export const Tags = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 1.25rem;
-
-  ${breakpoint.lg} {
-    margin-bottom: 2rem;
-  }
+  margin-bottom: var(--margin);
 `;
 
 export const Error = styled((props) => <Callout variant="danger" {...props} />)`
-  div {
-    font-weight: 700;
-  }
-
   ul {
-    margin-left: 1rem;
+    margin-left: ${rhythm(1)};
 
     li {
       list-style: square;
-      margin-left: 1rem;
     }
   }
 `;

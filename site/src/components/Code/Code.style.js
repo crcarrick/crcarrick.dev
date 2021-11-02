@@ -1,27 +1,35 @@
 import styled, { css } from 'styled-components';
 
-import { breakpoint, hexToRgba } from '@utils/mixins';
+import { rhythm } from '@utils/typography';
 
-export const Pre = styled.pre`
-  font-size: 0.85rem;
-  font-weight: 500;
-  font-family: inherit;
-  padding: 0.75rem;
-  margin: 2rem;
-  margin: 0;
-  overflow-x: auto;
+// Hack to make line highlighting work right on smaller screens
+export const CodeWrapper = styled.div`
+  background-color: var(--bg-code);
+  overflow: auto;
+  margin: var(--margin) 0;
 
-  ${breakpoint.md} {
-    font-size: 1rem;
-    padding: 1rem;
+  pre[class*='language-'] {
+    background-color: transparent;
+    float: left;
+    min-width: 100%;
   }
 `;
 
+export const Pre = styled.pre`
+  font: var(--font-code);
+  color: var(--white);
+  padding: ${rhythm(1)};
+  overflow-x: auto;
+  margin: 0;
+`;
+
 export const Line = styled.div`
+  border-left: solid 4px transparent;
+
   ${({ highlight }) =>
     highlight &&
     css`
-      background-color: ${hexToRgba('#44475a', 0.75)};
-      box-shadow: inset 4px 0 0 0 var(--primary);
+      background-color: var(--bg-code-highlight);
+      border-left-color: var(--primary);
     `}
 `;

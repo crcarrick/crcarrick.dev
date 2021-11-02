@@ -2,10 +2,11 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 
 import { breakpoint, transition } from '@utils/mixins';
+import { rhythm } from '@utils/typography';
 
 export const Posts = styled.div`
   display: grid;
-  gap: 1rem;
+  gap: ${rhythm(1)};
   grid-template-columns: 1fr;
 
   ${breakpoint.lg} {
@@ -21,7 +22,7 @@ export const PostLink = styled(Link)`
   &:focus,
   &:focus-visible & {
     outline: none;
-    transform: translateY(-0.25rem);
+    transform: translateY(${rhythm(-1 / 6)});
     box-shadow: 0 4px 0 var(--primary);
   }
 `;

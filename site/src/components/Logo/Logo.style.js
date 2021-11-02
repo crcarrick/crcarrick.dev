@@ -4,23 +4,12 @@ import { breakpoint, transition } from '@utils/mixins';
 import { Link } from '@components/Layout/Nav/Nav.style';
 
 import LogoSVG from '@assets/svg/logo.svg';
-
-const getWidth =
-  (bp) =>
-  ({ width }) => {
-    switch (bp) {
-      case breakpoint.md:
-        return `${width + width * 0.25}rem`;
-      case breakpoint.lg:
-        return `${width + width * 0.5}rem`;
-      default:
-        return `${width}rem`;
-    }
-  };
+import { rhythm } from '@utils/typography';
 
 export const Logo = styled(LogoSVG)`
-  width: ${getWidth()};
-  height: ${getWidth()};
+  width: ${rhythm(1)};
+  height: ${rhythm(1)};
+
   cursor: pointer;
   transition: ${transition('fill', 'stroke')};
 
@@ -28,24 +17,13 @@ export const Logo = styled(LogoSVG)`
     fill: var(--logo-fill);
     stroke: var(--logo-stroke);
   }
-
-  ${breakpoint.md} {
-    width: ${getWidth(breakpoint.md)};
-    height: ${getWidth(breakpoint.md)};
-  }
-
-  ${breakpoint.lg} {
-    width: ${getWidth(breakpoint.lg)};
-    height: ${getWidth(breakpoint.lg)};
-  }
 `;
 
-export const Name = styled.span`
-  padding: 0.5rem;
-  font-weight: 700;
+export const Name = styled.h4`
+  padding: ${rhythm(1 / 2)};
   text-transform: uppercase;
-  letter-spacing: 2.5px;
   display: none;
+  margin: 0;
 
   ${breakpoint.md} {
     display: block;

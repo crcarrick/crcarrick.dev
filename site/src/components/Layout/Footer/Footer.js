@@ -1,12 +1,12 @@
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment } from 'react';
 
 import { SocialIcon } from '@components/SocialIcon';
-import { Theme } from '@style/theme';
+import { useTheme } from '@hooks/useTheme';
 
 import * as S from './Footer.style';
 
 export const Footer = () => {
-  const context = useContext(Theme.Context);
+  const theme = useTheme();
 
   return (
     <Fragment>
@@ -31,22 +31,18 @@ export const Footer = () => {
         </S.List>
 
         {/* TODO: Is there some way I can just use my css variables here instead of the context??? */}
-        {context && (
+        {theme && (
           <S.Toggle
             aria-label="Toggle dark mode on or off"
-            checked={context.theme === 'dark'}
-            onChange={context.toggleTheme}
+            checked={theme.mode.name === 'dark'}
+            onChange={theme.mode.toggle}
             checkedIcon={<S.Sun />}
             uncheckedIcon={<S.Moon />}
-            activeBoxShadow={`0 0 2px 3px ${
-              context.theme === 'dark'
-                ? context.styledTheme.colors.purple
-                : context.styledTheme.colors.red
-            }`}
-            onColor={context.styledTheme.colors.text}
-            onHandleColor={context.styledTheme.colors.body}
-            offColor={context.styledTheme.colors.text}
-            offHandleColor={context.styledTheme.colors.body}
+            activeBoxShadow={`0 0 2px 3px ${theme.color.primary}`}
+            onColor={theme.color.text}
+            onHandleColor={theme.color.body}
+            offColor={theme.color.text}
+            offHandleColor={theme.color.body}
             handleDiameter={20}
           />
         )}

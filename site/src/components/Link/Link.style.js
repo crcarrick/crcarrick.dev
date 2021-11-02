@@ -3,9 +3,9 @@ import styled, { css } from 'styled-components';
 
 import { List as ListNav } from '@components/Layout/Nav/Nav.style';
 import { Article as PostArticle } from '@style/templates/post.style';
+import { rhythm } from '@utils/typography';
 
 const style = css`
-  font-family: var(--font-mono);
   text-decoration: none;
   color: inherit;
   cursor: pointer;
@@ -18,18 +18,16 @@ const style = css`
   }
 
   ${ListNav} & {
-    font-weight: 700;
-    padding: 0.5rem;
+    padding: ${rhythm(1 / 4)};
     text-transform: uppercase;
-    letter-spacing: 2.5px;
   }
 
   ${PostArticle} & {
     color: var(--text);
-    text-decoration: underline var(--primary) 3px;
+    text-decoration: underline var(--primary) 2px;
 
     &:focus {
-      box-shadow: 0 3px 0 0 var(--link-post-underline);
+      box-shadow: 0 2px 0 0 var(--link-post-underline);
     }
   }
 `;

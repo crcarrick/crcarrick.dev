@@ -1,17 +1,15 @@
 import styled from 'styled-components';
 
 import { transition } from '@utils/mixins';
+import { rhythm } from '@utils/typography';
 
 export const Button = styled.button`
-  font-family: var(--font-mono);
-  font-weight: 700;
-  padding: 0.5rem 1.5rem;
+  padding: ${rhythm(1 / 4)} ${rhythm(1 / 2)};
   text-transform: uppercase;
-  letter-spacing: 2.5px;
   color: var(--body);
   background-color: var(--text);
   border: none;
-  border-radius: 4rem;
+  border-radius: ${rhythm(2)};
   transition: ${transition('color', 'background-color', 'box-shadow')};
   cursor: pointer;
 
