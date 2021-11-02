@@ -5,7 +5,7 @@ import { getImage } from 'gatsby-plugin-image';
 
 import { Tag } from '../Tag/Tag';
 
-import * as S from './style';
+import * as S from './Card.style';
 
 export const Card = ({ post }) => (
   <S.Card>

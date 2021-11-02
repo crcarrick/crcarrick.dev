@@ -2,7 +2,7 @@ import React from 'react';
 
 import { graphql, useStaticQuery } from 'gatsby';
 
-import * as S from './style';
+import * as S from './SocialIcon.style';
 
 export const SocialIcon = ({ type }) => {
   const data = useStaticQuery(graphql`

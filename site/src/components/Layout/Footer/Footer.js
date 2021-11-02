@@ -1,9 +1,9 @@
 import React, { Fragment, useContext } from 'react';
 
-import { SocialIcon } from '@components';
+import { SocialIcon } from '@components/SocialIcon';
 import { Theme } from '@style/theme';
 
-import * as S from './style';
+import * as S from './Footer.style';
 
 export const Footer = () => {
   const context = useContext(Theme.Context);

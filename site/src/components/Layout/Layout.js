@@ -5,7 +5,7 @@ import { Seo } from './Seo/Seo';
 import { Nav } from './Nav/Nav';
 import { Footer } from './Footer/Footer';
 
-import * as S from './style';
+import * as S from './Layout.style';
 
 export const Layout = ({ children, path }) => {
   return (
