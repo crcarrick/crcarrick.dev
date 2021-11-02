@@ -18,7 +18,8 @@ export const PostLink = styled(Link)`
 
   &:active,
   &:hover,
-  &:focus & {
+  &:focus,
+  &:focus-visible & {
     outline: none;
     transform: translateY(-0.25rem);
     box-shadow: 0 4px 0 var(--primary);

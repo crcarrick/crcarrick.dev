@@ -25,4 +25,8 @@ export const Link = styled(GatsbyLink)`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  &:focus {
+    outline: none;
+  }
 `;

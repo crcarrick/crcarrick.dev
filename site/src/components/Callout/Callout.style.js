@@ -19,9 +19,10 @@ const variants = {
   },
 };
 
-export const StyledCallout = styled.aside`
+export const Callout = styled.aside`
   padding: 1rem 2rem;
   margin: 1.5rem auto;
+  width: 100%;
 
   ${({ variant = 'success' }) => {
     const callout = variants[variant];

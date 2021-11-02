@@ -90,6 +90,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
+    // prevent scrollbar from shifting content around when it shows / hides
+    padding-left: calc(100vw - 100%);
     margin: 0;
   }
 

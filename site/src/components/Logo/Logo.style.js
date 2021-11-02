@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { breakpoint, transition } from '@utils/mixins';
+import { Link } from '@components/Layout/Nav/Nav.style';
 
 import LogoSVG from '@assets/svg/logo.svg';
 
@@ -9,9 +10,9 @@ const getWidth =
   ({ width }) => {
     switch (bp) {
       case breakpoint.md:
-        return `${width + width * 0.5}rem`;
+        return `${width + width * 0.25}rem`;
       case breakpoint.lg:
-        return `${width + width * 1.0}rem`;
+        return `${width + width * 0.5}rem`;
       default:
         return `${width}rem`;
     }
@@ -36,5 +37,21 @@ export const Logo = styled(LogoSVG)`
   ${breakpoint.lg} {
     width: ${getWidth(breakpoint.lg)};
     height: ${getWidth(breakpoint.lg)};
+  }
+`;
+
+export const Name = styled.span`
+  padding: 0.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  display: none;
+
+  ${breakpoint.md} {
+    display: block;
+  }
+
+  ${Link}:focus & {
+    text-decoration: underline var(--primary) 3px;
   }
 `;

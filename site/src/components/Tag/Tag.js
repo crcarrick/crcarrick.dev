@@ -2,4 +2,5 @@ import React from 'react';
 
 import * as S from './Tag.style';
 
-export const Tag = (props) => <S.Tag {...props} />;
+export const Tag = ({ variant, ...props }) =>
+  variant === 'button' ? <S.TagButton {...props} /> : <S.Tag {...props} />;

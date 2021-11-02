@@ -4,8 +4,8 @@ import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 
 import { Card } from '@components/Card';
+import { Filter } from '@components/Filter';
 import { Layout } from '@components/Layout';
-import { Search } from '@components/Search';
 
 import ConstructionSVG from '@assets/svg/hero/construction.svg';
 
@@ -26,7 +26,7 @@ const Hero = styled(ConstructionSVG)`
 export default function BlogPage() {
   const data = useStaticQuery(graphql`
     query BlogPage {
-      posts: allMdx {
+      posts: allMdx(sort: { fields: frontmatter___published, order: DESC }) {
         nodes {
           id
           slug
@@ -66,7 +66,7 @@ export default function BlogPage() {
 
   return (
     <Layout>
-      <Search posts={posts}>
+      <Filter posts={posts}>
         {({ results }) => (
           <S.Posts>
             {results.map((post) => (
@@ -76,7 +76,7 @@ export default function BlogPage() {
             ))}
           </S.Posts>
         )}
-      </Search>
+      </Filter>
     </Layout>
   );
 }
