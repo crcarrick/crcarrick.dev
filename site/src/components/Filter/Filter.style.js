@@ -11,9 +11,15 @@ export const Input = styled.input`
   color: var(--dark);
   background-color: var(--white);
   border: solid 1.5px var(--dark);
+  border-radius: 0;
+
+  &[type='search'] {
+    -webkit-appearance: none;
+  }
 
   &:focus {
-    outline: solid 3px var(--primary);
+    outline: none;
+    border: solid 2px var(--primary);
   }
 `;
 

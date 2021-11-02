@@ -14,7 +14,7 @@ const style = css`
   &:hover,
   &:focus {
     outline: none;
-    text-decoration: underline var(--primary) 3px;
+    text-decoration: underline var(--primary) 2px;
   }
 
   ${ListNav} & {

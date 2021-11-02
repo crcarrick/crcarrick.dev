@@ -38,8 +38,8 @@ const baseTheme = {
     },
     code: {
       family: `'Roboto Mono', Consolas, Monaco, monospace`,
-      size: scale(-1 / 4),
-      lineHeight: 1.5,
+      size: scale(-(1 / 4)),
+      lineHeight: 1.6,
       weight: 600,
       get font() {
         return `${this.weight} ${this.size.fontSize} / ${this.lineHeight} ${this.family}`;
@@ -66,7 +66,7 @@ const darkTheme = {
   ...baseTheme,
   color: {
     ...baseTheme.color,
-    body: color.blue,
+    body: color.black,
     text: adjust(color.white, 10),
     primary: color.purple,
     info: color.purple,

@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { format } from 'date-fns';
 import { getImage } from 'gatsby-plugin-image';
 
 import { Tag } from '../Tag/Tag';
@@ -17,7 +16,7 @@ export const Card = ({ post }) => (
     </S.ImageWrapper>
     <S.Info>
       <S.Title>{post.frontmatter.title}</S.Title>
-      <S.Date>{format(new Date(post.frontmatter.published), 'MMM dd yyyy')}</S.Date>
+      <S.Date>{post.frontmatter.published}</S.Date>
       <S.Description>{post.excerpt}</S.Description>
       <S.Tags>
         {post.frontmatter.tags.map((tag) => (

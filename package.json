@@ -7,7 +7,8 @@
   "scripts": {
     "develop": "yarn workspace site start",
     "start": "yarn workspace site start",
-    "build": "yarn workspace site build"
+    "build": "yarn workspace site build",
+    "clean": "yarn workspace site clean"
   },
   "keywords": [
     "gatsby"

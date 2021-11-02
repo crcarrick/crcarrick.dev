@@ -12,11 +12,7 @@ export const PageWrapper = styled.div`
   min-height: -webkit-fill-available-;
   min-height: fill-available;
   margin: 0 auto;
-  padding: 0 ${rhythm(1 / 4)};
-
-  ${breakpoint.md} {
-    padding: 0 ${rhythm(1 / 2)};
-  }
+  padding: 0 ${rhythm(1 / 2)};
 
   ${breakpoint.lg} {
     padding: 0;

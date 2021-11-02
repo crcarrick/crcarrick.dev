@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { format } from 'date-fns';
 import { graphql } from 'gatsby';
 import { getImage } from 'gatsby-plugin-image';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
@@ -19,8 +18,7 @@ export default function BlogPostTemplate({ data }) {
         />
         <S.Title>{data.post.frontmatter.title}</S.Title>
         <S.Author>
-          by {data.post.frontmatter.author} on
-          <span> {format(new Date(data.post.frontmatter.published), 'MMM dd yyyy')}</span>
+          published by {data.post.frontmatter.author} {data.post.frontmatter.published}
         </S.Author>
         <MDXRenderer>{data.post.body}</MDXRenderer>
       </S.Article>
@@ -36,11 +34,12 @@ export const query = graphql`
         words
       }
       excerpt
+      timeToRead
       frontmatter {
         title
         author
         description
-        published
+        published(fromNow: true)
         tags
         featuredImage {
           childImageSharp {

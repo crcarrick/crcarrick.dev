@@ -4,8 +4,8 @@ import { transition } from '@utils/mixins';
 import { rhythm, scale } from '@utils/typography';
 
 const style = () => {
-  const { fontSize, lineHeight } = scale(-1 / 2);
-  const margin = rhythm(1 / 10);
+  const { fontSize, lineHeight } = scale(-2 / 5);
+  const margin = rhythm(1 / 6);
   const padding = rhythm(1 / 5);
 
   return css`
@@ -38,6 +38,6 @@ export const TagButton = styled.button`
   &:focus,
   &:hover {
     outline: none;
-    transform: translateY(${rhythm(-1 / 20)});
+    transform: translateY(-3px);
   }
 `;
