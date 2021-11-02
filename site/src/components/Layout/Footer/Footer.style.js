@@ -10,9 +10,9 @@ export const Border = styled.hr`
   border: none;
   background-color: var(--text);
   transition: ${transition('background-color')};
-  margin: var(--margin) 0;
+  margin: calc(var(--margin) - 1.5px) 0;
   width: 100%;
-  height: 2px;
+  height: 1.5px;
 `;
 
 export const Footer = styled.footer`
@@ -46,7 +46,7 @@ const icon = css`
 
 export const Sun = styled(SunSVG)`
   ${icon}
-  fill: var(--blue);
+  fill: var(--black);
   padding: 4px;
 `;
 

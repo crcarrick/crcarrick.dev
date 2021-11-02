@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 
 // Basically Dan Abramov's blog implementation just using a hook
 //
@@ -14,7 +14,7 @@ export const useMode = () => {
     } catch (err) {}
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     // Check if I have a local storage entry for mode
     let preferredMode;
     try {

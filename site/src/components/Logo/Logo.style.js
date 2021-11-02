@@ -19,8 +19,8 @@ export const Logo = styled(LogoSVG)`
   }
 `;
 
-export const Name = styled.h4`
-  padding: ${rhythm(1 / 2)};
+export const Name = styled.h3`
+  padding: ${rhythm(1 / 3)};
   text-transform: uppercase;
   display: none;
   margin: 0;
@@ -30,6 +30,6 @@ export const Name = styled.h4`
   }
 
   ${Link}:focus & {
-    text-decoration: underline var(--primary) 3px;
+    text-decoration: underline var(--primary) 2px;
   }
 `;

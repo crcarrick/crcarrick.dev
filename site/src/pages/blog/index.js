@@ -39,7 +39,7 @@ export default function BlogPage() {
             title
             author
             description
-            published
+            published(fromNow: true)
             tags
             featuredImage {
               childImageSharp {

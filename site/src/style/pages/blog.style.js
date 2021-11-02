@@ -6,7 +6,7 @@ import { rhythm } from '@utils/typography';
 
 export const Posts = styled.div`
   display: grid;
-  gap: ${rhythm(1)};
+  gap: var(--margin);
   grid-template-columns: 1fr;
 
   ${breakpoint.lg} {
@@ -23,6 +23,6 @@ export const PostLink = styled(Link)`
   &:focus-visible & {
     outline: none;
     transform: translateY(${rhythm(-1 / 6)});
-    box-shadow: 0 4px 0 var(--primary);
+    box-shadow: 0 3px 0 var(--primary);
   }
 `;

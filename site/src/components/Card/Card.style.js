@@ -35,8 +35,7 @@ export const Image = styled(GatsbyImage)`
   }
 `;
 
-export const Date = styled.div`
-  margin-bottom: ${spacing};
+export const Date = styled.h6`
   color: var(--text);
 `;
 

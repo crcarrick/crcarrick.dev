@@ -1,6 +1,5 @@
+import { breakpoint } from '@utils/mixins';
 import styled, { css } from 'styled-components';
-
-import { rhythm } from '@utils/typography';
 
 // Hack to make line highlighting work right on smaller screens
 export const CodeWrapper = styled.div`
@@ -18,9 +17,13 @@ export const CodeWrapper = styled.div`
 export const Pre = styled.pre`
   font: var(--font-code);
   color: var(--white);
-  padding: ${rhythm(1)};
+  padding: calc(var(--padding) / 2);
   overflow-x: auto;
   margin: 0;
+
+  ${breakpoint.lg} {
+    font: var(--font-code);
+  }
 `;
 
 export const Line = styled.div`

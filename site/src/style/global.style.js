@@ -1,12 +1,9 @@
 import { createGlobalStyle, css } from 'styled-components';
-import { normalize } from 'styled-normalize';
 
 import { adjust, breakpoint, hexToRgba, transition } from '@utils/mixins';
 import { rhythm } from '@utils/typography';
 
 export const GlobalStyle = createGlobalStyle`
-  /* ${normalize} */
-
   :root {
     ${({ theme: { color, mode, typography } }) => {
       const darkMode = mode.name === 'dark';
@@ -39,8 +36,8 @@ export const GlobalStyle = createGlobalStyle`
         --bg-aside-info: ${hexToRgba(color.info, asideOpacity)};
         --bg-aside-success: ${hexToRgba(color.success, asideOpacity)};
         --bg-card: ${adjust(color.body, darkMode ? 10 : -20)};
-        --bg-code: ${color.dracula};
-        --bg-code-highlight: ${hexToRgba(adjust(color.dracula, 30), 0.75)};
+        --bg-code: ${adjust(color.dark, 5)};
+        --bg-code-highlight: ${hexToRgba(adjust(color.dark, 25), 0.75)};
         --bg-inline-code: ${adjust(color.body, darkMode ? 45 : -55)};
 
         --font-heading: ${typography.heading.family};
@@ -105,4 +102,19 @@ export const GlobalStyle = createGlobalStyle`
     color: inherit;
     text-decoration: none;
   }
+
+  /* article,
+  aside,
+  blockquote,
+  div,
+  footer,
+  hr,
+  main,
+  nav,
+  p,
+  pre,
+  section,
+  ul {
+    margin-bottom: var(--margin);
+  } */
 `;

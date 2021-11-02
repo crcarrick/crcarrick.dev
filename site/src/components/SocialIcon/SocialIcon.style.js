@@ -25,7 +25,7 @@ const style = css`
   }
 
   & rect {
-    fill: var(--blue);
+    fill: var(--dark);
     transition: ${transition('fill')};
   }
 `;
