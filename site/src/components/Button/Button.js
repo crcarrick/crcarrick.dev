@@ -2,7 +2,7 @@ import React from 'react';
 
 import { navigate } from 'gatsby';
 
-import * as S from './style';
+import * as S from './Button.style';
 
 export const Button = ({ children, to, ...props }) => {
   const handleClick = () => (to ? navigate(to) : null);

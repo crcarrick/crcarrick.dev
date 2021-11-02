@@ -1,7 +1,7 @@
 import { Link as GatsbyLink } from 'gatsby';
 import styled, { css } from 'styled-components';
 
-import { List as ListNav } from '@layout/Nav/style';
+import { List as ListNav } from '@components/Layout/Nav/Nav.style';
 import { Article as PostArticle } from '@style/templates/post.style';
 
 const style = css`

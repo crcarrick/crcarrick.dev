@@ -1,10 +1,11 @@
 import React from 'react';
 
-import { graphql, Link, useStaticQuery } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 
-import { Card } from '@components';
-import { Layout } from '@layout';
+import { Card } from '@components/Card';
+import { Layout } from '@components/Layout';
+import { Search } from '@components/Search';
 
 import ConstructionSVG from '@assets/svg/hero/construction.svg';
 
@@ -65,13 +66,17 @@ export default function BlogPage() {
 
   return (
     <Layout>
-      <S.Posts>
-        {posts.map((post) => (
-          <S.PostLink key={post.id} to={`/blog/${post.slug}`}>
-            <Card post={post} />
-          </S.PostLink>
-        ))}
-      </S.Posts>
+      <Search posts={posts}>
+        {({ results }) => (
+          <S.Posts>
+            {results.map((post) => (
+              <S.PostLink key={post.id} to={`/blog/${post.slug}`}>
+                <Card post={post} />
+              </S.PostLink>
+            ))}
+          </S.Posts>
+        )}
+      </Search>
     </Layout>
   );
 }

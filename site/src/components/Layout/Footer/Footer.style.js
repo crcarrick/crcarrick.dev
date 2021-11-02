@@ -3,8 +3,8 @@ import Switch from 'react-switch';
 
 import { breakpoint, transition } from '@utils/mixins';
 
-import SunSVG from '@assets/svg/sun.svg';
-import MoonSVG from '@assets/svg/moon.svg';
+import SunSVG from '@assets/svg/icons/sun.svg';
+import MoonSVG from '@assets/svg/icons/moon.svg';
 
 export const Border = styled.hr`
   border: none;

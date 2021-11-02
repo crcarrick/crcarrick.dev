@@ -1,9 +1,5 @@
-import styled from 'styled-components';
+import React from 'react';
 
-export const StyledInlineCode = styled.code`
-  background-color: var(--bg-inline-code);
-  padding: 0.25rem;
-  word-break: break-word;
-`;
+import * as S from './InlineCode.style';
 
-export const InlineCode = StyledInlineCode;
+export const InlineCode = (props) => <S.InlineCode {...props} />;

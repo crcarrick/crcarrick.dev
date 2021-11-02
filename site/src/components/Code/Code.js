@@ -2,11 +2,10 @@ import React from 'react';
 
 import parseRange from 'parse-numeric-range';
 import Highlight, { defaultProps } from 'prism-react-renderer';
-import styled from 'styled-components';
 
-import * as S from './style';
+import * as S from './Code.style';
 
-import '@style/vendor/prism.theme.css';
+import './theme.css';
 
 const createLineHighlighter = (range) => {
   const regexp = /{([\d,-]+)}/;
@@ -65,17 +64,3 @@ export const Code = ({ className = 'language-jsx', children, metastring }) => {
     </Highlight>
   );
 };
-
-// Highlighting / numbering fix for smaller screen (https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/#optional-add-line-numbering)
-export const CodeHighlight = styled.div`
-  background-color: #282a36; //-- dracula bg .. overwriting for now
-  background-color: var(--dark);
-  overflow: auto;
-  margin: 2rem 0;
-
-  pre[class*='language-'] {
-    background-color: transparent;
-    float: left;
-    min-width: 100%;
-  }
-`;
