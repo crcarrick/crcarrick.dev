@@ -31,7 +31,7 @@ export const Callout = styled.aside`
 
     return css`
       background-color: ${callout.bg};
-      border-left: solid 4px ${callout.bd};
+      border-left: solid calc(var(--border-width) * 2) ${callout.bd};
     `;
   }}
 `;
