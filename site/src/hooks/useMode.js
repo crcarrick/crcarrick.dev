@@ -15,13 +15,11 @@ export const useMode = () => {
   };
 
   useLayoutEffect(() => {
-    // Check if I have a local storage entry for mode
     let preferredMode;
     try {
       preferredMode = localStorage.getItem('mode');
     } catch (err) {}
 
-    // Check if user has prefers dark mode browser setting
     const mql = window.matchMedia('(prefers-color-mode: dark)');
     const handleChange = () => mql.matches && setMode('dark');
     mql.addEventListener('change', handleChange);

@@ -20,7 +20,7 @@ const createLineHighlighter = (range) => {
   return () => false;
 };
 
-const highlightKeyword = (className, token) => {
+const highlightKeyword = ({ className, token }) => {
   if (!token.types.some((type) => type === 'keyword')) return className;
 
   return `${className} keyword-${token.content}`;
@@ -31,7 +31,7 @@ const renderToken =
   (token, key) => {
     let { className, ...props } = getTokenProps({ token, key });
 
-    return <span className={highlightKeyword(className, token)} {...props} />;
+    return <span className={highlightKeyword({ className, token })} {...props} />;
   };
 
 const renderLine =
@@ -46,6 +46,8 @@ const renderLine =
     );
   };
 
+const trimTokens = (tokens) => (tokens.length >= 2 ? tokens.slice(0, -1) : tokens);
+
 export const Code = ({ className = 'language-jsx', children, metastring }) => {
   const language = className.replace('language-', '');
   const shouldHighlightLine = createLineHighlighter(metastring);
@@ -53,7 +55,7 @@ export const Code = ({ className = 'language-jsx', children, metastring }) => {
   return (
     <Highlight Prism={defaultProps.Prism} language={language} code={children}>
       {({ className, style, tokens, ...rest }) => {
-        const lines = tokens.length >= 2 ? tokens.slice(0, -1) : tokens;
+        const lines = trimTokens(tokens);
 
         return (
           <S.Pre className={className} style={style}>
