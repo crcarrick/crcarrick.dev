@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 import { breakpoint, transition } from '@utils/mixins';
-import { Link } from '@components/Layout/Nav/Nav.style';
+import { rhythm } from '@utils/typography';
+import { Link } from '@views/Layout/Nav/Nav.style';
 
 import LogoSVG from '@assets/svg/logo.svg';
-import { rhythm } from '@utils/typography';
 
 export const Logo = styled(LogoSVG)`
   width: ${rhythm(1)};
@@ -30,6 +30,7 @@ export const Name = styled.h3`
   }
 
   ${Link}:focus & {
-    text-decoration: underline var(--primary) 2px;
+    text-decoration: underline var(--primary) var(--border-width);
+    text-underline-offset: var(--border-width);
   }
 `;

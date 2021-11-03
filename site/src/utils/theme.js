@@ -14,12 +14,14 @@ const color = {
   pink: '#ff79c6',
   black: '#21222a',
   white: '#f2f2f2',
+  steel: '#347fc4',
 
   // semantic colors
   dark: '#30323d',
   body: null,
   text: null,
   primary: null,
+  secondary: null,
   danger: '#ea676c',
   warning: '#edd83d',
   info: null,
@@ -34,7 +36,7 @@ const baseTheme = {
       family: 'Oswald, sans-serif',
     },
     body: {
-      family: 'Roboto, sans-serif',
+      family: `'Open Sans', sans-serif`,
     },
     code: {
       family: `'Roboto Mono', Consolas, Monaco, monospace`,
@@ -56,8 +58,9 @@ const lightTheme = {
   color: {
     ...baseTheme.color,
     body: color.white,
-    text: adjust(color.blue, -5),
+    text: color.dark,
     primary: color.red,
+    secondary: color.dark,
     info: color.blue,
   },
 };
@@ -69,6 +72,7 @@ const darkTheme = {
     body: color.black,
     text: adjust(color.white, 10),
     primary: color.purple,
+    secondary: color.white,
     info: color.purple,
   },
 };

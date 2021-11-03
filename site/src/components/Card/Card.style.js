@@ -1,5 +1,6 @@
-import styled from 'styled-components';
 import { GatsbyImage } from 'gatsby-plugin-image';
+import styled from 'styled-components';
+
 import { rhythm } from '@utils/typography';
 
 const spacing = rhythm(1 / 2);
@@ -37,6 +38,12 @@ export const Image = styled(GatsbyImage)`
 
 export const Date = styled.h6`
   color: var(--text);
+  margin-bottom: ${spacing};
+
+  /* &:before {
+    content: '📅';
+    margin-right: 5px;
+  } */
 `;
 
 export const Description = styled.p`

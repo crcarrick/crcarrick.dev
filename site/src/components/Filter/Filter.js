@@ -1,62 +1,50 @@
-/* eslint-disable default-case */
-import React, { Fragment, useMemo, useReducer, useState } from 'react';
+import React, { Fragment, useMemo, useState } from 'react';
 
+import { pickBy } from 'lodash';
 import { matchSorter } from 'match-sorter';
 
 import { Tag } from '@components/Tag';
 
 import * as S from './Filter.style';
 
-const reducer = (state, action) => ({ ...state, [action.tag]: !state[action.tag] });
-const getActiveTags = (state) => Object.keys(state).filter((tag) => state[tag]);
-
-const Error = ({ activeTags, searchTerm }) => {
-  return (
-    <S.Error>
-      <div>Sorry! There are no results for</div>
-      <ul>
-        {searchTerm && <li>Search Term: "{searchTerm}"</li>}
-        {Boolean(activeTags.length) && (
-          <li>Tags: {activeTags.map((tag) => `"${tag}"`).join(' + ')}</li>
-        )}
-      </ul>
-    </S.Error>
-  );
-};
-
 export const Filter = ({ children, posts }) => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [state, dispatch] = useReducer(reducer, {});
-
-  const handleSearch = ({ target: { value } }) => setSearchTerm(value);
-  const handleClick = (tag) => dispatch({ tag });
-
   const tags = useMemo(
     () =>
-      Array.from(new Set(posts.reduce((tags, post) => [...tags, ...post.frontmatter.tags], []))),
+      posts
+        .flatMap((post) => post.frontmatter.tags)
+        .reduce((tags, tag) => ({ ...tags, [tag]: false }), {}),
     [posts]
   );
 
-  const searchResults = useMemo(() => {
-    const activeTags = getActiveTags(state);
+  const [textQuery, setTextQuery] = useState('');
+  const [tagsQuery, setTagsQuery] = useState(tags);
 
-    // don't do any useless work (and preserve the sort by date order when there's no search query)
-    if (!activeTags.length && !searchTerm) return posts;
+  const handleTextInput = ({ target: { value } }) => setTextQuery(value);
+  const handleTagsClick = (tag) => setTagsQuery((tq) => ({ ...tq, [tag]: !tq[tag] }));
 
-    const filtered = matchSorter(posts, activeTags.join(' '), { keys: ['frontmatter.tags'] });
-    const results = matchSorter(filtered, searchTerm, { keys: ['frontmatter.title'] });
+  const query = useMemo(
+    () => Object.keys(pickBy(tagsQuery, Boolean)).concat(textQuery).filter(Boolean),
+    [textQuery, tagsQuery]
+  );
 
-    return results;
-  }, [posts, searchTerm, state]);
+  const results = useMemo(() => {
+    if (!query.length) return posts;
 
-  const results = searchResults;
+    return query.reduceRight(
+      (results, term) =>
+        matchSorter(results, term, {
+          keys: ['frontmatter.title', 'frontmatter.tags'],
+        }),
+      posts
+    );
+  }, [posts, query]);
 
   return (
     <Fragment>
-      <S.Input type="search" placeholder="search..." onChange={handleSearch} value={searchTerm} />
+      <S.Input type="search" placeholder="search..." onChange={handleTextInput} value={textQuery} />
       <S.Tags>
-        {tags.map((tag, key) => (
-          <Tag variant="button" key={key} onClick={() => handleClick(tag)} selected={state[tag]}>
+        {Object.entries(tagsQuery).map(([tag, isActive]) => (
+          <Tag variant="button" key={tag} isActive={isActive} onClick={() => handleTagsClick(tag)}>
             {tag}
           </Tag>
         ))}
@@ -64,7 +52,13 @@ export const Filter = ({ children, posts }) => {
       {results.length ? (
         children({ results })
       ) : (
-        <Error activeTags={getActiveTags(state)} searchTerm={searchTerm} />
+        <S.Error>
+          Sorry! There are no results for:{' '}
+          {query
+            .filter(Boolean)
+            .map((term) => `"${term}"`)
+            .join(' + ')}
+        </S.Error>
       )}
     </Fragment>
   );

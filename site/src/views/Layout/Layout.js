@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-pascal-case */
 import React, { Fragment } from 'react';
 
 import { Seo } from './Seo/Seo';

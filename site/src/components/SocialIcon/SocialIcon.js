@@ -4,6 +4,14 @@ import { graphql, useStaticQuery } from 'gatsby';
 
 import * as S from './SocialIcon.style';
 
+const icons = {
+  github: S.Github,
+  linkedin: S.LinkedIn,
+  spotify: S.Spotify,
+  twitch: S.Twitch,
+  twitter: S.Twitter,
+};
+
 export const SocialIcon = ({ type }) => {
   const data = useStaticQuery(graphql`
     query SocialIcon {
@@ -21,41 +29,20 @@ export const SocialIcon = ({ type }) => {
 
   const { github, linkedin, spotify, twitch, twitter } = data.site.siteMetadata;
 
-  let Component;
-  let link;
+  const Component = icons[type];
 
-  switch (type) {
-    case 'github':
-      Component = S.Github;
-      link = `https://github.com/${github}`;
-      break;
+  if (!Component) return null;
 
-    case 'linkedin':
-      Component = S.LinkedIn;
-      link = `https://linkedin.com/in/${linkedin}`;
-      break;
-
-    case 'spotify':
-      Component = S.Spotify;
-      link = `https://open.spotify.com/user/${spotify}`;
-      break;
-
-    case 'twitch':
-      Component = S.Twitch;
-      link = `https://twitch.tv/${twitch}`;
-      break;
-
-    case 'twitter':
-      Component = S.Twitter;
-      link = `https://twitter.com/${twitter}`;
-      break;
-
-    default:
-      return null;
-  }
+  const links = {
+    github: `https://github.com/${github}`,
+    linkedin: `https://linkedin.com/in/${linkedin}`,
+    spotify: `https://open.spotify.com/user/${spotify}`,
+    twitch: `https://twitch.tv/${twitch}`,
+    twitter: `https://twitter.com/${twitter}`,
+  };
 
   return (
-    <S.SocialLink href={link}>
+    <S.SocialLink href={links[type]}>
       <Component />
     </S.SocialLink>
   );

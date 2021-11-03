@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import { GatsbyImage } from 'gatsby-plugin-image';
+import styled from 'styled-components';
 
 import { Heading } from '@components/Heading/Heading';
 import { breakpoint } from '@utils/mixins';

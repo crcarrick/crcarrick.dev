@@ -1,5 +1,6 @@
-import { breakpoint } from '@utils/mixins';
 import styled, { css } from 'styled-components';
+
+import { breakpoint } from '@utils/mixins';
 
 // Hack to make line highlighting work right on smaller screens
 export const CodeWrapper = styled.div`

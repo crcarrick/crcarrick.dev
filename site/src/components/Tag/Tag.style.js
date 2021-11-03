@@ -4,17 +4,18 @@ import { transition } from '@utils/mixins';
 import { rhythm, scale } from '@utils/typography';
 
 const style = () => {
-  const { fontSize, lineHeight } = scale(-2 / 5);
+  const { fontSize, lineHeight } = scale(-1 / 5);
   const margin = rhythm(1 / 6);
   const padding = rhythm(1 / 5);
 
   return css`
+    font-family: var(--font-heading);
     font-size: ${fontSize};
     line-height: ${lineHeight};
     margin: 0 ${margin} ${margin} 0;
     padding: ${padding};
     text-transform: uppercase;
-    border: solid 1.5px var(--primary);
+    border: solid var(--border-width) var(--primary);
     white-space: nowrap;
     line-height: 1;
   `;
@@ -30,14 +31,24 @@ export const TagButton = styled.button`
   cursor: pointer;
   transition: ${transition('all')};
 
-  ${({ selected }) => css`
-    background: ${selected ? 'var(--primary)' : 'transparent'};
-    color: ${selected ? 'var(--white)' : 'inherit'};
-  `}
+  ${({ isActive }) => {
+    const background = isActive ? 'var(--primary)' : 'transparent';
+    const color = isActive ? 'var(--white)' : 'inherit';
 
-  &:focus,
+    return css`
+      background: ${background};
+      color: ${color};
+    `;
+  }}
+
   &:hover {
-    outline: none;
-    transform: translateY(-3px);
+    background: var(--primary);
+    color: var(--white);
+  }
+
+  &:focus-visible {
+    transition: none;
+    outline: solid calc(var(--border-width) / 2) var(--secondary);
+    outline-offset: calc(var(--border-width) / 2);
   }
 `;
