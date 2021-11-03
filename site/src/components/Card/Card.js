@@ -2,7 +2,7 @@ import React from 'react';
 
 import { getImage } from 'gatsby-plugin-image';
 
-import { Tag } from '../Tag/Tag';
+import { Tag } from '@components/Tag';
 
 import * as S from './Card.style';
 

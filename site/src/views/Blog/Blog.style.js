@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import { Link } from 'gatsby';
+import styled from 'styled-components';
 
 import { breakpoint, transition } from '@utils/mixins';
 import { rhythm } from '@utils/typography';
@@ -23,6 +23,6 @@ export const PostLink = styled(Link)`
   &:focus-visible & {
     outline: none;
     transform: translateY(${rhythm(-1 / 6)});
-    box-shadow: 0 3px 0 var(--primary);
+    box-shadow: 0 calc(var(--border-width) * 2) 0 var(--primary);
   }
 `;

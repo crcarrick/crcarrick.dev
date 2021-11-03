@@ -1,33 +1,15 @@
 import React from 'react';
 
 import { graphql } from 'gatsby';
-import { getImage } from 'gatsby-plugin-image';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
 
-import { Layout } from '@components/Layout';
+import { Post } from '@views/Post';
 
-import * as S from '@style/templates/post.style';
-
-export default function BlogPostTemplate({ data }) {
-  return (
-    <Layout>
-      <S.Article>
-        <S.Image
-          image={getImage(data.post.frontmatter.featuredImage)}
-          alt={data.post.frontmatter.description}
-        />
-        <S.Title>{data.post.frontmatter.title}</S.Title>
-        <S.Author>
-          published by {data.post.frontmatter.author} {data.post.frontmatter.published}
-        </S.Author>
-        <MDXRenderer>{data.post.body}</MDXRenderer>
-      </S.Article>
-    </Layout>
-  );
+export default function PostTemplate({ data }) {
+  return <Post post={data.post} />;
 }
 
 export const query = graphql`
-  query BlogPost($id: String) {
+  query PostTemplate($id: String) {
     post: mdx(id: { eq: $id }) {
       body
       wordCount {

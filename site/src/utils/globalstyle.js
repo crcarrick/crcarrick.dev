@@ -25,7 +25,7 @@ export const GlobalStyle = createGlobalStyle`
         --body: ${color.body};
         --text: ${color.text};
         --primary: ${color.primary};
-        --secondary: ${color.primary};
+        --secondary: ${color.secondary};
         --danger: ${color.danger};
         --warning: ${color.warning};
         --info: ${color.info};
@@ -40,6 +40,8 @@ export const GlobalStyle = createGlobalStyle`
         --bg-code-highlight: ${hexToRgba(adjust(color.dark, 25), 0.75)};
         --bg-inline-code: ${adjust(color.body, darkMode ? 45 : -55)};
 
+        --border-width: 2px;
+
         --font-heading: ${typography.heading.family};
         --font-body: ${typography.body.family};
         --font-code: ${typography.code.font};
@@ -47,8 +49,6 @@ export const GlobalStyle = createGlobalStyle`
 
         --hero-shadow: ${adjust(color.primary, -15)};
         --hero-chair: ${hexToRgba(adjust(color.primary, 25), 0.5)};
-
-        --link-post-underline: ${darkMode ? color.red : color.dark};
 
         // Leave this for now in case I want to tweak it
         // If I end up not, can remove and just use --primary and --dark
@@ -83,7 +83,6 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     // prevent scrollbar from shifting content around when it shows / hides
-    padding-left: calc(100vw - 100%);
     margin: 0;
   }
 
@@ -102,19 +101,4 @@ export const GlobalStyle = createGlobalStyle`
     color: inherit;
     text-decoration: none;
   }
-
-  /* article,
-  aside,
-  blockquote,
-  div,
-  footer,
-  hr,
-  main,
-  nav,
-  p,
-  pre,
-  section,
-  ul {
-    margin-bottom: var(--margin);
-  } */
 `;

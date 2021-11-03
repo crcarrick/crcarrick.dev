@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import { Link as GatsbyLink } from 'gatsby';
+import styled from 'styled-components';
 
 export const Nav = styled.nav`
   display: flex;
@@ -7,6 +7,7 @@ export const Nav = styled.nav`
   justify-content: space-between;
   width: 100%;
   margin: var(--margin) 0;
+  font-family: var(--font-heading);
 `;
 
 export const List = styled.ul`
