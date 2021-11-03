@@ -31,9 +31,15 @@ export const List = styled.ul`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 4px;
+  margin: 0;
+  padding: 0;
 
   ${breakpoint.md} {
     grid-template-columns: 1fr;
+  }
+
+  li {
+    margin: 0;
   }
 `;
 

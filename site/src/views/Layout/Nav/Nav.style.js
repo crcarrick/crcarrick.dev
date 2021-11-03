@@ -12,6 +12,12 @@ export const Nav = styled.nav`
 
 export const List = styled.ul`
   display: flex;
+  margin: 0;
+  padding: 0;
+
+  li {
+    margin: 0;
+  }
 `;
 
 export const Link = styled(GatsbyLink)`

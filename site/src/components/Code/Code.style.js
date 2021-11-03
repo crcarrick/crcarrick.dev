@@ -28,7 +28,7 @@ export const Pre = styled.pre`
 `;
 
 export const Line = styled.div`
-  border-left: solid 4px transparent;
+  border-left: solid calc(var(--border-width) * 2) transparent;
 
   ${({ highlight }) =>
     highlight &&
