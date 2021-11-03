@@ -11,6 +11,7 @@
 module.exports = {
   extends: ['react-app', 'plugin:jsx-a11y/recommended'],
   plugins: ['jsx-a11y'],
+  ignorePatterns: ['node_modules/*', 'site/.cache/*', 'site/public/*', 'site/node_modules/*'],
   rules: {
     'no-anonymous-exports-page-templates': `warn`,
     'limited-exports-page-templates': `warn`,
