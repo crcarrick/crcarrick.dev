@@ -22,6 +22,7 @@ export const transition = (...properties) => {
   );
 };
 
+// yoinked off stack (https://stackoverflow.com/questions/5560248/programmatically-lighten-or-darken-a-hex-color-or-rgb-and-blend-colors)
 export const adjust = (color, amount) => {
   let usePound = false;
 

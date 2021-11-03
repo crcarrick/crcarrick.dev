@@ -7,14 +7,31 @@ import { Tag } from '@components/Tag';
 
 import * as S from './Filter.style';
 
-export const Filter = ({ children, posts }) => {
-  const tags = useMemo(
-    () =>
-      posts
-        .flatMap((post) => post.frontmatter.tags)
-        .reduce((tags, tag) => ({ ...tags, [tag]: false }), {}),
-    [posts]
+const combineQueries = ({ textQuery, tagsQuery }) => {
+  const activeTags = Object.keys(pickBy(tagsQuery, Boolean));
+
+  return textQuery ? [...activeTags, textQuery] : activeTags;
+};
+
+const resultsFromQuery = ({ list, query }) => {
+  if (!query.length) return list;
+
+  return query.reduceRight(
+    (results, term) =>
+      matchSorter(results, term, {
+        keys: ['frontmatter.title', 'frontmatter.tags'],
+      }),
+    list
   );
+};
+
+const uniqueTagsFromPosts = ({ posts }) =>
+  posts
+    .flatMap((post) => post.frontmatter.tags)
+    .reduce((tags, tag) => ({ ...tags, [tag]: false }), {});
+
+export const Filter = ({ children, posts }) => {
+  const tags = useMemo(() => uniqueTagsFromPosts({ posts }), [posts]);
 
   const [textQuery, setTextQuery] = useState('');
   const [tagsQuery, setTagsQuery] = useState(tags);
@@ -22,22 +39,8 @@ export const Filter = ({ children, posts }) => {
   const handleTextInput = ({ target: { value } }) => setTextQuery(value);
   const handleTagsClick = (tag) => setTagsQuery((tq) => ({ ...tq, [tag]: !tq[tag] }));
 
-  const query = useMemo(
-    () => Object.keys(pickBy(tagsQuery, Boolean)).concat(textQuery).filter(Boolean),
-    [textQuery, tagsQuery]
-  );
-
-  const results = useMemo(() => {
-    if (!query.length) return posts;
-
-    return query.reduceRight(
-      (results, term) =>
-        matchSorter(results, term, {
-          keys: ['frontmatter.title', 'frontmatter.tags'],
-        }),
-      posts
-    );
-  }, [posts, query]);
+  const query = useMemo(() => combineQueries({ textQuery, tagsQuery }), [textQuery, tagsQuery]);
+  const results = useMemo(() => resultsFromQuery({ list: posts, query }), [posts, query]);
 
   return (
     <Fragment>
@@ -49,15 +52,12 @@ export const Filter = ({ children, posts }) => {
           </Tag>
         ))}
       </S.Tags>
-      {results.length ? (
-        children({ results })
-      ) : (
+
+      {results.length > 0 && children({ results })}
+
+      {results.length === 0 && (
         <S.Error>
-          Sorry! There are no results for:{' '}
-          {query
-            .filter(Boolean)
-            .map((term) => `"${term}"`)
-            .join(' + ')}
+          Sorry! There are no results for: {query.map((term) => `"${term}"`).join(' + ')}
         </S.Error>
       )}
     </Fragment>

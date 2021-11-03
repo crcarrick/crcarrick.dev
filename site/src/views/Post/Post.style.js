@@ -11,6 +11,11 @@ export const Article = styled.article`
     padding: ${rhythm(1)};
   }
 
+  ul,
+  ol {
+    list-style: initial;
+  }
+
   *:last-child {
     margin-bottom: 0;
   }
