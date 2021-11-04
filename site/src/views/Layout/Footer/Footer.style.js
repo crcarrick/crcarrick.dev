@@ -8,17 +8,16 @@ import MoonSVG from '@assets/svg/icons/moon.svg';
 
 export const Border = styled.hr`
   border: none;
-  background-color: var(--text);
+  background-color: var(--color-text);
   transition: ${transition('background-color')};
-  margin: calc(var(--margin) - 1.5px) 0;
+  margin: calc(var(--margin-base) - 1.5px) 0;
   width: 100%;
   height: 1.5px;
 `;
 
 export const Footer = styled.footer`
   display: flex;
-  position: relative;
-  margin-bottom: var(--margin);
+  margin-bottom: var(--margin-base);
   justify-content: space-between;
   align-items: center;
 
@@ -52,12 +51,12 @@ const icon = css`
 
 export const Sun = styled(SunSVG)`
   ${icon}
-  fill: var(--black);
+  fill: var(--color-body);
   padding: 4px;
 `;
 
 export const Moon = styled(MoonSVG)`
   ${icon}
-  fill: var(--white);
+  fill: var(--color-white);
   padding: 5px;
 `;

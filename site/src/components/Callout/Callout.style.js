@@ -4,20 +4,20 @@ import { rhythm } from '@utils/typography';
 
 const variants = {
   danger: {
-    bg: 'var(--bg-aside-danger)',
-    bd: 'var(--danger)',
+    bg: 'var(--bg-callout-danger)',
+    bd: 'var(--color-danger)',
   },
   warning: {
-    bg: 'var(--bg-aside-warning)',
-    bd: 'var(--warning)',
+    bg: 'var(--bg-callout-warning)',
+    bd: 'var(--color-warning)',
   },
   info: {
-    bg: 'var(--bg-aside-info)',
-    bd: 'var(--info)',
+    bg: 'var(--bg-callout-info)',
+    bd: 'var(--color-info)',
   },
   success: {
-    bg: 'var(--bg-aside-success)',
-    bd: 'var(--success)',
+    bg: 'var(--bg-callout-success)',
+    bd: 'var(--color-success)',
   },
 };
 

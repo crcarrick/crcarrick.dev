@@ -19,11 +19,13 @@ export const query = graphql`
       timeToRead
       frontmatter {
         title
-        author
         description
-        published(fromNow: true)
+        author
+        published
+        fromNow: published(fromNow: true)
         tags
         featuredImage {
+          publicURL
           childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
           }

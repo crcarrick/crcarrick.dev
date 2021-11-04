@@ -108,7 +108,7 @@ pre[class*='language-'] {
 }
 
 .token.deleted {
-  color: var(--red);
+  color: var(--color-red);
 }
 
 .token.important,

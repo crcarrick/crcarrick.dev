@@ -1,23 +1,19 @@
 import { Link as GatsbyLink } from 'gatsby';
 import styled from 'styled-components';
 
-export const Nav = styled.nav`
+export const Header = styled.header`
+  width: 100%;
+  margin: var(--margin-base) 0;
+  font-family: var(--font-family-heading);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  margin: var(--margin) 0;
-  font-family: var(--font-heading);
 `;
 
-export const List = styled.ul`
+export const Nav = styled.nav`
   display: flex;
   margin: 0;
   padding: 0;
-
-  li {
-    margin: 0;
-  }
 `;
 
 export const Link = styled(GatsbyLink)`

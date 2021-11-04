@@ -9,7 +9,7 @@ import * as S from './Post.style';
 
 export const Post = ({ post }) => {
   return (
-    <Layout>
+    <Layout post={post}>
       <S.Article>
         <S.Image
           image={getImage(post.frontmatter.featuredImage)}

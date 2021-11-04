@@ -2,15 +2,28 @@ const path = require('path');
 
 module.exports = {
   siteMetadata: {
+    title: 'Chris Carrick • Developer',
+    description: `
+      Chris Carrick is a senior engineer and front-end developer who loves 
+      building cool things with tech.  He blogs about JavaScript, React, and Node.js.  
+      He recently moved to Miami, Florida and really loves his dog. 
+    `,
     url: 'https://www.crcarrick.dev',
-    title: 'Chris Carrick',
-    description: 'Developer',
-    twitter: 'crcarrick',
-    github: 'crcarrick',
-    twitch: 'tapzww',
-    spotify: 'chriscarrick77',
-    linkedin: 'crcarrick',
-    image: '/logo.png',
+    image: 'https://www.crcarrick.dev/static/me.png',
+    author: {
+      name: 'Chris Carrick',
+      bio: `
+        Chris Carrick is a senior front-end engineer at <a href="">WeAre8</a>.
+        In his spare time he likes to play golf, read Sci-Fi novels, and go to 
+        the beach with his girlfriend and dog.  He lives in Miami, Florida.
+      `,
+    },
+    social: {
+      twitter: '@crcarrick',
+      github: 'crcarrick',
+      spotify: 'chriscarrick77',
+      linkedin: 'crcarrick',
+    },
   },
   plugins: [
     // General

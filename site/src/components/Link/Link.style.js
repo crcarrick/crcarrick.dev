@@ -2,8 +2,8 @@ import { Link as GatsbyLink } from 'gatsby';
 import styled, { css } from 'styled-components';
 
 import { rhythm } from '@utils/typography';
-import { List as ListNav } from '@views/Layout/Nav/Nav.style';
-import { Article as PostArticle } from '@views/Post/Post.style';
+import { Nav } from '@views/Layout/Header/Header.style';
+import { Article } from '@views/Post/Post.style';
 
 const style = css`
   text-decoration: none;
@@ -14,21 +14,22 @@ const style = css`
   &:hover,
   &:focus {
     outline: none;
-    text-decoration: underline var(--primary) var(--border-width);
+    text-decoration: underline var(--color-primary) var(--border-width);
   }
 
-  ${ListNav} & {
+  ${Nav} & {
     padding: ${rhythm(1 / 4)};
     text-transform: uppercase;
     text-underline-offset: var(--border-width);
   }
 
-  ${PostArticle} & {
-    color: var(--text);
-    text-decoration: underline var(--primary) var(--border-width);
+  ${Article} & {
+    color: var(--color-text);
+    text-decoration: underline var(--color-primary) var(--border-width);
 
-    &:focus-visible {
-      box-shadow: 0 var(--border-width) 0 0 var(--secondary);
+    &:hover,
+    &:focus {
+      box-shadow: 0 var(--border-width) 0 0 var(--color-accent);
     }
   }
 `;

@@ -36,10 +36,6 @@ exports.createResolvers = ({ createResolvers }) => {
         type: 'String',
         resolve: ({ url, image }) => new URL(image ?? '', url),
       },
-      tagLine: {
-        type: 'String',
-        resolve: ({ title, description }) => `${title} - ${description}`,
-      },
     },
   };
 
