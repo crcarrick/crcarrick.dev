@@ -4,7 +4,7 @@ import { transition } from '@utils/mixins';
 import { rhythm } from '@utils/typography';
 
 export const Button = styled.button`
-  padding: ${rhythm(1 / 4)} ${rhythm(1 / 2)};
+  padding: var(--space-md) var(--space-lg);
   text-transform: uppercase;
   color: var(--color-body);
   background-color: var(--color-text);

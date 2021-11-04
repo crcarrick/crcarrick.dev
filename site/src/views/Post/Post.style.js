@@ -3,12 +3,11 @@ import styled from 'styled-components';
 
 import { Heading } from '@components/Heading/Heading';
 import { breakpoint } from '@utils/mixins';
-import { rhythm } from '@utils/typography';
 
 export const Article = styled.article`
   ${breakpoint.md} {
     background-color: var(--bg-card);
-    padding: var(--padding-base);
+    padding: var(--space-xl);
   }
 
   ul,
@@ -29,7 +28,7 @@ export const Image = styled(GatsbyImage)`
 
 export const Title = styled(Heading.H1)`
   text-transform: uppercase;
-  margin: ${rhythm(1)} 0 ${rhythm(1 / 4)} 0;
+  margin: var(--space-xl) 0 var(--space-md) 0;
 `;
 
 export const Author = styled(Heading.H6)`

@@ -10,14 +10,14 @@ export const Border = styled.hr`
   border: none;
   background-color: var(--color-text);
   transition: ${transition('background-color')};
-  margin: calc(var(--margin-base) - 1.5px) 0;
+  margin: calc(var(--space-xl) - 1.5px) 0;
   width: 100%;
   height: 1.5px;
 `;
 
 export const Footer = styled.footer`
   display: flex;
-  margin-bottom: var(--margin-base);
+  margin-bottom: var(--space-xl);
   justify-content: space-between;
   align-items: center;
 

@@ -1,6 +1,6 @@
 import { createGlobalStyle, css } from 'styled-components';
 
-import { breakpoint, transition } from '@utils/mixins';
+import { transition } from '@utils/mixins';
 import { rhythm } from '@utils/typography';
 
 const backgrounds = ({ theme: { color, mode } }) => {
@@ -45,30 +45,40 @@ const fonts = ({ theme: { typography } }) => css`
   --font-family-code: ${typography.code.font};
 `;
 
+const spacing = css`
+  --space-xs: ${rhythm(1 / 8)};
+  --space-sm: ${rhythm(1 / 6)};
+  --space-md: ${rhythm(1 / 4)};
+  --space-lg: ${rhythm(1 / 2)};
+  --space-xl: ${rhythm(1 / 1)};
+`;
+
 export const GlobalStyle = createGlobalStyle`
   :root {
     ${({ theme: { color } }) => css`
       ${backgrounds}
       ${colors}
       ${fonts}
+      ${spacing}
 
       --border-width: 2px;
 
       --hero-shadow: ${color.primary.darken(15)};
       --hero-chair: ${color.primary.lighten(25).toRgba(0.5)};
-
-      --padding-base: ${rhythm(1 / 1.4)};
-      --margin-base: ${rhythm(1 / 1.4)};
-
-      ${breakpoint.lg} {
-        --padding-base: ${rhythm(1)};
-        --margin-base: ${rhythm(1)};
-      }
     `}
   }
 
   * {
     box-sizing: border-box;
+    border-radius: 3px;
+
+    a {
+      border-radius: 0;
+    }
+
+    aside {
+      border-radius: 0;
+    }
   }
 
   html,

@@ -23,6 +23,7 @@ const typography = new Typography({
       styles: ['400', '700'],
     },
   ],
+  // includeNormalize: false,
 });
 
 export const { options, rhythm, scale } = typography;
