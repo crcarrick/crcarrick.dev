@@ -1,16 +1,13 @@
-const normalize = (num) => {
-  if (num > 255) return 255;
-  if (num < 0) return 0;
+import _ from 'lodash';
 
-  return num;
-};
+const clamp = (num) => _.clamp(num, 0, 255);
 
 const adjust = (color, amount) => {
   const num = parseInt(color.replace('#', ''), 16);
 
-  let r = normalize((num >> 16) + amount);
-  let g = normalize((num & 0x0000ff) + amount);
-  let b = normalize(((num >> 8) & 0x00ff) + amount);
+  let r = clamp((num >> 16) + amount);
+  let g = clamp((num & 0x0000ff) + amount);
+  let b = clamp(((num >> 8) & 0x00ff) + amount);
 
   return `#${(g | (b << 8) | (r << 16)).toString(16)}`;
 };

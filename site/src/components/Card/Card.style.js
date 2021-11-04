@@ -1,10 +1,6 @@
 import { GatsbyImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 
-import { rhythm } from '@utils/typography';
-
-const spacing = rhythm(1 / 2);
-
 export const Card = styled.div`
   flex: 1;
   flex-direction: column;
@@ -17,12 +13,12 @@ export const Info = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: ${spacing};
+  padding: var(--space-lg);
 `;
 
 export const Title = styled.h3`
   text-transform: uppercase;
-  margin-bottom: ${spacing};
+  margin-bottom: var(--space-lg);
 `;
 
 export const ImageWrapper = styled.div`
@@ -37,15 +33,16 @@ export const Image = styled(GatsbyImage)`
 
 export const Date = styled.h6`
   color: var(--color-text);
-  margin-bottom: ${spacing};
+  margin-bottom: var(--space-lg);
 `;
 
 export const Description = styled.p`
-  margin-bottom: ${spacing};
+  margin-bottom: var(--space-lg);
 `;
 
 export const Tags = styled.div`
   display: flex;
   flex: 1;
   flex-wrap: wrap;
+  gap: var(--space-md);
 `;

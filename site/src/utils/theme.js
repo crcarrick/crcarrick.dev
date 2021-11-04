@@ -63,10 +63,6 @@ const lightTheme = {
   },
 };
 
-const darkText = color.white.lighten(10);
-
-console.log(darkText);
-
 const darkTheme = {
   ...baseTheme,
   color: {

@@ -20,7 +20,7 @@ export const Logo = styled(LogoSVG)`
 `;
 
 export const Name = styled.h3`
-  padding: ${rhythm(1 / 4)};
+  padding: var(--space-md);
   text-transform: uppercase;
   display: none;
   margin: 0;

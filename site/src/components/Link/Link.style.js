@@ -1,7 +1,6 @@
 import { Link as GatsbyLink } from 'gatsby';
 import styled, { css } from 'styled-components';
 
-import { rhythm } from '@utils/typography';
 import { Nav } from '@views/Layout/Header/Header.style';
 import { Article } from '@views/Post/Post.style';
 
@@ -18,7 +17,7 @@ const style = css`
   }
 
   ${Nav} & {
-    padding: ${rhythm(1 / 4)};
+    padding: var(--space-md);
     text-transform: uppercase;
     text-underline-offset: var(--border-width);
   }

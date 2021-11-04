@@ -22,91 +22,38 @@ These is your very first content with Contentful, pulled in JSON format using th
 ## Your first steps
 
 ```jsx
-const Component = () => {
-  const language = className.replace('language-', '');
+export const useTheme = () => {
+  const context = useContext(Theme.Context);
 
-  return (
-    <Highlight {...props} language={language} code={children}>
-      {({ className, style, tokens, getLineProps, getTokenProps }) => {
-        const lines = tokens.length >= 2 ? tokens.slice(0, -1) : tokens;
-
-        return (
-          <S.Pre className={className} style={style}>
-            {lines.map((line, index) => {
-              const lineProps = getLineProps({ line, key: index });
-
-              return (
-                <div {...lineProps}>
-                  {line.map((token, idx) => {
-                    const tokenProps = getTokenProps({ token, key: idx });
-
-                    return <span {...tokenProps} />;
-                  })}
-                </div>
-              );
-            })}
-          </S.Pre>
-        );
-      }}
-    </Highlight>
-  );
+  return context;
 };
-```
-
-```jsx {12-15}
-import React, { createContext } from 'react';
-import { from, Subject } from 'rxjs';
-
-const MeactReduxContext = createContext();
-
-const variable = 'Hello World!';
-const template = `Testing ${1234}`;
-
-var variable = '';
-
-export class ClassProvider extends React.Component {
-  state = {
-    dispatch: null,
-    reduxState: {}
-  }
-
-  unsubscribe$ = new Subject();
-
-  componentDidMount() {
-    from(this.props.store)
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe(reduxState => this.setState({ reduxState }));
-  }
-
-  componentWillUnmount() {
-    this.unsubscribe$.next();
-    this.unsubscribe$.complete();
-  }
-
-  render() {
-    return (
-      <MeactReduxContext.Provider value={this.state.reduxState}>
-        {this.props.children}
-      </MeactReduxContext>
-    );
-  }
-}
-```
-
-```diff
-  render() {
-    return (
--     <MeactReduxContext.Provider>
-+     <MeactReduxContext.Provider value={this.state.reduxState}>
-        {this.props.children}
-      </MeactReduxContext>
-    );
-  }
 ```
 
 Building with Contentful is `yarn add gatsby`. First take a moment to get [the basics of content modelling](https://www.contentful.com/r/knowledgebase/content-modelling-basics/ 'the basics of content modelling'), which you can set up in the [Contentful Web app](https://app.contentful.com/ 'Contentful Web app'). Once you get that, feel free to drop by the [Documentation](https://www.contentful.com/developers/docs/ 'Documentation') to learn a bit more about how to build your app with Contentful, in particular the [API basics](https://www.contentful.com/developers/docs/concepts/apis/ 'API basics') and each one of our four APIs, as shown below.
 
 ### Content Delivery API
+
+```jsx
+// gatsby-config.js
+
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
+module.exports = {
+  // ... other config
+  plugins: [
+    // ... other plugins
+    {
+      resolve: 'gatsby-source-contentful',
+      options: {
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        spaceSecret: process.env.CONTENTFUL_SPACE_SECRET,
+      },
+    },
+  ],
+};
+```
 
 The [Content Delivery API](https://www.contentful.com/developers/docs/references/content-delivery-api/ 'Content Delivery API') (CDA), available at `cdn.contentful.com`, is a read-only API for delivering content from Contentful to apps, websites and other media. Content is delivered as JSON data, and images, videos and other media as files.
 The API is available via a globally distributed content delivery network. The server closest to the user serves all content, both JSON and binary. This minimizes latency, which especially benefits mobile apps. Hosting content in multiple global data centers also greatly improves the availability of content.
@@ -114,8 +61,6 @@ The API is available via a globally distributed content delivery network. The se
 ```shell
 yarn add react
 ```
-
-This shit is crazy
 
 ### Content Management API
 
@@ -136,6 +81,19 @@ The [Content Management API](https://www.contentful.com/developers/docs/referenc
 <Callout variant="success">Testing 123</Callout>
 
 ### Preview API
+
+```diff
+  render() {
+    return (
+-     <MeactReduxContext.Provider>
++     <MeactReduxContext.Provider
++       value={this.state.reduxState}
++     >
+        {this.props.children}
+      </MeactReduxContext>
+    );
+  }
+```
 
 The [Content Preview API](https://www.contentful.com/developers/docs/concepts/apis/#content-preview-api 'Content Preview API'), available at `preview.contentful.com`, is a variant of the CDA for previewing your content before delivering it to your customers. You use the Content Preview API in combination with a "preview" deployment of your website (or a "preview" build of your mobile app) that allows content managers and authors to view their work in-context, as if it were published, using a "preview" access token as though it were delivered by the CDA.
 

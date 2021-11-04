@@ -1,19 +1,16 @@
 import styled, { css } from 'styled-components';
 
 import { transition } from '@utils/mixins';
-import { rhythm, scale } from '@utils/typography';
+import { scale } from '@utils/typography';
 
 const style = () => {
   const { fontSize, lineHeight } = scale(-1 / 5);
-  const margin = rhythm(1 / 4);
-  const padding = rhythm(1 / 4);
 
   return css`
     font-family: var(--font-family-heading);
     font-size: ${fontSize};
     line-height: ${lineHeight};
-    margin: 0 ${margin} ${margin} 0;
-    padding: ${padding};
+    padding: var(--space-md);
     text-transform: uppercase;
     border: solid var(--border-width) var(--color-primary);
     white-space: nowrap;
@@ -41,9 +38,11 @@ export const TagButton = styled.button`
     `;
   }}
 
-  &:hover {
-    background: var(--color-primary);
-    color: var(--color-white);
+  @media(hover: hover) {
+    &:hover {
+      background: var(--color-primary);
+      color: var(--color-white);
+    }
   }
 
   &:focus-visible {

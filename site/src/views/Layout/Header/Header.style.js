@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const Header = styled.header`
   width: 100%;
-  margin: var(--margin-base) 0;
+  margin: var(--space-xl) 0;
   font-family: var(--font-family-heading);
   display: flex;
   align-items: center;

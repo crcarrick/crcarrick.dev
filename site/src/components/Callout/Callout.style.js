@@ -1,7 +1,5 @@
 import styled, { css } from 'styled-components';
 
-import { rhythm } from '@utils/typography';
-
 const variants = {
   danger: {
     bg: 'var(--bg-callout-danger)',
@@ -22,8 +20,8 @@ const variants = {
 };
 
 export const Callout = styled.aside`
-  padding: ${rhythm(1 / 2)} ${rhythm(1)};
-  margin: ${rhythm(1)} auto;
+  padding: var(--space-lg) var(--space-xl);
+  margin: var(--space-xl) auto;
   width: 100%;
 
   ${({ variant = 'success' }) => {
