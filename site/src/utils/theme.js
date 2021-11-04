@@ -1,32 +1,30 @@
 import React from 'react';
 
 import { useMode } from '@hooks/useMode';
-import { adjust } from '@utils/mixins';
+import { Color } from '@utils/color';
 import { scale } from '@utils/typography';
 
 const color = {
   // base colors
-  red: '#ea676c',
-  blue: '#3f3d56',
-  green: '#57b894',
-  yellow: '#edd83d',
-  purple: '#947bd3',
-  pink: '#ff79c6',
-  black: '#21222a',
-  white: '#f2f2f2',
-  steel: '#347fc4',
+  red: Color.from('#ea676c'),
+  blue: Color.from('#3f3d56'),
+  green: Color.from('#57b894'),
+  yellow: Color.from('#edd83d'),
+  purple: Color.from('#947bd3'),
+  pink: Color.from('#ff79c6'),
+  black: Color.from('#21222a'),
+  white: Color.from('#f2f2f2'),
 
   // semantic colors
-  dark: '#30323d',
+  dark: Color.from('#30323d'),
+  danger: Color.from('#ea676c'),
+  warning: Color.from('#edd83d'),
+  success: Color.from('#57b894'),
   body: null,
   text: null,
   primary: null,
-  secondary: null,
-  danger: '#ea676c',
-  warning: '#edd83d',
+  accent: null,
   info: null,
-  success: '#57b894',
-  dracula: '#282a36',
 };
 
 const baseTheme = {
@@ -60,19 +58,23 @@ const lightTheme = {
     body: color.white,
     text: color.dark,
     primary: color.red,
-    secondary: color.dark,
+    accent: color.dark,
     info: color.blue,
   },
 };
+
+const darkText = color.white.lighten(10);
+
+console.log(darkText);
 
 const darkTheme = {
   ...baseTheme,
   color: {
     ...baseTheme.color,
     body: color.black,
-    text: adjust(color.white, 10),
+    text: color.white.lighten(10),
     primary: color.purple,
-    secondary: color.white,
+    accent: color.white,
     info: color.purple,
   },
 };

@@ -9,9 +9,8 @@ export const Card = styled.div`
   flex: 1;
   flex-direction: column;
   height: 100%;
-  background-color: var(--text);
   background-color: var(--bg-card);
-  color: var(--text);
+  color: var(--color-text);
 `;
 
 export const Info = styled.div`
@@ -37,13 +36,8 @@ export const Image = styled(GatsbyImage)`
 `;
 
 export const Date = styled.h6`
-  color: var(--text);
+  color: var(--color-text);
   margin-bottom: ${spacing};
-
-  /* &:before {
-    content: '📅';
-    margin-right: 5px;
-  } */
 `;
 
 export const Description = styled.p`

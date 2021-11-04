@@ -3,55 +3,59 @@ import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { Helmet } from 'react-helmet';
 
-export const Seo = ({ path = '', title }) => {
+export const Seo = ({ path = '', post }) => {
   const data = useStaticQuery(graphql`
     query Seo {
       site {
         siteMetadata {
-          description
-          imageUrl
-          tagLine
           title
-          twitter
+          description
           url
+          image
+          author {
+            name
+          }
+          social {
+            twitter
+          }
         }
       }
     }
   `);
 
-  const metadata = data.site.siteMetadata;
+  const { siteMetadata } = data.site;
+  const postMetadata = post?.frontmatter ?? {};
 
-  const seoTitle = title ?? metadata.title;
-  const url = new URL(path ?? '/', metadata.url);
-
-  const { description, imageUrl, tagLine, twitter } = metadata;
+  const title = postMetadata.title || siteMetadata.title;
+  const description = postMetadata.description || siteMetadata.description;
+  const url = new URL(path || '/', siteMetadata.url);
+  const image = new URL(
+    postMetadata.featuredImage?.publicURL || siteMetadata.image,
+    siteMetadata.url
+  );
 
   return (
-    <Helmet title={tagLine}>
+    <Helmet title={title} titleTemplate={`%s • ${siteMetadata.author.name}`}>
       <html lang="en" />
       <link rel="canonical" href={url} />
 
       {/* Basic */}
       <meta name="description" content={description} />
-      <meta name="image" content={imageUrl} />
-      <meta name="image:alt" content={description} />
+      <meta name="image" content={image} />
 
       {/* OpenGraph */}
-      <meta property="og:description" content={description} />
-      <meta property="og:image" content={imageUrl} />
-      <meta property="og:image:alt" content={description} />
-      <meta property="og:title" content={seoTitle} />
-      {path.startsWith('/blog') && <meta property="og:type" content="article" />}
       <meta property="og:url" content={url} />
+      {path.startsWith('/blog') && <meta property="og:type" content="article" />}
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:image" content={image} />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:creator" content={`@${twitter}`} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={imageUrl} />
-      <meta name="twitter:image:alt" content={description} />
-      <meta name="twitter:site" content={`@${twitter}`} />
+      <meta name="twitter:creator" content={siteMetadata.social.twitter} />
       <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={image} />
     </Helmet>
   );
 };

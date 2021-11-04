@@ -8,7 +8,7 @@ import { Callout } from '@components/Callout';
 import { Code, CodeWrapper } from '@components/Code';
 import { InlineCode } from '@components/InlineCode';
 import { Link } from '@components/Link';
-import { GlobalStyle } from '@utils/globalstyle';
+import { GlobalStyle } from '@utils/style';
 import { Theme } from '@utils/theme';
 
 const shortCodes = {

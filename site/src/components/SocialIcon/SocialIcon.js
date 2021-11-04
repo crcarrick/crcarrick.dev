@@ -17,17 +17,18 @@ export const SocialIcon = ({ type }) => {
     query SocialIcon {
       site {
         siteMetadata {
-          github
-          linkedin
-          spotify
-          twitch
-          twitter
+          social {
+            github
+            linkedin
+            spotify
+            twitter
+          }
         }
       }
     }
   `);
 
-  const { github, linkedin, spotify, twitch, twitter } = data.site.siteMetadata;
+  const { github, linkedin, spotify, twitch, twitter } = data.site.siteMetadata.social;
 
   const Component = icons[type];
 

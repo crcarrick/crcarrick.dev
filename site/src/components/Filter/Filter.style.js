@@ -8,8 +8,8 @@ import { rhythm } from '@utils/typography';
 export const Input = styled.input`
   width: 100%;
   padding: ${rhythm(1 / 8)} ${rhythm(1 / 4)};
-  margin-bottom: var(--margin);
-  color: var(--text);
+  margin-bottom: var(--margin-base);
+  color: var(--color-text);
   background-color: transparent;
   border: solid var(--border-width);
   border-radius: 0;
@@ -26,7 +26,7 @@ export const Input = styled.input`
 export const Tags = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: var(--margin);
+  margin-bottom: var(--margin-base);
 `;
 
 export const Error = styled((props) => <Callout variant="danger" {...props} />)`

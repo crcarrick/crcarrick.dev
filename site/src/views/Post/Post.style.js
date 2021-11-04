@@ -8,7 +8,7 @@ import { rhythm } from '@utils/typography';
 export const Article = styled.article`
   ${breakpoint.md} {
     background-color: var(--bg-card);
-    padding: ${rhythm(1)};
+    padding: var(--padding-base);
   }
 
   ul,

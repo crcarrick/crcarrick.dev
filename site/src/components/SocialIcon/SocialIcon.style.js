@@ -10,7 +10,7 @@ import TwitterSVG from '@assets/svg/social/twitter__square.svg';
 
 const rect = css`
   & rect {
-    fill: var(--primary);
+    fill: var(--color-primary);
   }
 `;
 
@@ -25,7 +25,7 @@ const style = css`
   }
 
   & rect {
-    fill: var(--dark);
+    fill: var(--color-dark);
     transition: ${transition('fill')};
   }
 `;

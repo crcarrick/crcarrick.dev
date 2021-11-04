@@ -39,10 +39,10 @@ export const Footer = () => {
             checkedIcon={<S.Sun />}
             uncheckedIcon={<S.Moon />}
             activeBoxShadow={`0 0 2px 3px ${theme.color.primary}`}
-            onColor={theme.color.text}
-            onHandleColor={theme.color.body}
-            offColor={theme.color.text}
-            offHandleColor={theme.color.body}
+            onColor={theme.color.text.toString()}
+            onHandleColor={theme.color.body.toString()}
+            offColor={theme.color.text.toString()}
+            offHandleColor={theme.color.body.toString()}
             handleDiameter={20}
           />
         )}
