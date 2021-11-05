@@ -11,14 +11,15 @@ export const Input = styled.input`
   background-color: transparent;
   color: var(--color-text);
   border: solid var(--border-width);
-  /* border-radius: 0; */
+  font: var(--font-code);
 
   &[type='search'] {
     -webkit-appearance: none;
   }
 
   &:focus-visible {
-    outline: none;
+    outline: solid var(--border-width) var(--color-primary);
+    outline-offset: var(--border-width);
   }
 `;
 

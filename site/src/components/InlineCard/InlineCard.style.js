@@ -8,7 +8,7 @@ export const Card = styled.div`
   flex-direction: column;
   flex: 1;
   background-color: var(--bg-card);
-  padding: var(--space-lg);
+  padding: var(--space-md);
 
   ${Link}:active &,
   ${Link}:focus &,
@@ -25,30 +25,34 @@ export const Card = styled.div`
 export const Row = styled.div`
   display: flex;
   flex: 1;
-  flex-direction: column;
-  /* padding: var(--space-lg); */
+  align-items: center;
+  padding: var(--space-md);
 `;
 
 export const ImageWrapper = styled.div`
   min-height: 1px;
-  margin-bottom: var(--space-lg);
 `;
 
-export const Image = styled(GatsbyImage)`
-  div:first-child[style] {
-    padding-top: 56.25% !important;
-  }
-`;
+export const Image = styled(GatsbyImage)``;
 
-export const Title = styled.h3`
+export const Title = styled.h4`
   text-transform: uppercase;
-  margin-bottom: var(--space-lg);
+  margin: 0;
+  margin-left: var(--space-md);
   flex: 1;
   max-width: 100%;
 `;
 
 export const Meta = styled.h6`
-  margin-bottom: var(--space-lg);
+  margin: 0;
+`;
+
+export const Separator = styled.span`
+  margin-left: var(--space-sm);
+
+  &:before {
+    content: '•';
+  }
 `;
 
 export const ReadingTime = styled.span`
@@ -63,15 +67,17 @@ export const ReadingTime = styled.span`
   }
 `;
 
-export const Excerpt = styled.p`
-  margin-bottom: var(--space-lg);
-  font-size: 0.85rem;
-`;
-
 export const Tags = styled.div`
   display: flex;
   flex: 1;
   flex-wrap: wrap;
   font-family: var(--font-family-code);
-  gap: var(--space-md);
+  font-size: 0.65rem;
+  color: var(--color-primary);
+`;
+
+export const Tag = styled.span`
+  &:not(:last-child):after {
+    content: '•';
+  }
 `;

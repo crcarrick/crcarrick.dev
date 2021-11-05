@@ -54,12 +54,6 @@ export const Filter = ({ children, posts }) => {
       </S.Tags>
 
       {results.length > 0 && children({ results })}
-
-      {results.length === 0 && (
-        <S.Error>
-          Sorry! There are no results for: {query.map((term) => `"${term}"`).join(' + ')}
-        </S.Error>
-      )}
     </Fragment>
   );
 };

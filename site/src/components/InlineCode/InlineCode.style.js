@@ -1,13 +1,15 @@
 import styled from 'styled-components';
 
-import { scale } from '@utils/typography';
-
-const { fontSize } = scale(-(1 / 6));
-
 export const InlineCode = styled.code`
-  font-family: monospace;
-  font-size: ${fontSize};
+  font-family: var(--font-family-code);
   word-break: break-word;
-  background-color: var(--bg-inline-code);
-  padding: 4px;
+  background-color: var(--bg-code-inline);
+  padding: 0.2em 0;
+  font-size: 0.85rem;
+
+  &:before,
+  &:after {
+    letter-spacing: -0.2em;
+    content: '\u00A0';
+  }
 `;

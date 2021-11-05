@@ -5,7 +5,7 @@ import { breakpoint } from '@utils/mixins';
 export const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 80ch;
+  max-width: 60ch;
   min-height: 100vh;
   min-height: -moz-available-;
   min-height: -webkit-fill-available-;

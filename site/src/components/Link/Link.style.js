@@ -25,10 +25,14 @@ const style = css`
   ${Article} & {
     color: var(--color-text);
     text-decoration: underline var(--color-primary) var(--border-width);
+    text-underline-offset: var(--border-width);
 
     &:hover,
     &:focus {
-      box-shadow: 0 var(--border-width) 0 0 var(--color-accent);
+      text-decoration: none;
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      /* box-shadow: 0 var(--border-width) 0 0 var(--color-accent); */
     }
   }
 `;

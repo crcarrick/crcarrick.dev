@@ -13,9 +13,9 @@ module.exports = {
     author: {
       name: 'Chris Carrick',
       bio: `
-        Chris Carrick is a senior front-end engineer at <a href="">WeAre8</a>.
-        In his spare time he likes to play golf, read Sci-Fi novels, and go to 
-        the beach with his girlfriend and dog.  He lives in Miami, Florida.
+        Chris Carrick is a senior front-end engineer at <a href="https://weare8.com">WeAre8</a>.
+        He loves all things code, golf, sci-fi novels, and hitting the beach 
+        with his girlfriend and dog.  He lives in Miami, Florida.
       `,
     },
     social: {
@@ -60,9 +60,16 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-typography',
+      resolve: 'gatsby-plugin-google-fonts',
       options: {
-        pathToConfigModule: path.resolve(__dirname, 'src/utils/typography'),
+        fonts: [
+          `open sans:400,400i,700,700i`,
+          `oswald:400,700`,
+          `roboto slab:400,400i,700,700i`,
+          `roboto:400,400i,700,700i`,
+          `roboto mono:400,600`,
+        ],
+        display: 'swap',
       },
     },
 

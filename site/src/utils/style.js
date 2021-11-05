@@ -1,56 +1,65 @@
 import { createGlobalStyle, css } from 'styled-components';
 
 import { transition } from '@utils/mixins';
-import { rhythm } from '@utils/typography';
 
 const backgrounds = ({ theme: { color, mode } }) => {
   const darkMode = mode.name === 'dark';
   const opacity = 0.25;
 
   return css`
-    --bg-callout-danger: ${color.danger.toRgba(opacity)};
-    --bg-callout-warning: ${color.warning.toRgba(opacity)};
-    --bg-callout-info: ${color.info.toRgba(opacity)};
-    --bg-callout-success: ${color.success.toRgba(opacity)};
-    --bg-card: ${darkMode ? color.body.lighten(10) : color.body.darken(20)};
+    --bg-danger: ${color.danger.toRgba(opacity)};
+    --bg-warning: ${color.warning.toRgba(opacity)};
+    --bg-success: ${color.success.toRgba(opacity)};
+    --bg-info: ${color.info.toRgba(opacity)};
+    --bg-card: ${darkMode ? color.body.lighten(10) : color.trueWhite};
     --bg-code: ${color.dark.lighten(5)};
     --bg-code-highlight: ${color.dark.lighten(25).toRgba(0.75)};
-    --bg-inline-code: ${darkMode ? color.body.lighten(45) : color.body.darken(55)};
+    --bg-code-inline: ${darkMode ? color.body.lighten(45) : color.body.darken(55)};
   `;
 };
 
+// TODO: Clean this shit up when the design is finally
+//       settled
 const colors = ({ theme: { color } }) => css`
-  --color-white: ${color.white};
   --color-red: ${color.red};
   --color-blue: ${color.blue};
   --color-green: ${color.green};
   --color-yellow: ${color.yellow};
   --color-purple: ${color.purple};
   --color-pink: ${color.pink};
-
   --color-dark: ${color.dark};
+  --color-black: ${color.black};
+  --color-white: ${color.white};
+  --color-true-white: ${color.trueWhite};
+  --color-true-black: ${color.trueBlack};
+
   --color-body: ${color.body};
   --color-text: ${color.text};
   --color-primary: ${color.primary};
   --color-accent: ${color.accent};
   --color-danger: ${color.danger};
   --color-warning: ${color.warning};
-  --color-info: ${color.info};
   --color-success: ${color.success};
+  --color-info: ${color.info};
 `;
 
-const fonts = ({ theme: { typography } }) => css`
-  --font-family-heading: ${typography.heading.family};
-  --font-family-body: ${typography.body.family};
-  --font-family-code: ${typography.code.font};
+const fonts = ({ typography }) => css`
+  --font-family-heading: ${typography.options.headerFontFamily.join(', ')};
+  --font-family-body: ${typography.options.bodyFontFamily.join(', ')};
+  --font-family-code: 'Roboto Mono', Consolas, Monaco, monospace;
+  --font-code: 600 0.75rem / 1.6 var(--font-family-code);
 `;
 
-const spacing = css`
-  --space-xs: ${rhythm(1 / 8)};
-  --space-sm: ${rhythm(1 / 6)};
-  --space-md: ${rhythm(1 / 4)};
-  --space-lg: ${rhythm(1 / 2)};
-  --space-xl: ${rhythm(1 / 1)};
+const spacing = ({ typography }) => css`
+  --space-xs: ${typography.rhythm(1 / 8)};
+  --space-sm: ${typography.rhythm(1 / 6)};
+  --space-md: ${typography.rhythm(1 / 4)};
+  --space-lg: ${typography.rhythm(1 / 2)};
+  --space-xl: ${typography.rhythm(1 / 1)};
+`;
+
+const typography = ({ typography: { css: typographyCSS } }) => css`
+  ${typographyCSS}
 `;
 
 export const GlobalStyle = createGlobalStyle`
@@ -67,6 +76,8 @@ export const GlobalStyle = createGlobalStyle`
       --hero-chair: ${color.primary.lighten(25).toRgba(0.5)};
     `}
   }
+
+  ${typography}
 
   * {
     box-sizing: border-box;
@@ -93,7 +104,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     background-color: var(--color-body);
     color: var(--color-text);
-    transition: ${transition('background-color', 'color')};
+    transition: ${transition('background-color')};
   }
 
   ul,

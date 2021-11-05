@@ -2,34 +2,34 @@ import styled, { css } from 'styled-components';
 
 const variants = {
   danger: {
-    bg: 'var(--bg-callout-danger)',
-    bd: 'var(--color-danger)',
+    background: 'var(--bg-danger)',
+    border: 'var(--color-danger)',
   },
   warning: {
-    bg: 'var(--bg-callout-warning)',
-    bd: 'var(--color-warning)',
+    background: 'var(--bg-warning)',
+    border: 'var(--color-warning)',
   },
   info: {
-    bg: 'var(--bg-callout-info)',
-    bd: 'var(--color-info)',
+    background: 'var(--bg-info)',
+    border: 'var(--color-info)',
   },
   success: {
-    bg: 'var(--bg-callout-success)',
-    bd: 'var(--color-success)',
+    background: 'var(--bg-success)',
+    border: 'var(--color-success)',
   },
 };
 
 export const Callout = styled.aside`
   padding: var(--space-lg) var(--space-xl);
-  margin: var(--space-xl) auto;
+  margin-bottom: var(--space-xl);
   width: 100%;
 
   ${({ variant = 'success' }) => {
-    const callout = variants[variant];
+    const { background, border } = variants[variant];
 
     return css`
-      background-color: ${callout.bg};
-      border-left: solid calc(var(--border-width) * 2) ${callout.bd};
+      background-color: ${background};
+      border-left: solid calc(var(--border-width) * 2) ${border};
     `;
   }}
 `;

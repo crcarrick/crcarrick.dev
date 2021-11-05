@@ -1,7 +1,5 @@
 import styled, { css } from 'styled-components';
 
-import { transition } from '@utils/mixins';
-
 import GithubSVG from '@assets/svg/social/github__square.svg';
 import LinkedInSVG from '@assets/svg/social/linkedin__square.svg';
 import SpotifySVG from '@assets/svg/social/spotify__square.svg';
@@ -26,7 +24,6 @@ const style = css`
 
   & rect {
     fill: var(--color-dark);
-    transition: ${transition('fill')};
   }
 `;
 

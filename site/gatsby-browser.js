@@ -10,6 +10,7 @@ import { InlineCode } from '@components/InlineCode';
 import { Link } from '@components/Link';
 import { GlobalStyle } from '@utils/style';
 import { Theme } from '@utils/theme';
+import { Typography } from '@utils/typography';
 
 const shortCodes = {
   a: Link,
@@ -20,21 +21,29 @@ const shortCodes = {
   pre: CodeWrapper,
 };
 
-export const wrapRootElement = ({ element }) => (
-  <Theme.Provider>
-    <Theme.Consumer>
-      {(theme) => (
-        <StyledThemeProvider theme={theme}>
-          <MDXProvider components={shortCodes}>{element}</MDXProvider>
-        </StyledThemeProvider>
-      )}
-    </Theme.Consumer>
-  </Theme.Provider>
-);
+export const wrapRootElement = ({ element }) => {
+  return (
+    <Typography.Provider>
+      <Theme.Provider>
+        <Theme.Consumer>
+          {(theme) => (
+            <StyledThemeProvider theme={theme}>
+              <MDXProvider components={shortCodes}>{element}</MDXProvider>
+            </StyledThemeProvider>
+          )}
+        </Theme.Consumer>
+      </Theme.Provider>
+    </Typography.Provider>
+  );
+};
 
 export const wrapPageElement = ({ element }) => (
-  <Fragment>
-    <GlobalStyle />
-    {element}
-  </Fragment>
+  <Typography.Consumer>
+    {(typography) => (
+      <Fragment>
+        <GlobalStyle typography={typography} />
+        {element}
+      </Fragment>
+    )}
+  </Typography.Consumer>
 );

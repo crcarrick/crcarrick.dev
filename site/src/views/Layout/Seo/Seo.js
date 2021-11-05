@@ -29,10 +29,7 @@ export const Seo = ({ path = '', post }) => {
   const title = postMetadata.title || siteMetadata.title;
   const description = postMetadata.description || siteMetadata.description;
   const url = new URL(path || '/', siteMetadata.url);
-  const image = new URL(
-    postMetadata.featuredImage?.publicURL || siteMetadata.image,
-    siteMetadata.url
-  );
+  const image = new URL(postMetadata.hero?.publicURL || siteMetadata.image, siteMetadata.url);
 
   return (
     <Helmet title={title} titleTemplate={`%s • ${siteMetadata.author.name}`}>
