@@ -21,10 +21,15 @@ export const query = graphql`
         title
         description
         author
-        published
+        published(formatString: "MMMM DD, yyyy")
         fromNow: published(fromNow: true)
         tags
-        featuredImage {
+        thumb: featuredImage {
+          childImageSharp {
+            gatsbyImageData(width: 40, height: 40, placeholder: BLURRED)
+          }
+        }
+        hero: featuredImage {
           publicURL
           childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)

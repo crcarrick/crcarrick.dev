@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Card } from '@components/Card';
 import { Filter } from '@components/Filter';
 import { Hero } from '@components/Hero';
 import { Layout } from '@views/Layout';
+import { Card } from '@components/ComboCard';
 
 import * as S from './Blog.style';
 
@@ -22,9 +22,9 @@ export const Blog = ({ posts }) => {
         {({ results }) => (
           <S.Posts>
             {results.map((post) => (
-              <S.PostLink key={post.id} to={`/blog/${post.slug}`}>
+              <S.Link key={post.id} to={`/blog/${post.slug}`}>
                 <Card post={post} />
-              </S.PostLink>
+              </S.Link>
             ))}
           </S.Posts>
         )}

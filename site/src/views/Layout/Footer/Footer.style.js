@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import Switch from 'react-switch';
 
-import { breakpoint, transition } from '@utils/mixins';
+import { breakpoint } from '@utils/mixins';
 
 import SunSVG from '@assets/svg/icons/sun.svg';
 import MoonSVG from '@assets/svg/icons/moon.svg';
@@ -9,7 +9,6 @@ import MoonSVG from '@assets/svg/icons/moon.svg';
 export const Border = styled.hr`
   border: none;
   background-color: var(--color-text);
-  transition: ${transition('background-color')};
   margin: calc(var(--space-xl) - 1.5px) 0;
   width: 100%;
   height: 1.5px;
@@ -17,12 +16,13 @@ export const Border = styled.hr`
 
 export const Footer = styled.footer`
   display: flex;
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-lg);
   justify-content: space-between;
   align-items: center;
 
   ${breakpoint.md} {
     align-items: flex-end;
+    margin-bottom: var(--space-xl);
   }
 `;
 
