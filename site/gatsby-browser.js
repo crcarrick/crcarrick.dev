@@ -5,8 +5,7 @@ import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 
 import { Button } from '@components/Button';
 import { Callout } from '@components/Callout';
-import { Code, CodeWrapper } from '@components/Code';
-import { InlineCode } from '@components/InlineCode';
+import { Code } from '@components/Code';
 import { Link } from '@components/Link';
 import { GlobalStyle } from '@utils/style';
 import { Theme } from '@utils/theme';
@@ -15,10 +14,10 @@ import { Typography } from '@utils/typography';
 const shortCodes = {
   a: Link,
   button: Button,
-  code: Code,
+  code: Code.Block,
   Callout: Callout,
-  inlineCode: InlineCode,
-  pre: CodeWrapper,
+  inlineCode: Code.Inline,
+  pre: Code.Pre,
 };
 
 export const wrapRootElement = ({ element }) => {

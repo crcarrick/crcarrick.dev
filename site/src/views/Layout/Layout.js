@@ -9,12 +9,12 @@ import * as S from './Layout.style';
 export const Layout = ({ children, path, post, seoTitle }) => {
   return (
     <Fragment>
-      <S.PageWrapper>
+      <S.LayoutWrapper>
         <Seo path={path} post={post} seoTitle={seoTitle} />
         <Header />
         <S.Main>{children}</S.Main>
         <Footer />
-      </S.PageWrapper>
+      </S.LayoutWrapper>
     </Fragment>
   );
 };

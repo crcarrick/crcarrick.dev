@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { breakpoint } from '@utils/mixins';
 
-export const PageWrapper = styled.div`
+export const LayoutWrapper = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 60ch;

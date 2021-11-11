@@ -3,9 +3,9 @@ import React from 'react';
 import parseRange from 'parse-numeric-range';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 
-import * as S from './Code.style';
+import * as S from './BlockCode.style';
 
-import './theme.css';
+import '../theme.css';
 
 const createLineHighlighter = (range) => {
   const regexp = /{([\d,-]+)}/;
@@ -48,7 +48,7 @@ const renderLine =
 
 const trimTokens = (tokens) => (tokens.length >= 2 ? tokens.slice(0, -1) : tokens);
 
-export const Code = ({ className = 'language-jsx', children, metastring }) => {
+export const BlockCode = ({ className = 'language-jsx', children, metastring }) => {
   const language = className.replace('language-', '');
   const shouldHighlightLine = createLineHighlighter(metastring);
 
