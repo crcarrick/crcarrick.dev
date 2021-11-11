@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1600 700">
+  <g>
+    <g>
+      <polygon fill="var(--color-text)" points="0 0 218.14 0 607.37 653 380.68 653 0 0" />
+      <polygon fill="var(--color-text)" points="1075.15 496 982.47 653 1639.75 653 1256.22 0 1045.72 0 1213.45 312.45 1316.1 496 1075.15 496" />
+      <polygon fill="var(--color-text)" points="1045.72 0 755.5 477.02 677.48 353.12 582.98 203 406.19 203 364.84 203 638.58 653 869.56 653 1256.22 0 1045.72 0" />
+    </g>
+  </g>
+</svg>

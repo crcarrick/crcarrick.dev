@@ -1,6 +1,3 @@
-const fs = require('fs/promises');
-const path = require('path');
-
 const Post = require.resolve('./src/templates/post.js');
 
 exports.createPages = async ({ graphql, actions }) => {
