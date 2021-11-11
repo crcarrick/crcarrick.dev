@@ -1,6 +1,7 @@
 import { GatsbyImage } from 'gatsby-plugin-image';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
+import { breakpoint } from '@utils/mixins';
 import { Link } from '@views/Blog/Blog.style';
 
 export const Card = styled.div`
@@ -8,7 +9,7 @@ export const Card = styled.div`
   flex-direction: column;
   flex: 1;
   background-color: var(--bg-card);
-  padding: var(--space-lg);
+  padding: var(--space-md);
 
   ${Link}:active &,
   ${Link}:focus &,
@@ -20,35 +21,98 @@ export const Card = styled.div`
     outline: solid var(--border-width) var(--color-accent);
     outline-offset: var(--border-width);
   }
+
+  ${breakpoint.md} {
+    padding: var(--space-lg);
+  }
+`;
+
+export const RowWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  ${breakpoint.md} {
+    flex-direction: column-reverse;
+  }
 `;
 
 export const Row = styled.div`
   display: flex;
   flex: 1;
-  flex-direction: column;
-  /* padding: var(--space-lg); */
-`;
+  align-items: center;
+  padding: var(--space-md);
 
-export const ImageWrapper = styled.div`
-  min-height: 1px;
-  margin-bottom: var(--space-lg);
-`;
-
-export const Image = styled(GatsbyImage)`
-  div:first-child[style] {
-    padding-top: 56.25% !important;
+  ${breakpoint.md} {
+    flex-direction: column;
+    align-items: initial;
+    padding: 0;
   }
 `;
 
-export const Title = styled.h3`
+export const ImageWrapper = styled.div`
+  display: flex;
+  min-height: 1px;
+
+  ${breakpoint.md} {
+    display: block;
+    padding: 0;
+    margin-bottom: var(--space-lg);
+  }
+`;
+
+export const Image = styled(GatsbyImage)`
+  ${breakpoint.md} {
+    div:first-child[style] {
+      padding-top: 56.25% !important;
+    }
+  }
+`;
+
+const titleStyles = css`
   text-transform: uppercase;
-  margin-bottom: var(--space-lg);
+  margin: 0;
+  margin-left: var(--space-lg);
   flex: 1;
   max-width: 100%;
+
+  ${breakpoint.md} {
+    margin-bottom: var(--space-lg);
+    margin-left: 0;
+  }
+`;
+
+export const TitleH3 = styled.h3`
+  ${titleStyles}
+`;
+
+export const TitleH4 = styled.h4`
+  ${titleStyles}
+`;
+
+export const Excerpt = styled.p`
+  display: none;
+
+  ${breakpoint.md} {
+    display: block;
+    margin-bottom: var(--space-lg);
+    font-size: 0.85rem;
+  }
 `;
 
 export const Meta = styled.h6`
-  margin-bottom: var(--space-lg);
+  margin: 0;
+
+  ${breakpoint.md} {
+    margin-bottom: var(--space-lg);
+  }
+`;
+
+export const Separator = styled.span`
+  margin-left: var(--space-sm);
+
+  &:before {
+    content: '•';
+  }
 `;
 
 export const ReadingTime = styled.span`
@@ -63,15 +127,23 @@ export const ReadingTime = styled.span`
   }
 `;
 
-export const Excerpt = styled.p`
-  margin-bottom: var(--space-lg);
-  font-size: 0.85rem;
-`;
-
 export const Tags = styled.div`
   display: flex;
   flex: 1;
   flex-wrap: wrap;
   font-family: var(--font-family-code);
-  gap: var(--space-md);
+  font-size: 0.65rem;
+  color: var(--color-primary);
+
+  ${breakpoint.md} {
+    gap: var(--space-md);
+    font: var(--font-family-code);
+    color: var(--color-text);
+  }
+`;
+
+export const Tag = styled.span`
+  &:not(:last-child):after {
+    content: '•';
+  }
 `;

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="318px" height="318px" viewBox="0 0 318 318" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>styled-components</title>
+    <g id="styled-components" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-size="100" font-weight="normal">
+        <g id="Group" transform="translate(14.000000, 93.000000)">
+            <text id="&lt;" font-family="Helvetica" letter-spacing="0.49999994" fill="var(--color-text)">
+                <tspan x="0" y="100.450382">&lt;</tspan>
+            </text>
+            <text id="&gt;" font-family="Helvetica" letter-spacing="0.49999994" fill="var(--color-text)">
+                <tspan x="225.910931" y="98.9007634">&gt;</tspan>
+            </text>
+            <text id="💅" font-family="AppleColorEmoji, Apple Color Emoji" letter-spacing="0.49999997" fill="#000000">
+                <tspan x="95.951417" y="100">💅</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
