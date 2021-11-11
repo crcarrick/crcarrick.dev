@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   siteMetadata: {
-    title: 'Chris Carrick • Developer',
+    title: 'Developer',
     description: `
       Chris Carrick is a senior engineer and front-end developer who loves 
       building cool things with tech.  He blogs about JavaScript, React, and Node.js.  

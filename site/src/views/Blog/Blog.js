@@ -17,7 +17,7 @@ export const Blog = ({ posts }) => {
   }
 
   return (
-    <Layout>
+    <Layout seoTitle="Blog">
       <Filter posts={posts}>
         {({ results }) => (
           <S.Posts>

@@ -4,7 +4,7 @@ import { Hero } from '@components/Hero';
 import { Layout } from '@views/Layout';
 
 export const FourOhFour = () => (
-  <Layout>
+  <Layout seoTitle="404">
     <Hero type="404" />
   </Layout>
 );
