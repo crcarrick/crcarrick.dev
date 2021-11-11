@@ -14,7 +14,7 @@ const backgrounds = ({ theme: { color, mode } }) => {
     --bg-card: ${darkMode ? color.body.lighten(10) : color.trueWhite};
     --bg-code: ${color.dark.lighten(5)};
     --bg-code-highlight: ${color.dark.lighten(25).toRgba(0.75)};
-    --bg-code-inline: ${darkMode ? color.body.lighten(45) : color.body.darken(55)};
+    --bg-code-inline: ${darkMode ? color.body.lighten(45) : color.body.darken(15)};
   `;
 };
 

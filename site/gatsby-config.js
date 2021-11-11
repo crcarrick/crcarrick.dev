@@ -87,7 +87,18 @@ module.exports = {
     { resolve: 'gatsby-transformer-sharp' },
 
     // MDX
-    { resolve: 'gatsby-plugin-mdx' },
+    { resolve: 'gatsby-remark-autolink-headers' },
+    {
+      resolve: 'gatsby-plugin-mdx',
+      options: {
+        gatsbyRemarkPlugins: [
+          {
+            resolve: 'gatsby-remark-autolink-headers',
+            options: { icon: false },
+          },
+        ],
+      },
+    },
 
     // Sources
     {
