@@ -10,7 +10,10 @@ export const Card = ({ post }) => (
   <S.Card>
     <S.Row>
       <S.ImageWrapper>
-        <S.Image image={getImage(post.frontmatter.hero)} alt={post.frontmatter.description} />
+        <S.Image
+          image={getImage(post.frontmatter.featuredImage)}
+          alt={post.frontmatter.description}
+        />
       </S.ImageWrapper>
       <S.Title>{post.frontmatter.title}</S.Title>
     </S.Row>

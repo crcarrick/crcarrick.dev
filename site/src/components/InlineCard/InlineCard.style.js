@@ -29,11 +29,9 @@ export const Row = styled.div`
   padding: var(--space-md);
 `;
 
-export const ImageWrapper = styled.div`
-  min-height: 1px;
+export const IconWrapper = styled.div`
+  display: flex;
 `;
-
-export const Image = styled(GatsbyImage)``;
 
 export const Title = styled.h4`
   text-transform: uppercase;

@@ -19,7 +19,10 @@ export const Post = ({ post }) => {
           <S.ReadingTime>{post.timeToRead}</S.ReadingTime>
         </S.Meta>
         {/* <S.Description>{post.frontmatter.description}</S.Description> */}
-        <S.Image image={getImage(post.frontmatter.hero)} alt={post.frontmatter.description} />
+        <S.Image
+          image={getImage(post.frontmatter.featuredImage)}
+          alt={post.frontmatter.description}
+        />
         <MDXRenderer>{post.body}</MDXRenderer>
       </S.Article>
     </Layout>

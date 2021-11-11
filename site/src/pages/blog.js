@@ -24,12 +24,8 @@ export default function BlogPage() {
             published(formatString: "MMMM DD, yyyy")
             fromNow: published(fromNow: true)
             tags
-            thumb: featuredImage {
-              childImageSharp {
-                gatsbyImageData(width: 40, height: 40, placeholder: BLURRED)
-              }
-            }
-            hero: featuredImage {
+            featuredIcon
+            featuredImage {
               publicURL
               childImageSharp {
                 gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)

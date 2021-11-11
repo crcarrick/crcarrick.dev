@@ -15,7 +15,7 @@ export const Card = ({ post }) => {
 
   const Tag = size ? TagComponent : S.Tag;
   const Title = size ? S.TitleH3 : S.TitleH4;
-  const image = size ? post.frontmatter.hero : post.frontmatter.thumb;
+  const image = post.frontmatter.featuredImage;
 
   return (
     <S.Card>
