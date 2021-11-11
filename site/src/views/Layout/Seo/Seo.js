@@ -3,7 +3,7 @@ import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { Helmet } from 'react-helmet';
 
-export const Seo = ({ path = '', post }) => {
+export const Seo = ({ path = '', post, seoTitle }) => {
   const data = useStaticQuery(graphql`
     query Seo {
       site {
@@ -26,7 +26,7 @@ export const Seo = ({ path = '', post }) => {
   const { siteMetadata } = data.site;
   const postMetadata = post?.frontmatter ?? {};
 
-  const title = postMetadata.title || siteMetadata.title;
+  const title = seoTitle || postMetadata.title || siteMetadata.title;
   const description = postMetadata.description || siteMetadata.description;
   const url = new URL(path || '/', siteMetadata.url);
   const image = new URL(
