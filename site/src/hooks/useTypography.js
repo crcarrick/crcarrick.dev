@@ -1,7 +1,6 @@
 import { useLayoutEffect, useState } from 'react';
 
 import Typography from 'typography';
-import CodePlugin from 'typography-plugin-code';
 
 import { useSize } from '@hooks/useSize';
 import { size as breakpointSize } from '@utils/mixins';
@@ -12,21 +11,6 @@ const baseConfig = {
   baseFontSize: 16,
   baseLineHiehgt: 1.5,
   scaleRatio: 3,
-  googleFonts: [
-    {
-      name: 'Oswald',
-      styles: ['400', '700'],
-    },
-    {
-      name: 'Open Sans',
-      styles: ['400', '700'],
-    },
-    {
-      name: 'Roboto Mono',
-      styles: ['400', '600'],
-    },
-  ],
-  plugins: [new CodePlugin()],
 };
 
 const initialTypography = new Typography(baseConfig);

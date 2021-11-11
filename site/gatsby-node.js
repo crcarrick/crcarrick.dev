@@ -1,4 +1,5 @@
-const get = require('lodash.get');
+const fs = require('fs/promises');
+const path = require('path');
 
 const Post = require.resolve('./src/templates/post.js');
 
@@ -16,9 +17,9 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `);
 
-  const posts = get(result, 'data.posts.nodes', []);
+  const posts = result.data.posts.nodes ?? [];
 
-  posts.forEach((post) => {
+  for (let post of posts) {
     createPage({
       path: `/blog/${post.slug}`,
       component: Post,
@@ -26,7 +27,7 @@ exports.createPages = async ({ graphql, actions }) => {
         id: post.id,
       },
     });
-  });
+  }
 };
 
 exports.createResolvers = ({ createResolvers }) => {

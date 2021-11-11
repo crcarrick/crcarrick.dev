@@ -78,7 +78,7 @@ module.exports = {
       resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {
-          include: /svg/,
+          include: /\.svg$/,
         },
       },
     },
@@ -108,7 +108,7 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'posts',
-        path: path.resolve(__dirname, 'src/content'),
+        path: path.resolve(__dirname, 'content'),
       },
     },
   ],

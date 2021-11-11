@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { getImage } from 'gatsby-plugin-image';
+import { DevIcon } from '@components/DevIcon';
 
 import * as S from './InlineCard.style';
 
@@ -8,12 +8,12 @@ export const InlineCard = ({ post }) => {
   return (
     <S.Card>
       <S.Row>
-        <S.ImageWrapper>
-          <S.Image image={getImage(post.frontmatter.thumb)} alt={post.frontmatter.description} />
-        </S.ImageWrapper>
+        <S.IconWrapper>
+          <DevIcon icon={post.frontmatter.featuredIcon} />
+        </S.IconWrapper>
         <S.Title>{post.frontmatter.title}</S.Title>
       </S.Row>
-      <S.Row style={{ paddingTop: 0, paddingBottom: 0 }}>
+      <S.Row tags>
         <S.Tags>
           {post.frontmatter.tags.map((tag) => (
             <S.Tag key={tag}>{tag}</S.Tag>

@@ -53,6 +53,7 @@ export const ImageWrapper = styled.div`
   min-height: 1px;
 
   ${breakpoint.md} {
+    padding: 0;
     margin-bottom: var(--space-lg);
   }
 `;
