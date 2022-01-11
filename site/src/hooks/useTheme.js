@@ -1,9 +1,9 @@
-import { useContext } from 'react';
+import { useContext } from 'react'
 
-import { Theme } from '@utils/theme';
+import { Theme } from '~/utils/theme'
 
 export const useTheme = () => {
-  const context = useContext(Theme.Context);
+  const context = useContext(Theme.Context)
 
-  return context;
-};
+  return context
+}

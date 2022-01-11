@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 
-import { graphql } from 'gatsby';
+import { graphql } from 'gatsby'
 
-import { Post } from '@views/Post';
+import { Post } from '~/views/Post'
 
 export default function PostTemplate({ data }) {
-  return <Post post={data.post} />;
+  return <Post post={data.post} />
 }
 
 export const query = graphql`
@@ -34,4 +34,4 @@ export const query = graphql`
       }
     }
   }
-`;
+`

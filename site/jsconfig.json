@@ -2,11 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
-      "@assets/*": ["./assets/*"],
-      "@components/*": ["./components/*"],
-      "@hooks/*": ["./hooks/*"],
-      "@style/*": ["./style/*"],
-      "@utils/*": ["./utils/*"]
+      "~/*": ["./*"]
     }
   },
   "exclude": ["./../node_modules", "./node_modules", "./.cache", "./public", "./static"]

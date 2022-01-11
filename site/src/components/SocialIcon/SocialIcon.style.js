@@ -1,16 +1,16 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components'
 
-import GithubSVG from '@assets/svg/social/github__square.svg';
-import LinkedInSVG from '@assets/svg/social/linkedin__square.svg';
-import SpotifySVG from '@assets/svg/social/spotify__square.svg';
-import TwitchSVG from '@assets/svg/social/twitch__square.svg';
-import TwitterSVG from '@assets/svg/social/twitter__square.svg';
+import GithubSVG from '~/assets/svg/social/github__square.svg'
+import LinkedInSVG from '~/assets/svg/social/linkedin__square.svg'
+import SpotifySVG from '~/assets/svg/social/spotify__square.svg'
+import TwitchSVG from '~/assets/svg/social/twitch__square.svg'
+import TwitterSVG from '~/assets/svg/social/twitter__square.svg'
 
 const rect = css`
   & rect {
     fill: var(--color-primary);
   }
-`;
+`
 
 const style = css`
   width: 30px;
@@ -25,23 +25,23 @@ const style = css`
   & rect {
     fill: var(--color-dark);
   }
-`;
+`
 
 export const Github = styled(GithubSVG)`
   ${style}
-`;
+`
 export const LinkedIn = styled(LinkedInSVG)`
   ${style}
-`;
+`
 export const Spotify = styled(SpotifySVG)`
   ${style}
-`;
+`
 export const Twitch = styled(TwitchSVG)`
   ${style}
-`;
+`
 export const Twitter = styled(TwitterSVG)`
   ${style}
-`;
+`
 
 export const SocialLink = styled.a`
   display: flex;
@@ -70,4 +70,4 @@ export const SocialLink = styled.a`
       ${rect}
     }
   }
-`;
+`

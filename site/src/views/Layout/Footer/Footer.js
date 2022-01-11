@@ -1,12 +1,12 @@
-import React, { Fragment } from 'react';
+import React, { Fragment } from 'react'
 
-import { SocialIcon } from '@components/SocialIcon';
-import { useTheme } from '@hooks/useTheme';
+import { SocialIcon } from '~/components/SocialIcon'
+import { useTheme } from '~/hooks/useTheme'
 
-import * as S from './Footer.style';
+import * as S from './Footer.style'
 
 export const Footer = () => {
-  const theme = useTheme();
+  const theme = useTheme()
 
   return (
     <Fragment>
@@ -48,5 +48,5 @@ export const Footer = () => {
         )}
       </S.Footer>
     </Fragment>
-  );
-};
+  )
+}

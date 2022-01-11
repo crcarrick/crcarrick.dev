@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 
-import { getImage } from 'gatsby-plugin-image';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { getImage } from 'gatsby-plugin-image'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 
-import { Layout } from '@views/Layout';
+import { Layout } from '~/views/Layout'
 
-import * as S from './Post.style';
+import * as S from './Post.style'
 
 // TODO: Need to extract this "Post Metadata" thing out into it's own component.
 //       It's used in several places now in the exact same manner (published at date * emoji * reading time)
@@ -26,5 +26,5 @@ export const Post = ({ post }) => {
         <MDXRenderer>{post.body}</MDXRenderer>
       </S.Article>
     </Layout>
-  );
-};
+  )
+}

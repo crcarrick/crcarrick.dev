@@ -1,8 +1,8 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-import { Link } from '@views/Layout/Header/Header.style';
+import { Link } from '~/views/Layout/Header/Header.style'
 
-import LogoSVG from '@assets/svg/logo.svg';
+import LogoSVG from '~/assets/svg/logo.svg'
 
 export const Logo = styled(LogoSVG)`
   width: var(--space-xl);
@@ -13,7 +13,7 @@ export const Logo = styled(LogoSVG)`
     fill: var(--color-primary);
     stroke: var(--color-dark);
   }
-`;
+`
 
 export const Name = styled.h4`
   padding: var(--space-md);
@@ -24,4 +24,4 @@ export const Name = styled.h4`
     text-decoration: underline var(--color-primary) var(--border-width);
     text-underline-offset: var(--border-width);
   }
-`;
+`

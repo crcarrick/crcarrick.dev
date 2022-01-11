@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 
-import { Filter } from '@components/Filter';
-import { Hero } from '@components/Hero';
-import { Layout } from '@views/Layout';
-import { Card } from '@components/Card';
+import { Filter } from '~/components/Filter'
+import { Hero } from '~/components/Hero'
+import { Layout } from '~/views/Layout'
+import { Card } from '~/components/Card'
 
-import * as S from './Blog.style';
+import * as S from './Blog.style'
 
 export const Blog = ({ posts }) => {
   if (process.env.NODE_ENV === 'production') {
@@ -13,7 +13,7 @@ export const Blog = ({ posts }) => {
       <Layout>
         <Hero type="construction" />
       </Layout>
-    );
+    )
   }
 
   return (
@@ -30,5 +30,5 @@ export const Blog = ({ posts }) => {
         )}
       </Filter>
     </Layout>
-  );
-};
+  )
+}

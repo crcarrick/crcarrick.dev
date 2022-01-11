@@ -1,7 +1,7 @@
-import { Link as GatsbyLink } from 'gatsby';
-import styled from 'styled-components';
+import { Link as GatsbyLink } from 'gatsby'
+import styled from 'styled-components'
 
-import { breakpoint } from '@utils/mixins';
+import { breakpoint } from '~/utils/mixins'
 
 export const Header = styled.header`
   width: 100%;
@@ -16,13 +16,13 @@ export const Header = styled.header`
   ${breakpoint.md} {
     margin-top: var(--space-xl);
   }
-`;
+`
 
 export const Nav = styled.nav`
   display: flex;
   margin: 0;
   padding: 0;
-`;
+`
 
 export const Link = styled(GatsbyLink)`
   display: flex;
@@ -32,4 +32,4 @@ export const Link = styled(GatsbyLink)`
   &:focus {
     outline: none;
   }
-`;
+`

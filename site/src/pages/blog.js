@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby'
 
-import { Blog } from '@views/Blog';
+import { Blog } from '~/views/Blog'
 
 export default function BlogPage() {
   const data = useStaticQuery(graphql`
@@ -35,7 +35,7 @@ export default function BlogPage() {
         }
       }
     }
-  `);
+  `)
 
-  return <Blog posts={data.posts.nodes} />;
+  return <Blog posts={data.posts.nodes} />
 }

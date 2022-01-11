@@ -1,8 +1,8 @@
-import { GatsbyImage } from 'gatsby-plugin-image';
-import styled, { css } from 'styled-components';
+import { GatsbyImage } from 'gatsby-plugin-image'
+import styled, { css } from 'styled-components'
 
-import { breakpoint } from '@utils/mixins';
-import { Link } from '@views/Blog/Blog.style';
+import { breakpoint } from '~/utils/mixins'
+import { Link } from '~/views/Blog/Blog.style'
 
 export const Card = styled.div`
   display: flex;
@@ -25,7 +25,7 @@ export const Card = styled.div`
   ${breakpoint.md} {
     padding: var(--space-lg);
   }
-`;
+`
 
 export const RowWrapper = styled.div`
   display: flex;
@@ -34,7 +34,7 @@ export const RowWrapper = styled.div`
   ${breakpoint.md} {
     flex-direction: column-reverse;
   }
-`;
+`
 
 export const Row = styled.div`
   display: flex;
@@ -47,7 +47,7 @@ export const Row = styled.div`
     align-items: initial;
     padding: 0;
   }
-`;
+`
 
 export const ImageWrapper = styled.div`
   display: flex;
@@ -58,7 +58,7 @@ export const ImageWrapper = styled.div`
     padding: 0;
     margin-bottom: var(--space-lg);
   }
-`;
+`
 
 export const Image = styled(GatsbyImage)`
   ${breakpoint.md} {
@@ -66,7 +66,7 @@ export const Image = styled(GatsbyImage)`
       padding-top: 56.25% !important;
     }
   }
-`;
+`
 
 const titleStyles = css`
   text-transform: uppercase;
@@ -79,15 +79,15 @@ const titleStyles = css`
     margin-bottom: var(--space-lg);
     margin-left: 0;
   }
-`;
+`
 
 export const TitleH3 = styled.h3`
   ${titleStyles}
-`;
+`
 
 export const TitleH4 = styled.h4`
   ${titleStyles}
-`;
+`
 
 export const Excerpt = styled.p`
   display: none;
@@ -97,7 +97,7 @@ export const Excerpt = styled.p`
     margin-bottom: var(--space-lg);
     font-size: 0.85rem;
   }
-`;
+`
 
 export const Meta = styled.h6`
   margin: 0;
@@ -105,7 +105,7 @@ export const Meta = styled.h6`
   ${breakpoint.md} {
     margin-bottom: var(--space-lg);
   }
-`;
+`
 
 export const Separator = styled.span`
   margin-left: var(--space-sm);
@@ -113,7 +113,7 @@ export const Separator = styled.span`
   &:before {
     content: '•';
   }
-`;
+`
 
 export const ReadingTime = styled.span`
   &:before {
@@ -125,7 +125,7 @@ export const ReadingTime = styled.span`
     content: 'min read';
     margin-left: var(--space-sm);
   }
-`;
+`
 
 export const Tags = styled.div`
   display: flex;
@@ -140,10 +140,10 @@ export const Tags = styled.div`
     font: var(--font-family-code);
     color: var(--color-text);
   }
-`;
+`
 
 export const Tag = styled.span`
   &:not(:last-child):after {
     content: '•';
   }
-`;
+`
