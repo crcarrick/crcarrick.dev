@@ -28,7 +28,7 @@ export const query = graphql`
         featuredImage {
           publicURL
           childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
       }

@@ -83,7 +83,13 @@ module.exports = {
       },
     },
     { resolve: 'gatsby-plugin-image' },
-    { resolve: 'gatsby-plugin-sharp' },
+    {
+      resolve: 'gatsby-plugin-sharp',
+      options: {
+        placeholder: 'blurred',
+        quality: 75,
+      },
+    },
     { resolve: 'gatsby-transformer-sharp' },
 
     // MDX
