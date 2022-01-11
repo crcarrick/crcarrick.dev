@@ -1,24 +1,25 @@
-import React, { Fragment } from 'react';
+import React, { Fragment } from 'react'
 
-import { MDXProvider } from '@mdx-js/react';
-import { ThemeProvider as StyledThemeProvider } from 'styled-components';
+import { MDXProvider } from '@mdx-js/react'
+import { ThemeProvider as StyledThemeProvider } from 'styled-components'
 
-import { Button } from '@components/Button';
-import { Callout } from '@components/Callout';
-import { Code } from '@components/Code';
-import { Link } from '@components/Link';
-import { GlobalStyle } from '@utils/style';
-import { Theme } from '@utils/theme';
-import { Typography } from '@utils/typography';
+import { Button } from '~/Button'
+import { Callout } from '~/Callout'
+import { Code, CodeWrapper } from '~/Code'
+import { InlineCode } from '~/InlineCode'
+import { Link } from '~/Link'
+import { GlobalStyle } from '~/utils/style'
+import { Theme } from '~/utils/theme'
+import { Typography } from '~/utils/typography'
 
 const shortCodes = {
   a: Link,
   button: Button,
-  code: Code.Block,
+  code: Code,
   Callout: Callout,
-  inlineCode: Code.Inline,
-  pre: Code.Pre,
-};
+  inlineCode: InlineCode,
+  pre: CodeWrapper,
+}
 
 export const wrapRootElement = ({ element }) => {
   return (
@@ -33,8 +34,8 @@ export const wrapRootElement = ({ element }) => {
         </Theme.Consumer>
       </Theme.Provider>
     </Typography.Provider>
-  );
-};
+  )
+}
 
 export const wrapPageElement = ({ element }) => (
   <Typography.Consumer>
@@ -45,4 +46,4 @@ export const wrapPageElement = ({ element }) => (
       </Fragment>
     )}
   </Typography.Consumer>
-);
+)

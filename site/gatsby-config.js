@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('path')
 
 module.exports = {
   siteMetadata: {
@@ -31,11 +31,7 @@ module.exports = {
       resolve: 'gatsby-plugin-alias-imports',
       options: {
         alias: {
-          '@assets': path.resolve(__dirname, 'src/assets'),
-          '@components': path.resolve(__dirname, 'src/components'),
-          '@hooks': path.resolve(__dirname, 'src/hooks'),
-          '@utils': path.resolve(__dirname, 'src/utils'),
-          '@views': path.resolve(__dirname, 'src/views'),
+          '~/*': path.resolve(__dirname, 'src/'),
         },
       },
     },
@@ -83,28 +79,11 @@ module.exports = {
       },
     },
     { resolve: 'gatsby-plugin-image' },
-    {
-      resolve: 'gatsby-plugin-sharp',
-      options: {
-        placeholder: 'blurred',
-        quality: 75,
-      },
-    },
+    { resolve: 'gatsby-plugin-sharp' },
     { resolve: 'gatsby-transformer-sharp' },
 
     // MDX
-    { resolve: 'gatsby-remark-autolink-headers' },
-    {
-      resolve: 'gatsby-plugin-mdx',
-      options: {
-        gatsbyRemarkPlugins: [
-          {
-            resolve: 'gatsby-remark-autolink-headers',
-            options: { icon: false },
-          },
-        ],
-      },
-    },
+    { resolve: 'gatsby-plugin-mdx' },
 
     // Sources
     {
@@ -129,4 +108,4 @@ module.exports = {
       },
     },
   ],
-};
+}

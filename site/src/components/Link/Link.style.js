@@ -1,8 +1,8 @@
-import { Link as GatsbyLink } from 'gatsby';
-import styled, { css } from 'styled-components';
+import { Link as GatsbyLink } from 'gatsby'
+import styled, { css } from 'styled-components'
 
-import { Nav } from '@views/Layout/Header/Header.style';
-import { Article } from '@views/Post/Post.style';
+import { Nav } from '~/views/Layout/Header/Header.style'
+import { Article } from '~/views/Post/Post.style'
 
 const style = css`
   text-decoration: none;
@@ -35,12 +35,12 @@ const style = css`
       /* box-shadow: 0 var(--border-width) 0 0 var(--color-accent); */
     }
   }
-`;
+`
 
 export const InternalLink = styled(GatsbyLink)`
   ${style}
-`;
+`
 
 export const ExternalLink = styled.a`
   ${style}
-`;
+`

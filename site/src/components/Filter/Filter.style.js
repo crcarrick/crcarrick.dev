@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-import { Callout } from '@components/Callout';
+import { Callout } from '~/components/Callout'
 
 export const Input = styled.input`
   width: 100%;
@@ -21,15 +21,15 @@ export const Input = styled.input`
     outline: solid var(--border-width) var(--color-primary);
     outline-offset: var(--border-width);
   }
-`;
+`
 
 export const Tags = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-md);
   margin-bottom: var(--space-xl);
-`;
+`
 
 export const Error = styled((props) => <Callout variant="danger" {...props} />)`
   margin: 0 auto;
-`;
+`

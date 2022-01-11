@@ -1,7 +1,7 @@
-import { GatsbyImage } from 'gatsby-plugin-image';
-import styled from 'styled-components';
+import { GatsbyImage } from 'gatsby-plugin-image'
+import styled from 'styled-components'
 
-import { breakpoint } from '@utils/mixins';
+import { breakpoint } from '~/utils/mixins'
 
 export const Article = styled.article`
   display: flex;
@@ -35,7 +35,7 @@ export const Article = styled.article`
   ol {
     list-style: initial;
   }
-`;
+`
 
 export const Image = styled(GatsbyImage)`
   &&& {
@@ -45,7 +45,7 @@ export const Image = styled(GatsbyImage)`
   div:first-child[style] {
     padding-top: 56.25% !important;
   }
-`;
+`
 
 export const Title = styled.h1`
   text-transform: uppercase;
@@ -53,7 +53,7 @@ export const Title = styled.h1`
   &&& {
     margin-bottom: var(--space-lg);
   }
-`;
+`
 
 export const Meta = styled.h5`
   color: var(--color-accent);
@@ -61,7 +61,7 @@ export const Meta = styled.h5`
   &&& {
     /* margin-bottom: var(--space-lg); */
   }
-`;
+`
 
 export const Separator = styled.span`
   margin-left: var(--space-sm);
@@ -69,7 +69,7 @@ export const Separator = styled.span`
   &:before {
     content: '•';
   }
-`;
+`
 
 export const ReadingTime = styled.span`
   &:before {
@@ -81,6 +81,6 @@ export const ReadingTime = styled.span`
     content: 'min read';
     margin-left: var(--space-sm);
   }
-`;
+`
 
-export const Description = styled.p``;
+export const Description = styled.p``

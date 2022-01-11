@@ -1,10 +1,10 @@
-import { createGlobalStyle, css } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components'
 
-import { transition } from '@utils/mixins';
+import { transition } from '~/utils/mixins'
 
 const backgrounds = ({ theme: { color, mode } }) => {
-  const darkMode = mode.name === 'dark';
-  const opacity = 0.25;
+  const darkMode = mode.name === 'dark'
+  const opacity = 0.25
 
   return css`
     --bg-danger: ${color.danger.toRgba(opacity)};
@@ -14,9 +14,9 @@ const backgrounds = ({ theme: { color, mode } }) => {
     --bg-card: ${darkMode ? color.body.lighten(10) : color.trueWhite};
     --bg-code: ${color.dark.lighten(5)};
     --bg-code-highlight: ${color.dark.lighten(25).toRgba(0.75)};
-    --bg-code-inline: ${darkMode ? color.body.lighten(45) : color.body.darken(15)};
-  `;
-};
+    --bg-code-inline: ${darkMode ? color.body.lighten(45) : color.body.darken(55)};
+  `
+}
 
 // TODO: Clean this shit up when the design is finally
 //       settled
@@ -41,14 +41,14 @@ const colors = ({ theme: { color } }) => css`
   --color-warning: ${color.warning};
   --color-success: ${color.success};
   --color-info: ${color.info};
-`;
+`
 
 const fonts = ({ typography }) => css`
   --font-family-heading: ${typography.options.headerFontFamily.join(', ')};
   --font-family-body: ${typography.options.bodyFontFamily.join(', ')};
   --font-family-code: 'Roboto Mono', Consolas, Monaco, monospace;
   --font-code: 600 0.75rem / 1.6 var(--font-family-code);
-`;
+`
 
 const spacing = ({ typography }) => css`
   --space-xs: ${typography.rhythm(1 / 8)};
@@ -56,11 +56,11 @@ const spacing = ({ typography }) => css`
   --space-md: ${typography.rhythm(1 / 4)};
   --space-lg: ${typography.rhythm(1 / 2)};
   --space-xl: ${typography.rhythm(1 / 1)};
-`;
+`
 
 const typography = ({ typography: { css: typographyCSS } }) => css`
   ${typographyCSS}
-`;
+`
 
 export const GlobalStyle = createGlobalStyle`
   :root {
@@ -116,4 +116,4 @@ export const GlobalStyle = createGlobalStyle`
     color: inherit;
     text-decoration: none;
   }
-`;
+`

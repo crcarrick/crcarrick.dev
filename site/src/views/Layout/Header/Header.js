@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 
-import { Link } from '@components/Link';
-import { Logo } from '@components/Logo';
+import { Link } from '~/components/Link'
+import { Logo } from '~/components/Logo'
 
-import * as S from './Header.style';
+import * as S from './Header.style'
 
 export const Header = () => (
   <S.Header>
@@ -16,4 +16,4 @@ export const Header = () => (
       <Link to="/blog">Blog</Link>
     </S.Nav>
   </S.Header>
-);
+)

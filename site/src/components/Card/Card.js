@@ -1,29 +1,29 @@
-import React from 'react';
+import React from 'react'
 
-import { getImage } from 'gatsby-plugin-image';
+import { getImage } from 'gatsby-plugin-image'
 
-import { Icon } from '@components/Icon';
-import { Tag as TagComponent } from '@components/Tag';
-import { useSize } from '@hooks/useSize';
+import { PostIcon } from '~/components/PostIcon'
+import { Tag as TagComponent } from '~/components/Tag'
+import { useSize } from '~/hooks/useSize'
 
-import * as S from './Card.style';
+import * as S from './Card.style'
 
 export const Card = ({ post }) => {
-  const size = useSize();
+  const size = useSize()
 
-  let Tag = S.Tag;
-  let Title = S.TitleH4;
-  let Image = <Icon.Post tags={post.frontmatter.tags} />;
+  let Tag = S.Tag
+  let Title = S.TitleH4
+  let Image = <PostIcon tags={post.frontmatter.tags} />
 
   if (size) {
-    Tag = TagComponent;
-    Title = S.TitleH3;
+    Tag = TagComponent
+    Title = S.TitleH3
     Image = (
       <S.Image
         image={getImage(post.frontmatter.featuredImage)}
         alt={post.frontmatter.description}
       />
-    );
+    )
   }
 
   return (
@@ -50,5 +50,5 @@ export const Card = ({ post }) => {
         </S.Row>
       </S.RowWrapper>
     </S.Card>
-  );
-};
+  )
+}
