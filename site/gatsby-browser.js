@@ -1,13 +1,12 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
 import { MDXProvider } from '@mdx-js/react'
 import { ThemeProvider as StyledThemeProvider } from 'styled-components'
 
-import { Button } from '~/Button'
-import { Callout } from '~/Callout'
-import { Code, CodeWrapper } from '~/Code'
-import { InlineCode } from '~/InlineCode'
-import { Link } from '~/Link'
+import { Button } from '~/components/Button'
+import { Callout } from '~/components/Callout'
+import { Code } from '~/components/Code'
+import { Link } from '~/components/Link'
 import { GlobalStyle } from '~/utils/style'
 import { Theme } from '~/utils/theme'
 import { Typography } from '~/utils/typography'
@@ -15,10 +14,10 @@ import { Typography } from '~/utils/typography'
 const shortCodes = {
   a: Link,
   button: Button,
-  code: Code,
+  code: Code.Block,
   Callout: Callout,
-  inlineCode: InlineCode,
-  pre: CodeWrapper,
+  inlineCode: Code.Inline,
+  pre: Code.Pre,
 }
 
 export const wrapRootElement = ({ element }) => {
@@ -40,10 +39,10 @@ export const wrapRootElement = ({ element }) => {
 export const wrapPageElement = ({ element }) => (
   <Typography.Consumer>
     {(typography) => (
-      <Fragment>
+      <React.Fragment>
         <GlobalStyle typography={typography} />
         {element}
-      </Fragment>
+      </React.Fragment>
     )}
   </Typography.Consumer>
 )

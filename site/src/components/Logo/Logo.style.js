@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
+import LogoSVG from '~/assets/svg/logo.svg'
 import { Link } from '~/views/Layout/Header/Header.style'
 
-import LogoSVG from '~/assets/svg/logo.svg'
 
 export const Logo = styled(LogoSVG)`
   width: var(--space-xl);

@@ -1,5 +1,5 @@
-import React from 'react';
+import React from 'react'
 
-import * as S from './Callout.style';
+import * as S from './Callout.style'
 
-export const Callout = (props) => <S.Callout {...props} />;
+export const Callout = (props) => <S.Callout {...props} />

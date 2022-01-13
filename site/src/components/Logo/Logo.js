@@ -1,10 +1,10 @@
-import React, { Fragment } from 'react';
+import React from 'react'
 
-import * as S from './Logo.style';
+import * as S from './Logo.style'
 
 export const Logo = (props) => (
-  <Fragment>
+  <React.Fragment>
     <S.Logo {...props} />
     <S.Name>Chris Carrick</S.Name>
-  </Fragment>
-);
+  </React.Fragment>
+)

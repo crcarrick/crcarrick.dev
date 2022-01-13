@@ -1,10 +1,10 @@
-import styled, { css } from 'styled-components'
 import Switch from 'react-switch'
+import styled, { css } from 'styled-components'
 
+import MoonSVG from '~/assets/svg/icons/moon.svg'
+import SunSVG from '~/assets/svg/icons/sun.svg'
 import { breakpoint } from '~/utils/mixins'
 
-import SunSVG from '~/assets/svg/icons/sun.svg'
-import MoonSVG from '~/assets/svg/icons/moon.svg'
 
 export const Border = styled.hr`
   border: none;

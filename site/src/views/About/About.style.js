@@ -1,8 +1,8 @@
-import styled from 'styled-components';
+import { GatsbyImage } from 'gatsby-plugin-image'
+import styled from 'styled-components'
 
-import { GatsbyImage } from 'gatsby-plugin-image';
 
-import { breakpoint } from '@utils/mixins';
+import { breakpoint } from '~/utils/mixins'
 
 export const Article = styled.article`
   display: flex;
@@ -13,7 +13,7 @@ export const Article = styled.article`
     background-color: var(--bg-card);
     padding: var(--space-xl);
   }
-`;
+`
 
 export const Image = styled(GatsbyImage)`
   width: 75px;
@@ -34,4 +34,4 @@ export const Image = styled(GatsbyImage)`
     width: 150px;
     height: 150px;
   }
-`;
+`

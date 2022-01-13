@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const InlineCode = styled.code`
   font: var(--font-code);
@@ -11,4 +11,4 @@ export const InlineCode = styled.code`
     letter-spacing: 0em;
     content: '\u00A0';
   }
-`;
+`

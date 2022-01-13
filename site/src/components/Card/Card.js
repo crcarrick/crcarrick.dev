@@ -2,7 +2,7 @@ import React from 'react'
 
 import { getImage } from 'gatsby-plugin-image'
 
-import { PostIcon } from '~/components/PostIcon'
+import { Icon } from '~/components/Icon'
 import { Tag as TagComponent } from '~/components/Tag'
 import { useSize } from '~/hooks/useSize'
 
@@ -13,7 +13,7 @@ export const Card = ({ post }) => {
 
   let Tag = S.Tag
   let Title = S.TitleH4
-  let Image = <PostIcon tags={post.frontmatter.tags} />
+  let Image = <Icon.Post tags={post.frontmatter.tags} />
 
   if (size) {
     Tag = TagComponent

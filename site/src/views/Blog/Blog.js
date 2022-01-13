@@ -1,9 +1,9 @@
 import React from 'react'
 
+import { Card } from '~/components/Card'
 import { Filter } from '~/components/Filter'
 import { Hero } from '~/components/Hero'
 import { Layout } from '~/views/Layout'
-import { Card } from '~/components/Card'
 
 import * as S from './Blog.style'
 

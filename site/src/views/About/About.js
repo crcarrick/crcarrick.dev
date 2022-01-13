@@ -1,13 +1,13 @@
-import React from 'react';
+import React from 'react'
 
-import { getImage } from 'gatsby-plugin-image';
+import { getImage } from 'gatsby-plugin-image'
 
-import { Layout } from '@views/Layout';
+import { Layout } from '~/views/Layout'
 
-import * as S from './About.style';
+import * as S from './About.style'
 
 export const About = ({ data }) => {
-  const { profilePicture, miloPicture, siteMetadata } = data;
+  const { profilePicture, miloPicture /* siteMetadata */ } = data
 
   return (
     <Layout seoTitle="About">
@@ -57,5 +57,5 @@ export const About = ({ data }) => {
         </div>
       </S.Article>
     </Layout>
-  );
-};
+  )
+}

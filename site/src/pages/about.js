@@ -1,7 +1,8 @@
-import React from 'react';
+import React from 'react'
 
-import { About } from '@views/About';
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby'
+
+import { About } from '~/views/About'
 
 export default function AboutPage() {
   const data = useStaticQuery(graphql`
@@ -34,7 +35,7 @@ export default function AboutPage() {
         }
       }
     }
-  `);
+  `)
 
-  return <About data={data} />;
+  return <About data={data} />
 }

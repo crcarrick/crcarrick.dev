@@ -1,9 +1,10 @@
-import styled, { css } from 'styled-components'
 
 import GatsbySVG from 'devicon/icons/gatsby/gatsby-original.svg'
 import JavascriptSVG from 'devicon/icons/javascript/javascript-original.svg'
 import ReactSVG from 'devicon/icons/react/react-original.svg'
 import ReduxSVG from 'devicon/icons/redux/redux-original.svg'
+import styled, { css } from 'styled-components'
+
 import StyledComponentsSVG from '~/assets/svg/icons/styled-components.svg'
 import WeakAurasSVG from '~/assets/svg/icons/weakauras.svg'
 

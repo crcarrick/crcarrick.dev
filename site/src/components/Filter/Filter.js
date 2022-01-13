@@ -1,9 +1,9 @@
-import React, { Fragment, useMemo, useState } from 'react'
+import React from 'react'
 
 import { pickBy } from 'lodash'
 import { matchSorter } from 'match-sorter'
 
-import { Tag } from '~/Tag'
+import { Tag } from '~/components/Tag'
 
 import * as S from './Filter.style'
 
@@ -31,19 +31,22 @@ const uniqueTagsFromPosts = ({ posts }) =>
     .reduce((tags, tag) => ({ ...tags, [tag]: false }), {})
 
 export const Filter = ({ children, posts }) => {
-  const tags = useMemo(() => uniqueTagsFromPosts({ posts }), [posts])
+  const tags = React.useMemo(() => uniqueTagsFromPosts({ posts }), [posts])
 
-  const [textQuery, setTextQuery] = useState('')
-  const [tagsQuery, setTagsQuery] = useState(tags)
+  const [textQuery, setTextQuery] = React.useState('')
+  const [tagsQuery, setTagsQuery] = React.useState(tags)
 
   const handleTextInput = ({ target: { value } }) => setTextQuery(value)
   const handleTagsClick = (tag) => setTagsQuery((tq) => ({ ...tq, [tag]: !tq[tag] }))
 
-  const query = useMemo(() => combineQueries({ textQuery, tagsQuery }), [textQuery, tagsQuery])
-  const results = useMemo(() => resultsFromQuery({ list: posts, query }), [posts, query])
+  const query = React.useMemo(
+    () => combineQueries({ textQuery, tagsQuery }),
+    [textQuery, tagsQuery]
+  )
+  const results = React.useMemo(() => resultsFromQuery({ list: posts, query }), [posts, query])
 
   return (
-    <Fragment>
+    <React.Fragment>
       <S.Input type="search" placeholder="search..." onChange={handleTextInput} value={textQuery} />
       <S.Tags>
         {Object.entries(tagsQuery).map(([tag, isActive]) => (
@@ -54,6 +57,6 @@ export const Filter = ({ children, posts }) => {
       </S.Tags>
 
       {results.length > 0 && children({ results })}
-    </Fragment>
+    </React.Fragment>
   )
 }

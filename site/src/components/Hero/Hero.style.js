@@ -1,11 +1,11 @@
 import styled, { css } from 'styled-components'
 
-import { transition } from '~/utils/mixins'
 
 import ConstructionSVG from '~/assets/svg/hero/construction.svg'
 import DeskSVG from '~/assets/svg/hero/desk.svg'
-import FourOhFourSVG from '~/assets/svg/hero/fourohfour.svg'
 import FiveHundredSVG from '~/assets/svg/hero/fivehundred.svg'
+import FourOhFourSVG from '~/assets/svg/hero/fourohfour.svg'
+import { transition } from '~/utils/mixins'
 
 export const HeroWrapper = styled.div`
   display: flex;

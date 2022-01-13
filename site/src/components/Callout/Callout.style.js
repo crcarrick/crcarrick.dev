@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components'
 
 const variants = {
   danger: {
@@ -17,7 +17,7 @@ const variants = {
     background: 'var(--bg-success)',
     border: 'var(--color-success)',
   },
-};
+}
 
 export const Callout = styled.aside`
   padding: var(--space-lg) var(--space-xl);
@@ -25,11 +25,11 @@ export const Callout = styled.aside`
   width: 100%;
 
   ${({ variant = 'success' }) => {
-    const { background, border } = variants[variant];
+    const { background, border } = variants[variant]
 
     return css`
       background-color: ${background};
       border-left: solid calc(var(--border-width) * 2) ${border};
-    `;
+    `
   }}
-`;
+`

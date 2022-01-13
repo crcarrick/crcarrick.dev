@@ -1,11 +1,11 @@
-import { useLayoutEffect, useState } from 'react'
+import React from 'react'
 
 import { size as breakpointSize } from '~/utils/mixins'
 
 export const useSize = () => {
-  const [size, setSize] = useState(null)
+  const [size, setSize] = React.useState(null)
 
-  useLayoutEffect(() => {
+  React.useLayoutEffect(() => {
     const md = window.matchMedia(`screen and (min-width: ${breakpointSize.md})`)
     const lg = window.matchMedia(`screen and (min-width: ${breakpointSize.lg})`)
 

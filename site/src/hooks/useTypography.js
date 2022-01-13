@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from 'react'
+import React from 'react'
 
 import Typography from 'typography'
 
@@ -16,7 +16,7 @@ const baseConfig = {
 const initialTypography = new Typography(baseConfig)
 
 export const useTypography = () => {
-  const [currentTypography, setCurrentTypography] = useState(initialTypography)
+  const [currentTypography, setCurrentTypography] = React.useState(initialTypography)
   const size = useSize()
 
   const setTypography = (config = baseConfig) => {
@@ -27,7 +27,7 @@ export const useTypography = () => {
     setCurrentTypography({ ...typography, css })
   }
 
-  useLayoutEffect(() => {
+  React.useLayoutEffect(() => {
     const responsiveConfig = {}
 
     if (size === breakpointSize.md) {

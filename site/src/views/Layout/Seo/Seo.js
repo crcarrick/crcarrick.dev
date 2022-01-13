@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-import { graphql, useStaticQuery } from 'gatsby';
-import { Helmet } from 'react-helmet';
+import { graphql, useStaticQuery } from 'gatsby'
+import { Helmet } from 'react-helmet'
 
 export const Seo = ({ path = '', post, seoTitle }) => {
   const data = useStaticQuery(graphql`
@@ -21,18 +21,18 @@ export const Seo = ({ path = '', post, seoTitle }) => {
         }
       }
     }
-  `);
+  `)
 
-  const { siteMetadata } = data.site;
-  const postMetadata = post?.frontmatter ?? {};
+  const { siteMetadata } = data.site
+  const postMetadata = post?.frontmatter ?? {}
 
-  const title = seoTitle || postMetadata.title || siteMetadata.title;
-  const description = postMetadata.description || siteMetadata.description;
-  const url = new URL(path || '/', siteMetadata.url);
+  const title = seoTitle || postMetadata.title || siteMetadata.title
+  const description = postMetadata.description || siteMetadata.description
+  const url = new URL(path || '/', siteMetadata.url)
   const image = new URL(
     postMetadata.featuredImage?.publicURL || siteMetadata.image,
     siteMetadata.url
-  );
+  )
 
   return (
     <Helmet title={title} titleTemplate={`%s • ${siteMetadata.author.name}`}>
@@ -57,5 +57,5 @@ export const Seo = ({ path = '', post, seoTitle }) => {
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
     </Helmet>
-  );
-};
+  )
+}

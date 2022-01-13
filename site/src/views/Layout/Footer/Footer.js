@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
-import { SocialIcon } from '~/components/SocialIcon'
+import { Icon } from '~/components/Icon'
 import { useTheme } from '~/hooks/useTheme'
 
 import * as S from './Footer.style'
@@ -9,24 +9,24 @@ export const Footer = () => {
   const theme = useTheme()
 
   return (
-    <Fragment>
+    <React.Fragment>
       <S.Border />
       <S.Footer>
         <S.List>
           <li>
-            <SocialIcon type="github" />
+            <Icon.Social type="github" />
           </li>
           <li>
-            <SocialIcon type="linkedin" />
+            <Icon.Social type="linkedin" />
           </li>
           <li>
-            <SocialIcon type="spotify" />
+            <Icon.Social type="spotify" />
           </li>
           {/* <li>
-            <SocialIcon type="twitch" />
+            <Icon.Social type="twitch" />
           </li> */}
           <li>
-            <SocialIcon type="twitter" />
+            <Icon.Social type="twitter" />
           </li>
         </S.List>
 
@@ -47,6 +47,6 @@ export const Footer = () => {
           />
         )}
       </S.Footer>
-    </Fragment>
+    </React.Fragment>
   )
 }
