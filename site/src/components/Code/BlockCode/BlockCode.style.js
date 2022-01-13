@@ -1,5 +1,8 @@
 import styled, { css } from 'styled-components'
 
+import { Button } from '~/components/Button'
+import { transition } from '~/utils/mixins'
+
 const getTagColors = (language) => {
   switch (language) {
     case 'js':
@@ -15,9 +18,24 @@ const getTagColors = (language) => {
   }
 }
 
-// Hack to make line highlighting work right on smaller screens
+export const CopyButton = styled(Button)`
+  position: absolute;
+  bottom: var(--space-md);
+  right: var(--space-md);
+  opacity: ${({ show }) => (show ? 1 : 0)};
+  transition: ${transition('background-color', 'opacity')};
+`
+
 export const CodeWrapper = styled.div`
   background-color: var(--bg-code);
+`
+
+export const HoverWrapper = styled.div`
+  position: relative;
+`
+
+export const ScrollWrapper = styled.div`
+  width: 100%;
   overflow: auto;
 
   pre[class*='language-'] {
@@ -28,11 +46,10 @@ export const CodeWrapper = styled.div`
 `
 
 export const Pre = styled.pre`
-  color: var(--color-white);
-  padding: var(--space-lg);
-  overflow-x: auto;
   margin: 0;
   font: var(--font-code);
+  color: var(--color-white);
+  padding: var(--space-lg);
 `
 
 export const Line = styled.div`
@@ -54,27 +71,39 @@ export const Line = styled.div`
     `}
 `
 
-export const Tag = styled.span`
-  position: relative;
+/**
+ * TODO: There is something wrong with the top right border radius here
+ *       There is a small spec of black that looks bad
+ */
+export const Toolbar = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  background-color: var(--color-dark);
+`
 
-  &:after {
-    ${({ language }) => {
-      const { backgroundColor, color } = getTagColors(language)
+export const Filename = styled.div`
+  display: flex;
+  align-items: center;
+  font: var(--font-code);
+  font-size: 0.65rem;
+  padding: var(--space-sm);
+  margin-left: var(--space-sm);
+  color: var(--color-white);
+`
 
-      return css`
-        position: absolute;
-        top: 0;
-        right: var(--space-lg);
-        content: '${language}';
-        padding: var(--space-sm);
-        border-radius: inherit;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-        font: var(--font-code);
-        text-transform: uppercase;
-        background-color: ${backgroundColor};
-        color: ${color};
-      `
-    }}
-  }
+export const Language = styled.div`
+  ${({ children }) => {
+    const { backgroundColor, color } = getTagColors(children)
+
+    return css`
+      font: var(--font-code);
+      padding: var(--space-sm);
+      border-radius: 0;
+      border-top-right-radius: inherit;
+      text-transform: uppercase;
+      background-color: ${backgroundColor};
+      color: ${color};
+    `
+  }}
 `

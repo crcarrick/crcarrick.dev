@@ -1,12 +1,14 @@
 import styled from 'styled-components'
 
 export const Button = styled.button`
-  padding: var(--space-md) var(--space-lg);
+  padding: var(--space-md) var(--space-md);
   text-transform: uppercase;
   color: var(--color-body);
   background-color: var(--color-text);
   border: none;
   cursor: pointer;
+  font-size: 0.65rem;
+  line-height: 1;
 
   &:hover,
   &:focus,

@@ -3,22 +3,27 @@ import React from 'react'
 import parseRange from 'parse-numeric-range'
 import Highlight, { defaultProps } from 'prism-react-renderer'
 
+import { useDelayedHover } from '~/hooks/useDelayedHover'
+
 import * as S from './BlockCode.style'
 
 import '../theme.css'
 
-const getLineStr = (metastring) => {
-  const regexp = /{([\d,-]+)}/
+const extractFromMetastring = (metastring, extract) => {
+  if (metastring == null) return
 
-  if (regexp.test(metastring)) {
-    const [, lineStr] = regexp.exec(metastring)
+  try {
+    const meta = JSON.parse(metastring)
 
-    return lineStr
+    return extract(meta)
+  } catch {
+    console.warn(`Error parsing metastring ${metastring}`)
+    console.warn('Check the JSON')
   }
 }
 
 const createLineHighlighter = (range) => {
-  const lineStr = getLineStr(range)
+  const lineStr = extractFromMetastring(range, (meta) => meta.highlight)
 
   if (lineStr) {
     const lines = parseRange(lineStr)
@@ -62,25 +67,38 @@ const renderLine =
 const trimTokens = (tokens) => (tokens.length >= 2 ? tokens.slice(0, -1) : tokens)
 
 export const BlockCode = ({ className = 'language-jsx', children, metastring }) => {
+  const { hovered, ...delayedHoverProps } = useDelayedHover(500)
+
   const language = className.replace('language-', '')
+  const filename = extractFromMetastring(metastring, (meta) => meta.filename)
   const shouldHighlightLine = createLineHighlighter(metastring)
   const willHighlightLines = Boolean(metastring)
 
-  return (
-    <Highlight Prism={defaultProps.Prism} language={language} code={children}>
-      {({ className, style, tokens, ...rest }) => {
-        const lines = trimTokens(tokens)
+  const handleClick = () => navigator.clipboard.writeText(children)
 
-        return (
-          <React.Fragment>
-            <S.Tag language={language} />
-            <S.Pre className={className} style={style}>
-              {lines.map(renderLine({ ...rest, shouldHighlightLine, willHighlightLines }))}
-            </S.Pre>
-          </React.Fragment>
-        )
-      }}
-    </Highlight>
+  return (
+    <S.HoverWrapper {...delayedHoverProps}>
+      <S.Toolbar>
+        <S.Filename>{filename}</S.Filename>
+        <S.Language>{language}</S.Language>
+      </S.Toolbar>
+      <Highlight Prism={defaultProps.Prism} language={language} code={children}>
+        {({ className, style, tokens, ...rest }) => {
+          const lines = trimTokens(tokens)
+
+          return (
+            <S.ScrollWrapper>
+              <S.Pre className={className} style={style}>
+                {lines.map(renderLine({ ...rest, shouldHighlightLine, willHighlightLines }))}
+              </S.Pre>
+            </S.ScrollWrapper>
+          )
+        }}
+      </Highlight>
+      <S.CopyButton show={hovered} onClick={handleClick}>
+        copy
+      </S.CopyButton>
+    </S.HoverWrapper>
   )
 }
 
