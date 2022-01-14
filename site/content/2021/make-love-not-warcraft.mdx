@@ -20,19 +20,43 @@ I'd love to talk your ear off about "Theorycrafting" (the art of figuring out, v
 ### Some Header
 
 <!-- Intro to WeakAuras -->
-I love to code. I find my work incredibly enjoyable and rewarding, and after the workday ends I often hack on a hobby project for a few hours in the evening trying to learn something new. So you can imagine when I, as a new player ([noob](https://www.dictionary.com/browse/noob)) to WoW, discovered that I could write code that would assist my teammates and I in our quest to defeat the toughest bosses the game has to offer, I was pretty dang excited.  Let me tell you about a little program called [WeakAuras](https://github.com/WeakAuras/WeakAuras2). WeakAuras bills itself as "a powerful and flexible framework that allows the display of highly customizable graphics on World of Warcraft's user interface". Essentially, the program helps you, the programmer / player, write code that responds to a variety of events that the game's UI publishes. WoW's bosses are highly scripted encounters, and these "customizable graphics" can be as simple as little icons that count down to when a particular event is going to happen or as complex as fully-fledged programs that dynamically make and display decisions about which players to assign to handle certain jobs during the encounter. The program is so powerful, that the "very very best groups" I mentioned earlier have gone as far as to hire (for real money!) dedicated programmers whose sole job is to quickly, on-the-fly write them custom WeakAuras during the race to be the first team to defeat a new boss. WoW's development team has publically stated that when designing bosses, they now design around the knowledge that players will create clever WeakAuras to help them defeat the boss.
+I love to code. I find my work incredibly enjoyable and rewarding, and after the workday ends I often hack on a hobby project for a few hours in the evening trying to learn something new. So you can imagine when I, as a new player ([noob](https://www.dictionary.com/browse/noob)) to WoW, discovered that I could write code that would assist my teammates and I in our quest to defeat the toughest bosses the game has to offer, I was pretty dang excited.  Let me tell you about a little program called [WeakAuras](https://github.com/WeakAuras/WeakAuras2).
 
-<!-- Section about Lua and writing WeakAuras -->
-You're probably here for the code, so let's get into that. WoW's UI API is written in [Lua](https://www.lua.org/). If you aren't familiar, Lua is a great little scripting language designed to be embedded into larger pieces of C / C++ software. You can even, thanks to web assembly, [run it in the browser](https://fengari.io/). It has quirks that take some getting used to (Lua's "arrays" start at index 1 👀), but by and large it's great at what it does and is particularly ubiquitous in computer games. As I mentioned earlier, much like JavaScript, WoW's UI is event driven. Your code registers listeners for certain events and then reacts to them as they occur. The APIs exposed by the WoW UI, however, can be a bit clunky. This is where WeakAuras comes in.  At it's core, it is a complex wrapper around the WoW UI API; abstracting away many of the pain points of interacting with the base APIs.
+WeakAuras bills itself as:
+
+<Callout variant="info">"A powerful and flexible framework that allows the display of highly customizable graphics on World of Warcraft's user interface."</Callout> 
+
+Essentially, the program helps you, the player, write code that responds to a variety of events that the game's UI publishes. WoW's bosses are highly scripted encounters, and these "customizable graphics" can be things like:
+
+- Little icons that count down to when a particular event is going to happen 
+- Fully-fledged programs that dynamically make and display decisions about which players to assign to handle certain jobs during the encounter. 
+
+The program is so powerful, that the "very very best groups" I mentioned earlier have gone as far as to hire (for real money!) dedicated programmers whose sole job is to quickly, on-the-fly write them custom WeakAuras during the aforementioned **Race to World First**. WoW's development team has publically stated that when designing bosses, they now design around the knowledge that players will create clever WeakAuras to help them defeat the boss.
+
+This all might sound like cheating, but WoW's UI has always allowed "add-ons" to modify it.  At times, when people have created WeakAuras that were deemed [too powerful](), the WoW development team has reigned the add-on back in by restricting code access to the problematic APIs. 
+
+<video width="560" height="315" src="https://www.youtube.com/embed/ZJoJWQapVQo?controls=0" />
 
 ### Examples
 
-Let's finally jump into some examples. WeakAuras are broken down into several functions. First, there is the `onInit` function. This function does what it sounds like it does; initializes any state you want when the WeakAura first loads.  Next up, there's the `trigger` function. The `trigger` function receives some event based arguments and tells the WeakAura whether or not it should display on the screen by returning a boolean value. Finally comes the `display` function. This function returns a value that will actually be displayed on the screen. The following is a simple example WeakAura that counts the number of times a specific event has happened in an encounter and displays it on the player's UI.
+<!-- Section about Lua and writing WeakAuras -->
+You're probably here for the code, so let's get into that. WoW's UI API is written in [Lua](https://www.lua.org/). If you aren't familiar, Lua is a great little scripting language designed to be embedded into larger pieces of C / C++ software. You can even, thanks to web assembly, [run it in the browser](https://fengari.io/). It has quirks that take some getting used to (Lua's Arrays start at index 1 👀), but by and large it's great at what it does and is particularly ubiquitous in computer game UIs. As I mentioned earlier, much like JavaScript, WoW's UI is event driven. Your code registers listeners for certain events and then reacts to them as they occur. The APIs exposed by the WoW UI, however, can be a bit clunky. This is where WeakAuras comes in.  At it's core, it is a complex wrapper around the WoW UI API; abstracting away many of the pain points of interacting with the base APIs.
+
+Let's finally jump into some examples. WeakAuras are broken down into several functions:
+
+- `onInit`  - Initializes any state you want when the WeakAura first loads.  
+- `trigger` - Receives some event based arguments and tells the WeakAura whether or not it should display on the screen by returning a boolean value. 
+- `display` - Returns a value that will actually be displayed on the screen. 
+
+The following is a simple example WeakAura that counts the number of times a specific event has happened in an encounter and displays it on the player's screen.
+
+<Callout variant="warning">
+  <b>This is by no means supposed to serve as a WeakAuras tutorial</b>.  I've intentionally changed things and left things out to make this all easier to understand.  
+</Callout>
 
 ```lua { "filename": "onInit" }
 function()
-  -- aura_env is a "global" table 
-  -- (quotes because it *is* scoped to your WeakAura)
+  -- aura_env is a non-reactive table scoped to your WeakAura 
   -- that you can write data you want to be preserved 
   -- between renders to. think `React.useRef()`
   aura_env.count = 0
@@ -41,8 +65,8 @@ end
 
 ```lua { "filename": "trigger" }
 function(event, subevent)
-  if event == "COMBAT_LOG_EVENT" 
-    and subevent == "UNIT_SPELLCAST_SUCCEEDED" 
+  if event == "COMBAT_EVENT" 
+    and subevent == "SPELLCAST_SUCCEEDED" 
   then
     aura_env.count = aura_env.count + 1
   end
@@ -60,13 +84,13 @@ function()
 end
 ```
 
-If you come from React, this pattern should be immediately recognizable to you. These functions are pretty similar to parts of the old React component lifecycle. I think it's pretty clear to see how this can be powerful, but this example isn't particularly useful. Perhaps, on a specific boss, you want to rotate some of your players to do something (cast a powerful healing spell or something) to save the group every time the boss attacks you with a certain ability. WeakAuras makes that easy. Below, I've adapted the last example to do that.
+If you come from React, this pattern should be immediately recognizable to you. These functions are pretty similar to parts of the old React component lifecycle. I think it's  clear to see how this can be powerful, but this example isn't particularly useful. Perhaps, on a specific boss, you want to rotate and remind 3 of your players to take some action (cast a powerful healing spell or something) to save the group each time the boss attacks the group with a powerful ability. WeakAuras makes that easy. Below, I've adapted the last example to do that.
 
 ```lua { "filename": "onInit" }
 function()
   aura_env.count = 0
-  aura_env.player = nil
-  aura_env.rotation = { 
+  aura_env.currentPlayer = nil
+  aura_env.playerRotation = { 
     "Player 1", 
     "Player 2", 
     "Player 3" 
@@ -76,26 +100,19 @@ end
 
 ```lua { "filename": "trigger" }
 -- spellId is just a made up argument here that would 
--- identify, by id, a particular spell we wanted to watch 
--- out for. WeakAuras does pass you a spellId with it's 
--- events, but not in the way I'm illustrating in this 
--- example.
+-- identify a particular ability we wanted to watch 
+-- out for
 function(event, subevent, spellId)
-  if event == "COMBAT_LOG_EVENT" 
-    and subevent == "UNIT_SPELLCAST_SUCCEEDED" 
+  if event == "COMBAT_EVENT" 
+    and subevent == "SPELLCAST_SUCCEEDED" 
     and spellId === 123456 
   then
-    -- #aura_env.rotation is roughly equivalent to 
-    -- aura_env.rotation.length in JS
-    if aura_env.count == #aura_env.rotation then
-      aura_env.count = 0
-    end
-
     aura_env.count = aura_env.count + 1
-    aura_env.player = aura_env.rotation[aura_env.count] 
+    aura_env.currentPlayer = 
+      aura_env.playerRotation[aura_env.count % 3] 
   end
 
-  return aura_env.player != nil
+  return aura_env.currentPlayer != nil
 end
 ```
 
@@ -103,8 +120,19 @@ end
 function()
   return string.format(
     "Save the group %s!",
-    aura_env.player
+    aura_env.currentPlayer
   )
+end
+```
+
+You could even adapt that last `trigger` function to only show the text on the screen of the person whose turn it currently is using some [built-ins](https://github.com/WeakAuras/WeakAuras2/wiki/Useful-variables-and-functions-within-WeakAuras) WeakAuras provides you.
+
+```lua { "filename": "trigger", "highlight": "5" }
+function(event, subevent, spellId)
+  -- ...rest of trigger fn
+
+  return aura_env.currentPlayer != nil 
+    and aura_env.currentPlayer == WeakAuras.me
 end
 ```
 

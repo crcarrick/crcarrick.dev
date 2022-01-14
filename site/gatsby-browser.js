@@ -7,6 +7,7 @@ import { Button } from '~/components/Button'
 import { Callout } from '~/components/Callout'
 import { Code } from '~/components/Code'
 import { Link } from '~/components/Link'
+import { Video } from '~/components/Video'
 import { GlobalStyle } from '~/utils/style'
 import { Theme } from '~/utils/theme'
 import { Typography } from '~/utils/typography'
@@ -18,6 +19,7 @@ const shortCodes = {
   Callout: Callout,
   inlineCode: Code.Inline,
   pre: Code.Pre,
+  video: Video,
 }
 
 export const wrapRootElement = ({ element }) => {
