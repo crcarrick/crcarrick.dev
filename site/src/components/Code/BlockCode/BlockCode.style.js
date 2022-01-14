@@ -22,8 +22,17 @@ export const CopyButton = styled(Button)`
   position: absolute;
   bottom: var(--space-md);
   right: var(--space-md);
+  color: var(--color-dark);
+  background-color: var(--color-white);
   opacity: ${({ show }) => (show ? 1 : 0)};
   transition: ${transition('background-color', 'opacity')};
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: var(--color-white);
+    background-color: var(--color-primary);
+  }
 `
 
 export const CodeWrapper = styled.div`

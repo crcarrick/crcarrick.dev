@@ -19,25 +19,31 @@ cd dogs-list && yarn add -D @testing-library/cypress cypress msw
 
 ## Setup MSW
 
+```js { "filename": "src/test/mocks/data.js" }
+export const dogs = [
+  {
+    id: 1,
+    name: 'Milo',
+    description: 'Best boy',
+  },
+  {
+    id: 2,
+    name: 'Summer',
+    description: 'Best girl',
+  },
+]
+```
+
 ```js { "filename": "src/test/mocks/handlers.js" }
 import { rest } from 'msw'
+
+import { dogs } from './data'
 
 export const handlers = [
   rest.get('/dogs', (_req, res, ctx) => {
     return res(
       ctx.status(200),
-      ctx.json([
-        {
-          id: 1,
-          name: 'Milo',
-          description: 'Best boy',
-        },
-        {
-          id: 2,
-          name: 'Summer',
-          description: 'Best girl',
-        },
-      ])
+      ctx.json(dogs)
     )
   }),
 ]
@@ -107,24 +113,21 @@ afterAll(() => server.close())
 ```jsx { "filename": "src/App.test.jsx" }
 import { render, screen } from '@testing-library/react'
 
+import { dogs } from '../test/mocks/data'
+
 import { App } from './App'
+
 
 test('renders the list of dogs', async () => {
   render(<App />)
 
-  const dogs = await screen.findByRole('listitem')
-  const milo = await screen.findByRole(
-    'listitem', 
-    { name: /milo/i }
-  )
-  const summer = await screen.findByRole(
-    'listitem', 
-    { name: /summer/i }
-  )
+  const listItems = await screen.findAllByRole('listitem')
 
-  expect(dogs).toHaveLength(2)
-  expect(milo).toBeInTheDocument()
-  expect(summer).toBeInTheDocument()
+  expect(listItems).toHaveLength(2)
+  listItems.forEach((listItem, index) => {
+    expect(listItem).toBeInTheDocument()
+    expect(listItem).toHaveTextContent(new RegExp(dogs[index].name, 'i'))
+  })
 })
 ```
 
@@ -185,6 +188,8 @@ yarn add -D start-server-and-test
 ```
 
 ```js { "filename": "cypress/integration/App.test.js" }
+import { dogs } from '../../src/test/mocks/data'
+
 before(() => cy.visit('/'))
 afterEach(() => cy.window().then((win) => win.msw.worker.resetHandlers()))
 after(() => cy.window().then((win) => win.msw.worker.close()))
@@ -192,8 +197,8 @@ after(() => cy.window().then((win) => win.msw.worker.close()))
 it('renders the list of dogs', () => {
   cy.findAllByRole('listitem')
     .should('have.length', 2)
-    .should('contain.text', /milo/i)
-    .should('contain.text', /summer/i)
+    .should('contain.text', new RegExp(dogs[0].name, 'i'))
+    .should('contain.text', new RegExp(dogs[1].name, 'i'))
 })
 ```
 
@@ -223,7 +228,8 @@ export const worker = setupWorker(...handlers)
 ```
 
 ```diff { "filename": "cypress/integration/App.test.js" }
-import { worker } from '../../src/test/mocks/browser'
++ import { worker } from '../../src/test/mocks/browser'
+import { data } from '../../src/test/mocks/data'
 
 - before(() => cy.visit('/'))
 + before(() => {
