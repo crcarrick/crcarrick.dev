@@ -1,12 +1,14 @@
 import React from 'react'
 
 import parseRange from 'parse-numeric-range'
-import Highlight, { defaultProps } from 'prism-react-renderer'
+import Highlight from 'prism-react-renderer'
+import Prism from 'prismjs'
 
 import { useDelayedHover } from '~/hooks/useDelayedHover'
 
 import * as S from './BlockCode.style'
 
+import '../langs'
 import '../theme.css'
 
 const extractFromMetastring = (metastring, extract) => {
@@ -83,7 +85,7 @@ export const BlockCode = ({ className = 'language-jsx', children, metastring }) 
         <S.Filename>{filename}</S.Filename>
         <S.Language>{language}</S.Language>
       </S.Toolbar>
-      <Highlight Prism={defaultProps.Prism} language={language} code={children}>
+      <Highlight Prism={Prism} language={language} code={children}>
         {({ className, style, tokens, ...rest }) => {
           const lines = trimTokens(tokens)
 

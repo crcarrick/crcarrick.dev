@@ -1,0 +1,5 @@
+import 'prismjs/components/prism-diff'
+import 'prismjs/components/prism-json'
+import 'prismjs/components/prism-jsx'
+import 'prismjs/components/prism-lua'
+import 'prismjs/components/prism-bash'
