@@ -58,37 +58,46 @@ const spacing = ({ typography }) => css`
   --space-xl: ${typography.rhythm(1 / 1)};
 `
 
+const misc = ({ theme: { color } }) => css`
+  --border-radius: 3px;
+  --border-width: 2px;
+  --hero-shadow: ${color.primary.darken(15)};
+  --hero-chair: ${color.primary.lighten(25).toRgba(0.5)};
+`
+
 const typography = ({ typography: { css: typographyCSS } }) => css`
   ${typographyCSS}
 `
 
 export const GlobalStyle = createGlobalStyle`
   :root {
-    ${({ theme: { color } }) => css`
-      ${backgrounds}
-      ${colors}
-      ${fonts}
-      ${spacing}
-
-      --border-width: 2px;
-
-      --hero-shadow: ${color.primary.darken(15)};
-      --hero-chair: ${color.primary.lighten(25).toRgba(0.5)};
-    `}
+    ${backgrounds}
+    ${colors}
+    ${fonts}
+    ${spacing}
+    ${misc}
   }
 
   ${typography}
 
   * {
     box-sizing: border-box;
-    border-radius: 3px;
+    border-radius: var(--border-radius);
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-primary) var(--color-dark);
 
-    a {
-      border-radius: 0;
+    &::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
     }
 
-    aside {
-      border-radius: 0;
+    &::-webkit-scrollbar-track {
+      background: var(--color-dark);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--color-primary);
+      border-radius: var(--border-radius);
     }
   }
 
@@ -112,8 +121,13 @@ export const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
 
+  li {
+    margin-bottom: 0;
+  }
+
   a {
     color: inherit;
     text-decoration: none;
+    border-radius: 0;
   }
 `

@@ -1,36 +1,114 @@
 ---
-title: Make love not warcraft.
-description: How I programmed my way to victory in World of Warcraft.
+title: How I coded my way to victory in World of Warcraft
+description: A brief detour into my second great love, World of Warcraft, and how my coding skills helped me excel at the game. 
 featuredImage: ../../src/assets/images/weakauras.png
 featuredIcon: wow
 author: Chris Carrick
-published: 2021-10-27T15:27:35.000Z
+published: 2022-01-10T11:48:12.000Z
 tags: ['lua', 'world of warcraft', 'weakauras']
 ---
 
-These is your very first content with Contentful, pulled in JSON format using the [Content Delivery API](https://www.contentful.com/developers/docs/references/content-delivery-api/ 'Content Delivery API'). Content and presentation are now decoupled, allowing you to focus your efforts in building the perfect app.
+<!-- TODO: Come up with some Headings for sections -->
 
-## Your first steps
+<!-- Opening segment (Too long?  I'd hate to cut any of this, I think it's quite good) -->
+I have a confession to make... I play *a lot* of [World of Warcraft](). 2 times a week, a few hours after dinner, me and 19 other guys and gals team up for 4 hours to beat our heads against the latest bosses the game has to offer. I primarily play a [Monk](), and my team generally ranks somewhere inside the top 100 teams in the US, even finishing as high as US #42 2 dungeons ago. I'm proud of that, as finishing in the US Top 100 is quite good for an 8 hour / week team. Many teams play together for 12 or even 16 hours / week. The very very best groups quite literally play 16 hours **per day**, 7 days a week until the final boss of the dungeon is defeated. If you're interested (let's be honest, you're not), the whole ordeal is live-streamed on [Twitch]() in a pretty popular event known as the [Race to World First]() each time a new dungeon is released. For these top teams, it can take upwards of ~10-14 days of this insane schedule to accomplish the feat. For us mortals, it takes months. 
 
-Building with Contentful is easy. First take a moment to get [the basics of content modelling](https://www.contentful.com/r/knowledgebase/content-modelling-basics/ 'the basics of content modelling'), which you can set up in the [Contentful Web app](https://app.contentful.com/ 'Contentful Web app'). Once you get that, feel free to drop by the [Documentation](https://www.contentful.com/developers/docs/ 'Documentation') to learn a bit more about how to build your app with Contentful, in particular the [API basics](https://www.contentful.com/developers/docs/concepts/apis/ 'API basics') and each one of our four APIs, as shown below.
+I know what you're thinking, and you're right. I am pretty cool 😎.
 
-### Content Delivery API
+I'd love to talk your ear off about "Theorycrafting" (the art of figuring out, via some pretty complicated math, the best way to play a particular class), my awesome teammates, or how rewarding it is to finally have all 20 people on the team "click" for that one perfect attempt and defeat the final boss of a dungeon after literally hundreds of attempts. The teamwork and coordination required to take 20 nerds sitting behind desks around the country and mold them into a coherent unit capable of executing some pretty sophisticated strategies is something magical and unique about WoW. I've never found anything like it in any other game, believe me, I've tried. That teamwork, comradery, and sense of accomplishment is the primary reason I keep logging on every week. Unfortunately, this post isn't about any of that.
 
-The [Content Delivery API](https://www.contentful.com/developers/docs/references/content-delivery-api/ 'Content Delivery API') (CDA), available at `cdn.contentful.com`, is a read-only API for delivering content from Contentful to apps, websites and other media. Content is delivered as JSON data, and images, videos and other media as files.
-The API is available via a globally distributed content delivery network. The server closest to the user serves all content, both JSON and binary. This minimizes latency, which especially benefits mobile apps. Hosting content in multiple global data centers also greatly improves the availability of content.
+<!-- Intro to WeakAuras -->
+I love to code. I find my work incredibly enjoyable and rewarding, and after the workday ends I often hack on a hobby project for a few hours in the evening trying to learn something new. So you can imagine when I, as a new player (noob) to WoW, discovered that I could write code that would assist my teammates and I in our quest to defeat the toughest bosses the game has to offer, I was pretty dang excited.  Let me tell you about a little program called [WeakAuras](https://github.com/WeakAuras/WeakAuras2).
 
-### Content Management API
+<!-- FIXME: I don't love the line describing what WA's can do -->
+WeakAuras bills itself as "a powerful and flexible framework that allows the display of highly customizable graphics on World of Warcraft's user interface". Essentially, the program helps you, the programmer / player, write code that responds to a variety of events that the game's UI publishes. WoW's bosses are highly scripted encounters, and these "customizable graphics" can be as simple as little icons that count down to when a particular event is going to happen or as complex as fully-fledged programs that dynamically make / display decisions about which players to assign to handle certain jobs during the encounter. The program is so powerful, that the "very very best groups" I mentioned earlier have gone as far as to hire dedicated programmers whose sole job is to quickly, on-the-fly write them custom WeakAuras during the race to be the first team to defeat a new boss. WoW's development team has publically stated that when designing bosses, they now design around the knowledge that players will create clever WeakAuras to help them defeat the boss.
 
-The [Content Management API](https://www.contentful.com/developers/docs/references/content-management-api/ 'Content Management API') (CMA), available at `api.contentful.com`, is a read-write API for managing content. Unlike the Content Delivery API, the management API requires you to authenticate as a Contentful user. You could use the CMA for several use cases, such as:
+<!-- Section about Lua and writing WeakAuras -->
+You're probably here for the code, so let's get into that. WoW's UI API is written in [Lua](). If you aren't familiar, Lua is a great little scripting language designed to be embedded into larger pieces of C / C++ software. It has quirks that take some getting used to (Lua's "arrays" start at index 1 👀), but by and large it's great at what it does and is particularly ubiquitous in computer games. As I mentioned earlier, much like JavaScript, WoW's UI is event driven. Your code registers listeners for certain events and then reacts to them as they occur. The APIs exposed by the WoW UI, however, can be a bit clunky. This is where WeakAuras comes in.  At it's core, it is a complex wrapper around the WoW UI API; abstracting away many of the pain points of interacting with the base APIs.
 
-- Automatic imports from different CMSes like WordPress or Drupal.
-- Integration with other backend systems, such as an e-commerce shop.
-- Building custom editing experiences. We built the [Contentful Web app](https://app.contentful.com/ 'Contentful Web app') on top of this API.
+<!-- TODO: Examples -->
+Let's finally jump into some examples. WeakAuras are broken down into several functions. First, there is the `initialize` function. This function does what it sounds like it does; initializes any state you want when the WeakAura first loads.  Next up, there's the `trigger` function. The `trigger` function receives some event based arguments and tells the WeakAura whether or not it should display on the screen by returning a boolean value. Finally comes the `display` function. This function returns a value that will actually be displayed on the screen. The following is a simple example WeakAura that counts the number of times a specific event has happened in an encounter and displays it on the player's UI.
 
-### Preview API
+```lua { "filename": "initialize function" }
+function()
+  -- aura_env is a "global" table that you can write 
+  -- data you want to be preserved between renders to.
+  -- think `React.useRef()`
+  aura_env.count = 0
+end
+```
 
-The [Content Preview API](https://www.contentful.com/developers/docs/concepts/apis/#content-preview-api 'Content Preview API'), available at `preview.contentful.com`, is a variant of the CDA for previewing your content before delivering it to your customers. You use the Content Preview API in combination with a "preview" deployment of your website (or a "preview" build of your mobile app) that allows content managers and authors to view their work in-context, as if it were published, using a "preview" access token as though it were delivered by the CDA.
+```lua { "filename": "trigger function" }
+function(event, subevent)
+  if event == "COMBAT_LOG_EVENT" 
+    and subevent == "UNIT_SPELLCAST_SUCCEEDED" 
+  then
+    aura_env.count = aura_env.count + 1
+  end
 
-### Images API
+  return aura_env.count > 0
+end
+```
 
-The [Images API](https://www.contentful.com/developers/docs/concepts/apis/#images-api 'Images API'), available at `images.contentful.com`, allows you to resize and crop images, change their background color and convert them to different formats. Using our API for these transformations lets you upload high-quality assets, deliver exactly what your app needs, and still get all the benefits of our caching CDN.
+```lua { "filename": "display function" }
+function()
+  return string.format(
+    "Event has happened %s times.",
+    aura_env.count
+  )
+end
+```
+
+You can immediately see how this can be powerful. Perhaps we need to rotate some of our players to do something to save the group every time the boss casts a certain ability. WeakAuras makes that easy. Let's adapt the last example to do that:
+
+```lua { "filename": "initialize function" }
+function()
+  aura_env.count = 0
+  aura_env.player = nil
+  aura_env.rotation = { 
+    "Player 1", 
+    "Player 2", 
+    "Player 3" 
+  }
+end
+```
+
+```lua { "filename": "trigger function" }
+-- `spellId` is just a made up argument here that would 
+-- identify, by id, a particular spell we wanted to watch 
+-- out for. WeakAuras does pass you a spellId with it's 
+-- events, but not in the way I'm illustrating in this 
+-- example.
+function(event, subevent, spellId)
+  if event == "COMBAT_LOG_EVENT" 
+    and subevent == "UNIT_SPELLCAST_SUCCEEDED" 
+    and spellId === 123456 
+  then
+    -- #aura_env.rotation is equivalent to 
+    -- aura_env.rotation.length (in JS syntax)
+    if aura_env.count == #aura_env.rotation then
+      aura_env.count = 0
+    end
+
+    aura_env.count = aura_env.count + 1
+    aura_env.player = aura_env.rotation[aura_env.count] 
+  end
+
+  return aura_env.player != nil
+end
+```
+
+```lua { "filename": "display function" }
+function()
+  return string.format(
+    "Save the group %s!",
+    aura_env.player
+  )
+end
+```
+
+Before I go, just for fun, here's the final 1.5 minutes of top team Limit achieveing a world first final boss kill last year:
+
+***WARNING*** explicit language and lots of ["nerdscreams"](https://www.urbandictionary.com/define.php?term=nerdscreams)
+
+[Limit achieving World First](https://youtu.be/Kgzm2XP1hMo)

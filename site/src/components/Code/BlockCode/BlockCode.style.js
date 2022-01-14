@@ -13,6 +13,8 @@ const getTagColors = (language) => {
       return { backgroundColor: '#e34c26', color: 'var(--color-white)' }
     case 'css':
       return { backgroundColor: '#3c99dc', color: 'var(--color-white)' }
+    case 'lua':
+      return { backgroundColor: '#000080', color: 'var(--color-white)' }
     default:
       return { backgroundColor: 'var(--color-black)', color: 'var(--color-white)' }
   }
@@ -20,8 +22,8 @@ const getTagColors = (language) => {
 
 export const CopyButton = styled(Button)`
   position: absolute;
-  bottom: var(--space-md);
-  right: var(--space-md);
+  bottom: var(--space-lg);
+  right: var(--space-lg);
   color: var(--color-dark);
   background-color: var(--color-white);
   opacity: ${({ show }) => (show ? 1 : 0)};
@@ -109,7 +111,7 @@ export const Language = styled.div`
       font: var(--font-code);
       padding: var(--space-sm);
       border-radius: 0;
-      border-top-right-radius: inherit;
+      border-top-right-radius: calc(var(--border-radius) - 1px);
       text-transform: uppercase;
       background-color: ${backgroundColor};
       color: ${color};

@@ -71,10 +71,11 @@ export const BlockCode = ({ className = 'language-jsx', children, metastring }) 
 
   const language = className.replace('language-', '')
   const filename = extractFromMetastring(metastring, (meta) => meta.filename)
+  const copy = extractFromMetastring(metastring, (meta) => meta.copy)
   const shouldHighlightLine = createLineHighlighter(metastring)
   const willHighlightLines = Boolean(metastring)
 
-  const handleClick = () => navigator.clipboard.writeText(children)
+  const handleClick = () => navigator.clipboard.writeText(copy ?? children)
 
   return (
     <S.HoverWrapper {...delayedHoverProps}>

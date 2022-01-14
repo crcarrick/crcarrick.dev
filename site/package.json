@@ -9,7 +9,8 @@
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "gen": "../bin/gen.mjs"
   },
   "keywords": [
     "gatsby"

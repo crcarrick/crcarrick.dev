@@ -47,7 +47,7 @@ export const Image = styled(GatsbyImage)`
   }
 `
 
-export const Title = styled.h1`
+export const Title = styled.h2`
   text-transform: uppercase;
 
   &&& {
