@@ -8,51 +8,71 @@ published: 2022-01-10T11:48:12.000Z
 tags: ['lua', 'world of warcraft', 'weakauras']
 ---
 
-<!-- Gotta find the TONE here -->
-
 <!-- Opening segment -->
-I have a confession to make... I play *a lot* of [World of Warcraft](https://worldofwarcraft.com/en-us/). Twice a week, a few hours after dinner, me and 19 other guys and gals team up for 4 hours to beat our heads against the latest bosses the game has to offer. I primarily play a [Monk](https://worldofwarcraft.com/en-us/game/classes/monk), and my team generally ranks somewhere inside the top 100 teams in the US, even finishing as high as US #42 two dungeons ago. I'm proud of that, as finishing in the US Top 100 is quite good for an 8 hour / week team. Many teams play together for 12 or even 16 hours   / week. The very very best groups quite literally play 16 hours **per day**, 7 days a week; not stopping until the final boss of the dungeon is defeated. If you're interested (let's be honest, you're not), the whole ordeal is live-streamed on [Twitch](https://twitch.tv) in a pretty popular event known as the [Race to World First](https://raider.io/sanctum-of-domination/global-coverage) each time a new dungeon is released. For these top teams, it can take upwards of ~10-14 days of this insane schedule to finish the dungeon. For us mortals, it takes months. 
+I have a confession to make... I play *a lot* of [World of Warcraft](https://worldofwarcraft.com/en-us/). 
+
+Twice a week, a few hours after dinner, me and 19 other guys and gals team up for 4 hours to beat our heads against the latest and most difficult bosses the game has to offer. I primarily play a [Monk](https://worldofwarcraft.com/en-us/game/classes/monk), and my team generally ranks somewhere inside the top 100 teams in the US; even finishing as high as US #42 two dungeons ago. I'm proud of that, as finishing in the US Top 100 is considered quite good for an 8 hour / week team. Many of the teams we compete with play together for 12 or even 16 hours / week. The very very best groups quite literally play **16 hours per day, 7 days a week**, not relenting from these absurd hours until the final boss of the dungeon is defeated.
+
+<Callout variant="info">
+
+  If you're interested (let's be honest, you're not), each time a new dungeon is released the whole ordeal is live-streamed on [Twitch](https://twitch.tv) in a pretty popular event known as the [Race to World First](https://raider.io/sanctum-of-domination/global-coverage).
+
+</Callout> 
+
+For these top teams, it can take upwards of ~10-14 days of this insane schedule to finish the dungeon. For us mortals, it takes months. 
 
 I know what you're thinking, and you're right. I am pretty cool 😎.
 
-I'd love to talk your ear off about "Theorycrafting" (the art of figuring out, via some pretty complicated math, the best way to play a particular class), my awesome teammates, or how rewarding it is to finally have all 20 people on the team "click" for that one perfect attempt and defeat the final boss of a dungeon after literally hundreds of attempts. The teamwork and coordination required to take 20 nerds sitting behind desks around the country and mold them into a coherent unit capable of executing some pretty sophisticated strategies is something magical and unique about WoW. I've never found anything like it in any other game, believe me, I've tried. That teamwork, comradery, and sense of accomplishment is the primary reason I keep logging on every week. Unfortunately, this post isn't about any of that.
+### ❌ What this post *is not* about
 
-### Some Header
+I'd love to talk your ear off about "Theorycrafting" (the art of figuring out, via some pretty complicated math, the best way to play a particular class), my incredible teammates, or how great it feels when finally, after literally hundred of attemps, all 20 people on the team "click" for that one perfect attempt and succeed to defeat the final boss of a dungeon. The problem-solving, teamwork, and coordination required to take 20 nerds sitting behind desks around the country and mold them into a coherent unit capable of executing some pretty sophisticated strategies is something magical and unique about WoW. I've never found anything like it in any other game. Believe me, I've tried. That teamwork, comradery, and sense of accomplishment is the primary reason I keep logging on every week. Unfortunately, this post isn't about any of that.
+
+### ✔️ What this post *is* about
 
 <!-- Intro to WeakAuras -->
-I love to code. I find my work incredibly enjoyable and rewarding, and after the workday ends I often hack on a hobby project for a few hours in the evening trying to learn something new. So you can imagine when I, as a new player ([noob](https://www.dictionary.com/browse/noob)) to WoW, discovered that I could write code that would assist my teammates and I in our quest to defeat the toughest bosses the game has to offer, I was pretty dang excited.  Let me tell you about a little program called [WeakAuras](https://github.com/WeakAuras/WeakAuras2).
+I love to code. I find my work incredibly enjoyable and rewarding, and after the workday ends I often hack on a hobby project for a few hours in the evening trying to learn something new. So you can imagine when I, as a new player ([noob](https://www.dictionary.com/browse/noob)) to WoW, discovered that I could write code that would assist my teammates and I in our quest to defeat the toughest bosses the game has to offer, I was pretty darn excited.  Let me tell you about a little program called [WeakAuras](https://github.com/WeakAuras/WeakAuras2).
 
 WeakAuras bills itself as:
 
 <Callout variant="info">"A powerful and flexible framework that allows the display of highly customizable graphics on World of Warcraft's user interface."</Callout> 
 
-Essentially, the program helps you, the player, write code that responds to a variety of events that the game's UI publishes. WoW's bosses are highly scripted encounters, and these "customizable graphics" can be things like:
+Essentially, WeakAuras helps you, the player, write code that responds to a variety of events that the game's UI publishes. These "customizable graphics" can be things like:
 
-- Little icons that count down to when a particular event is going to happen 
-- Fully-fledged programs that dynamically make and display decisions about which players to assign to handle certain jobs during the encounter. 
+- Little icons that count down to when a particular event during a boss encounter is going to happen 
+- Utilities that remind you to equip certain pieces of gear or add helpful labels to your map
+- Fully-fledged programs that dynamically make and display decisions about which players to assign to handle certain jobs during a boss encounter
 
-The program is so powerful, that the "very very best groups" I mentioned earlier have gone as far as to hire (for real money!) dedicated programmers whose sole job is to quickly, on-the-fly write them custom WeakAuras during the aforementioned **Race to World First**. WoW's development team has publically stated that when designing bosses, they now design around the knowledge that players will create clever WeakAuras to help them defeat the boss.
+WeakAuras is so powerful, that the "very very best groups" I mentioned earlier have gone as far as to hire (for real money!) [dedicated programmers](https://twitter.com/_Reloe) whose sole job is to quickly, on-the-fly write them custom WeakAuras during the aforementioned "Race to World First".
+
+WeakAuras has been around for years now, and there is an entire [ecosystem](https://wago.io/) built around it. One of the tools, an Electon / Vue "package manager" app called [WeakAuras Companion](https://weakauras.wtf), I actually contributed to back in it's early days.
 
 <!-- Do I embed the video here?  Or as a link within the text -->
-This all might sound like cheating, but WoW's UI has always allowed "add-ons" to modify it.  At times, when players have [created WeakAuras that were deemed too powerful](), the WoW development team has reigned the add-on back in by restricting code access to the problematic APIs. 
+This all might sound like cheating, but WoW's UI has always allowed "add-ons" to modify it. WoW's development team has publically stated that when designing bosses, they now design around the knowledge that players will create clever WeakAuras to help them defeat the boss. They design the bosses to be more challenging and mechanically complex than they otherwise might have. At times, when players have crafted WeakAuras there were deemed [too powerful](https://www.youtube.com/embed/ZJoJWQapVQo?controls=0), the WoW development team has reigned the add-on back in by restricting code access to problematic APIs.
 
 <video width="560" height="315" src="https://www.youtube.com/embed/ZJoJWQapVQo?controls=0" />
 
-### Examples
+
+### 👨‍💻 Examples
+
+If you're reading this blog, you're probably interested in the code, so let's get into that... 
 
 <!-- Section about Lua and writing WeakAuras -->
-You're probably here for the code, so let's get into that. WoW's UI API is written in [Lua](https://www.lua.org/). If you aren't familiar, Lua is a great little scripting language designed to be embedded into larger pieces of C / C++ software. You can even, thanks to web assembly, [run it in the browser](https://fengari.io/). It has quirks that take some getting used to (Lua's Arrays start at index 1 👀), but by and large it's great at what it does and is particularly ubiquitous in computer game UIs. As I mentioned earlier, much like JavaScript, WoW's UI is event driven. Your code registers listeners for certain events and then reacts to them as they occur. The APIs exposed by the WoW UI, however, can be a bit clunky. This is where WeakAuras comes in.  At it's core, it is a complex wrapper around the WoW UI API; abstracting away many of the pain points of interacting with the base APIs.
+WoW's UI API is written in [Lua](https://www.lua.org/about.html). If you aren't familiar, Lua is a great little scripting language built on top of C, designed to be embedded into larger pieces of software. You can even, thanks to web assembly, [run it in the browser](https://fengari.io/). It has some quirks that take some getting used to (Lua's Arrays start at index 1 👀), but by and large it's great at what it does and can be found everywhere in computer game UIs. 
+
+As alluded to earlier, much like JavaScript, WoW's UI API is event driven. Your code registers listeners for certain events and then reacts to them as they occur. The APIs exposed by the WoW UI, however, can be a bit clunky. This is where WeakAuras comes in.  It has a GUI for non-programmers, but at it's core it is a complex wrapper around the WoW UI API, abstracting away many of the pain points of interacting with the base APIs.
 
 Let's finally jump into some examples. WeakAuras are broken down into several functions:
 
-- `onInit`  - Initializes any state you want when the WeakAura first loads.  
+- `onInit`  - A place to initialize any state you want when the WeakAura first loads.  
 - `trigger` - Receives some event based arguments and tells the WeakAura whether or not it should display on the screen by returning a boolean value. 
 - `display` - Returns a value that will actually be displayed on the screen. 
 
 The following is a simple example WeakAura that counts the number of times a specific event has happened in an encounter and displays it on the player's screen.
 
-<Callout variant="warning">
-  <b>This is by no means supposed to serve as a WeakAuras tutorial</b>.  I've intentionally changed things and left things out to make this all easier to understand.  
+<Callout variant="danger">
+
+  **The following is not intended to serve as a WeakAuras tutorial**.  I've intentionally changed things and left things out to make this all easier to understand.  
+
 </Callout>
 
 ```lua { "filename": "onInit" }
@@ -85,7 +105,13 @@ function()
 end
 ```
 
-If you come from React, this pattern should be immediately recognizable to you. These functions are pretty similar to parts of the old React component lifecycle. I think it's  clear to see how this can be powerful, but this example isn't particularly useful. Perhaps, on a specific boss, you want to rotate and remind 3 of your players to take some action (cast a powerful healing spell or something) to save the group each time the boss attacks the group with a powerful ability. WeakAuras makes that easy. Below, I've adapted the last example to do that.
+If you have a strong [React](https://reactjs.org/) background, this pattern is probably immediately recognizable to you. You can draw the following parallels between them and parts of the old React component lifecycle:
+
+- `onInit` - `componentDidMount`
+- `trigger` - `componentWillReceiveProps`
+- `display` - `render`
+
+This pattern is be powerful, but the first example isn't particularly useful. Perhaps, on a specific boss, you want to rotate and remind 3 of your players to take some action (eg. cast a powerful healing spell) to save the group each time the boss attacks with a powerful ability. Below, I've adapted the last example to do that.
 
 ```lua { "filename": "onInit" }
 function()
@@ -137,20 +163,19 @@ function(event, subevent, spellId)
 end
 ```
 
-<!-- TODO: Some end to the code section here?  Conclusion?  Need to wrap this up and bring it around to the point somehow -->
+### Bring it back now
 
-### Some good Outro Heading
+I titled this post **"How I coded my way to victory in World of Warcraft"**, and hopefully you understand now what I meant by that. I have created dozens of WeakAuras over the years to help my team succeed. Further, I've created *hundreds* of WeakAuras for both me personally, and at the request of teammates, to help us succeed as individuals.
 
-<!-- Outro (which is bad so far and you should feel bad) -->
-It sounds dumb, but I've picked up quite a few valuable, transferable skills playing this game.  And, no, not just a new programming language I probably wouldn't have been exposed to otherwise. While that's certainly cool, I think that when the sun sets on WoW and the game is no longer around, what I'll *really* have taken with me are some of the lessons I learned about
+I've picked up quite a few valuable and transferable skills playing World of Warcraft. And, no, I don't mean a new programming language I probably wouldn't have been exposed to otherwise. While that's certainly cool, I think that when the sun sets on WoW and the game is no longer around, the *really* important things I'll have taken with me are some of the lessons I learned about:
 
-- being a member and eventually leader of a large and diverse team
-- collective problem-solving to achieve a common goal 
+- how to be a good teammate
+- cooperative problem-solving to achieve a common goal 
+- how to succeed in a large team with many diverse backgrounds and personalities
 
-<!-- SAY CHEESE!!!! -->
-and of course the friends I made along the way.
+Of course, I'll also take with me [all the friends I made along the way](https://knowyourmeme.com/memes/maybe-the-real-treasure-was-the-friends-we-made-along-the-way) (say cheese 😁).
 
-Before I go, just for fun, here's the final 1.5 minutes of top team Limit achieveing a world first final boss kill last year.  If you have a sharp eye, you'll notice a *lot* of WeakAuras on the screens of the featured players.
+Just for fun, here's the final 1.5 minutes of top team Limit achieveing a world first final boss kill last year.  If you look closely, you'll notice a *lot* of WeakAuras on the screens of the featured players.
 
 ***WARNING*** explicit language and lots of "nerdscreams"
 

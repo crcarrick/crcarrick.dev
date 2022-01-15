@@ -2,11 +2,20 @@ import React from 'react'
 
 import { getImage } from 'gatsby-plugin-image'
 
+import { Hero } from '~/components/Hero'
 import { Layout } from '~/views/Layout'
 
 import * as S from './About.style'
 
 export const About = ({ data }) => {
+  if (process.env.NODE_ENV === 'production') {
+    return (
+      <Layout>
+        <Hero type="construction" />
+      </Layout>
+    )
+  }
+
   const { profilePicture, miloPicture /* siteMetadata */ } = data
 
   return (
