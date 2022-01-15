@@ -7,7 +7,7 @@ import { Layout } from '~/views/Layout'
 
 import * as S from './About.style'
 
-export const About = ({ data }) => {
+export const About = ({ data, path }) => {
   if (process.env.NODE_ENV === 'production') {
     return (
       <Layout>
@@ -19,7 +19,7 @@ export const About = ({ data }) => {
   const { profilePicture, miloPicture /* siteMetadata */ } = data
 
   return (
-    <Layout seoTitle="About">
+    <Layout path={path} seoTitle="About">
       <S.Article>
         <h2>Hello!</h2>
         <div>

@@ -6,10 +6,10 @@ import { useSize } from '~/hooks/useSize'
 import { size as breakpointSize } from '~/utils/mixins'
 
 const baseConfig = {
-  headerFontFamily: ['Roboto Slab', 'sans-serif'],
-  bodyFontFamily: ['Roboto', 'sans-serif'],
+  headerFontFamily: ['Roboto Slab', 'Georgia', 'serif'],
+  bodyFontFamily: ['Roboto', 'Tahoma', 'sans-serif'],
   baseFontSize: 16,
-  baseLineHiehgt: 1.5,
+  baseLineHeight: 1.5,
   scaleRatio: 3,
 }
 
@@ -43,6 +43,8 @@ export const useTypography = () => {
       ...responsiveConfig,
     })
   }, [size])
+
+  console.log('test')
 
   return currentTypography
 }

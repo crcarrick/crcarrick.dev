@@ -4,8 +4,8 @@ import { graphql /* useStaticQuery */ } from 'gatsby'
 
 import { Blog } from '~/views/Blog'
 
-export default function BlogPage({ data }) {
-  return <Blog posts={data.posts.nodes} />
+export default function BlogPage({ data, location }) {
+  return <Blog path={location.pathname} posts={data.posts.nodes} />
 }
 
 export const query = graphql`

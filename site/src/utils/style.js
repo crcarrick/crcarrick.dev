@@ -65,6 +65,10 @@ const misc = ({ theme: { color } }) => css`
   --hero-chair: ${color.primary.lighten(25).toRgba(0.5)};
 `
 
+const typography = ({ typography: { css: typographyCSS } }) => css`
+  ${typographyCSS}
+`
+
 export const GlobalStyle = createGlobalStyle`
   :root {
     ${backgrounds}
@@ -73,6 +77,8 @@ export const GlobalStyle = createGlobalStyle`
     ${spacing}
     ${misc}
   }
+
+  ${typography}
 
   * {
     box-sizing: border-box;

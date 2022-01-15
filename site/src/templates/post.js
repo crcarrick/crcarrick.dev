@@ -4,8 +4,8 @@ import { graphql } from 'gatsby'
 
 import { Post } from '~/views/Post'
 
-export default function PostTemplate({ data }) {
-  return <Post post={data.post} />
+export default function PostTemplate({ path, data }) {
+  return <Post path={path} post={data.post} />
 }
 
 export const query = graphql`

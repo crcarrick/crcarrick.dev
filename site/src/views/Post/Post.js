@@ -9,9 +9,9 @@ import * as S from './Post.style'
 
 // TODO: Need to extract this "Post Metadata" thing out into it's own component.
 //       It's used in several places now in the exact same manner (published at date * emoji * reading time)
-export const Post = ({ post }) => {
+export const Post = ({ path, post }) => {
   return (
-    <Layout post={post}>
+    <Layout path={path} post={post}>
       <S.Article>
         <S.Title>{post.frontmatter.title}</S.Title>
         <S.Meta>

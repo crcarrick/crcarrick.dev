@@ -6,9 +6,9 @@ import { Layout } from '~/views/Layout'
 
 import * as S from './Blog.style'
 
-export const Blog = ({ posts }) => {
+export const Blog = ({ path, posts }) => {
   return (
-    <Layout seoTitle="Blog">
+    <Layout path={path} seoTitle="Blog">
       <Filter posts={posts}>
         {({ results }) => (
           <S.Posts>

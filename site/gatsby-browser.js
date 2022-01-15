@@ -5,7 +5,6 @@ import '@fontsource/roboto-slab'
 import React from 'react'
 
 import { MDXProvider } from '@mdx-js/react'
-import { TypographyStyle } from 'react-typography'
 import { ThemeProvider as StyledThemeProvider } from 'styled-components'
 
 import { Button } from '~/components/Button'
@@ -47,7 +46,6 @@ export const wrapPageElement = ({ element }) => (
   <Typography.Consumer>
     {(typography) => (
       <React.Fragment>
-        <TypographyStyle typography={typography} />
         <GlobalStyle typography={typography} />
         {element}
       </React.Fragment>

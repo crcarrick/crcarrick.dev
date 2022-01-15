@@ -4,7 +4,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 
 import { About } from '~/views/About'
 
-export default function AboutPage() {
+export default function AboutPage({ location }) {
   const data = useStaticQuery(graphql`
     query AboutPage {
       site {
@@ -37,5 +37,5 @@ export default function AboutPage() {
     }
   `)
 
-  return <About data={data} />
+  return <About data={data} path={location.pathname} />
 }
