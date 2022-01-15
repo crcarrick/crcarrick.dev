@@ -1,12 +1,18 @@
 import styled, { css } from 'styled-components'
 
+import { breakpoint } from '~/utils/mixins'
+
 const style = css`
   font: var(--font-code);
-  padding: var(--space-sm);
   text-transform: uppercase;
   border: solid var(--border-width) var(--color-primary);
   white-space: nowrap;
   line-height: 1;
+  padding: var(--space-md);
+
+  ${breakpoint.lg} {
+    padding: var(--space-sm);
+  }
 `
 
 export const Tag = styled.div`
@@ -15,6 +21,7 @@ export const Tag = styled.div`
 
 export const TagButton = styled.button`
   ${style}
+
   cursor: pointer;
 
   ${({ isActive }) => {

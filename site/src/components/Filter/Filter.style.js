@@ -3,15 +3,20 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { Callout } from '~/components/Callout'
+import { breakpoint } from '~/utils/mixins'
 
 export const Input = styled.input`
   width: 100%;
-  padding: var(--space-xs) var(--space-md);
+  padding: var(--space-md) var(--space-md);
   margin-bottom: var(--space-xl);
   background-color: transparent;
   color: var(--color-text);
   border: solid var(--border-width);
   font: var(--font-code);
+
+  ${breakpoint.md} {
+    padding: var(--space-xs) var(--space-md);
+  }
 
   &[type='search'] {
     -webkit-appearance: none;

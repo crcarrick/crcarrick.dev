@@ -42,7 +42,7 @@ Essentially, WeakAuras helps you, the player, write code that responds to a vari
 
 WeakAuras is so powerful, that the "very very best groups" have gone as far as to hire (for real money!) [dedicated programmers](https://twitter.com/_Reloe) whose sole job is to quickly, on-the-fly write them custom WeakAuras during the aforementioned "Race to World First".
 
-WeakAuras has been around for years now, and there is an entire [ecosystem](https://wago.io/) built around it. One of the tools, an Electron / Vue "package manager" app called [WeakAuras Companion](https://weakauras.wtf), I actually contributed to back in it's early days.
+WeakAuras has been around for years now, and there is an entire [ecosystem](https://wago.io/) built around it. One of the tools in that ecosystem, an Electron / Vue "package manager" app called [WeakAuras Companion](https://weakauras.wtf), I contributed to back in it's early days.
 
 This all might sound like cheating, but WoW's UI has always allowed "add-ons" to modify it. WoW's development team has publicly stated that when designing bosses, they now design around the knowledge that players will create clever WeakAuras to help them defeat the boss. They design the bosses to be more challenging and mechanically complex than they otherwise might have. At times, when players have crafted WeakAuras that were deemed too powerful, the WoW development team has reined the add-on back in by restricting code access to problematic APIs.
 
@@ -56,21 +56,21 @@ WoW's UI API is written in [Lua](https://www.lua.org/about.html). If you aren't 
 
 As alluded to earlier, much like JavaScript, WoW's UI API is event driven. Your code registers listeners for certain events and then reacts to them as they occur. The APIs exposed by the WoW UI, however, can be a bit clunky. This is where WeakAuras comes in.  It has a GUI for non-programmers, but at it's core it is a complex wrapper around the WoW UI API, abstracting away many of the pain points of interacting with the base APIs.
 
-Let's finally jump into some examples. WeakAuras are broken down into several functions:
-
-- `onInit`  - A place to initialize any state you want when the WeakAura first loads.  
-- `trigger` - Receives some event based arguments and tells the WeakAura whether or not it should display on the screen by returning a boolean value. 
-- `display` - Returns a value that will actually be displayed on the screen. 
-
-The following is a simple example WeakAura that counts the number of times a specific event has happened in an encounter and displays it on the player's screen.
-
 <Callout variant="danger">
 
-  **These examples are not intended to serve as a WeakAuras tutorial**.  I've intentionally changed things and left things out to make this all easier to understand.  
+  **The following examples are not intended to serve as a WeakAuras tutorial**.  I've intentionally changed some things and left other things out to make this all easier to understand.  
 
 </Callout>
 
-```lua { "filename": "onInit" }
+Let's finally jump into some examples. An individual WeakAura can be broken down into a few functions:
+
+- `init`    - A place to initialize any state you want when the WeakAura first loads.  
+- `trigger` - Receives some event based arguments and tells the WeakAura whether or not it should display on the screen by returning a boolean value. 
+- `display` - Returns a value that will actually be displayed on the screen. 
+
+There are more, but for the purposes of this post these are enough. The following is a simple example WeakAura that utilizes these functions to count the number of times a specific event has happened in an encounter and displays it on the player's screen.
+
+```lua { "filename": "init" }
 function()
   -- aura_env is a non-reactive table scoped to your WeakAura 
   -- that you can write data you want to be preserved 
@@ -102,7 +102,7 @@ end
 
 If you have a [React](https://reactjs.org/) background, this pattern is probably immediately recognizable to you. You can draw the following parallels between these functions and parts of the old React component lifecycle:
 
-- `onInit`  - `componentDidMount`
+- `init`    - `componentDidMount`
 - `trigger` - `componentWillReceiveProps`
 - `display` - `render`
 
@@ -110,14 +110,14 @@ They aren't perfect matches, but it's *pretty* close.
 
 There's a problem with the above example, though. It isn't particularly useful. Perhaps, on a specific boss, you want to rotate and remind 3 of your players to take some action (eg. cast a powerful healing spell) to save the group each time the boss attacks with a powerful ability. Below, I've adapted the code to do that.
 
-```lua { "filename": "onInit" }
+```lua { "filename": "init" }
 function()
   aura_env.count = 0
   aura_env.currentPlayer = nil
   aura_env.playerRotation = { 
-    "Player 1", 
-    "Player 2", 
-    "Player 3" 
+    "Lisa", 
+    "Milo", 
+    "Chris", 
   }
 end
 ```
@@ -170,7 +170,7 @@ Even though I promised you that this post was most certainly *not* about a few t
 - cooperative problem-solving to achieve a common goal 
 - how to succeed in a large team with many diverse backgrounds and personalities
 
-Of course, I'll also take with me [all the friends I made along the way](https://knowyourmeme.com/memes/maybe-the-real-treasure-was-the-friends-we-made-along-the-way) 😉.
+Of course, I'll also take with me [all the friends I made along the way](https://knowyourmeme.com/memes/maybe-the-real-treasure-was-the-friends-we-made-along-the-way).
 
 Just for fun, here's the final 1.5 minutes of top team Limit achieving a world first final boss kill last year.  If you watch closely, you'll notice a *lot* of WeakAuras on the screens of the featured players.
 

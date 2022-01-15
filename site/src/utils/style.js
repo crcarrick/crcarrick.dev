@@ -148,10 +148,6 @@ export const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
 
-  li {
-    margin-bottom: 0;
-  }
-
   a {
     color: inherit;
     text-decoration: none;

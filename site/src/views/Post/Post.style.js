@@ -19,9 +19,9 @@ export const Article = styled.article`
   > h4,
   > h5,
   > h6,
-  > div,
   > ul,
   > ol,
+  > div,
   > aside {
     margin-top: 0;
     margin-bottom: var(--space-xl);
@@ -34,6 +34,14 @@ export const Article = styled.article`
   ul,
   ol {
     list-style: initial;
+  }
+
+  li {
+    margin-bottom: var(--space-md);
+
+    ${breakpoint.lg} {
+      margin-bottom: 0;
+    }
   }
 `
 
