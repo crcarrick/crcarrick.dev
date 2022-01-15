@@ -55,20 +55,6 @@ module.exports = {
         trackingId: process.env.GOOGLE_TRACKING_ID,
       },
     },
-    {
-      resolve: 'gatsby-plugin-google-fonts',
-      options: {
-        fonts: [
-          `open sans:400,400i,700,700i`,
-          `oswald:400,700`,
-          `roboto slab:400,400i,700,700i`,
-          `roboto:400,400i,700,700i`,
-          `roboto mono:400,600`,
-        ],
-        display: 'swap',
-      },
-    },
-
     // Images
     {
       resolve: 'gatsby-plugin-react-svg',
