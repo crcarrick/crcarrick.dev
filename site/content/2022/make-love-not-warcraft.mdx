@@ -24,7 +24,7 @@ I know what you're thinking, and you're right. I am pretty cool 😎.
 
 ### ❌ What this post *is not* about
 
-I'd love to talk your ear off about "Theorycrafting" (the art of figuring out, via some pretty complicated math, the best way to play a particular class), my incredible teammates, or how great it feels when finally, after literally hundred of attemps, all 20 people on the team "click" for that one perfect attempt and succeed to defeat the final boss of a dungeon. The problem-solving, teamwork, and coordination required to take 20 nerds sitting behind desks around the country and mold them into a coherent unit capable of executing some pretty sophisticated strategies is something magical and unique about WoW. I've never found anything like it in any other game. Believe me, I've tried. That teamwork, comradery, and sense of accomplishment is the primary reason I keep logging on every week. Unfortunately, this post isn't about any of that.
+I'd love to talk your ear off about "Theorycrafting" (the art of figuring out, via some pretty complicated math, the best way to play a particular class), my incredible teammates, or how great it feels when finally, after literally hundred of attempts, all 20 people on the team "click" for that one perfect attempt and succeed to defeat the final boss of a dungeon. The problem-solving, teamwork, and coordination required to take 20 nerds sitting behind desks around the country and mold them into a coherent unit capable of executing some pretty sophisticated strategies is something magical and unique about WoW. I've never found anything like it in any other game. Believe me, I've tried. That teamwork, comradery, and sense of accomplishment is the primary reason I keep logging on every week. Unfortunately, this post isn't really about any of those things.
 
 ### ✔️ What this post *is* about
 
@@ -40,14 +40,13 @@ Essentially, WeakAuras helps you, the player, write code that responds to a vari
 - Utilities that remind you to equip certain pieces of gear or add helpful labels to your map
 - Fully-fledged programs that dynamically make and display decisions about which players to assign to handle certain jobs during a boss encounter
 
-WeakAuras is so powerful, that the "very very best groups" I mentioned earlier have gone as far as to hire (for real money!) [dedicated programmers](https://twitter.com/_Reloe) whose sole job is to quickly, on-the-fly write them custom WeakAuras during the aforementioned "Race to World First".
+WeakAuras is so powerful, that the "very very best groups" have gone as far as to hire (for real money!) [dedicated programmers](https://twitter.com/_Reloe) whose sole job is to quickly, on-the-fly write them custom WeakAuras during the aforementioned "Race to World First".
 
-WeakAuras has been around for years now, and there is an entire [ecosystem](https://wago.io/) built around it. One of the tools, an Electon / Vue "package manager" app called [WeakAuras Companion](https://weakauras.wtf), I actually contributed to back in it's early days.
+WeakAuras has been around for years now, and there is an entire [ecosystem](https://wago.io/) built around it. One of the tools, an Electron / Vue "package manager" app called [WeakAuras Companion](https://weakauras.wtf), I actually contributed to back in it's early days.
 
 This all might sound like cheating, but WoW's UI has always allowed "add-ons" to modify it. WoW's development team has publically stated that when designing bosses, they now design around the knowledge that players will create clever WeakAuras to help them defeat the boss. They design the bosses to be more challenging and mechanically complex than they otherwise might have. At times, when players have crafted WeakAuras that were deemed too powerful, the WoW development team has reined the add-on back in by restricting code access to problematic APIs.
 
 <video width="560" height="315" src="https://www.youtube.com/embed/ZJoJWQapVQo?controls=0" />
-
 
 ### 👨‍💻 Examples
 
@@ -101,13 +100,15 @@ function()
 end
 ```
 
-If you have a strong [React](https://reactjs.org/) background, this pattern is probably immediately recognizable to you. You can draw the following parallels between them and parts of the old React component lifecycle:
+If you have a [React](https://reactjs.org/) background, this pattern is probably immediately recognizable to you. You can draw the following parallels between these functions and parts of the old React component lifecycle:
 
-- `onInit` - `componentDidMount`
+- `onInit`  - `componentDidMount`
 - `trigger` - `componentWillReceiveProps`
 - `display` - `render`
 
-This pattern is powerful, but the first example isn't particularly useful. Perhaps, on a specific boss, you want to rotate and remind 3 of your players to take some action (eg. cast a powerful healing spell) to save the group each time the boss attacks with a powerful ability. Below, I've adapted the last example to do that.
+They aren't perfect matches, but it's *pretty* close. 
+
+There's a problem with the above example, though. It isn't particularly useful. Perhaps, on a specific boss, you want to rotate and remind 3 of your players to take some action (eg. cast a powerful healing spell) to save the group each time the boss attacks with a powerful ability. Below, I've adapted the code to do that.
 
 ```lua { "filename": "onInit" }
 function()
@@ -148,7 +149,7 @@ function()
 end
 ```
 
-You could even adapt that last `trigger` function to only show the text on the screen of the person whose turn it currently is using some [built-ins](https://github.com/WeakAuras/WeakAuras2/wiki/Useful-variables-and-functions-within-WeakAuras) WeakAuras provides you.
+You could even change that last `trigger` function to only show the text on the screen of the person whose turn it currently is using some [built-ins](https://github.com/WeakAuras/WeakAuras2/wiki/Useful-variables-and-functions-within-WeakAuras) WeakAuras provides you.
 
 ```lua { "filename": "trigger", "highlight": "5" }
 function(event, subevent, spellId)
@@ -163,7 +164,7 @@ end
 
 I titled this post **"How I coded my way to victory in World of Warcraft"**, and hopefully you understand now what I meant by that. I have created dozens of WeakAuras over the years to help my team succeed. Further, I've created *hundreds* of WeakAuras for both me personally, and at the request of teammates, to help us succeed as individuals.
 
-I've picked up quite a few valuable and transferable skills playing World of Warcraft. And, no, I don't mean a new programming language I probably wouldn't have been exposed to otherwise. While that's certainly cool, I think that when the sun sets on WoW and the game is no longer around, the *really* important things I'll have taken with me are some of the lessons I learned about:
+Even though I promised you that this post was most certainly *not* about a few things earlier, I've changed my mind here at the end. I've picked up quite a few valuable and transferable skills playing World of Warcraft, and I feel it would be remiss to not highlight them. And, no, I don't mean a new programming language I probably wouldn't have been exposed to otherwise. While that's certainly cool, I think that when the sun sets on WoW and the game is no longer around, the *really* important things I'll have taken with me are some of the lessons I learned about:
 
 - how to be a good teammate
 - cooperative problem-solving to achieve a common goal 
@@ -171,7 +172,7 @@ I've picked up quite a few valuable and transferable skills playing World of War
 
 Of course, I'll also take with me [all the friends I made along the way](https://knowyourmeme.com/memes/maybe-the-real-treasure-was-the-friends-we-made-along-the-way) (say cheese 😁).
 
-Just for fun, here's the final 1.5 minutes of top team Limit achieveing a world first final boss kill last year.  If you look closely, you'll notice a *lot* of WeakAuras on the screens of the featured players.
+Just for fun, here's the final 1.5 minutes of top team Limit achieveing a world first final boss kill last year.  If you watch closely, you'll notice a *lot* of WeakAuras on the screens of the featured players.
 
 ***WARNING*** explicit language and lots of "nerdscreams"
 
