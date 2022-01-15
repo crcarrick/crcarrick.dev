@@ -18,6 +18,6 @@ export const Video = styled.iframe`
   ${style}
 `
 
-export const Placeholder = styled.img`
+export const Placeholder = styled.div`
   ${style}
 `

@@ -2,7 +2,7 @@ import React from 'react'
 
 import * as S from './Video.style'
 
-export const Video = ({ alt, width = 600, height = 450, title = 'YouTube video player', ytId }) => {
+export const Video = ({ width = 600, height = 450, title = 'YouTube video player', ytId }) => {
   const [inView, setInView] = React.useState(false)
 
   const videoWrapperRef = (element) => {
@@ -34,7 +34,7 @@ export const Video = ({ alt, width = 600, height = 450, title = 'YouTube video p
           title={title}
         />
       ) : (
-        <S.Placeholder alt={alt} src={`https://img.youtube.com/vi/${ytId}/hqdefault.jpg`} />
+        <S.Placeholder width={width} height={height} />
       )}
     </S.VideoWrapper>
   )
