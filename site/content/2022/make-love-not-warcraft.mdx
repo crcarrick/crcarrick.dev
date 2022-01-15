@@ -4,11 +4,10 @@ description: A brief detour into my third love, World of Warcraft, and how my co
 featuredImage: ../../src/assets/images/weakauras.png
 featuredIcon: wow
 author: Chris Carrick
-published: 2022-01-10T11:48:12.000Z
+published: 2022-01-14T08:27:12.000Z
 tags: ['lua', 'world of warcraft', 'weakauras']
 ---
 
-<!-- Opening segment -->
 I have a confession to make... I play *a lot* of [World of Warcraft](https://worldofwarcraft.com/en-us/). 
 
 Twice a week, a few hours after dinner, me and 19 other guys and gals team up for 4 hours to beat our heads against the latest and most difficult bosses the game has to offer. I primarily play a [Monk](https://worldofwarcraft.com/en-us/game/classes/monk), and my team generally ranks somewhere inside the top 100 teams in the US; even finishing as high as US #42 two dungeons ago. I'm proud of that, as finishing in the US Top 100 is considered quite good for an 8 hour / week team. Many of the teams we compete with play together for 12 or even 16 hours / week. The very very best groups quite literally play **16 hours per day, 7 days a week**, not relenting from these absurd hours until the final boss of the dungeon is defeated.
@@ -29,7 +28,6 @@ I'd love to talk your ear off about "Theorycrafting" (the art of figuring out, v
 
 ### ✔️ What this post *is* about
 
-<!-- Intro to WeakAuras -->
 I love to code. I find my work incredibly enjoyable and rewarding, and after the workday ends I often hack on a hobby project for a few hours in the evening trying to learn something new. So you can imagine when I, as a new player ([noob](https://www.dictionary.com/browse/noob)) to WoW, discovered that I could write code that would assist my teammates and I in our quest to defeat the toughest bosses the game has to offer, I was pretty darn excited.  Let me tell you about a little program called [WeakAuras](https://github.com/WeakAuras/WeakAuras2).
 
 WeakAuras bills itself as:
@@ -46,8 +44,7 @@ WeakAuras is so powerful, that the "very very best groups" I mentioned earlier h
 
 WeakAuras has been around for years now, and there is an entire [ecosystem](https://wago.io/) built around it. One of the tools, an Electon / Vue "package manager" app called [WeakAuras Companion](https://weakauras.wtf), I actually contributed to back in it's early days.
 
-<!-- Do I embed the video here?  Or as a link within the text -->
-This all might sound like cheating, but WoW's UI has always allowed "add-ons" to modify it. WoW's development team has publically stated that when designing bosses, they now design around the knowledge that players will create clever WeakAuras to help them defeat the boss. They design the bosses to be more challenging and mechanically complex than they otherwise might have. At times, when players have crafted WeakAuras there were deemed [too powerful](https://www.youtube.com/embed/ZJoJWQapVQo?controls=0), the WoW development team has reigned the add-on back in by restricting code access to problematic APIs.
+This all might sound like cheating, but WoW's UI has always allowed "add-ons" to modify it. WoW's development team has publically stated that when designing bosses, they now design around the knowledge that players will create clever WeakAuras to help them defeat the boss. They design the bosses to be more challenging and mechanically complex than they otherwise might have. At times, when players have crafted WeakAuras there were deemed too, the WoW development team has reigned the add-on back in by restricting code access to problematic APIs.
 
 <video width="560" height="315" src="https://www.youtube.com/embed/ZJoJWQapVQo?controls=0" />
 
@@ -56,7 +53,6 @@ This all might sound like cheating, but WoW's UI has always allowed "add-ons" to
 
 If you're reading this blog, you're probably interested in the code, so let's get into that... 
 
-<!-- Section about Lua and writing WeakAuras -->
 WoW's UI API is written in [Lua](https://www.lua.org/about.html). If you aren't familiar, Lua is a great little scripting language built on top of C, designed to be embedded into larger pieces of software. You can even, thanks to web assembly, [run it in the browser](https://fengari.io/). It has some quirks that take some getting used to (Lua's Arrays start at index 1 👀), but by and large it's great at what it does and can be found everywhere in computer game UIs. 
 
 As alluded to earlier, much like JavaScript, WoW's UI API is event driven. Your code registers listeners for certain events and then reacts to them as they occur. The APIs exposed by the WoW UI, however, can be a bit clunky. This is where WeakAuras comes in.  It has a GUI for non-programmers, but at it's core it is a complex wrapper around the WoW UI API, abstracting away many of the pain points of interacting with the base APIs.

@@ -2,20 +2,11 @@ import React from 'react'
 
 import { Card } from '~/components/Card'
 import { Filter } from '~/components/Filter'
-import { Hero } from '~/components/Hero'
 import { Layout } from '~/views/Layout'
 
 import * as S from './Blog.style'
 
 export const Blog = ({ posts }) => {
-  if (process.env.NODE_ENV === 'production') {
-    return (
-      <Layout>
-        <Hero type="construction" />
-      </Layout>
-    )
-  }
-
   return (
     <Layout seoTitle="Blog">
       <Filter posts={posts}>
