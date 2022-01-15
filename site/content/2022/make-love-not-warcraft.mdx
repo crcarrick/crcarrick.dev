@@ -10,7 +10,7 @@ tags: ['lua', 'world of warcraft', 'weakauras']
 
 I have a confession to make... I play *a lot* of [World of Warcraft](https://worldofwarcraft.com/en-us/). 
 
-Twice a week, a few hours after dinner, me and 19 other guys and gals team up for 4 hours to beat our heads against the latest and most difficult bosses the game has to offer. Ny team generally ranks somewhere inside the top 100 teams in the US, even finishing as high as US #42 two dungeons ago. I'm proud of that, as finishing in the US Top 100 is considered quite good for an 8 hour / week team. Many of the teams we compete with play together for 12 or even 16 hours / week. The very very [best](https://www.limit-guild.com/) [groups](https://echoesports.gg/home) quite literally play **16 hours per day, 7 days a week**, not relenting from these grueling hours until the final boss of the dungeon is defeated.
+Twice a week, a few hours after dinner, me and 19 other guys and gals team up for 4 hours to beat our heads against the latest and most difficult bosses the game has to offer. My team generally ranks somewhere inside the top 100 teams in the US, even finishing as high as US #42 two dungeons ago. I'm proud of that, as finishing in the US Top 100 is considered quite good for an 8 hour / week team. Many of the teams we compete with play together for 12 or even 16 hours / week. The very very [best](https://www.limit-guild.com/) [groups](https://echoesports.gg/home) quite literally play **16 hours per day, 7 days a week**, not relenting from these grueling hours until the final boss of the dungeon is defeated.
 
 <Callout variant="info">
 
@@ -44,7 +44,7 @@ WeakAuras is so powerful, that the "very very best groups" have gone as far as t
 
 WeakAuras has been around for years now, and there is an entire [ecosystem](https://wago.io/) built around it. One of the tools, an Electron / Vue "package manager" app called [WeakAuras Companion](https://weakauras.wtf), I actually contributed to back in it's early days.
 
-This all might sound like cheating, but WoW's UI has always allowed "add-ons" to modify it. WoW's development team has publically stated that when designing bosses, they now design around the knowledge that players will create clever WeakAuras to help them defeat the boss. They design the bosses to be more challenging and mechanically complex than they otherwise might have. At times, when players have crafted WeakAuras that were deemed too powerful, the WoW development team has reined the add-on back in by restricting code access to problematic APIs.
+This all might sound like cheating, but WoW's UI has always allowed "add-ons" to modify it. WoW's development team has publicly stated that when designing bosses, they now design around the knowledge that players will create clever WeakAuras to help them defeat the boss. They design the bosses to be more challenging and mechanically complex than they otherwise might have. At times, when players have crafted WeakAuras that were deemed too powerful, the WoW development team has reined the add-on back in by restricting code access to problematic APIs.
 
 <video width="560" height="315" src="https://www.youtube.com/embed/ZJoJWQapVQo?controls=0" />
 
@@ -80,7 +80,7 @@ end
 ```
 
 ```lua { "filename": "trigger" }
-function(event, subevent)
+function(event, subvent)
   if event == "COMBAT_EVENT" 
     and subevent == "SPELLCAST_SUCCEEDED" 
   then
@@ -172,7 +172,7 @@ Even though I promised you that this post was most certainly *not* about a few t
 
 Of course, I'll also take with me [all the friends I made along the way](https://knowyourmeme.com/memes/maybe-the-real-treasure-was-the-friends-we-made-along-the-way) (say cheese 😁).
 
-Just for fun, here's the final 1.5 minutes of top team Limit achieveing a world first final boss kill last year.  If you watch closely, you'll notice a *lot* of WeakAuras on the screens of the featured players.
+Just for fun, here's the final 1.5 minutes of top team Limit achieving a world first final boss kill last year.  If you watch closely, you'll notice a *lot* of WeakAuras on the screens of the featured players.
 
 ***WARNING*** explicit language and lots of "nerdscreams"
 
