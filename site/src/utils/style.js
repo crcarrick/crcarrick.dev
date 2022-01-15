@@ -1,6 +1,6 @@
 import { createGlobalStyle, css } from 'styled-components'
 
-import { transition } from '~/utils/mixins'
+import { breakpoint, transition } from '~/utils/mixins'
 
 const backgrounds = ({ theme: { color, mode } }) => {
   const darkMode = mode.name === 'dark'
@@ -66,6 +66,33 @@ const misc = ({ theme: { color } }) => css`
 `
 
 const typography = ({ typography: { css: typographyCSS } }) => css`
+  // Trying to hack the Cumulative Layout Shift issue here
+  // by setting some defaults.
+  //
+  // I really need to think about ditching typography.js
+  html {
+    font-family: 'Roboto', Tahoma, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+
+    ${breakpoint.md} {
+      font-size: 18px;
+    }
+
+    ${breakpoint.lg} {
+      font-size: 20px;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Roboto Slab', Georgia, serif;
+  }
+
   ${typographyCSS}
 `
 

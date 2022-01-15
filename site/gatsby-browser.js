@@ -1,7 +1,3 @@
-import '@fontsource/roboto'
-import '@fontsource/roboto-mono'
-import '@fontsource/roboto-slab'
-
 import React from 'react'
 
 import { MDXProvider } from '@mdx-js/react'

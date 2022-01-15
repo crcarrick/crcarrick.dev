@@ -44,7 +44,5 @@ export const useTypography = () => {
     })
   }, [size])
 
-  console.log('test')
-
   return currentTypography
 }
