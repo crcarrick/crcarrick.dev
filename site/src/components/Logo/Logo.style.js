@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import LogoSVG from '~/assets/svg/logo.svg'
 import { Link } from '~/views/Layout/Header/Header.style'
 
-
 export const Logo = styled(LogoSVG)`
   width: var(--space-xl);
   height: var(--space-xl);
@@ -21,7 +20,9 @@ export const Name = styled.h4`
   margin: 0;
 
   ${Link}:focus & {
-    text-decoration: underline var(--color-primary) var(--border-width);
+    text-decoration-line: underline;
+    text-decoration-color: var(--color-primary);
+    text-decoration-thickness: var(--border-width);
     text-underline-offset: var(--border-width);
   }
 `

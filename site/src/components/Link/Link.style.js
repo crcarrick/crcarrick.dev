@@ -13,7 +13,9 @@ const style = css`
   &:hover,
   &:focus {
     outline: none;
-    text-decoration: underline var(--color-primary) var(--border-width);
+    text-decoration-line: underline;
+    text-decoration-color: var(--color-primary);
+    text-decoration-thickness: var(--border-width);
   }
 
   ${Nav} & {
@@ -24,7 +26,9 @@ const style = css`
 
   ${Article} & {
     color: var(--color-text);
-    text-decoration: underline var(--color-primary) var(--border-width);
+    text-decoration-line: underline;
+    text-decoration-color: var(--color-primary);
+    text-decoration-thickness: var(--border-width);
     text-underline-offset: var(--border-width);
 
     &:hover,
