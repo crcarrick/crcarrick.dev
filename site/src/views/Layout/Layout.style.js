@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-import { breakpoint } from '@utils/mixins';
+import { breakpoint } from '~/utils/mixins'
 
 export const PageWrapper = styled.div`
   display: flex;
@@ -16,11 +16,11 @@ export const PageWrapper = styled.div`
   ${breakpoint.lg} {
     padding: 0;
   }
-`;
+`
 
 export const Main = styled.main`
   display: flex;
   flex-direction: column;
   flex: 1;
   height: 100%;
-`;
+`

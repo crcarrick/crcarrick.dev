@@ -1,0 +1,250 @@
+---
+title: 'Testing Recipe: Cypress + Jest + MSW'
+description: A brief guide on how to share your MSW configuration between Jest and Cypress tests
+featuredImage: ../../src/assets/images/code__laptop.jpg
+featuredIcon: react
+author: Chris Carrick
+published: 1970-01-01T00:00:00.000Z
+tags: ['testing recipe', 'react', 'cypress', 'jest', 'msw', 'testing', 'javascript', 'typescript']
+---
+
+## Setup & Installation
+
+```shell
+# create the project
+npx create-react-app dogs-list
+# install dependencies
+cd dogs-list && yarn add -D @testing-library/cypress cypress msw
+```
+
+## Setup MSW
+
+```js { "filename": "src/test/mocks/data.js" }
+export const dogs = [
+  {
+    id: 1,
+    name: 'Milo',
+    description: 'Best boy',
+  },
+  {
+    id: 2,
+    name: 'Summer',
+    description: 'Best girl',
+  },
+]
+```
+
+```js { "filename": "src/test/mocks/handlers.js" }
+import { rest } from 'msw'
+
+import { dogs } from './data'
+
+export const handlers = [
+  rest.get('/dogs', (_req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json(dogs)
+    )
+  }),
+]
+```
+
+```js { "filename": "src/test/mocks/server.js" }
+import { setupWorker } from 'msw'
+
+import { handlers } from './handlers'
+
+export const worker = setupWorker(...handlers)
+```
+
+## Setup App
+
+```jsx { "filename": "src/App.jsx" }
+import React from 'react'
+
+export function App() {
+  const [dogs, setDogs] = React.useState([])
+
+  React.useEffect(() => {
+    async function fetchDogs() {
+      const dogs = await fetch('/dogs')
+
+      setDogs(dogs)
+    }
+
+    fetchDogs()
+  }, [setDogs])
+
+  return (
+    <ul>
+      {dogs.map((dog) => (
+        <li key={dog.id}>
+          {dog.name} - {dog.description}
+        </li>
+      ))}
+    </ul>
+  )
+}
+```
+
+```jsx { "filename": "src/index.jsx" }
+import ReactDOM from 'react-dom'
+
+import { App } from './App'
+
+ReactDOM.render(
+  <App />, 
+  document.getElementById('root')
+)
+```
+
+## Setup Jest
+
+```js { "filename": "src/setupTests.js" }
+import '@testing-library/jest-dom/extend-expect'
+
+import { server } from './test/mocks/server'
+
+beforeAll(() => server.start())
+afterEach(() => server.resetHandlers())
+afterAll(() => server.close())
+```
+
+```jsx { "filename": "src/App.test.jsx" }
+import { render, screen } from '@testing-library/react'
+
+import { dogs } from '../test/mocks/data'
+
+import { App } from './App'
+
+
+test('renders the list of dogs', async () => {
+  render(<App />)
+
+  const listItems = await screen.findAllByRole('listitem')
+
+  expect(listItems).toHaveLength(2)
+  listItems.forEach((listItem, index) => {
+    expect(listItem).toBeInTheDocument()
+    expect(listItem).toHaveTextContent(new RegExp(dogs[index].name, 'i'))
+  })
+})
+```
+
+## Setup Cypress
+
+```shell
+yarn cypress open
+```
+
+```js { "filename": "cypress/support/commands.ts" }
+import '@testing-library/cypress/add-commands'
+```
+
+```js { "filename": "src/test/mocks/browser.js" }
+import { setupWorker } from 'msw'
+
+import { handlers } from './handlers'
+
+export const worker = setupWorker(...handlers)
+
+window.msw = {
+  worker,
+}
+```
+
+```diff { "filename": "src/index.js" }
+import ReactDOM from 'react-dom'
+
+import { App } from './App'
++ import { worker } from './test/mocks/browser'
+ 
++ if (process.env.NODE_ENV === 'development') {
++  worker.start()
++ }
+ 
+ReactDOM.render(
+  <App />, 
+  document.getElementById('root')
+)
+```
+
+```shell
+yarn add -D start-server-and-test
+```
+
+```json { "filename": "package.json", "highlight": "8-9" }
+{
+  // ... rest of package.json config
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject",
+    "test": "react-scripts test",
+    "test:e2e": "start-server-and-test 'yarn start' 3000 'yarn cypress'",
+    "cypress": "cypress open",
+  }
+}
+```
+
+```js { "filename": "cypress/integration/App.test.js" }
+import { dogs } from '../../src/test/mocks/data'
+
+before(() => cy.visit('/'))
+afterEach(() => cy.window().then((win) => win.msw.worker.resetHandlers()))
+after(() => cy.window().then((win) => win.msw.worker.close()))
+
+it('renders the list of dogs', () => {
+  cy.findAllByRole('listitem')
+    .should('have.length', 2)
+    .should('contain.text', new RegExp(dogs[0].name, 'i'))
+    .should('contain.text', new RegExp(dogs[1].name, 'i'))
+})
+```
+
+```diff { "filename": "src/index.js" }
+import ReactDOM from 'react-dom'
+
+import { App } from './App'
+- import { worker } from './test/mocks/browser'
+ 
+- if (process.env.NODE_ENV === 'development') {
+-   worker.start()
+- }
+ 
+ReactDOM.render(<App />, document.getElementById('root'))
+```
+
+```diff { "filename": "src/test/mocks/browser.js" }
+import { setupWorker } from 'msw'
+
+import { handlers } from './handlers'
+
+export const worker = setupWorker(...handlers)
+
+- window.msw = {
+-   worker
+- }
+```
+
+```diff { "filename": "cypress/integration/App.test.js" }
++ import { worker } from '../../src/test/mocks/browser'
+import { data } from '../../src/test/mocks/data'
+
+- before(() => cy.visit('/'))
++ before(() => {
++   cy.wrap(worker).invoke('start')
++   cy.visit('/')
++ })
+- afterEach(() => cy.window().then((win) => win.msw.worker.resetHandlers()))
++ afterEach(() => worker.resetHandlers())
+- after(() => cy.window().then((win) => win.msw.worker.close()))
++ after(() => worker.close())
+ 
+it('renders the list of dogs', () => {
+  cy.findAllByRole('listitem')
+    .should('have.length', 2)
+    .should('contain.text', /milo/i)
+    .should('contain.text', /summer/i)
+})
+```

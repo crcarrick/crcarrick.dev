@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-import { useMode } from '@hooks/useMode';
-import { Color } from '@utils/color';
+import { useMode } from '~/hooks/useMode'
+import { Color } from '~/utils/color'
 
 const color = {
   red: Color.from('#ea676c'),
@@ -15,9 +15,9 @@ const color = {
   white: Color.from('#f2f2f2'),
   trueWhite: Color.from('#ffffff'),
   trueBlack: Color.from('#000000'),
-};
+}
 
-const baseTheme = { color };
+const baseTheme = { color }
 
 const lightTheme = {
   ...baseTheme,
@@ -32,7 +32,7 @@ const lightTheme = {
     success: color.green,
     info: color.blue,
   },
-};
+}
 
 const darkTheme = {
   ...baseTheme,
@@ -47,24 +47,24 @@ const darkTheme = {
     success: color.green,
     info: color.purple,
   },
-};
+}
 
-const ThemeContext = React.createContext();
+const ThemeContext = React.createContext()
 
 export const Theme = {
   Context: ThemeContext,
   Consumer: ThemeContext.Consumer,
   Provider: ({ children }) => {
-    const [mode, setMode] = useMode();
+    const [mode, setMode] = useMode()
 
-    const toggleMode = (checked) => setMode(checked ? 'dark' : 'light');
+    const toggleMode = (checked) => setMode(checked ? 'dark' : 'light')
     const theme = Object.assign(mode === 'dark' ? darkTheme : lightTheme, {
       mode: {
         name: mode,
         toggle: toggleMode,
       },
-    });
+    })
 
-    return <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>;
+    return <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>
   },
-};
+}

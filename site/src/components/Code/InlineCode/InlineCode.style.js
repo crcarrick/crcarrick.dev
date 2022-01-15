@@ -1,15 +1,14 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const InlineCode = styled.code`
-  font-family: var(--font-family-code);
+  font: var(--font-code);
   word-break: break-word;
   background-color: var(--bg-code-inline);
-  padding: 0.2em 0;
-  font-size: 0.85rem;
+  padding: 0.3em 0;
 
   &:before,
   &:after {
-    letter-spacing: -0.2em;
+    letter-spacing: 0em;
     content: '\u00A0';
   }
-`;
+`

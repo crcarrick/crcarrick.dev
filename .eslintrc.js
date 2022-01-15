@@ -16,6 +16,29 @@ module.exports = {
     'no-anonymous-exports-page-templates': `warn`,
     'limited-exports-page-templates': `warn`,
     'import/no-webpack-loader-syntax': [0],
+    'import/order': [
+      `error`,
+      {
+        alphabetize: {
+          order: `asc`,
+          caseInsensitive: true,
+        },
+        groups: [`builtin`, `external`, `internal`, `parent`, `sibling`, `index`, `object`, `type`],
+        pathGroups: [
+          {
+            pattern: `react`,
+            group: `builtin`,
+            position: `before`,
+          },
+          {
+            pattern: `~/**`,
+            group: `internal`,
+          },
+        ],
+        pathGroupsExcludedImportTypes: [`react`],
+        'newlines-between': `always`,
+      },
+    ],
     'react/jsx-pascal-case': [
       `warn`,
       {
@@ -105,4 +128,4 @@ module.exports = {
     'jsx-a11y/scope': `warn`,
     'jsx-a11y/tabindex-no-positive': `warn`,
   },
-};
+}

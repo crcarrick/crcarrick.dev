@@ -1,10 +1,10 @@
-import styled, { css } from 'styled-components';
-import Switch from 'react-switch';
+import Switch from 'react-switch'
+import styled, { css } from 'styled-components'
 
-import { breakpoint } from '@utils/mixins';
+import MoonSVG from '~/assets/svg/icons/moon.svg'
+import SunSVG from '~/assets/svg/icons/sun.svg'
+import { breakpoint } from '~/utils/mixins'
 
-import SunSVG from '@assets/svg/icons/sun.svg';
-import MoonSVG from '@assets/svg/icons/moon.svg';
 
 export const Border = styled.hr`
   border: none;
@@ -12,7 +12,7 @@ export const Border = styled.hr`
   margin: calc(var(--space-xl) - 1.5px) 0;
   width: 100%;
   height: 1.5px;
-`;
+`
 
 export const Footer = styled.footer`
   display: flex;
@@ -24,7 +24,7 @@ export const Footer = styled.footer`
     align-items: flex-end;
     margin-bottom: var(--space-xl);
   }
-`;
+`
 
 export const List = styled.ul`
   display: grid;
@@ -40,23 +40,23 @@ export const List = styled.ul`
   li {
     margin: 0;
   }
-`;
+`
 
-export const Toggle = styled(Switch)``;
+export const Toggle = styled(Switch)``
 
 const icon = css`
   width: 100%;
   height: 100%;
-`;
+`
 
 export const Sun = styled(SunSVG)`
   ${icon}
   fill: var(--color-body);
   padding: 4px;
-`;
+`
 
 export const Moon = styled(MoonSVG)`
   ${icon}
   fill: var(--color-white);
   padding: 5px;
-`;
+`

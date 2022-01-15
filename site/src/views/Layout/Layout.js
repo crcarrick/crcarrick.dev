@@ -1,20 +1,17 @@
-import React, { Fragment } from 'react';
+import React from 'react'
 
-import { Seo } from './Seo/Seo';
-import { Header } from './Header/Header';
-import { Footer } from './Footer/Footer';
-
-import * as S from './Layout.style';
+import { Footer } from './Footer/Footer'
+import { Header } from './Header/Header'
+import * as S from './Layout.style'
+import { Seo } from './Seo/Seo'
 
 export const Layout = ({ children, path, post, seoTitle }) => {
   return (
-    <Fragment>
-      <S.PageWrapper>
-        <Seo path={path} post={post} seoTitle={seoTitle} />
-        <Header />
-        <S.Main>{children}</S.Main>
-        <Footer />
-      </S.PageWrapper>
-    </Fragment>
-  );
-};
+    <S.PageWrapper>
+      <Seo path={path} post={post} seoTitle={seoTitle} />
+      <Header />
+      <S.Main>{children}</S.Main>
+      <Footer />
+    </S.PageWrapper>
+  )
+}

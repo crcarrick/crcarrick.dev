@@ -1,33 +1,33 @@
-import { useLayoutEffect, useState } from 'react';
+import React from 'react'
 
-import { size as breakpointSize } from '@utils/mixins';
+import { size as breakpointSize } from '~/utils/mixins'
 
 export const useSize = () => {
-  const [size, setSize] = useState(null);
+  const [size, setSize] = React.useState(null)
 
-  useLayoutEffect(() => {
-    const md = window.matchMedia(`screen and (min-width: ${breakpointSize.md})`);
-    const lg = window.matchMedia(`screen and (min-width: ${breakpointSize.lg})`);
+  React.useLayoutEffect(() => {
+    const md = window.matchMedia(`screen and (min-width: ${breakpointSize.md})`)
+    const lg = window.matchMedia(`screen and (min-width: ${breakpointSize.lg})`)
 
     const onChange = () => {
-      let sz = null;
+      let sz = null
 
-      if (md.matches) sz = breakpointSize.md;
-      if (lg.matches) sz = breakpointSize.lg;
+      if (md.matches) sz = breakpointSize.md
+      if (lg.matches) sz = breakpointSize.lg
 
-      setSize(sz);
-    };
+      setSize(sz)
+    }
 
-    md.addEventListener('change', onChange);
-    lg.addEventListener('change', onChange);
+    md.addEventListener('change', onChange)
+    lg.addEventListener('change', onChange)
 
-    onChange();
+    onChange()
 
     return () => {
-      md.removeEventListener('change', onChange);
-      lg.removeEventListener('change', onChange);
-    };
-  }, []);
+      md.removeEventListener('change', onChange)
+      lg.removeEventListener('change', onChange)
+    }
+  }, [])
 
-  return size;
-};
+  return size
+}

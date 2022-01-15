@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('path')
 
 module.exports = {
   siteMetadata: {
@@ -31,11 +31,7 @@ module.exports = {
       resolve: 'gatsby-plugin-alias-imports',
       options: {
         alias: {
-          '@assets': path.resolve(__dirname, 'src/assets'),
-          '@components': path.resolve(__dirname, 'src/components'),
-          '@hooks': path.resolve(__dirname, 'src/hooks'),
-          '@utils': path.resolve(__dirname, 'src/utils'),
-          '@views': path.resolve(__dirname, 'src/views'),
+          '~': path.resolve(__dirname, 'src/'),
         },
       },
     },
@@ -57,19 +53,6 @@ module.exports = {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
         trackingId: process.env.GOOGLE_TRACKING_ID,
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-google-fonts',
-      options: {
-        fonts: [
-          `open sans:400,400i,700,700i`,
-          `oswald:400,700`,
-          `roboto slab:400,400i,700,700i`,
-          `roboto:400,400i,700,700i`,
-          `roboto mono:400,600`,
-        ],
-        display: 'swap',
       },
     },
 
@@ -112,4 +95,4 @@ module.exports = {
       },
     },
   ],
-};
+}

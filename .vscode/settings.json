@@ -1,5 +1,15 @@
 {
   "eslint.options": {
     "rulePaths": ["./node_modules/gatsby/dist/utils/eslint-rules"]
-  }
+  },
+  "cSpell.words": [
+    "Carrick",
+    "nerdscreams",
+    "noob",
+    "Sith",
+    "SPELLCAST",
+    "subevent",
+    "Theorycrafting",
+    "weakauras"
+  ]
 }

@@ -1,12 +1,8 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
-      "@assets/*": ["./assets/*"],
-      "@components/*": ["./components/*"],
-      "@hooks/*": ["./hooks/*"],
-      "@style/*": ["./style/*"],
-      "@utils/*": ["./utils/*"]
+      "~/*": ["./src/*"]
     }
   },
   "exclude": ["./../node_modules", "./node_modules", "./.cache", "./public", "./static"]

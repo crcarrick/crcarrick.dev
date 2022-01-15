@@ -1,48 +1,48 @@
-import { useLayoutEffect, useState } from 'react';
+import React from 'react'
 
-import Typography from 'typography';
+import Typography from 'typography'
 
-import { useSize } from '@hooks/useSize';
-import { size as breakpointSize } from '@utils/mixins';
+import { useSize } from '~/hooks/useSize'
+import { size as breakpointSize } from '~/utils/mixins'
 
 const baseConfig = {
-  headerFontFamily: ['Roboto Slab', 'sans-serif'],
-  bodyFontFamily: ['Roboto', 'sans-serif'],
+  headerFontFamily: ['Roboto Slab', 'Georgia', 'serif'],
+  bodyFontFamily: ['Roboto', 'Tahoma', 'sans-serif'],
   baseFontSize: 16,
-  baseLineHiehgt: 1.5,
+  baseLineHeight: 1.5,
   scaleRatio: 3,
-};
+}
 
-const initialTypography = new Typography(baseConfig);
+const initialTypography = new Typography(baseConfig)
 
 export const useTypography = () => {
-  const [currentTypography, setCurrentTypography] = useState(initialTypography);
-  const size = useSize();
+  const [currentTypography, setCurrentTypography] = React.useState(initialTypography)
+  const size = useSize()
 
   const setTypography = (config = baseConfig) => {
-    const typography = new Typography(config);
+    const typography = new Typography(config)
 
-    const css = typography.toString();
+    const css = typography.toString()
 
-    setCurrentTypography({ ...typography, css });
-  };
+    setCurrentTypography({ ...typography, css })
+  }
 
-  useLayoutEffect(() => {
-    const responsiveConfig = {};
+  React.useLayoutEffect(() => {
+    const responsiveConfig = {}
 
     if (size === breakpointSize.md) {
-      responsiveConfig.baseFontSize = 18;
-      responsiveConfig.baseLineHeight = 1.625;
+      responsiveConfig.baseFontSize = 18
+      responsiveConfig.baseLineHeight = 1.625
     } else if (size === breakpointSize.lg) {
-      responsiveConfig.baseFontSize = 20;
-      responsiveConfig.baseLineHeight = 1.75;
+      responsiveConfig.baseFontSize = 20
+      responsiveConfig.baseLineHeight = 1.75
     }
 
     setTypography({
       ...baseConfig,
       ...responsiveConfig,
-    });
-  }, [size]);
+    })
+  }, [size])
 
-  return currentTypography;
-};
+  return currentTypography
+}

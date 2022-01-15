@@ -1,36 +1,45 @@
 ---
-title: Create your own react-redux
-description: Today let's figure out how react-redux works under the hood and then build our own.
+title: 'Create your own: React Redux'
+description: A look under the hood of the popular Redux bindings library for React, React Redux.
 featuredImage: ../../src/assets/images/code__laptop.jpg
 featuredIcon: redux
 author: Chris Carrick
-published: 2021-10-28T11:48:12.000Z
-tags: ['redux', 'rxjs', 'react', 'javascript', 'typescript']
+published: 1970-01-01T00:00:00.000Z
+tags: ['create your own', 'redux', 'react-redux', 'rxjs', 'react', 'javascript', 'typescript']
 ---
 
-These is your very first content with Contentful, pulled in JSON format using the [Content Delivery API](https://www.contentful.com/developers/docs/references/content-delivery-api/ 'Content Delivery API'). Content and presentation are now decoupled, allowing you to focus your efforts in building the perfect app.
+[React Redux](https://react-redux.js.org) is the "Official React bindings for Redux". In this post, we'll learn how to create our own React Redux and in doing so, hopefully gain a better understanding of how it all works under the hood.
 
-## Your first steps
+## Before Reading
 
-Building with Contentful is easy. First take a moment to get [the basics of content modelling](https://www.contentful.com/r/knowledgebase/content-modelling-basics/ 'the basics of content modelling'), which you can set up in the [Contentful Web app](https://app.contentful.com/ 'Contentful Web app'). Once you get that, feel free to drop by the [Documentation](https://www.contentful.com/developers/docs/ 'Documentation') to learn a bit more about how to build your app with Contentful, in particular the [API basics](https://www.contentful.com/developers/docs/concepts/apis/ 'API basics') and each one of our four APIs, as shown below.
+You should be relatively familiar with the following tools and concepts:
 
-### Content Delivery API
+- React
+- React's [Context API]()
+- React's [Hooks API]()
+- [Redux]()
+- [Create React App]()
 
-The [Content Delivery API](https://www.contentful.com/developers/docs/references/content-delivery-api/ 'Content Delivery API') (CDA), available at `cdn.contentful.com`, is a read-only API for delivering content from Contentful to apps, websites and other media. Content is delivered as JSON data, and images, videos and other media as files.
-The API is available via a globally distributed content delivery network. The server closest to the user serves all content, both JSON and binary. This minimizes latency, which especially benefits mobile apps. Hosting content in multiple global data centers also greatly improves the availability of content.
+## Setup & Installation
 
-### Content Management API
+We'll be using a fresh Create React App project as the base for this exercise. Additionally, we'll be using Redux for our store and RxJS to subscribe to changes to the store's state.
 
-The [Content Management API](https://www.contentful.com/developers/docs/references/content-management-api/ 'Content Management API') (CMA), available at `api.contentful.com`, is a read-write API for managing content. Unlike the Content Delivery API, the management API requires you to authenticate as a Contentful user. You could use the CMA for several use cases, such as:
+<Callout>
+  Don't worry if you're not familiar with RxJS. We're only going to be using one function to subscribe to the Redux store, and I'll explain how it works when we get there. If you'd like to learn more about RxJS before we continue, you can do so <a href="">here</a>.
+</Callout>
 
-- Automatic imports from different CMSes like WordPress or Drupal.
-- Integration with other backend systems, such as an e-commerce shop.
-- Building custom editing experiences. We built the [Contentful Web app](https://app.contentful.com/ 'Contentful Web app') on top of this API.
+When you're ready, go ahead and run the following commands in your terminal:
 
-### Preview API
+```shell { "copy": "npx create-react-app react-medux && cd react-medux && yarn add redux rxjs && code ./" }
+# create the project
+npx create-react-app react-medux
+# install dependencies
+cd react-medux && yarn add redux rxjs
+# open the project in vscode
+code ./
+```
 
-The [Content Preview API](https://www.contentful.com/developers/docs/concepts/apis/#content-preview-api 'Content Preview API'), available at `preview.contentful.com`, is a variant of the CDA for previewing your content before delivering it to your customers. You use the Content Preview API in combination with a "preview" deployment of your website (or a "preview" build of your mobile app) that allows content managers and authors to view their work in-context, as if it were published, using a "preview" access token as though it were delivered by the CDA.
+## Project Structure
 
-### Images API
+Let's go ahead create a folder inside the `src` directory and call it `react-medux`.
 
-The [Images API](https://www.contentful.com/developers/docs/concepts/apis/#images-api 'Images API'), available at `images.contentful.com`, allows you to resize and crop images, change their background color and convert them to different formats. Using our API for these transformations lets you upload high-quality assets, deliver exactly what your app needs, and still get all the benefits of our caching CDN.
