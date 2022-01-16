@@ -1,0 +1,12 @@
+type Post {
+  slug: String!
+  claps: Int!
+}
+
+type Query {
+  findPostBySlug(slug: String!): Post! @resolver
+}
+
+type Mutation {
+  clapPostBySlug(slug: String!): Post! @resolver
+}

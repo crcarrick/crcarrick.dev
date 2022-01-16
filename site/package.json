@@ -5,12 +5,11 @@
   "description": "crcarrick.dev website",
   "author": "Chris Carrick",
   "scripts": {
-    "develop": "gatsby develop",
-    "start": "gatsby develop",
-    "build": "gatsby build",
+    "develop": "ntl dev",
+    "start": "ntl dev",
+    "build": "ntl build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "gen": "../bin/gen.mjs"
+    "clean": "gatsby clean"
   },
   "keywords": [
     "gatsby"
@@ -20,8 +19,10 @@
     "@mdx-js/react": "^1.6.22",
     "babel-plugin-styled-components": "^1.13.3",
     "devicon": "^2.14.0",
+    "firebase": "^9.6.3",
     "gatsby": "^4.0.1",
     "gatsby-plugin-alias-imports": "^1.0.5",
+    "gatsby-plugin-firebase": "^0.2.0-beta.4",
     "gatsby-plugin-google-analytics": "^4.0.0",
     "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-image": "^2.0.0",

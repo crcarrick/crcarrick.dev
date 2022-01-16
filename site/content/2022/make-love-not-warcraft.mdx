@@ -52,7 +52,7 @@ This all might sound like cheating, but WoW's UI has always allowed "add-ons" to
 
 If you're reading this blog, you're probably interested in the code, so let's get into that... 
 
-WoW's UI API is written in [Lua](https://www.lua.org/about.html). If you aren't familiar, Lua is a great little scripting language built on top of C, designed to be embedded into larger pieces of software. You can even, thanks to web assembly, [run it in the browser](https://fengari.io/). It has some quirks that take some getting used to (Lua's Arrays start at index 1 👀), but by and large it's great at what it does and can be found everywhere in computer game UIs. 
+WoW's UI API is written in [Lua](https://www.lua.org/about.html). If you aren't familiar, Lua is a great little scripting language built on top of C, designed to be embedded into larger pieces of software. You can even, thanks to web assembly, [run it in the browser](https://github.com/ceifa/wasmoon). It has some quirks that take some getting used to (Lua's Arrays start at index 1 👀), but by and large it's great at what it does and can be found everywhere in computer game UIs. 
 
 As alluded to earlier, much like JavaScript, WoW's UI API is event driven. Your code registers listeners for certain events and then reacts to them as they occur. The APIs exposed by the WoW UI, however, can be a bit clunky. This is where WeakAuras comes in.  It has a GUI for non-programmers, but at it's core it is a complex wrapper around the WoW UI API, abstracting away many of the pain points of interacting with the base APIs.
 

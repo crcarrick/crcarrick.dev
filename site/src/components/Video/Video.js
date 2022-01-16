@@ -30,7 +30,7 @@ export const Video = ({ width = 600, height = 450, title = 'YouTube video player
           allowFullScreen={true}
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          src={`https://www.youtube.com/embed/${ytId}?autoplay=1&controls=0`}
+          src={`https://www.youtube.com/embed/${ytId}?controls=0`}
           title={title}
         />
       ) : (

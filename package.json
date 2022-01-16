@@ -9,7 +9,7 @@
     "start": "yarn workspace site start",
     "build": "yarn workspace site build",
     "clean": "yarn workspace site clean",
-    "gen": "yarn workspace site gen"
+    "cli": "./bin/cli.mjs"
   },
   "keywords": [
     "gatsby"
@@ -31,5 +31,9 @@
   },
   "workspaces": [
     "site"
-  ]
+  ],
+  "dependencies": {
+    "graphql-request": "^3.7.0",
+    "isomorphic-fetch": "^3.0.0"
+  }
 }
