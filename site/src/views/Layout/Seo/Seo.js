@@ -54,7 +54,7 @@ export const Seo = ({ path = '', post, seoTitle }) => {
 
       {/* OpenGraph */}
       <meta property="og:url" content={url} />
-      {path.startsWith('/blog') && <meta property="og:type" content="article" />}
+      {post != null ? <meta property="og:type" content="article" /> : null}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />

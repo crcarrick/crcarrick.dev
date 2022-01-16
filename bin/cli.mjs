@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+import 'isomorphic-fetch'
+
 import { existsSync } from 'fs'
 import fs from 'fs/promises'
 import path from 'path'
@@ -10,8 +12,8 @@ import { program } from 'commander/esm.mjs'
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url))
 
-const getFrontmatter = ({ title, description }) =>
-  `
+function getFrontmatter({ title, description }) {
+  return `
 ---
 title: '${title}'
 description: '${description}'
@@ -22,12 +24,21 @@ published: 1970-01-01T00:00:00.000Z
 tags: ['react', 'javascript', 'typescript']
 ---
 `.trim()
+}
+
+function logError(message) {
+  console.log('😭 %s - %s', chalk.red('Failure!'), message)
+}
+
+function logSuccess(message) {
+  console.log('🔥 %s - %s', chalk.green('Success!'), message)
+}
 
 program.version('1.0.0')
 program.showHelpAfterError('(add --help for additional information)')
 
 program
-  .command('post <file>')
+  .command('generate <file>')
   .description('generate an mdx post file')
   .option('-t, --title <title>', 'frontmatter `title`')
   .option('-d, --description <description>', 'frontmatter `description`')
@@ -52,20 +63,42 @@ program
           'utf-8'
         )
 
-        console.log(
-          '✍️ %s - generated post %s in %s',
-          chalk.green('Success!'),
-          chalk.blue(`${filename}.mdx`),
-          chalk.blue(`/site/content/${year}`)
+        logSuccess(
+          `generated post ${chalk.blue(`${filename}.mdx`)} in ${chalk.blue(
+            `/site/content/${year}`
+          )}`
         )
 
         process.exit(0)
       } catch (err) {
-        console.log('😭 %s - %s', chalk.red('Failure!'), err.message)
+        logError(err.message)
 
         process.exit(0)
       }
     }
   )
+
+program
+  .command('import')
+  .description('import the graphql schema to fauna')
+  .option('-s, --schema <schema>', 'path to the gql schema')
+  .action(async ({ schema = path.resolve(__dirname, '..', 'functions', 'gql', 'schema.gql') }) => {
+    try {
+      const file = await fs.readFile(schema)
+
+      await fetch({
+        url: 'https://graphql.us.fauna.com/import',
+        method: 'POST',
+        body: file,
+        headers: {
+          authorization: `Bearer ${process.env.FAUNADB_KEY}`,
+        },
+      })
+
+      logSuccess(`uploaded schema to ${chalk.blue('faunadb')}`)
+    } catch (err) {
+      logError(err.message)
+    }
+  })
 
 program.parse(process.argv)
