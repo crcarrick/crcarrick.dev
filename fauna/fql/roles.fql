@@ -1,0 +1,21 @@
+CreateRole({
+  name: 'netlify',
+  privileges: [
+    {
+      resource: Collection("Post"),
+      actions: { read: true, write: true, create: true, delete: true } 
+    },
+    {
+      resource: Index("post_by_slug"),
+      actions: { read: true }
+    },
+    {
+      resource: Function("clapPostBySlug"),
+      actions: { call: true }
+    },
+    {
+      resource: Function("findPostBySlug"),
+      actions: { call: true }
+    }
+  ]
+})
