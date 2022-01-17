@@ -1,0 +1,10 @@
+CreateIndex({
+  name: "post_by_slug",
+  source: Collection("Post"),
+  terms: [
+    {
+      field: ["data", "slug"]
+    }
+  ],
+  unique: true
+})

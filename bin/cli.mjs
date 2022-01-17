@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-import 'isomorphic-fetch'
-
 import { existsSync } from 'fs'
 import fs from 'fs/promises'
 import path from 'path'
@@ -77,28 +75,5 @@ program
       }
     }
   )
-
-program
-  .command('import')
-  .description('import the graphql schema to fauna')
-  .option('-s, --schema <schema>', 'path to the gql schema')
-  .action(async ({ schema = path.resolve(__dirname, '..', 'functions', 'gql', 'schema.gql') }) => {
-    try {
-      const file = await fs.readFile(schema)
-
-      await fetch({
-        url: 'https://graphql.us.fauna.com/import',
-        method: 'POST',
-        body: file,
-        headers: {
-          authorization: `Bearer ${process.env.FAUNADB_KEY}`,
-        },
-      })
-
-      logSuccess(`uploaded schema to ${chalk.blue('faunadb')}`)
-    } catch (err) {
-      logError(err.message)
-    }
-  })
 
 program.parse(process.argv)

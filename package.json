@@ -8,6 +8,7 @@
     "develop": "yarn workspace site start",
     "start": "yarn workspace site start",
     "build": "yarn workspace site build",
+    "serve": "yarn workspace site serve",
     "clean": "yarn workspace site clean",
     "cli": "./bin/cli.mjs"
   },

@@ -5,9 +5,9 @@
   "description": "crcarrick.dev website",
   "author": "Chris Carrick",
   "scripts": {
-    "develop": "ntl dev",
-    "start": "ntl dev",
-    "build": "ntl build",
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
   },

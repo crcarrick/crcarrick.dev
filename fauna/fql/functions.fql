@@ -1,0 +1,60 @@
+Update(
+  Function(
+    "findPostBySlug"
+  ),
+  {
+    body: Query(
+      Lambda(
+        ["slug"], 
+        Get(
+          Match(
+            Index("post_by_slug"),
+            Var("slug")
+          )
+        )
+      )
+    ),
+    role: Role("netlify")
+  }
+)
+
+Update(
+  Function(
+    "clapPostBySlug"
+  ),
+  {    
+    body: Query(
+      Lambda(
+        ["slug"],
+        Update(
+          Select(
+            ["ref"],
+            Get(
+              Match(
+                Index("post_by_slug"), 
+                Var("slug")
+              ),
+            )
+          ),
+          {
+            data: {
+              claps: Add(
+                Select(
+                  ["data", "claps"], 
+                  Get(
+                    Match(
+                      Index("post_by_slug"), 
+                      Var("slug")
+                    )
+                  )
+                ),
+                1
+              )
+            }
+          }
+        )
+      )
+    ),
+    role: Role("netlify")
+  }  
+)
