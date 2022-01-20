@@ -1,18 +1,20 @@
 import React from 'react'
 
+import loadable from '@loadable/component'
+
 import * as S from './Hero.style'
 
 const heros = {
-  construction: S.ConstructionHero,
-  desk: S.DeskHero,
-  404: S.FourOhFourHero,
-  500: S.FiveHundredHero,
+  construction: 'Construction',
+  desk: 'Desk',
+  404: 'FourOhFour',
+  500: 'FiveHundred',
 }
 
 export const Hero = ({ type }) => {
-  const Component = heros[type]
+  if (!heros[type]) return null
 
-  if (!Component) return null
+  const Component = loadable(() => import(`./heros/${heros[type]}.js`))
 
   return (
     <S.HeroWrapper>

@@ -56,6 +56,11 @@ module.exports = {
       },
     },
 
+    // Perf
+    { resolve: 'gatsby-plugin-perf-budgets' },
+    { resolve: 'gatsby-plugin-webpack-bundle-analyser-v2' },
+    { resolve: 'gatsby-plugin-loadable-components-ssr' },
+
     // Images
     {
       resolve: 'gatsby-plugin-react-svg',
