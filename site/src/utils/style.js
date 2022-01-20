@@ -1,6 +1,6 @@
 import { createGlobalStyle, css } from 'styled-components'
 
-import { breakpoint, transition } from '~/utils/mixins'
+import { breakpoint, supports, transition } from '~/utils/mixins'
 
 const backgrounds = ({ theme: { color, mode } }) => {
   const darkMode = mode.name === 'dark'
@@ -110,8 +110,11 @@ export const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
     border-radius: var(--border-radius);
-    scrollbar-width: thin;
-    scrollbar-color: var(--color-primary) var(--color-dark);
+
+    ${supports(css`
+      scrollbar-width: thin;
+      scrollbar-color: var(--color-primary) var(--color-dark);
+    `)}
 
     &::-webkit-scrollbar {
       width: 6px;

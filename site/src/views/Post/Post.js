@@ -3,13 +3,14 @@ import React from 'react'
 import { getImage } from 'gatsby-plugin-image'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 
+import { useClaps } from '~/hooks/useClaps'
 import { Layout } from '~/views/Layout'
 
 import * as S from './Post.style'
 
-// TODO: Need to extract this "Post Metadata" thing out into it's own component.
-//       It's used in several places now in the exact same manner (published at date * emoji * reading time)
 export const Post = ({ path, post }) => {
+  const { clap, claps } = useClaps(post.slug)
+
   return (
     <Layout path={path} post={post}>
       <S.Article>
@@ -18,12 +19,13 @@ export const Post = ({ path, post }) => {
           {post.frontmatter.published}
           <S.ReadingTime>{post.timeToRead}</S.ReadingTime>
         </S.Meta>
-        {/* <S.Description>{post.frontmatter.description}</S.Description> */}
         <S.Image
+          loading="eager"
           image={getImage(post.frontmatter.featuredImage)}
           alt={post.frontmatter.description}
         />
         <MDXRenderer>{post.body}</MDXRenderer>
+        {claps != null ? <S.Clap onClick={clap}>{claps.toLocaleString()}</S.Clap> : null}
       </S.Article>
     </Layout>
   )

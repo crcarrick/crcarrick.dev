@@ -3,11 +3,11 @@ import { gql } from 'graphql-request'
 import { client } from './utils/client.mjs'
 
 export async function handler(event) {
-  if (event.httpMethod !== 'GET') {
-    return { statusCode: 404 }
-  }
+  if (event.httpMethod !== 'GET') return { statusCode: 404 }
 
-  if (event.queryStringParameters['slug'] == null) return { statusCode: 400 }
+  const slug = event.queryStringParameters['slug']
+
+  if (slug == null) return { statusCode: 400 }
 
   try {
     const response = await client.request(
@@ -18,12 +18,12 @@ export async function handler(event) {
           }
         }
       `,
-      { slug: event.queryStringParameters['slug'] }
+      { slug }
     )
 
     return {
       statusCode: 200,
-      body: JSON.stringify(response),
+      body: JSON.stringify(response.findPostBySlug),
     }
   } catch {
     return { statusCode: 500 }

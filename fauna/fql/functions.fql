@@ -1,15 +1,20 @@
 Update(
-  Function(
-    "findPostBySlug"
-  ),
+  Function("findOrCreatePostBySlug"),
   {
     body: Query(
       Lambda(
         ["slug"], 
-        Get(
-          Match(
-            Index("post_by_slug"),
-            Var("slug")
+        Let(
+          { doc: Match(Index("post_by_slug"), Var("slug")) },
+          If(
+            Exists(Var("doc")),
+            Get(Var("doc")),
+            Create(Collection("Post"), {
+              data: {
+                claps: 0,
+                slug: Var("slug")
+              }
+            })
           )
         )
       )
@@ -19,39 +24,22 @@ Update(
 )
 
 Update(
-  Function(
-    "clapPostBySlug"
-  ),
+  Function("clapPostBySlug"),
   {    
     body: Query(
       Lambda(
         ["slug"],
-        Update(
-          Select(
-            ["ref"],
-            Get(
-              Match(
-                Index("post_by_slug"), 
-                Var("slug")
-              ),
-            )
-          ),
-          {
+        Let(
+          { doc: Match(Index("post_by_slug"), Var("slug")) },
+          Update(
+            Select(["ref"], Get(Var("doc"))), {
             data: {
               claps: Add(
-                Select(
-                  ["data", "claps"], 
-                  Get(
-                    Match(
-                      Index("post_by_slug"), 
-                      Var("slug")
-                    )
-                  )
-                ),
+                Select(["data", "claps"], Get(Var("doc"))),
                 1
               )
             }
-          }
+          }),
         )
       )
     ),
