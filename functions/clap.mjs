@@ -5,14 +5,20 @@ import { client } from './utils/client.mjs'
 export async function handler(event) {
   if (event.httpMethod !== 'POST') return { statusCode: 404 }
 
-  let slug
+  let body
   try {
-    slug = JSON.parse(event.body)['slug']
+    body = JSON.parse(event.body)
   } catch (err) {
     console.error(err.message)
+
+    return { statusCode: 400 }
   }
 
-  if (slug == null) return { statusCode: 400 }
+  const { mutationId, slug } = body
+
+  if (slug == null || mutationId == null) {
+    return { statusCode: 400 }
+  }
 
   try {
     const response = await client.request(
@@ -28,9 +34,11 @@ export async function handler(event) {
 
     return {
       statusCode: 200,
-      body: JSON.stringify(response.clapPostBySlug),
+      body: JSON.stringify({ ...response.clapPostBySlug, mutationId }),
     }
   } catch (err) {
+    console.error(err.message)
+
     return {
       statusCode: 500,
     }

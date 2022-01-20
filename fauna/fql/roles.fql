@@ -14,7 +14,7 @@ CreateRole({
       actions: { call: true }
     },
     {
-      resource: Function("findPostBySlug"),
+      resource: Function("findOrCreatePostBySlug"),
       actions: { call: true }
     }
   ]
