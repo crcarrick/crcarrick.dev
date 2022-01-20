@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { MDXProvider } from '@mdx-js/react'
+import { QueryClient, QueryClientProvider } from 'react-query'
 import { ThemeProvider as StyledThemeProvider } from 'styled-components'
 
 import { Button } from '~/components/Button'
@@ -12,6 +13,7 @@ import { GlobalStyle } from '~/utils/style'
 import { Theme } from '~/utils/theme'
 import { Typography } from '~/utils/typography'
 
+const queryClient = new QueryClient()
 const shortCodes = {
   a: Link,
   button: Button,
@@ -29,7 +31,9 @@ export const wrapRootElement = ({ element }) => {
         <Theme.Consumer>
           {(theme) => (
             <StyledThemeProvider theme={theme}>
-              <MDXProvider components={shortCodes}>{element}</MDXProvider>
+              <QueryClientProvider client={queryClient}>
+                <MDXProvider components={shortCodes}>{element}</MDXProvider>
+              </QueryClientProvider>
             </StyledThemeProvider>
           )}
         </Theme.Consumer>

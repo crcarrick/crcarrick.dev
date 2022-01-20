@@ -25,7 +25,7 @@ export const Post = ({ path, post }) => {
           alt={post.frontmatter.description}
         />
         <MDXRenderer>{post.body}</MDXRenderer>
-        {claps != null ? <S.Clap onClick={clap}>{claps.toLocaleString()}</S.Clap> : null}
+        <S.Clap onClick={clap}>{claps.toLocaleString()}</S.Clap>
       </S.Article>
     </Layout>
   )
