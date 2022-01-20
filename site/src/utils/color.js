@@ -1,6 +1,6 @@
-import _ from 'lodash'
+import _clamp from 'lodash/clamp'
 
-const clamp = (num) => _.clamp(num, 0, 255)
+const clamp = (num) => _clamp(num, 0, 255)
 
 const adjust = (color, amount) => {
   const num = parseInt(color.replace('#', ''), 16)

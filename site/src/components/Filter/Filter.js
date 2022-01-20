@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { pickBy } from 'lodash'
+import pickBy from 'lodash/pickBy'
 import { matchSorter } from 'match-sorter'
 
 import { Tag } from '~/components/Tag'
