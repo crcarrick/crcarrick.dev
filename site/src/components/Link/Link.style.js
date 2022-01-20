@@ -1,6 +1,7 @@
 import { Link as GatsbyLink } from 'gatsby'
 import styled, { css } from 'styled-components'
 
+import { supports } from '~/utils/mixins'
 import { Nav } from '~/views/Layout/Header/Header.style'
 import { Article } from '~/views/Post/Post.style'
 
@@ -15,21 +16,27 @@ const style = css`
     outline: none;
     text-decoration-line: underline;
     text-decoration-color: var(--color-primary);
-    text-decoration-thickness: var(--border-width);
+    ${supports(css`
+      text-decoration-thickness: var(--border-width);
+    `)}
   }
 
   ${Nav} & {
     padding: var(--space-md);
     text-transform: uppercase;
-    text-underline-offset: var(--border-width);
+    ${supports(css`
+      text-underline-offset: var(--border-width);
+    `)}
   }
 
   ${Article} & {
     color: var(--color-text);
     text-decoration-line: underline;
     text-decoration-color: var(--color-primary);
-    text-decoration-thickness: var(--border-width);
-    text-underline-offset: var(--border-width);
+    ${supports(css`
+      text-decoration-thickness: var(--border-width);
+      text-underline-offset: var(--border-width);
+    `)}
 
     &:hover,
     &:focus {

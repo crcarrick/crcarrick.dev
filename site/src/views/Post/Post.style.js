@@ -92,3 +92,16 @@ export const ReadingTime = styled.span`
 `
 
 export const Description = styled.p``
+
+export const Clap = styled.button`
+  font: var(--font-code);
+  cursor: pointer;
+  border: none;
+  margin: auto;
+  color: var(--color-text);
+  background-color: transparent;
+
+  &:before {
+    content: '👏 ';
+  }
+`

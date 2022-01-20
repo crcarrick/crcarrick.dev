@@ -12,11 +12,12 @@ export const query = graphql`
   query PostTemplate($id: String) {
     post: mdx(id: { eq: $id }) {
       body
+      slug
+      excerpt
+      timeToRead
       wordCount {
         words
       }
-      excerpt
-      timeToRead
       frontmatter {
         title
         description

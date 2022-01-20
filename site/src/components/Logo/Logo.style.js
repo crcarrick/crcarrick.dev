@@ -1,6 +1,7 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import LogoSVG from '~/assets/svg/logo.svg'
+import { supports } from '~/utils/mixins'
 import { Link } from '~/views/Layout/Header/Header.style'
 
 export const Logo = styled(LogoSVG)`
@@ -22,7 +23,9 @@ export const Name = styled.h4`
   ${Link}:focus & {
     text-decoration-line: underline;
     text-decoration-color: var(--color-primary);
-    text-decoration-thickness: var(--border-width);
-    text-underline-offset: var(--border-width);
+    ${supports(css`
+      text-decoration-thickness: var(--border-width);
+      text-underline-offset: var(--border-width);
+    `)}
   }
 `
