@@ -14,9 +14,9 @@ export async function handler(event) {
     return { statusCode: 400 }
   }
 
-  const { mutationId, slug } = body
+  const { slug } = body
 
-  if (slug == null || mutationId == null) {
+  if (slug == null) {
     return { statusCode: 400 }
   }
 
@@ -34,7 +34,7 @@ export async function handler(event) {
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ ...response.clapPostBySlug, mutationId }),
+      body: JSON.stringify(response.clapPostBySlug),
     }
   } catch (err) {
     console.error(err.message)
