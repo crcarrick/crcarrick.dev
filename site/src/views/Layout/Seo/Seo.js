@@ -40,13 +40,13 @@ export const Seo = ({ path = '', post, seoTitle }) => {
       <link rel="canonical" href={url} />
 
       {/* Google Fonts */}
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      {/* <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       <link
         preload
         href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto+Slab:wght@400;500;700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
         rel="stylesheet"
-      />
+      /> */}
 
       {/* Basic */}
       <meta name="description" content={description} />

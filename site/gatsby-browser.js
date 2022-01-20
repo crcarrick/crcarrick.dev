@@ -13,6 +13,8 @@ import { GlobalStyle } from '~/utils/style'
 import { Theme } from '~/utils/theme'
 import { Typography } from '~/utils/typography'
 
+import '~/utils/fonts'
+
 const queryClient = new QueryClient()
 const shortCodes = {
   a: Link,
