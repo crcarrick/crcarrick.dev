@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components'
 
+import DevToSVG from '~/assets/svg/social/devto__square.svg'
 import GithubSVG from '~/assets/svg/social/github__square.svg'
 import LinkedInSVG from '~/assets/svg/social/linkedin__square.svg'
 import SpotifySVG from '~/assets/svg/social/spotify__square.svg'
@@ -27,19 +28,23 @@ const style = css`
   }
 `
 
-export const Github = styled(GithubSVG)`
+export const DevToIcon = styled(DevToSVG)`
   ${style}
 `
-export const LinkedIn = styled(LinkedInSVG)`
+
+export const GithubIcon = styled(GithubSVG)`
   ${style}
 `
-export const Spotify = styled(SpotifySVG)`
+export const LinkedInIcon = styled(LinkedInSVG)`
   ${style}
 `
-export const Twitch = styled(TwitchSVG)`
+export const SpotifyIcon = styled(SpotifySVG)`
   ${style}
 `
-export const Twitter = styled(TwitterSVG)`
+export const TwitchIcon = styled(TwitchSVG)`
+  ${style}
+`
+export const TwitterIcon = styled(TwitterSVG)`
   ${style}
 `
 
@@ -54,19 +59,19 @@ export const SocialLink = styled.a`
   &:focus {
     outline: none;
 
-    ${Github} {
+    ${GithubIcon} {
       ${rect}
     }
-    ${LinkedIn} {
+    ${LinkedInIcon} {
       ${rect}
     }
-    ${Spotify} {
+    ${SpotifyIcon} {
       ${rect}
     }
-    ${Twitch} {
+    ${TwitchIcon} {
       ${rect}
     }
-    ${Twitter} {
+    ${TwitterIcon} {
       ${rect}
     }
   }

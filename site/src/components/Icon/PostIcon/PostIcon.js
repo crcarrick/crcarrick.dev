@@ -1,26 +1,36 @@
 import React from 'react'
 
-import * as S from './PostIcon.style'
+import loadable from '@loadable/component'
+
+import { IconWrapper } from './PostIcon.style'
 
 const icons = {
-  gatsby: S.GatsbyIcon,
-  javascript: S.JavascriptIcon,
-  react: S.ReactIcon,
-  redux: S.ReduxIcon,
-  'styled-components': S.StyledComponentsIcon,
-  weakauras: S.WeakAurasIcon,
+  gatsby: 'GatsbyIcon',
+  javascript: 'JavascriptIcon',
+  react: 'ReactIcon',
+  redux: 'ReduxIcon',
+  'styled-components': 'StyledComponentsIcon',
+  weakauras: 'WeakAurasIcon',
 }
 
 export const PostIcon = ({ tags = ['react'] }) => {
-  let Icon
+  let icon
 
   for (let tag of tags) {
-    Icon = icons[tag]
+    icon = icons[tag]
 
-    if (Icon) break
+    if (icon) break
   }
 
-  if (!Icon) Icon = icons.javascript
+  if (!icon) icon = icons.javascript
 
-  return <Icon />
+  const Icon = loadable(() => import('./PostIcon.style'), {
+    resolveComponent: (components) => components[icon],
+  })
+
+  return (
+    <IconWrapper>
+      <Icon />
+    </IconWrapper>
+  )
 }

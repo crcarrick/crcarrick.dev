@@ -59,6 +59,7 @@ export const Theme = {
 
     const toggleMode = (checked) => setMode(checked ? 'dark' : 'light')
     const theme = Object.assign(mode === 'dark' ? darkTheme : lightTheme, {
+      isDark: mode === 'dark',
       mode: {
         name: mode,
         toggle: toggleMode,
