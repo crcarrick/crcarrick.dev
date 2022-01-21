@@ -95,7 +95,7 @@ export const Excerpt = styled.p`
   ${breakpoint.md} {
     display: block;
     margin-bottom: var(--space-lg);
-    font-size: 0.85rem;
+    font-size: var(--font-size-md);
   }
 `
 
@@ -132,7 +132,7 @@ export const Tags = styled.div`
   flex: 1;
   flex-wrap: wrap;
   font-family: var(--font-family-code);
-  font-size: 0.65rem;
+  font-size: var(--font-size-xs);
   color: var(--color-primary);
 
   ${breakpoint.md} {

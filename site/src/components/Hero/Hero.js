@@ -14,11 +14,11 @@ const heros = {
 export const Hero = ({ type }) => {
   if (!heros[type]) return null
 
-  const Component = loadable(() => import(`./heros/${heros[type]}.js`))
+  const Hero = loadable(() => import(`./heros/${heros[type]}.js`))
 
   return (
     <S.HeroWrapper>
-      <Component />
+      <Hero />
     </S.HeroWrapper>
   )
 }

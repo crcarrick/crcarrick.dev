@@ -1,15 +1,21 @@
 import React from 'react'
 
+import loadable from '@loadable/component'
 import { getImage } from 'gatsby-plugin-image'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 
-import { useClaps } from '~/hooks/useClaps'
+import { Bio } from '~/components/Bio'
+import { useLazyRender } from '~/hooks/useLazyRender'
 import { Layout } from '~/views/Layout'
 
 import * as S from './Post.style'
 
+const Claps = loadable(() => import('~/components/Claps'), {
+  resolveComponent: (components) => components.Claps,
+})
+
 export const Post = ({ path, post }) => {
-  const { clap, claps } = useClaps(post.slug)
+  const { ref, shouldRender } = useLazyRender()
 
   return (
     <Layout path={path} post={post}>
@@ -25,8 +31,11 @@ export const Post = ({ path, post }) => {
           alt={post.frontmatter.description}
         />
         <MDXRenderer>{post.body}</MDXRenderer>
-        <S.Clap onClick={clap}>{claps.toLocaleString()}</S.Clap>
+        <S.ClapsWrapper ref={ref}>
+          {shouldRender ? <Claps slug={post.slug} /> : null}
+        </S.ClapsWrapper>
       </S.Article>
+      <Bio />
     </Layout>
   )
 }

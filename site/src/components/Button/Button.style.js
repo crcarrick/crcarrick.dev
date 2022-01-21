@@ -7,7 +7,7 @@ export const Button = styled.button`
   background-color: var(--color-text);
   border: none;
   cursor: pointer;
-  font-size: 0.65rem;
+  font-size: var(--font-size-xs);
   line-height: 1;
 
   &:hover,

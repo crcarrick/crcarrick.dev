@@ -1,5 +1,7 @@
 import React from 'react'
+import { hydrate, render } from 'react-dom'
 
+import { loadableReady } from '@loadable/component'
 import { MDXProvider } from '@mdx-js/react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ThemeProvider as StyledThemeProvider } from 'styled-components'
@@ -24,6 +26,14 @@ const shortCodes = {
   inlineCode: Code.Inline,
   pre: Code.Pre,
   video: Video,
+}
+
+export const replaceHydrateFunction = () => (element, container, callback) => {
+  loadableReady(() => {
+    const renderFn = process.env.BUILD_STAGE.includes('develop') ? render : hydrate
+
+    renderFn(element, container, callback)
+  })
 }
 
 export const wrapRootElement = ({ element }) => {

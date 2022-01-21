@@ -97,7 +97,7 @@ export const Filename = styled.div`
   display: flex;
   align-items: center;
   font: var(--font-code);
-  font-size: 0.65rem;
+  font-size: var(--font-size-xs);
   padding: var(--space-sm);
   margin-left: var(--space-sm);
   color: var(--color-white);

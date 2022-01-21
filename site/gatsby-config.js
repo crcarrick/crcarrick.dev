@@ -13,10 +13,11 @@ module.exports = {
     author: {
       name: 'Chris Carrick',
       bio: `
-        Chris Carrick is a senior front-end engineer at <a href="https://weare8.com">WeAre8</a>.
-        He loves all things code, golf, sci-fi novels, and hitting the beach 
-        with his girlfriend and dog.  He lives in Miami, Florida.
+        Chris Carrick is a senior software engineer with 6 years experience building beautiful web front-ends.
+        He loves all things JS, golf, sci-fi novels, and hitting the beach with his girlfriend and dog.
+        Follow him on Twitter at
       `,
+      location: 'Miami, FL',
     },
     social: {
       twitter: '@crcarrick',
@@ -55,11 +56,6 @@ module.exports = {
         trackingId: process.env.GOOGLE_TRACKING_ID,
       },
     },
-
-    // Perf
-    { resolve: 'gatsby-plugin-perf-budgets' },
-    { resolve: 'gatsby-plugin-webpack-bundle-analyser-v2' },
-    { resolve: 'gatsby-plugin-loadable-components-ssr' },
 
     // Images
     {
