@@ -44,10 +44,10 @@ export function Bio() {
       <S.Details>
         <S.Heading style={{ display: 'flex', flexDirection: 'column', gap: `var(--space-md)` }}>
           <S.Name>About {author.name}</S.Name>
-          <S.Location>{author.location}</S.Location>
+          <S.Location>Software Engineer in {author.location}</S.Location>
         </S.Heading>
         <S.Bio>
-          {author.bio} <Link href={social.twitter}>{social.twitter}</Link>
+          {author.bio} <Link href={`https://twitter.com/${social.twitter}`}>{social.twitter}</Link>
         </S.Bio>
       </S.Details>
     </S.BioWrapper>
