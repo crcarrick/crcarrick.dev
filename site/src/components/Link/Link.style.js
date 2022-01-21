@@ -16,27 +16,38 @@ const style = css`
     outline: none;
     text-decoration-line: underline;
     text-decoration-color: var(--color-primary);
-    ${supports(css`
-      text-decoration-thickness: var(--border-width);
-    `)}
+    ${supports(
+      css`
+        text-decoration-thickness: var(--border-width);
+      `
+    )}
   }
 
   ${Nav} & {
     padding: var(--space-md);
     text-transform: uppercase;
-    ${supports(css`
-      text-underline-offset: var(--border-width);
-    `)}
+    ${supports(
+      css`
+        text-underline-offset: var(--border-width);
+      `
+    )}
   }
 
   ${Article} & {
     color: var(--color-text);
     text-decoration-line: underline;
     text-decoration-color: var(--color-primary);
-    ${supports(css`
-      text-decoration-thickness: var(--border-width);
-      text-underline-offset: var(--border-width);
-    `)}
+
+    ${supports(
+      css`
+        text-decoration-thickness: var(--border-width);
+      `
+    )}
+    ${supports(
+      css`
+        text-underline-offset: var(--border-width);
+      `
+    )}
 
     &:hover,
     &:focus {

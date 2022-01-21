@@ -22,7 +22,7 @@ const variants = {
 export const Callout = styled.aside`
   padding: var(--space-lg) var(--space-xl);
   margin-bottom: var(--space-xl);
-  font-size: 0.85rem;
+  font-size: var(--font-size-md);
   width: 100%;
 
   ${({ variant = 'success' }) => {

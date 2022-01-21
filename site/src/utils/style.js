@@ -48,6 +48,11 @@ const fonts = ({ typography }) => css`
   --font-family-body: ${typography.options.bodyFontFamily.join(', ')};
   --font-family-code: 'Roboto Mono', Consolas, Monaco, monospace;
   --font-code: 600 0.75rem / 1.6 var(--font-family-code);
+
+  --font-size-lg: 1rem;
+  --font-size-md: 0.85rem;
+  --font-size-sm: 0.75rem;
+  --font-size-xs: 0.65rem;
 `
 
 const spacing = ({ typography }) => css`

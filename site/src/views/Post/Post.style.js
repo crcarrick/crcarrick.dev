@@ -7,6 +7,7 @@ export const Article = styled.article`
   display: flex;
   flex: 1;
   flex-direction: column;
+  position: relative;
 
   ${breakpoint.md} {
     background-color: var(--bg-card);
@@ -93,15 +94,14 @@ export const ReadingTime = styled.span`
 
 export const Description = styled.p``
 
-export const Clap = styled.button`
-  font: var(--font-code);
-  cursor: pointer;
-  border: none;
-  margin: auto;
-  color: var(--color-text);
-  background-color: transparent;
+export const ClapsWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  &:before {
-    content: '👏 ';
+  ${breakpoint.md} {
+    position: absolute;
+    bottom: 0;
+    right: 0;
   }
 `

@@ -1,3 +1,7 @@
+const fs = require('fs')
+
+const LoadablePlugin = require('@loadable/webpack-plugin')
+
 const Post = require.resolve('./src/templates/post.js')
 
 exports.createPages = async ({ graphql, actions }) => {
@@ -38,4 +42,25 @@ exports.createResolvers = ({ createResolvers }) => {
   }
 
   createResolvers(resolvers)
+}
+
+exports.onCreateBabelConfig = ({ actions }) => {
+  actions.setBabelPlugin({ name: '@loadable/babel-plugin' })
+}
+
+exports.onCreateWebpackConfig = ({ actions, stage }) => {
+  if (stage === 'build-javascript' || stage === 'develop' || stage === 'develop-html') {
+    if (!fs.existsSync(`public/loadable-stats.json`)) {
+      fs.writeFileSync(`public/loadable-stats.json`, JSON.stringify({}))
+    }
+
+    actions.setWebpackConfig({
+      plugins: [
+        new LoadablePlugin({
+          filename: stage === 'develop' ? `public/loadable-stats.json` : 'loadable-stats.json',
+          writeToDisk: true,
+        }),
+      ],
+    })
+  }
 }
