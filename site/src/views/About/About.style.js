@@ -1,7 +1,6 @@
 import { GatsbyImage } from 'gatsby-plugin-image'
 import styled from 'styled-components'
 
-
 import { breakpoint } from '~/utils/mixins'
 
 export const Article = styled.article`
@@ -18,7 +17,7 @@ export const Article = styled.article`
 export const Image = styled(GatsbyImage)`
   width: 75px;
   height: 75px;
-  border-radius: 50%;
+  border-radius: var(--border-radius);
   margin: var(--space-lg);
   /* margin-bottom: var(--space-sm); */
 

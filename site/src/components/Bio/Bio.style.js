@@ -17,7 +17,7 @@ export const BioWrapper = styled.section`
 `
 
 export const Photo = styled(GatsbyImage)`
-  border-radius: 50%;
+  border-radius: var(--border-radius);
   min-width: 100px;
   width: 100px;
 `
