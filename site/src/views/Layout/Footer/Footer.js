@@ -20,11 +20,8 @@ export const Footer = () => {
             <Icon.Social type="linkedin" />
           </li>
           <li>
-            <Icon.Social type="spotify" />
+            <Icon.Social type="devto" />
           </li>
-          {/* <li>
-            <Icon.Social type="twitch" />
-          </li> */}
           <li>
             <Icon.Social type="twitter" />
           </li>
@@ -34,7 +31,7 @@ export const Footer = () => {
         {theme && (
           <S.Toggle
             aria-label="Toggle dark mode on or off"
-            checked={theme.mode.name === 'dark'}
+            checked={theme.isDark}
             onChange={theme.mode.toggle}
             checkedIcon={<S.Sun />}
             uncheckedIcon={<S.Moon />}

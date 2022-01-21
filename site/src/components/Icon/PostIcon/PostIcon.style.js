@@ -1,4 +1,3 @@
-
 import GatsbySVG from 'devicon/icons/gatsby/gatsby-original.svg'
 import JavascriptSVG from 'devicon/icons/javascript/javascript-original.svg'
 import ReactSVG from 'devicon/icons/react/react-original.svg'
@@ -9,9 +8,18 @@ import StyledComponentsSVG from '~/assets/svg/icons/styled-components.svg'
 import WeakAurasSVG from '~/assets/svg/icons/weakauras.svg'
 
 const style = css`
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+`
+
+export const IconWrapper = styled.div`
   width: 40px;
   height: 40px;
-  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 `
 
 export const GatsbyIcon = styled(GatsbySVG)`

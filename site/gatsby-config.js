@@ -20,10 +20,11 @@ module.exports = {
       location: 'Miami, FL',
     },
     social: {
-      twitter: '@crcarrick',
+      devto: 'crcarrick',
       github: 'crcarrick',
-      spotify: 'chriscarrick77',
       linkedin: 'crcarrick',
+      spotify: 'chriscarrick77',
+      twitter: '@crcarrick',
     },
   },
   plugins: [

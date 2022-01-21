@@ -1,15 +1,17 @@
 import React from 'react'
 
+import loadable from '@loadable/component'
 import { graphql, useStaticQuery } from 'gatsby'
 
-import * as S from './SocialIcon.style'
+import { SocialLink } from './SocialIcon.style'
 
 const icons = {
-  github: S.Github,
-  linkedin: S.LinkedIn,
-  spotify: S.Spotify,
-  twitch: S.Twitch,
-  twitter: S.Twitter,
+  devto: 'DevToIcon',
+  github: 'GithubIcon',
+  linkedin: 'LinkedInIcon',
+  spotify: 'SpotifyIcon',
+  twitch: 'TwitchIcon',
+  twitter: 'TwitterIcon',
 }
 
 export const SocialIcon = ({ type }) => {
@@ -18,6 +20,7 @@ export const SocialIcon = ({ type }) => {
       site {
         siteMetadata {
           social {
+            devto
             github
             linkedin
             spotify
@@ -28,13 +31,16 @@ export const SocialIcon = ({ type }) => {
     }
   `)
 
-  const { github, linkedin, spotify, twitch, twitter } = data.site.siteMetadata.social
+  const { devto, github, linkedin, spotify, twitch, twitter } = data.site.siteMetadata.social
 
-  const Component = icons[type]
+  if (!icons[type]) return null
 
-  if (!Component) return null
+  const Icon = loadable(() => import('./SocialIcon.style'), {
+    resolveComponent: (components) => components[icons[type]],
+  })
 
   const links = {
+    devto: `https://dev.to/${devto}`,
     github: `https://github.com/${github}`,
     linkedin: `https://linkedin.com/in/${linkedin}`,
     spotify: `https://open.spotify.com/user/${spotify}`,
@@ -43,8 +49,8 @@ export const SocialIcon = ({ type }) => {
   }
 
   return (
-    <S.SocialLink href={links[type]}>
-      <Component />
-    </S.SocialLink>
+    <SocialLink href={links[type]}>
+      <Icon />
+    </SocialLink>
   )
 }

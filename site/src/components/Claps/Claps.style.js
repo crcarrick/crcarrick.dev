@@ -7,6 +7,7 @@ export const ClapButton = styled.button`
   padding: var(--space-lg);
   font-family: var(--font-family-code);
   font-size: var(--font-size-xs);
+  font-weight: 700;
   background-color: transparent;
   filter: ${({ clicked }) => `grayscale(${clicked ? 0 : 100}%)`};
   display: flex;
@@ -14,7 +15,7 @@ export const ClapButton = styled.button`
   justify-content: center;
   align-items: center;
 
-  &:before {
+  &:after {
     content: '👏';
     font-size: var(--font-size-lg);
   }
