@@ -14,11 +14,9 @@ export async function handler(event) {
     return { statusCode: 400 }
   }
 
-  const { slug } = body
+  const { slug, mutationId } = body
 
-  if (slug == null) {
-    return { statusCode: 400 }
-  }
+  if (slug == null || mutationId == null) return { statusCode: 400 }
 
   try {
     const response = await client.request(
@@ -34,7 +32,7 @@ export async function handler(event) {
 
     return {
       statusCode: 200,
-      body: JSON.stringify(response.clapPostBySlug),
+      body: JSON.stringify({ ...response.clapPostBySlug, mutationId }),
     }
   } catch (err) {
     console.error(err.message)

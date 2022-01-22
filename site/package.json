@@ -51,7 +51,6 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
-    "react-query": "^3.34.8",
     "react-switch": "^6.0.0",
     "styled-components": "^5.3.3",
     "typography": "^0.16.21"

@@ -3,7 +3,6 @@ import { hydrate, render } from 'react-dom'
 
 import { loadableReady } from '@loadable/component'
 import { MDXProvider } from '@mdx-js/react'
-import { QueryClient, QueryClientProvider } from 'react-query'
 import { ThemeProvider as StyledThemeProvider } from 'styled-components'
 
 import { Button } from '~/components/Button'
@@ -17,7 +16,6 @@ import { Typography } from '~/utils/typography'
 
 import '~/utils/fonts'
 
-const queryClient = new QueryClient()
 const shortCodes = {
   a: Link,
   button: Button,
@@ -43,9 +41,7 @@ export const wrapRootElement = ({ element }) => {
         <Theme.Consumer>
           {(theme) => (
             <StyledThemeProvider theme={theme}>
-              <QueryClientProvider client={queryClient}>
-                <MDXProvider components={shortCodes}>{element}</MDXProvider>
-              </QueryClientProvider>
+              <MDXProvider components={shortCodes}>{element}</MDXProvider>
             </StyledThemeProvider>
           )}
         </Theme.Consumer>
