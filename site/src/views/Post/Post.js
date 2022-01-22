@@ -15,7 +15,7 @@ const Claps = loadable(() => import('~/components/Claps'), {
 })
 
 export const Post = ({ path, post }) => {
-  const { ref, shouldRender } = useLazyRender()
+  const { ref, shouldRender } = useLazyRender({ rootMargin: '400px 0px' })
 
   return (
     <Layout path={path} post={post}>
