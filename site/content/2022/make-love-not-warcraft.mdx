@@ -136,7 +136,7 @@ function(event, subevent, spellId)
       aura_env.playerRotation[aura_env.count % 3] 
   end
 
-  return aura_env.currentPlayer != nil
+  return aura_env.currentPlayer ~= nil
 end
 ```
 
@@ -155,7 +155,7 @@ You could even change that last `trigger` function to only show the text on the 
 function(event, subevent, spellId)
   -- ...rest of trigger fn
 
-  return aura_env.currentPlayer != nil 
+  return aura_env.currentPlayer ~= nil 
     and aura_env.currentPlayer == WeakAuras.me
 end
 ```
