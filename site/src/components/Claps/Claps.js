@@ -1,38 +1,60 @@
 import React from 'react'
 
-import { useMutation, useQuery, useQueryClient } from 'react-query'
-
 import { clapPost, getPost } from '~/utils/api'
 
 import * as S from './Claps.style'
 
-const POSTS_KEY = 'posts'
-
 export const Claps = React.forwardRef(function Claps({ slug }, ref) {
-  const queryKey = [POSTS_KEY, slug]
-
+  const [data, setData] = React.useState({
+    claps: null,
+    mutationId: null,
+  })
   const [clicked, setClicked] = React.useState(false)
 
-  const client = useQueryClient()
-  const { data = {} } = useQuery([POSTS_KEY, slug], () => getPost(slug))
-  const { mutate } = useMutation(() => clapPost(slug), {
-    onMutate: async () => {
-      await client.cancelQueries(queryKey)
+  const safeSetData = React.useCallback(
+    (data) =>
+      setData((prev) => {
+        if (typeof data === 'function') data = data(prev)
 
-      const previousPost = client.getQueryData(queryKey)
+        return data.mutationId > prev.mutationId ? data : prev
+      }),
+    []
+  )
 
-      client.setQueryData(queryKey, { ...previousPost, claps: previousPost.claps + 1 })
+  React.useEffect(() => {
+    const getClaps = async () => {
+      try {
+        const { claps } = await getPost(slug)
 
-      return () => client.setQueryData(queryKey, previousPost)
-    },
-    onError: (_, __, ___, rollback) => rollback(),
-    onSettled: () => client.invalidateQueries(queryKey),
-  })
+        safeSetData({ claps, mutationId: Date.now() })
+      } catch (err) {
+        console.error(err.message)
+      }
+    }
 
-  const handleClick = React.useCallback(() => {
-    mutate()
-    setClicked(true)
-  }, [mutate])
+    getClaps()
+  }, [safeSetData, slug])
+
+  const handleClick = async () => {
+    const clap = async () => {
+      try {
+        const mutationId = Date.now()
+
+        setClicked(true)
+        safeSetData((prev) => ({ claps: prev.claps + 1, mutationId }))
+
+        const resp = await clapPost({ slug, mutationId })
+
+        safeSetData(resp)
+      } catch (err) {
+        console.error(err.message)
+
+        safeSetData((prev) => ({ claps: prev.claps - 1, mutationId: Date.now() }))
+      }
+    }
+
+    clap()
+  }
 
   return (
     <S.ClapButton clicked={clicked} ref={ref} onClick={handleClick}>
