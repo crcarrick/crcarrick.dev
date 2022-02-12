@@ -17,21 +17,20 @@ const style = css`
   width: 30px;
   height: 30px;
 
+  & rect {
+    fill: var(--color-dark);
+  }
+
   &:active,
   &:hover,
   &:focus {
     ${rect}
-  }
-
-  & rect {
-    fill: var(--color-dark);
   }
 `
 
 export const DevToIcon = styled(DevToSVG)`
   ${style}
 `
-
 export const GithubIcon = styled(GithubSVG)`
   ${style}
 `
@@ -59,6 +58,9 @@ export const SocialLink = styled.a`
   &:focus {
     outline: none;
 
+    ${DevToIcon} {
+      ${rect}
+    }
     ${GithubIcon} {
       ${rect}
     }

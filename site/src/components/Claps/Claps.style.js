@@ -1,5 +1,16 @@
 import styled from 'styled-components'
 
+import SVG from '~/assets/svg/icons/clap.svg'
+
+export const ClapIcon = styled(SVG)`
+  width: 1.5rem;
+  height: 1.5rem;
+
+  g {
+    fill: ${({ clicked }) => (clicked ? 'var(--color-primary)' : 'var(--color-dark)')};
+  }
+`
+
 export const ClapButton = styled.button`
   border: none;
   cursor: pointer;
@@ -9,20 +20,18 @@ export const ClapButton = styled.button`
   font-size: var(--font-size-xs);
   font-weight: 700;
   background-color: transparent;
-  filter: ${({ clicked }) => `grayscale(${clicked ? 0 : 100}%)`};
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  &:after {
-    content: '👏';
-    font-size: var(--font-size-lg);
-  }
-
   &:active,
   &:focus,
   &:hover {
-    filter: grayscale(0%);
+    ${ClapIcon} {
+      g {
+        fill: var(--color-primary);
+      }
+    }
   }
 `
