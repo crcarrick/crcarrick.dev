@@ -39,22 +39,13 @@ export const Seo = ({ path = '', post, seoTitle }) => {
       <html lang="en" />
       <link rel="canonical" href={url} />
 
-      {/* Google Fonts */}
-      {/* <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-      <link
-        preload
-        href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto+Slab:wght@400;500;700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
-        rel="stylesheet"
-      /> */}
-
       {/* Basic */}
       <meta name="description" content={description} />
       <meta name="image" content={image} />
 
       {/* OpenGraph */}
       <meta property="og:url" content={url} />
-      {post != null ? <meta property="og:type" content="article" /> : null}
+      <meta property="og:type" content={post != null ? 'article' : 'website'} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
@@ -65,6 +56,7 @@ export const Seo = ({ path = '', post, seoTitle }) => {
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
+      <meta name="twitter:site" content={siteMetadata.social.twitter} />
     </Helmet>
   )
 }
