@@ -13,6 +13,7 @@ export const Header = () => (
 
     <S.Nav>
       <Link to="/about">About</Link>
+      <Link to="/projects">Projects</Link>
       <Link to="/blog">Blog</Link>
     </S.Nav>
   </S.Header>
