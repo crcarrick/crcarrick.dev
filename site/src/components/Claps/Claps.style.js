@@ -7,7 +7,7 @@ export const ClapIcon = styled(SVG)`
   height: 1.5rem;
 
   g {
-    fill: ${({ clicked }) => (clicked ? 'var(--color-primary)' : 'var(--color-dark)')};
+    fill: ${({ $clicked }) => ($clicked ? 'var(--color-primary)' : 'var(--color-text)')};
   }
 `
 
