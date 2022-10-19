@@ -59,7 +59,7 @@ export const Claps = React.forwardRef(function Claps({ slug }, ref) {
   return (
     <S.ClapButton ref={ref} onClick={handleClick}>
       {data.claps != null ? data.claps.toLocaleString() : '?'}
-      <S.ClapIcon clicked={clicked} />
+      <S.ClapIcon $clicked={clicked} />
     </S.ClapButton>
   )
 })
