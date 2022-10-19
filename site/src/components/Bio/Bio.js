@@ -1,4 +1,5 @@
 import React from 'react'
+import { renderToStaticMarkup } from 'react-dom/server'
 
 import formatDistance from 'date-fns/formatDistance'
 import { graphql, useStaticQuery } from 'gatsby'
@@ -43,7 +44,13 @@ export function Bio() {
   const bioTemplate = template(author.bio, {
     interpolate: /{{([\s\S]+?)}}/g,
   })
-  const bio = bioTemplate({ experience: formatDistance(new Date('11-01-2015'), new Date()) })
+  const bio = bioTemplate({
+    currentJob: renderToStaticMarkup(<Link href="https://www.klaviyo.com">Klaviyo</Link>),
+    experience: formatDistance(new Date('11-01-2015'), new Date()),
+    twitter: renderToStaticMarkup(
+      <Link href={`https://twitter.com/${social.twitter}`}>{social.twitter}</Link>
+    ),
+  })
 
   return (
     <S.BioWrapper>
@@ -53,9 +60,7 @@ export function Bio() {
           <S.Name>About {author.name}</S.Name>
           <S.Location>Software Engineer in {author.location}</S.Location>
         </S.Heading>
-        <S.Bio>
-          {bio} <Link href={`https://twitter.com/${social.twitter}`}>{social.twitter}</Link>
-        </S.Bio>
+        <S.Bio dangerouslySetInnerHTML={{ __html: bio }} />
       </S.Details>
     </S.BioWrapper>
   )
