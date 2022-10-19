@@ -1,7 +1,9 @@
 import React from 'react'
 
+import formatDistance from 'date-fns/formatDistance'
 import { graphql, useStaticQuery } from 'gatsby'
 import { getImage } from 'gatsby-plugin-image'
+import template from 'lodash/template'
 
 import { Link } from '~/components/Link'
 
@@ -38,6 +40,11 @@ export function Bio() {
     },
   } = data
 
+  const bioTemplate = template(author.bio, {
+    interpolate: /{{([\s\S]+?)}}/g,
+  })
+  const bio = bioTemplate({ experience: formatDistance(new Date('11-01-2015'), new Date()) })
+
   return (
     <S.BioWrapper>
       <S.Photo image={getImage(profilePicture)} alt="bio picture" />
@@ -47,7 +54,7 @@ export function Bio() {
           <S.Location>Software Engineer in {author.location}</S.Location>
         </S.Heading>
         <S.Bio>
-          {author.bio} <Link href={`https://twitter.com/${social.twitter}`}>{social.twitter}</Link>
+          {bio} <Link href={`https://twitter.com/${social.twitter}`}>{social.twitter}</Link>
         </S.Bio>
       </S.Details>
     </S.BioWrapper>
