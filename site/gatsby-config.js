@@ -13,9 +13,9 @@ module.exports = {
     author: {
       name: 'Chris Carrick',
       bio: `
-        Chris Carrick is a senior software engineer with {{experience}} experience building beautiful web front-ends.
+        Chris Carrick is a senior software engineer at {{currentJob}} with {{experience}} experience building beautiful web front-ends.
         He loves all things JS, golf, sci-fi novels, and hitting the beach with his girlfriend and dog.
-        Follow him on Twitter at
+        Follow him on Twitter at {{twitter}}
       `,
       location: 'Miami, FL',
     },
