@@ -3,7 +3,7 @@ import { gql } from 'graphql-request'
 import { client } from './utils/client.mjs'
 
 export async function handler(event) {
-  if (event.httpMethod !== 'GET') return { statusCode: 404 }
+  if (event.httpMethod !== 'GET') return { statusCode: 405 }
 
   const slug = event.queryStringParameters['slug']
 

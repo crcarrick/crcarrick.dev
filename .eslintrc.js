@@ -34,6 +34,10 @@ module.exports = {
             group: `builtin`,
           },
           {
+            pattern: `react-dom/server`,
+            group: `builtin`,
+          },
+          {
             pattern: `~/**`,
             group: `internal`,
           },

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { graphql /* useStaticQuery */, useStaticQuery } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 
 import { Blog } from '~/views/Blog'
 
@@ -8,7 +8,10 @@ export default function BlogPage({ location }) {
   const data = useStaticQuery(graphql`
     query BlogPage {
       posts: allMdx(
-        filter: { frontmatter: { published: { ne: "1970-01-01T00:00:00.000Z" } } }
+        filter: {
+          fileAbsolutePath: { glob: "/**/blog/**" }
+          frontmatter: { published: { ne: "1970-01-01T00:00:00.000Z" } }
+        }
         sort: { fields: frontmatter___published, order: DESC }
       ) {
         nodes {
