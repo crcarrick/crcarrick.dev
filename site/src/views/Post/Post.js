@@ -18,7 +18,7 @@ export const Post = ({ path, post }) => {
   const { ref, shouldRender } = useLazyRender({ rootMargin: '400px 0px' })
 
   return (
-    <Layout path={path} post={post}>
+    <Layout content={post} path={path}>
       <S.Article>
         <S.Title>{post.frontmatter.title}</S.Title>
         <S.Meta>

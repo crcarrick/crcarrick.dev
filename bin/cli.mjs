@@ -45,7 +45,7 @@ program
     async (file, { title = '{Post Title}', description = '{Post Description}', force = false }) => {
       const year = new Date().getFullYear().toString()
       const filename = file.replace('.mdx', '')
-      const contentPath = path.join(__dirname, '..', 'site', 'content', year)
+      const contentPath = path.join(__dirname, '..', 'site', 'content', 'blog', year)
       const filePath = path.join(contentPath, `${filename}.mdx`)
 
       try {

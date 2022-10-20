@@ -5,10 +5,10 @@ import { Header } from './Header/Header'
 import * as S from './Layout.style'
 import { Seo } from './Seo/Seo'
 
-export const Layout = ({ children, path, post, seoTitle }) => {
+export const Layout = ({ children, content, path, seoTitle }) => {
   return (
     <S.PageWrapper>
-      <Seo path={path} post={post} seoTitle={seoTitle} />
+      <Seo path={path} content={content} seoTitle={seoTitle} />
       <Header />
       <S.Main>{children}</S.Main>
       <Footer />

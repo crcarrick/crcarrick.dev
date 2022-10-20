@@ -3,13 +3,32 @@ const fs = require('fs')
 const LoadablePlugin = require('@loadable/webpack-plugin')
 
 const Post = require.resolve('./src/templates/post.js')
+const Project = require.resolve('./src/templates/project.js')
+
+const UNIX_EPOCH = '1970-01-01T00:00:00.000Z'
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
   const result = await graphql(`
     query CreatePages {
-      posts: allMdx(filter: { frontmatter: { published: { ne: "1970-01-01T00:00:00.000Z" } } }) {
+      posts: allMdx(
+        filter: {
+          fileAbsolutePath: { glob: "/**/blog/**" }
+          frontmatter: { published: { ne: "${UNIX_EPOCH}" } }
+        }
+      ) {
+        nodes {
+          id
+          slug
+        }
+      }
+      projects: allMdx(
+        filter: {
+          fileAbsolutePath: { glob: "/**/projects/**" }
+          frontmatter: { created: { ne: "${UNIX_EPOCH}" } }
+        }
+      ) {
         nodes {
           id
           slug
@@ -18,7 +37,10 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
+  console.log(JSON.stringify(result.data.posts.nodes))
+
   const posts = result.data.posts.nodes ?? []
+  const projects = result.data.projects.nodes ?? []
 
   for (let post of posts) {
     createPage({
@@ -26,6 +48,16 @@ exports.createPages = async ({ graphql, actions }) => {
       component: Post,
       context: {
         id: post.id,
+      },
+    })
+  }
+
+  for (let project of projects) {
+    createPage({
+      path: `/projects/${project.slug}`,
+      component: Project,
+      context: {
+        id: project.id,
       },
     })
   }
@@ -50,7 +82,7 @@ exports.onCreateBabelConfig = ({ actions }) => {
 
 exports.onCreateWebpackConfig = ({ actions, stage }) => {
   if (stage === 'build-javascript' || stage === 'develop' || stage === 'develop-html') {
-    if (!fs.existsSync(`public/loadable-stats.json`)) {
+    if (fs.existsSync(`public/loadable-stats.json`)) {
       fs.writeFileSync(`public/loadable-stats.json`, JSON.stringify({}))
     }
 

@@ -1,9 +1,16 @@
 import React from 'react'
 
+import { ProjectCard } from '~/components/ProjectCard'
 import { Layout } from '~/views/Layout'
 
-export const Projects = ({ path }) => (
+import * as S from './Projects.style'
+
+export const Projects = ({ path, projects }) => (
   <Layout path={path} seoTitle="Projects">
-    Something something
+    <S.Projects>
+      {projects.map((project) => (
+        <ProjectCard key={project.id} project={project} />
+      ))}
+    </S.Projects>
   </Layout>
 )
