@@ -17,8 +17,6 @@ const OS_NAMES = {
 const getOS = (userAgent) => {
   const agent = userAgent.toLowerCase()
 
-  return 'windows'
-
   if (agent.indexOf('win') !== -1) return 'windows'
   if (agent.indexOf('mac') !== -1) return 'macos'
   if (agent.indexOf('linux') !== -1) return 'linux'
