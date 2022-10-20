@@ -14,9 +14,11 @@ const style = css`
     fill: var(--color-body);
   }
 
-  ${Button}:hover & {
+  ${Button}:hover &,
+  ${Button}:active &,
+  ${Button}:focus & {
     & path {
-      fill: var(--color-text);
+      fill: var(--color-body);
     }
   }
 `
