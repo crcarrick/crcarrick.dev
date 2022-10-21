@@ -34,6 +34,7 @@
     "site"
   ],
   "dependencies": {
+    "@octokit/rest": "^19.0.5",
     "graphql-request": "^3.7.0",
     "isomorphic-fetch": "^3.0.0"
   }

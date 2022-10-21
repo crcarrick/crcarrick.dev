@@ -1,7 +1,6 @@
 import { GatsbyImage } from 'gatsby-plugin-image'
 import styled, { css } from 'styled-components'
 
-import { Button } from '~/components/Button'
 import { breakpoint } from '~/utils/mixins'
 import { Link } from '~/views/Blog/Blog.style'
 

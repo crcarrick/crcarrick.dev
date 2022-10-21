@@ -18,7 +18,7 @@ const style = css`
   ${Button}:active &,
   ${Button}:focus & {
     & path {
-      fill: var(--color-body);
+      fill: var(--color-text);
     }
   }
 `

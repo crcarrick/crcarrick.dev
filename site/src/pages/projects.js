@@ -19,10 +19,8 @@ export default function ProjectsPage({ location }) {
           body
           frontmatter {
             meta
+            repo
             title
-            linuxLink
-            macOSLink
-            windowsLink
             description
             icon {
               publicURL

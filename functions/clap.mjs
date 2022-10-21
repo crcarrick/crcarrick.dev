@@ -1,6 +1,6 @@
 import { gql } from 'graphql-request'
 
-import { client } from './utils/client.mjs'
+import { gqlClient } from './utils/gqlclient.mjs'
 
 export async function handler(event) {
   if (event.httpMethod !== 'POST') return { statusCode: 404 }
@@ -19,7 +19,7 @@ export async function handler(event) {
   if (slug == null || mutationId == null) return { statusCode: 400 }
 
   try {
-    const response = await client.request(
+    const response = await gqlClient.request(
       gql`
         mutation ClapPostBySlug($slug: String!) {
           clapPostBySlug(slug: $slug) {

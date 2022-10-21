@@ -5,6 +5,7 @@ import { getImage } from 'gatsby-plugin-image'
 import { Button } from '~/components/Button'
 import { Icon } from '~/components/Icon'
 import { useSize } from '~/hooks/useSize'
+import { getProjectReleaseDetails } from '~/utils/api'
 
 import * as S from './ProjectCard.style'
 
@@ -23,7 +24,32 @@ const getOS = (userAgent) => {
 }
 
 export const ProjectCard = ({ project }) => {
+  const [downloadUrl, setDownloadUrl] = React.useState('')
+  const os = React.useMemo(() => getOS(navigator.userAgent), [])
+
   const size = useSize()
+
+  React.useEffect(() => {
+    async function getReleaseDetails() {
+      try {
+        const details = await getProjectReleaseDetails({ project })
+        const asset = details.assets.find((asset) => asset.os === os)
+
+        setDownloadUrl(asset.downloadUrl)
+      } catch (err) {
+        console.error(err.message)
+      }
+    }
+
+    getReleaseDetails()
+  }, [os, project])
+
+  const handleDownloadClick = React.useCallback(() => {
+    const a = document.createElement('a')
+
+    a.href = downloadUrl
+    a.click()
+  }, [downloadUrl])
 
   let Title = S.TitleH4
   let Image = (
@@ -38,17 +64,6 @@ export const ProjectCard = ({ project }) => {
         alt={project.frontmatter.description}
       />
     )
-  }
-
-  const os = getOS(navigator.userAgent)
-
-  const handleDownloadClick = () => {
-    const { linuxLink, macOSLink, windowsLink } = project.frontmatter
-    const a = document.createElement('a')
-
-    a.href =
-      os === 'linux' ? linuxLink : os === 'macos' ? macOSLink : os === 'windows' ? windowsLink : ''
-    a.click()
   }
 
   return (

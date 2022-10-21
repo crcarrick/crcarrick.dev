@@ -1,6 +1,6 @@
 import { gql } from 'graphql-request'
 
-import { client } from './utils/client.mjs'
+import { gqlClient } from './utils/gqlclient.mjs'
 
 export async function handler(event) {
   if (event.httpMethod !== 'GET') return { statusCode: 405 }
@@ -10,7 +10,7 @@ export async function handler(event) {
   if (slug == null) return { statusCode: 400 }
 
   try {
-    const response = await client.request(
+    const response = await gqlClient.request(
       gql`
         query FindPostBySlug($slug: String!) {
           findPostBySlug(slug: $slug) {
