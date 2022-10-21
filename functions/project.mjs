@@ -25,7 +25,9 @@ export async function handler(event) {
     const assets = data.assets
       .filter(
         ({ browser_download_url }) =>
-          browser_download_url.endsWith('.exe') || browser_download_url.endsWith('.dmg')
+          browser_download_url.endsWith('.exe') ||
+          browser_download_url.endsWith('.dmg') ||
+          browser_download_url.endsWith('.deb')
       )
       .map(({ name, browser_download_url }) => ({
         os: browser_download_url.endsWith('.exe')
