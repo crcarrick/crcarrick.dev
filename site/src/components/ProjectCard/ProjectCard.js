@@ -4,6 +4,7 @@ import { getImage } from 'gatsby-plugin-image'
 
 import { Button } from '~/components/Button'
 import { Icon } from '~/components/Icon'
+import { useCarousel } from '~/hooks/useCarousel'
 import { useSize } from '~/hooks/useSize'
 import { getProjectReleaseDetails } from '~/utils/api'
 
@@ -27,6 +28,7 @@ export const ProjectCard = ({ project }) => {
   const [downloadUrl, setDownloadUrl] = React.useState('')
   const os = React.useMemo(() => getOS(navigator.userAgent), [])
 
+  const image = useCarousel(project.frontmatter.screenshots)
   const size = useSize()
 
   React.useEffect(() => {
@@ -58,12 +60,7 @@ export const ProjectCard = ({ project }) => {
 
   if (size) {
     Title = S.TitleH3
-    Image = (
-      <S.Image
-        image={getImage(project.frontmatter.screenshots[0])}
-        alt={project.frontmatter.description}
-      />
-    )
+    Image = <S.Image image={getImage(image)} alt={project.frontmatter.description} />
   }
 
   return (

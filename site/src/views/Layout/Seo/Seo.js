@@ -4,8 +4,6 @@ import { graphql, useStaticQuery } from 'gatsby'
 import { Helmet } from 'react-helmet'
 
 export const Seo = ({ content, path = '', seoTitle }) => {
-  console.log(content)
-
   const data = useStaticQuery(graphql`
     query Seo {
       site {

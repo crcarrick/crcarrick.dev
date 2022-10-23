@@ -69,7 +69,10 @@ module.exports = {
     },
     { resolve: 'gatsby-plugin-image' },
     { resolve: 'gatsby-plugin-sharp' },
-    { resolve: 'gatsby-transformer-sharp' },
+    {
+      resolve: 'gatsby-transformer-sharp',
+      options: { defaultQuality: 100 },
+    },
 
     // MDX
     { resolve: 'gatsby-plugin-mdx' },

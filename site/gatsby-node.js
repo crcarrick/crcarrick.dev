@@ -37,8 +37,6 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  console.log(JSON.stringify(result.data.posts.nodes))
-
   const posts = result.data.posts.nodes ?? []
   const projects = result.data.projects.nodes ?? []
 
