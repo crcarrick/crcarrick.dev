@@ -83,7 +83,7 @@ export const ProjectCard = ({ project }) => {
         <S.Meta>{project.frontmatter.meta}</S.Meta>
         <S.Description>{project.frontmatter.description}</S.Description>
       </S.Row>
-      {project.frontmatter.meta === 'Desktop App' ? (
+      {size && project.frontmatter.meta === 'Desktop App' ? (
         <S.Row>
           <S.DownloadButtons>
             <Button onClick={handleDownloadClick}>
