@@ -13,7 +13,7 @@ export async function handler(event) {
     const { data: rateLimitInfo } = await client.rest.rateLimit.get()
     const remainingCalls = rateLimitInfo.resources.core.remaining
 
-    console.log(`Github API requests remaining: ${remainingCalls}`)
+    console.log(`Remaining GH API requests: ${remainingCalls}`)
 
     if (remainingCalls === 0) return { statusCode: 429 }
 
