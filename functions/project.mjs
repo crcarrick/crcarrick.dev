@@ -1,4 +1,12 @@
+import path from 'path'
+
 import { getGHClient } from './utils/ghclient.mjs'
+
+const EXTENSION_TO_OS = {
+  '.exe': 'windows',
+  '.dmg': 'macos',
+  '.deb': 'linux',
+}
 
 export async function handler(event) {
   if (event.httpMethod !== 'GET') return { statusCode: 405 }
@@ -23,18 +31,13 @@ export async function handler(event) {
     })
 
     const assets = data.assets
-      .filter(
-        ({ browser_download_url }) =>
-          browser_download_url.endsWith('.exe') ||
-          browser_download_url.endsWith('.dmg') ||
-          browser_download_url.endsWith('.deb')
-      )
-      .map(({ name, browser_download_url }) => ({
-        os: browser_download_url.endsWith('.exe')
-          ? 'windows'
-          : browser_download_url.endsWith('.dmg')
-          ? 'macos'
-          : 'linux',
+      .map((asset) => ({
+        ...asset,
+        parsed_path: path.parse(asset.browser_download_url),
+      }))
+      .filter(({ parsed_path }) => Object.keys(EXTENSION_TO_OS).includes(parsed_path.ext))
+      .map(({ name, browser_download_url, parsed_path }) => ({
+        os: EXTENSION_TO_OS[parsed_path.ext],
         name: name,
         downloadUrl: browser_download_url,
       }))
