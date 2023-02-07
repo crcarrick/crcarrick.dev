@@ -2,13 +2,13 @@ import path from 'path'
 
 import { getGHClient } from './utils/ghclient.mjs'
 
-const EXTENSION_TO_OS = {
-  '.exe': 'windows',
-  '.dmg': 'macos',
-  '.deb': 'linux',
-}
-
 export async function handler(event) {
+  const EXTENSION_TO_OS = {
+    '.exe': 'windows',
+    '.dmg': 'macos',
+    '.deb': 'linux',
+  }
+
   if (event.httpMethod !== 'GET') return { statusCode: 405 }
 
   const repo = event.queryStringParameters['repo']
