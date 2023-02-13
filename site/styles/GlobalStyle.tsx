@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 
+import { roboto, robotoSlab } from '~/fonts'
+
 export const GlobalStyle = createGlobalStyle`
   :root {
     // base colors
@@ -34,32 +36,36 @@ export const GlobalStyle = createGlobalStyle`
     --border-width: 2px;
 
     // spacing
-    --space-xs: calc((1 / 8) * var(--line-height) * 1rem);
-    --space-sm: calc((1 / 6) * var(--line-height) * 1rem);
-    --space-md: calc((1 / 4) * var(--line-height) * 1rem);
-    --space-lg: calc((1 / 2) * var(--line-height) * 1rem);
-    --space-xl: calc((1 / 1) * var(--line-height) * 1rem);
+    --space-xs: calc((1 / 8) * var(--line-height));
+    --space-sm: calc((1 / 6) * var(--line-height));
+    --space-md: calc((1 / 4) * var(--line-height));
+    --space-lg: calc((1 / 2) * var(--line-height));
+    --space-xl: calc((1 / 1) * var(--line-height));
 
     // misc
     // TODO: --hero-shadow --hero-chair
   }
 
   [data-theme="dark"] {
-    --color-body: var(--color-black);
-    --color-text: var(--color-true-white);
-    --color-primary: var(--color-purple);
-    --color-accent: var(--color-white);
-    --color-info: var(--color-purple);
+      --color-body: var(--color-black);
+      --color-text: var(--color-true-white);
+      --color-primary: var(--color-purple);
+      --color-accent: var(--color-white);
+      --color-info: var(--color-purple);
   }
 
   @media screen and (min-width: 768px) {
-    --font-size: 18px;
-    --line-height: 1.5;
+    :root {
+      --font-size: 18px;
+      --line-height: 1.5;
+    }
   }
 
   @media screen and (min-width: 1024px) {
-    --font-size: 20px;
-    --line-height: 1.5;
+    :root {
+      --font-size: 20px;
+      --line-height: 1.5;
+    }
   }
 
   * {
@@ -87,7 +93,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    font-family: 'Roboto', Tahoma, sans-serif;
+    font-family: ${roboto.style.fontFamily};
     font-size: var(--font-size);
     line-height: var(--line-height);
   }
@@ -122,6 +128,6 @@ export const GlobalStyle = createGlobalStyle`
   h4,
   h5,
   h6 {
-    font-family: 'Roboto Slab', Georgia, serif;
+    font-family: ${robotoSlab.style.fontFamily};
   }
 `

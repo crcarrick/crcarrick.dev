@@ -1,5 +1,5 @@
+import { Providers } from '~/app/providers'
 import StyledComponentsRegistry from '~/lib/registry'
-// import { GlobalStyle } from '~/styles/GlobalStyle'
 
 export default function RootLayout({
   children,
@@ -14,7 +14,9 @@ export default function RootLayout({
       */}
       <head />
       <body>
-        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        <StyledComponentsRegistry>
+          <Providers>{children}</Providers>
+        </StyledComponentsRegistry>
       </body>
     </html>
   )
