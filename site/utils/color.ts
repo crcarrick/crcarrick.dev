@@ -5,9 +5,9 @@ function clamp(num: number) {
 function adjust(color: string, amount: number) {
   const num = parseInt(color.replace('#', ''), 16)
 
-  let r = clamp((num >> 16) + amount)
-  let g = clamp((num & 0x0000ff) + amount)
-  let b = clamp(((num >> 8) & 0x00ff) + amount)
+  const r = clamp((num >> 16) + amount)
+  const g = clamp((num & 0x0000ff) + amount)
+  const b = clamp(((num >> 8) & 0x00ff) + amount)
 
   return `#${(g | (b << 8) | (r << 16)).toString(16)}`
 }

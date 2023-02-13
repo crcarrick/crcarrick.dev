@@ -1,4 +1,8 @@
-import type { GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult } from 'next'
+import {
+  type GetStaticPathsResult,
+  type GetStaticPropsContext,
+  type GetStaticPropsResult,
+} from 'next'
 import styled from 'styled-components'
 
 import { getPosts, getPostBySlug } from '~/lib/blog'

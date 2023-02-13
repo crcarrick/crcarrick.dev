@@ -1,7 +1,6 @@
 import fs from 'fs/promises'
 import { join } from 'path'
 
-import { format } from 'date-fns'
 import { serialize } from 'next-mdx-remote/serialize'
 
 type PostFrontMatter = {
@@ -20,7 +19,7 @@ type Post = {
   readonly compiledSource: string
 }
 
-function isPostFrontMatter(value: Record<string, any> = {}): value is PostFrontMatter {
+function isPostFrontMatter(value: Record<string, unknown> = {}): value is PostFrontMatter {
   return true
 }
 

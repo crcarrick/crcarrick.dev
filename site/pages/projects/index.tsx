@@ -1,4 +1,4 @@
-import type { GetStaticPropsResult } from 'next'
+import { type GetStaticPropsResult } from 'next'
 import Link from 'next/link'
 
 import { getProjects } from '~/lib/projects'

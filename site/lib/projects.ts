@@ -1,7 +1,6 @@
 import fs from 'fs/promises'
 import { join } from 'path'
 
-import matter from 'gray-matter'
 import { serialize } from 'next-mdx-remote/serialize'
 
 type ProjectFrontMatter = {
@@ -20,7 +19,7 @@ type Project = {
   readonly compiledSource: string
 }
 
-function isProjectFrontMatter(value: Record<string, any> = {}): value is ProjectFrontMatter {
+function isProjectFrontMatter(value: Record<string, unknown> = {}): value is ProjectFrontMatter {
   return true
 }
 
