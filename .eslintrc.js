@@ -8,6 +8,7 @@ module.exports = {
   ],
   plugins: ['@typescript-eslint', 'jsx-a11y'],
   rules: {
+    '@typescript-eslint/explicit-module-boundary-types': `off`,
     'import/order': [
       `error`,
       {

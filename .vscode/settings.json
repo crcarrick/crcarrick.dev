@@ -1,7 +1,4 @@
 {
-  "eslint.options": {
-    "rulePaths": ["./node_modules/gatsby/dist/utils/eslint-rules"]
-  },
   "cSpell.words": [
     "activedescendant",
     "browserslist",
