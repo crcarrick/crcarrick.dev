@@ -1,3 +1,4 @@
+import { localFetch } from '~/lib/fetch'
 import { Post } from '~/types'
 
 type PostProps = {
@@ -10,8 +11,8 @@ type JSONResponse = {
   readonly post: Post
 }
 
-export default async function BlogPost({ params }: PostProps) {
-  const response = await fetch(`http://localhost:3000/api/blog/${params.slug}`)
+export default async function BlogPostPage({ params }: PostProps) {
+  const response = await localFetch(`/api/blog/${params.slug}`)
 
   if (!response.ok) throw new Error('Error fetching blog post')
 

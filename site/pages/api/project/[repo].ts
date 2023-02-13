@@ -3,10 +3,34 @@ import path from 'path'
 import { type NextApiRequest, type NextApiResponse } from 'next'
 
 import { getGHClient } from '~/lib/ghclient'
+import { type ProjectAsset } from '~/types'
+
+const MOCK_PROJECT_ASSETS: ProjectAsset[] = [
+  {
+    os: 'windows',
+    name: 'reawr',
+    downloadUrl: 'https://google.com',
+  },
+  {
+    os: 'macos',
+    name: 'reawr',
+    downloadUrl: 'https://google.com',
+  },
+  {
+    os: 'linux',
+    name: 'reawr',
+    downloadUrl: 'https://google.com',
+  },
+]
+
+type JSONResponse = {
+  readonly error?: string | Error
+  readonly assets?: ProjectAsset[]
+}
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse<JSONResponse>
 ) {
   const EXTENSION_TO_OS: Record<string, string> = {
     '.exe': 'windows',
@@ -15,13 +39,18 @@ export default async function handler(
   }
 
   if (req.method !== 'GET') {
-    return res.status(405).send('Method not allowed')
+    return res.status(405).json({ error: 'Method not allowed' })
   }
 
   const repo = req.query['repo']
 
   if (repo == null || typeof repo !== 'string') {
-    return res.status(400).send('`repo` is required')
+    return res.status(400).json({ error: '`repo` is required' })
+  }
+
+  // Mock return value in development to avoid hitting api cap
+  if (process.env.NODE_ENV === 'development') {
+    return res.status(200).json({ assets: MOCK_PROJECT_ASSETS })
   }
 
   try {
@@ -33,7 +62,7 @@ export default async function handler(
     console.log(`Remaining GH API requests: ${remainingCalls}`)
 
     if (remainingCalls === 0) {
-      return res.status(429).send('Too many requests')
+      return res.status(429).json({ error: 'Too many requests' })
     }
 
     const { data } = await client.rest.repos.getLatestRelease({
@@ -59,6 +88,6 @@ export default async function handler(
   } catch (err) {
     console.error(err)
 
-    return res.status(500).send('Something went wrong')
+    return res.status(500).json({ error: 'Something went wrong' })
   }
 }

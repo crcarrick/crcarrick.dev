@@ -15,11 +15,20 @@ type PostGQLResponse = {
   }
 }
 
-async function handleGet(req: NextApiRequest, res: NextApiResponse) {
+type JSONResponse = {
+  readonly error?: string | Error
+  readonly claps?: number
+  readonly mutationId?: number
+}
+
+async function handleGet(
+  req: NextApiRequest,
+  res: NextApiResponse<JSONResponse>
+) {
   const slug = req.query['slug']
 
   if (slug == null || typeof slug !== 'string') {
-    return res.status(400).send('`slug` is required')
+    return res.status(400).json({ error: '`slug` is required' })
   }
 
   try {
@@ -34,19 +43,22 @@ async function handleGet(req: NextApiRequest, res: NextApiResponse) {
       { slug }
     )
 
-    return res.status(200).json(response.findPostBySlug)
+    return res.status(200).json({ claps: response.findPostBySlug.claps })
   } catch (err) {
     console.error(err)
 
-    return res.status(500).send('Something went wrong')
+    return res.status(500).json({ error: 'Something went wrong' })
   }
 }
 
-async function handlePost(req: NextApiRequest, res: NextApiResponse) {
+async function handlePost(
+  req: NextApiRequest,
+  res: NextApiResponse<JSONResponse>
+) {
   const { slug, mutationId } = req.body
 
   if (slug == null || mutationId == null) {
-    return res.status(400).send('Bad request')
+    return res.status(400).json({ error: 'Bad request' })
   }
 
   try {
@@ -62,22 +74,22 @@ async function handlePost(req: NextApiRequest, res: NextApiResponse) {
     )
 
     return res.status(200).json({
-      ...response.clapPostBySlug,
+      claps: response.clapPostBySlug.claps,
       mutationId,
     })
   } catch (err) {
     console.error(err)
 
-    return res.status(500).send('Something went wrong')
+    return res.status(500).json({ error: 'Something went wrong' })
   }
 }
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse<JSONResponse>
 ) {
   if (req.method === 'GET') return handleGet(req, res)
   if (req.method === 'POST') return handlePost(req, res)
 
-  return res.status(405).send('Method not allowed')
+  return res.status(405).json({ error: 'Method not allowed' })
 }

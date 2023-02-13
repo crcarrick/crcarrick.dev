@@ -1,13 +1,14 @@
 import Link from 'next/link'
 
+import { localFetch } from '~/lib/fetch'
 import { Post } from '~/types'
 
 type JSONResponse = {
   readonly posts: Post[]
 }
 
-export default async function Blog() {
-  const response = await fetch('http://localhost:3000/api/blog')
+export default async function BlogPage() {
+  const response = await localFetch('/api/blog')
 
   if (!response.ok) throw new Error('Error fetching blog posts')
 

@@ -1,4 +1,5 @@
-import { Project } from '~/types'
+import { localFetch } from '~/lib/fetch'
+import { ProjectAsset } from '~/types'
 
 type ProjectProps = {
   readonly params: {
@@ -7,21 +8,19 @@ type ProjectProps = {
 }
 
 type JSONResponse = {
-  readonly project: Project
+  readonly assets: ProjectAsset[]
 }
 
-export default async function Project({ params }: ProjectProps) {
-  const response = await fetch(
-    `http://localhost:3000/api/project/${params.slug}`
-  )
+export default async function ProjectPage({ params }: ProjectProps) {
+  const response = await localFetch(`/api/project/${params.slug}`)
 
   if (!response.ok) throw new Error('Error fetching project')
 
-  const { project }: JSONResponse = await response.json()
+  const { assets }: JSONResponse = await response.json()
 
   return (
     <pre>
-      <code>{JSON.stringify(project, null, 2)}</code>
+      <code>{JSON.stringify(assets, null, 2)}</code>
     </pre>
   )
 }

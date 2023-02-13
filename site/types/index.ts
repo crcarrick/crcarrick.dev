@@ -41,3 +41,9 @@ export type Project = {
   readonly frontmatter: ProjectFrontMatter
   readonly compiledSource: string
 }
+
+export type ProjectAsset = {
+  readonly os: string
+  readonly name: string
+  readonly downloadUrl: string
+}
