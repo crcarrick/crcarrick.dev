@@ -1,5 +1,7 @@
-import type { GetStaticPropsResult, GetStaticPropsContext } from 'next'
-import { getProjectBySlug } from '~/lib/projects'
+import type { GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult } from 'next'
+import styled from 'styled-components'
+
+import { getProjects, getProjectBySlug } from '~/lib/projects'
 
 type PageParams = {
   readonly slug: string
@@ -23,10 +25,24 @@ export async function getStaticProps({
   }
 }
 
+export async function getStaticPaths(): Promise<GetStaticPathsResult<PageParams>> {
+  const projects = await getProjects()
+
+  return {
+    paths: projects.map(({ slug }) => ({ params: { slug } })),
+    fallback: false,
+  }
+}
+
+const StyledCode = styled.code`
+  background: grey;
+  color: white;
+`
+
 export default function Project({ project }: ProjectProps) {
   return (
     <pre>
-      <code>{JSON.stringify(project, null, 2)}</code>
+      <StyledCode>{JSON.stringify(project, null, 2)}</StyledCode>
     </pre>
   )
 }

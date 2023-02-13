@@ -23,7 +23,7 @@ export default function Posts({ projects }: ProjectsProps) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
       {projects.map(({ slug, frontmatter: { title } }) => (
-        <Link key={slug} href={`/blog/${slug}`}>
+        <Link key={slug} href={`/projects/${slug}`}>
           {title}
         </Link>
       ))}

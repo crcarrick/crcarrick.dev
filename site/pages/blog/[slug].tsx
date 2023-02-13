@@ -1,4 +1,6 @@
-import type { GetStaticPropsContext, GetStaticPropsResult, GetStaticPathsResult } from 'next'
+import type { GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult } from 'next'
+import styled from 'styled-components'
+
 import { getPosts, getPostBySlug } from '~/lib/blog'
 
 type PageParams = {
@@ -32,10 +34,15 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult<PageParams>
   }
 }
 
+const StyledCode = styled.code`
+  background: grey;
+  color: white;
+`
+
 export default function Post({ post }: PostProps) {
   return (
     <pre>
-      <code>{JSON.stringify(post, null, 2)}</code>
+      <StyledCode>{JSON.stringify(post, null, 2)}</StyledCode>
     </pre>
   )
 }

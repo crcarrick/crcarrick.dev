@@ -24,7 +24,7 @@ function isProjectFrontMatter(value: Record<string, any> = {}): value is Project
   return true
 }
 
-const PROJECTS_DIRECTORY = join(process.cwd(), 'content', 'project')
+const PROJECTS_DIRECTORY = join(process.cwd(), 'content', 'projects')
 
 export async function getProjects() {
   const slugs = await fs.readdir(PROJECTS_DIRECTORY)
