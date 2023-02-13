@@ -1,102 +1,47 @@
-import { createGlobalStyle, css } from 'styled-components'
-
-import {
-  RED,
-  BLUE,
-  GREEN,
-  YELLOW,
-  PURPLE,
-  PINK,
-  BLACK,
-  WHITE,
-  TRUE_BLACK,
-  TRUE_WHITE,
-  DARK,
-} from '~/styles/colors'
-import { spacing } from '~/styles/spacing'
-import { breakpoint, transition } from '~/utils/mixins'
-
-const COLORS = css`
-  --color-red: ${RED.toString()};
-  --color-blue: ${BLUE.toString()};
-  --color-green: ${GREEN.toString()};
-  --color-yellow: ${YELLOW.toString()};
-  --color-purple: ${PURPLE.toString()};
-  --color-pink: ${PINK.toString()};
-  --color-dark: ${DARK.toString()};
-  --color-black: ${BLACK.toString()};
-  --color-white: ${WHITE.toString()};
-  --color-true-black: ${TRUE_BLACK.toString()};
-  --color-true-white: ${TRUE_WHITE.toString()};
-
-  --color-danger: var(--color-red);
-  --color-warning: var(--color-yellow);
-  --color-success: var(--color-green);
-`
-
-const MISC = css`
-  --border-radius: 3px;
-  --border-width: 2px;
-  // TODO: --hero-shadow --hero-chair
-`
-
-const SPACING = css`
-  ${() => {
-    const space = spacing()
-
-    return css`
-      --space-xs: ${space.xs};
-      --space-sm: ${space.sm};
-      --space-md: ${space.md};
-      --space-lg: ${space.lg};
-      --space-xl: ${space.xl};
-    `
-  }}
-`
-
-const TYPOGRAPHY = css`
-  :root {
-    --font-size: 16px;
-    --line-height: 1.5;
-  }
-
-  html {
-    font-family: 'Roboto', Tahoma, sans-serif;
-    font-size: var(--font-size);
-    line-height: var(--line-height);
-  }
-
-  ${breakpoint.md} {
-    --font-size: 18px;
-    --line-height: 1.5;
-  }
-
-  ${breakpoint.lg} {
-    --font-size: 20px;
-    --line-height: 1.5;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: 'Roboto Slab', Georgia, serif;
-  }
-`
+import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
   :root {
-    ${COLORS}
-    ${MISC}
-    ${SPACING}
+    // base colors
+    --color-red: #ea676c;
+    --color-blue: #3f3d56;
+    --color-green: #57b894;
+    --color-yellow: #edd83d;
+    --color-purple: #947bd3;
+    --color-pink: #ff79c6;
+    --color-dark: #30323d;
+    --color-black: #21222a;
+    --color-white: #f2f2f2;
+    --color-true-black: #000000;
+    --color-true-white: #ffffff;
 
+    // context colors
     --color-body: var(--color-white);
     --color-text: var(--color-dark);
     --color-primary: var(--color-red);
     --color-accent: var(--color-dark);
     --color-info: var(--color-blue);
+    --color-danger: var(--color-red);
+    --color-warning: var(--color-yellow);
+    --color-success: var(--color-green);
+
+    // font
+    --font-size: 16px;
+    --line-height: 1.5;
+
+    // borders
+    --border-radius: 3px;
+    --border-width: 2px;
+
+    // spacing
+    --space-xs: 1rem;
+    --space-sm: 1rem;
+    --space-md: 1rem;
+    --space-lg: 1rem;
+    --space-xl: 1rem;
+
+    // misc
+    // TODO: --hero-shadow --hero-chair
   }
 
   [data-theme="dark"] {
@@ -107,7 +52,15 @@ export const GlobalStyle = createGlobalStyle`
     --color-info: var(--color-purple);
   }
 
-  ${TYPOGRAPHY}
+  @media screen and (min-width: 768px) {
+    --font-size: 18px;
+    --line-height: 1.5;
+  }
+
+  @media screen and (min-width: 1024px) {
+    --font-size: 20px;
+    --line-height: 1.5;
+  }
 
   * {
     box-sizing: border-box;
@@ -131,29 +84,44 @@ export const GlobalStyle = createGlobalStyle`
       background-color: var(--color-primary);
       border-radius: var(--border-radius);
     }
+  }
 
-    html,
-    body {
-      width: 100%;
-      height: 100%;
-    }
+  html {
+    font-family: 'Roboto', Tahoma, sans-serif;
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+  }
 
-    body {
-      margin: 0;
-      background-color: var(--color-body);
-      color: var(--color-text);
-      transition: ${transition('background-color')};
-    }
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+  }
 
-    ul,
-    ol {
-      list-style: none;
-    }
+  body {
+    margin: 0;
+    background-color: var(--color-body);
+    color: var(--color-text);
+    transition: background-color 0.3s ease 0s;
+  }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-      border-radius: 0;
-    }
+  ul,
+  ol {
+    list-style: none;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    border-radius: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Roboto Slab', Georgia, serif;
   }
 `
