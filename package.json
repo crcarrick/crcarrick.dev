@@ -5,26 +5,21 @@
   "description": "crcarrick.dev monorepo",
   "author": "Chris Carrick",
   "scripts": {
-    "develop": "yarn workspace site start",
+    "dev": "yarn workspace site dev",
     "start": "yarn workspace site start",
     "build": "yarn workspace site build",
-    "serve": "yarn workspace site serve",
-    "clean": "yarn workspace site clean",
     "cli": "./bin/cli.mjs"
   },
   "keywords": [
-    "gatsby"
+    "nextjs"
   ],
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.0.0",
     "@typescript-eslint/parser": "^4.0.0",
-    "babel-eslint": "^10.0.0",
     "chalk": "^5.0.0",
     "commander": "^8.3.0",
     "eslint": "^7.5.0",
-    "eslint-config-react-app": "^6.0.0",
-    "eslint-plugin-flowtype": "^5.2.0",
-    "eslint-plugin-gatsby": "^1.0.2",
+    "eslint-config-next": "^13.1.6",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.20.3",

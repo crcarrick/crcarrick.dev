@@ -1,14 +1,32 @@
-/site/.cache/
-/site/public/
-
+# Dependencies
 /node_modules
-
+/.pnp
+.pnp.js
 /**/*/node_modules
+
+# Misc
 /**/*/.env.*
 /**/*/yarn-error.log
+.DS_Store
+*.pem
 
 # Local Netlify folder
 .netlify
 
 # Fauna
 .faunarc
+
+# Next.js
+/site/.next/
+/site/out/
+
+# production
+/site/build
+
+# vercel
+.vercel
+/**/*/.vercel
+
+# typescript
+*.tsbuildinfo
+/site/next-env.d.ts
