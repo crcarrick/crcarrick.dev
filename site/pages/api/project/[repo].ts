@@ -4,7 +4,10 @@ import { type NextApiRequest, type NextApiResponse } from 'next'
 
 import { getGHClient } from '~/lib/ghclient'
 
-export async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   const EXTENSION_TO_OS: Record<string, string> = {
     '.exe': 'windows',
     '.dmg': 'macos',
@@ -43,7 +46,9 @@ export async function handler(req: NextApiRequest, res: NextApiResponse) {
         ...asset,
         parsed_path: path.parse(asset.browser_download_url),
       }))
-      .filter(({ parsed_path }) => Object.keys(EXTENSION_TO_OS).includes(parsed_path.ext))
+      .filter(({ parsed_path }) =>
+        Object.keys(EXTENSION_TO_OS).includes(parsed_path.ext)
+      )
       .map(({ name, browser_download_url, parsed_path }) => ({
         os: EXTENSION_TO_OS[parsed_path.ext],
         name: name,

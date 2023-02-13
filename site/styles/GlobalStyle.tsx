@@ -34,11 +34,11 @@ export const GlobalStyle = createGlobalStyle`
     --border-width: 2px;
 
     // spacing
-    --space-xs: 1rem;
-    --space-sm: 1rem;
-    --space-md: 1rem;
-    --space-lg: 1rem;
-    --space-xl: 1rem;
+    --space-xs: calc((1 / 8) * var(--line-height) * 1rem);
+    --space-sm: calc((1 / 6) * var(--line-height) * 1rem);
+    --space-md: calc((1 / 4) * var(--line-height) * 1rem);
+    --space-lg: calc((1 / 2) * var(--line-height) * 1rem);
+    --space-xl: calc((1 / 1) * var(--line-height) * 1rem);
 
     // misc
     // TODO: --hero-shadow --hero-chair

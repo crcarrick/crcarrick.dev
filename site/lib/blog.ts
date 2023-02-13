@@ -3,25 +3,7 @@ import { join } from 'path'
 
 import { serialize } from 'next-mdx-remote/serialize'
 
-type PostFrontMatter = {
-  readonly title: string
-  readonly description: string
-  readonly featuredImage: string
-  readonly featuredIcon: string
-  readonly author: string
-  readonly published: Date
-  readonly tags: string[]
-}
-
-type Post = {
-  readonly slug: string
-  readonly frontmatter: PostFrontMatter
-  readonly compiledSource: string
-}
-
-function isPostFrontMatter(value: Record<string, unknown> = {}): value is PostFrontMatter {
-  return true
-}
+import { isPostFrontMatter, type Post } from '~/types'
 
 const POSTS_DIRECTORY = join(process.cwd(), 'content', 'blog')
 
@@ -39,7 +21,9 @@ export async function getPostBySlug(rawSlug?: string): Promise<Post | null> {
   const path = join(POSTS_DIRECTORY, `${slug}.mdx`)
 
   const contents = await fs.readFile(path, 'utf8')
-  const { frontmatter, compiledSource } = await serialize(contents, { parseFrontmatter: true })
+  const { frontmatter, compiledSource } = await serialize(contents, {
+    parseFrontmatter: true,
+  })
 
   if (isPostFrontMatter(frontmatter)) {
     return {

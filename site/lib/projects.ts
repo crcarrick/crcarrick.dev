@@ -3,25 +3,7 @@ import { join } from 'path'
 
 import { serialize } from 'next-mdx-remote/serialize'
 
-type ProjectFrontMatter = {
-  readonly meta: string
-  readonly icon: string
-  readonly repo: string
-  readonly title: string
-  readonly created: Date
-  readonly description: string
-  readonly screenshots: string[]
-}
-
-type Project = {
-  readonly slug: string
-  readonly frontmatter: ProjectFrontMatter
-  readonly compiledSource: string
-}
-
-function isProjectFrontMatter(value: Record<string, unknown> = {}): value is ProjectFrontMatter {
-  return true
-}
+import { isProjectFrontMatter, type Project } from '~/types'
 
 const PROJECTS_DIRECTORY = join(process.cwd(), 'content', 'projects')
 
@@ -32,14 +14,18 @@ export async function getProjects() {
   return projects.filter((project): project is Project => project !== null)
 }
 
-export async function getProjectBySlug(rawSlug?: string): Promise<Project | null> {
+export async function getProjectBySlug(
+  rawSlug?: string
+): Promise<Project | null> {
   if (!rawSlug) return null
 
   const slug = rawSlug.replace(/\.mdx$/, '')
   const path = join(PROJECTS_DIRECTORY, `${slug}.mdx`)
 
   const contents = await fs.readFile(path, 'utf8')
-  const { frontmatter, compiledSource } = await serialize(contents, { parseFrontmatter: true })
+  const { frontmatter, compiledSource } = await serialize(contents, {
+    parseFrontmatter: true,
+  })
 
   if (isProjectFrontMatter(frontmatter)) {
     return {
