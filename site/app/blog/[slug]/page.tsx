@@ -19,9 +19,9 @@ export async function generateStaticParams() {
   const response = await localFetch(`/api/blog`)
   const { posts }: BlogJSONResponse = await response.json()
 
-  return posts.map(({ slug }) => {
-    slug
-  })
+  return posts.map(({ slug }) => ({
+    slug,
+  }))
 }
 
 export default async function BlogPostPage({ params }: PostProps) {

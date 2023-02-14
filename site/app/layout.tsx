@@ -1,4 +1,4 @@
-import { Providers } from '~/app/providers'
+import StyledComponentsRegistry from '~/lib/registry'
 
 import '~/styles/global.scss'
 
@@ -11,7 +11,7 @@ export default function RootLayout({
     <html lang="en">
       <head />
       <body>
-        <Providers>{children}</Providers>
+        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
       </body>
     </html>
   )

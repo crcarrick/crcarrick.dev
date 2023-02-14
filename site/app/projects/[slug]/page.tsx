@@ -19,9 +19,9 @@ export async function generateStaticParams() {
   const response = await localFetch(`/api/project`)
   const { projects }: ProjectsJSONResponse = await response.json()
 
-  return projects.map(({ slug }) => {
-    slug
-  })
+  return projects.map(({ slug }) => ({
+    slug,
+  }))
 }
 
 export default async function ProjectPage({ params }: ProjectProps) {
