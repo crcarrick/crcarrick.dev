@@ -1,3 +1,5 @@
+@use "sass:color";
+
 :root {
   /* base colors */
   --color-red: #ea676c;
@@ -22,9 +24,29 @@
   --color-warning: var(--color-yellow);
   --color-success: var(--color-green);
 
+  /* background colors */
+  --bg-danger: color.rgba(var(--color-danger), var(--bg-opacity));
+  --bg-warning: color.rgba(var(--color-warning), var(--bg-opacity));
+  --bg-success: color.rgba(var(--color-success), var(--bg-opacity));
+  --bg-info: color.rgba(var(--color-info), var(--bg-opacity));
+  --bg-card: var(--color-true-white);
+  --bg-code: color.lighten(var(--color-dark), 5%);
+  --bg-code-highlight: color.rgba(color.lighten(var(--color-dark), 25%), 0.75);
+  --bg-code-inline: color.darken(var(--color-body), 55%);
+
   /* font */
   --font-size: 16px;
   --line-height: 1.5;
+
+  --font-family-heading: 'Roboto Slab';
+  --font-family-body: 'Roboto';
+  --font-family-code: 'Roboto Mono';
+  --font-code: 600 0.75rem / 1.6 var(--font-family-code);
+
+  --font-size-lg: 1rem;
+  --font-size-md: 0.85rem;
+  --font-size-sm: 0.75rem;
+  --font-size-xs: 0.65rem;
 
   /* borders */
   --border-radius: 3px;
@@ -39,6 +61,10 @@
 
   /* misc */
   /* TODO: --hero-shadow --hero-chair */
+  --bg-opacity: 0.25;
+
+  --hero-shadow: color.darken(var(--color-primary), 15%);
+  --hero-chari: color.rgba(color.lighten(var(--color-primary), 25%), 0.5);
 }
 
 [data-theme="dark"] {
@@ -47,32 +73,35 @@
   --color-primary: var(--color-purple);
   --color-accent: var(--color-white);
   --color-info: var(--color-purple);
+
+  --bg-card: color.lighten(var(--color-body), 10%);
+  --bg-code-inline: color.lighten(var(--color-body), 45%);
 }
 
 * {
   box-sizing: border-box;
   border-radius: var(--border-radius);
-}
 
-@supports (scrollbar-width: thin) and (scrollbar-color: var(--color-primary) var(--color-dark)) {
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: var(--color-primary) var(--color-dark);
+  @supports (scrollbar-width: thin) and (scrollbar-color: var(--color-primary) var(--color-dark)) {
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: var(--color-primary) var(--color-dark);
+    }
   }
-}
 
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color-dark);
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: var(--color-primary);
-  border-radius: var(--border-radius);
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--color-dark);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary);
+    border-radius: var(--border-radius);
+  }
 }
 
 @media screen and (min-width: 768px) {

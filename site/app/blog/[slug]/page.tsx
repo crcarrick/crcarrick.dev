@@ -1,5 +1,5 @@
 import { localFetch } from '~/lib/fetch'
-import { Post } from '~/types'
+import { type Post } from '~/types'
 
 type PostProps = {
   readonly params: {
@@ -7,8 +7,21 @@ type PostProps = {
   }
 }
 
-type JSONResponse = {
+type BlogJSONResponse = {
+  readonly posts: Post[]
+}
+
+type PostJSONResponse = {
   readonly post: Post
+}
+
+export async function generateStaticParams() {
+  const response = await localFetch(`/api/blog`)
+  const { posts }: BlogJSONResponse = await response.json()
+
+  return posts.map(({ slug }) => {
+    slug
+  })
 }
 
 export default async function BlogPostPage({ params }: PostProps) {
@@ -16,7 +29,7 @@ export default async function BlogPostPage({ params }: PostProps) {
 
   if (!response.ok) throw new Error('Error fetching blog post')
 
-  const { post }: JSONResponse = await response.json()
+  const { post }: PostJSONResponse = await response.json()
 
   return (
     <pre>

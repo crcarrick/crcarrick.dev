@@ -1,5 +1,5 @@
 import { localFetch } from '~/lib/fetch'
-import { ProjectAsset } from '~/types'
+import { type Project, type ProjectAsset } from '~/types'
 
 type ProjectProps = {
   readonly params: {
@@ -7,8 +7,21 @@ type ProjectProps = {
   }
 }
 
-type JSONResponse = {
+type ProjectsJSONResponse = {
+  readonly projects: Project[]
+}
+
+type ProjectJSONResponse = {
   readonly assets: ProjectAsset[]
+}
+
+export async function generateStaticParams() {
+  const response = await localFetch(`/api/project`)
+  const { projects }: ProjectsJSONResponse = await response.json()
+
+  return projects.map(({ slug }) => {
+    slug
+  })
 }
 
 export default async function ProjectPage({ params }: ProjectProps) {
@@ -16,7 +29,7 @@ export default async function ProjectPage({ params }: ProjectProps) {
 
   if (!response.ok) throw new Error('Error fetching project')
 
-  const { assets }: JSONResponse = await response.json()
+  const { assets }: ProjectJSONResponse = await response.json()
 
   return (
     <pre>

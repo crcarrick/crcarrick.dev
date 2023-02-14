@@ -1,3 +1,5 @@
+import { type FlattenSimpleInterpolation } from 'styled-components'
+
 export const size = {
   sm: '480px',
   md: '768px',
@@ -16,14 +18,16 @@ export const breakpoint = Object.entries(size).reduce(
   }
 )
 
-export const supports = ([rules]: [string]) => {
-  const predicate = rules
-    .split(';')
-    .slice(0, -1)
-    .map((rule) => `(${rule})`)
-    .join(' and ')
+export const supports = ([rules]: FlattenSimpleInterpolation) => {
+  if (typeof rules === 'string') {
+    const predicate = rules
+      .split(';')
+      .slice(0, -1)
+      .map((rule) => `(${rule})`)
+      .join(' and ')
 
-  return `@supports ${predicate} { ${rules} }`
+    return `@supports ${predicate} { ${rules} }`
+  }
 }
 
 export const transition = (...properties: string[]) => {
@@ -31,7 +35,9 @@ export const transition = (...properties: string[]) => {
 
   return properties.reduce(
     (transition, property, index) =>
-      index === 0 ? `${property} ${base}` : `${transition}, ${property} ${base}`,
+      index === 0
+        ? `${property} ${base}`
+        : `${transition}, ${property} ${base}`,
     ''
   )
 }

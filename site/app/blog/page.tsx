@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 import { localFetch } from '~/lib/fetch'
-import { Post } from '~/types'
+import { type Post } from '~/types'
 
 type JSONResponse = {
   readonly posts: Post[]

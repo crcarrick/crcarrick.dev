@@ -1,5 +1,6 @@
 import { Providers } from '~/app/providers'
-import StyledComponentsRegistry from '~/lib/registry'
+
+import '~/styles/global.scss'
 
 export default function RootLayout({
   children,
@@ -8,15 +9,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
       <head />
       <body>
-        <StyledComponentsRegistry>
-          <Providers>{children}</Providers>
-        </StyledComponentsRegistry>
+        <Providers>{children}</Providers>
       </body>
     </html>
   )

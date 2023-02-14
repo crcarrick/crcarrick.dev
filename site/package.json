@@ -30,6 +30,7 @@
   "devDependencies": {
     "@types/compass-vertical-rhythm": "^1.4.2",
     "@types/styled-components": "^5.1.26",
-    "@types/typography": "^0.16.4"
+    "@types/typography": "^0.16.4",
+    "sass": "^1.58.0"
   }
 }
