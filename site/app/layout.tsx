@@ -1,7 +1,5 @@
-import { cx } from 'class-variance-authority'
-
-import { Link } from '~/components'
 import { roboto, robotoMono, robotoSlab } from '~/fonts'
+import { cx } from '~/utils/cva'
 
 import '~/styles/global.css'
 
@@ -13,17 +11,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cx(
-        roboto.variable,
-        robotoMono.variable,
-        robotoSlab.variable
-      )}
+      className={cx(roboto.variable, robotoMono.variable, robotoSlab.variable)}
     >
       <head />
-      <body>
-        <Link type="internal" href="" context="article">Projects</Link>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   )
 }

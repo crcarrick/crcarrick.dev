@@ -1,7 +1,7 @@
 import { gql } from 'graphql-request'
 import { type NextApiRequest, type NextApiResponse } from 'next'
 
-import { gqlClient } from '~/lib/gqlclient'
+import { gqlClient } from '~/lib/gqlClient'
 
 type GetGQLResponse = {
   readonly findPostBySlug: {

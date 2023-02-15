@@ -22,5 +22,38 @@
     --color-danger: var(--color-red);
     --color-warning: var(--color-yellow);
     --color-success: var(--color-green);
+
+    /* hsl colors in order to lighten / darken */
+    /* TODO: this is kinda gross */
+    --color-black-h: 233deg;
+    --color-black-s: 12%;
+    --color-black-l: 14.7%;
+
+    --color-white-h: 0deg;
+    --color-white-s: 0%;
+    --color-white-l: 94.9%;
+
+    --color-dark-h: 231deg;
+    --color-dark-s: 11.9%;
+    --color-dark-l: 21.4%;
+
+    --color-red-h: 358deg;
+    --color-red-s: 75.7%;
+    --color-red-l: 21.4%;
+
+    --color-purple-h: 257deg;
+    --color-purple-s: 50%;
+    --color-purple-l: 65.5%;
+
+    --bg-card: rgb(var(--color-true-white));
+    --bg-code: hsl(
+      var(--color-dark-h) var(--color-dark-s) calc(var(--color-dark-l) + 5%)
+    );
+    --bg-code-highlight: hsl(
+      var(--color-dark-h) var(--color-dark-s) calc(var(--color-dark-l) + 25%)
+    );
+    --bg-code-inline: hsl(
+      var(--color-white-h) var(--color-white-s) calc(var(--color-white-l) - 55%)
+    );
   }
 }

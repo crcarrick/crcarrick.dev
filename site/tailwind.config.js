@@ -12,10 +12,13 @@ const baseColors = [
   'white',
   'true-black',
   'true-white',
-].reduce((colors, color) => ({
-  ...colors,
-  [color]: `rgb(var(--color-${color}))`
-}), {})
+].reduce(
+  (colors, color) => ({
+    ...colors,
+    [color]: `rgb(var(--color-${color}))`,
+  }),
+  {}
+)
 
 const contextColors = [
   'body',
@@ -26,10 +29,20 @@ const contextColors = [
   'danger',
   'warning',
   'success',
-].reduce((colors, color) => ({
-  ...colors,
-  [color]: `rgb(var(--color-${color}))`
-}), {})
+].reduce(
+  (colors, color) => ({
+    ...colors,
+    [color]: `rgb(var(--color-${color}))`,
+  }),
+  {}
+)
+
+const backgroundColors = ['info', 'danger', 'warning', 'success'].reduce(
+  (colors, color) => ({
+    ...colors,
+    [color]: `rgb(var(--color-${color}) / 0.25)`,
+  })
+)
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -47,7 +60,12 @@ module.exports = {
     extend: {
       backgroundColor: {
         ...baseColors,
-        ...contextColors
+        ...contextColors,
+        ...backgroundColors,
+        card: 'var(--bg-card)',
+        code: 'var(--bg-code)',
+        'code-highlight': 'var(--bg-code-highlight)',
+        'code-inline': 'var(--bg-code-inline)',
       },
       borderRadius: {
         DEFAULT: '3px',
@@ -55,6 +73,11 @@ module.exports = {
       borderWidth: {
         DEFAULT: '2px',
       },
+      boxShadow: ({ theme }) => ({
+        DEFAULT: `inset 0 0 0 ${theme('borderWidth')} ${theme(
+          'colors.primary'
+        )}`,
+      }),
       colors: {
         ...baseColors,
         ...contextColors,
@@ -65,7 +88,15 @@ module.exports = {
         serif: ['var(--roboto-slab)', ...fontFamily.serif],
       },
       fontSize: {
+        // FIXME: this makes no sense
+        xs: '0.65rem',
+        sm: '0.75rem',
+        md: '0.85rem',
+        lg: '1rem',
         base: 'var(--font-size)',
+      },
+      lineHeight: {
+        normal: 'var(--line-height)',
       },
       screens: {
         sm: '480px',

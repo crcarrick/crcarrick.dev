@@ -2,7 +2,7 @@ import path from 'path'
 
 import { type NextApiRequest, type NextApiResponse } from 'next'
 
-import { getGHClient } from '~/lib/ghclient'
+import { getGHClient } from '~/lib/ghClient'
 import { type ProjectAsset } from '~/types'
 
 const MOCK_PROJECT_ASSETS: ProjectAsset[] = [

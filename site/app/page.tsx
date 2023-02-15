@@ -1,3 +1,9 @@
+import { Logo } from '~/components'
+
 export default function Home() {
-  return <main>Hello World</main>
+  return (
+    <main style={{ width: 200 }}>
+      <Logo />
+    </main>
+  )
 }

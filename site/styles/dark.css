@@ -6,6 +6,13 @@
     --color-text: var(--color-true-white);
     --color-primary: var(--color-purple);
     --color-accent: var(--color-white);
+
+    --bg-card: hsl(
+      var(--color-black-h) var(--color-black-s) calc(var(--color-black-l) + 10%)
+    );
+    --bg-code-inline: hsl(
+      var(--color-black-h) var(--color-black-s) calc(var(--color-black-l) - 45%)
+    );
   }
 }
 

@@ -1,4 +1,4 @@
-import {  } from 'tailwindcss'
+import {} from 'tailwindcss'
 
 type PostFrontMatter = {
   readonly title: string
@@ -48,6 +48,10 @@ export type ProjectAsset = {
   readonly os: string
   readonly name: string
   readonly downloadUrl: string
+}
+
+export type ClassNameProp = {
+  readonly className?: string
 }
 
 // TODO: Implement ValidClass somehow

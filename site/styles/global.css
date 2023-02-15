@@ -41,6 +41,7 @@
 
 * {
   box-sizing: border-box;
+  border-radius: theme('borderRadius.DEFAULT');
 }
 
 html,
