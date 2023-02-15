@@ -2,32 +2,25 @@
 /node_modules
 /.pnp
 .pnp.js
-/**/*/node_modules
 /.yarn
 
 # Misc
-/**/*/.env.*
-/**/*/yarn-error.log
+/.env.*
+/yarn-error.log
 .DS_Store
 *.pem
-
-# Local Netlify folder
-.netlify
 
 # Fauna
 .faunarc
 
 # Next.js
-/site/.next/
-/site/out/
+/.next
+/out
 
-# production
-/site/build
-
-# vercel
+# Vercel
 .vercel
 /**/*/.vercel
 
-# typescript
+# Typescript
 *.tsbuildinfo
-/site/next-env.d.ts
+/next-env.d.ts

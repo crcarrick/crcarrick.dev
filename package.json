@@ -2,18 +2,44 @@
   "name": "crcarrick.dev",
   "private": true,
   "version": "0.2.0",
-  "description": "crcarrick.dev monorepo",
+  "description": "crcarrick.dev",
   "author": "Chris Carrick",
   "scripts": {
-    "dev": "yarn workspace site dev",
-    "start": "yarn workspace site start",
-    "build": "yarn workspace site build",
+    "dev": "next dev",
+    "start": "next start",
+    "build": "next build",
+    "export": "next export",
     "cli": "./bin/cli.mjs"
   },
   "keywords": [
     "nextjs"
   ],
+  "dependencies": {
+    "@next/font": "^13.1.6",
+    "@octokit/rest": "^19.0.7",
+    "autoprefixer": "^10.4.13",
+    "class-variance-authority": "^0.4.0",
+    "clsx": "^1.2.1",
+    "date-fns": "^2.29.3",
+    "graphql-request": "^5.1.0",
+    "lodash.template": "^4.5.0",
+    "next": "13.1.6",
+    "next-mdx-remote": "^4.3.0",
+    "next-themes": "^0.2.1",
+    "postcss": "^8.4.21",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "tailwind-merge": "^1.9.1",
+    "tailwindcss": "^3.2.6",
+    "typescript": "4.9.5"
+  },
   "devDependencies": {
+    "@svgr/webpack": "^6.5.1",
+    "@tailwindcss/typography": "^0.5.9",
+    "@types/lodash.template": "^4.5.1",
+    "@types/node": "^18.13.0",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^4.0.0",
     "@typescript-eslint/parser": "^4.0.0",
     "chalk": "^5.0.0",
@@ -25,10 +51,9 @@
     "eslint-plugin-react": "^7.20.3",
     "eslint-plugin-react-hooks": "^4.0.8",
     "prettier": "^2.8.4",
+    "prettier-plugin-css-order": "^1.3.0",
+    "prettier-plugin-tailwindcss": "^0.2.2",
     "typescript": "4.9.5"
   },
-  "workspaces": [
-    "site"
-  ],
   "packageManager": "yarn@1.22.19"
 }

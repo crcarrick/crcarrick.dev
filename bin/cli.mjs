@@ -45,7 +45,7 @@ program
     async (file, { title = '{Post Title}', description = '{Post Description}', force = false }) => {
       const year = new Date().getFullYear().toString()
       const filename = file.replace('.mdx', '')
-      const contentPath = path.join(__dirname, '..', 'site', 'content', 'blog', year)
+      const contentPath = path.join(__dirname, '..', 'src', 'content', 'blog', year)
       const filePath = path.join(contentPath, `${filename}.mdx`)
 
       try {
@@ -63,7 +63,7 @@ program
 
         logSuccess(
           `generated post ${chalk.blue(`${filename}.mdx`)} in ${chalk.blue(
-            `/site/content/${year}`
+            `/src/content/${year}`
           )}`
         )
 
