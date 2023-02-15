@@ -16,7 +16,7 @@ export default async function ProjectsPage() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
       {projects.map(({ slug, frontmatter: { title } }) => (
-        <Link key={slug} type="internal" href={`/projects/${slug}`}>
+        <Link key={slug} type="internal" context="nav" href={`/projects/${slug}`}>
           {title}
         </Link>
       ))}

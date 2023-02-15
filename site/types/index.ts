@@ -1,3 +1,5 @@
+import {  } from 'tailwindcss'
+
 type PostFrontMatter = {
   readonly title: string
   readonly description: string
@@ -47,3 +49,14 @@ export type ProjectAsset = {
   readonly name: string
   readonly downloadUrl: string
 }
+
+// TODO: Implement ValidClass somehow
+// export type Tailwind<S> = S extends `${infer Class} ${infer Rest}`
+//   ? Class extends ValidClass
+//     ? `${Class} ${Tailwind<Rest>}`
+//     : never
+//   : S extends `${infer Class}`
+//   ? Class extends ValidClass
+//     ? S
+//     : never
+//   : never;

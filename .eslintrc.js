@@ -8,13 +8,14 @@ module.exports = {
   ],
   plugins: ['@typescript-eslint', 'jsx-a11y'],
   rules: {
-    '@typescript-eslint/explicit-module-boundary-types': `off`,
     '@typescript-eslint/ban-ts-comment': [
       `error`,
       {
         'ts-ignore': `allow-with-description`,
       },
     ],
+    '@typescript-eslint/explicit-module-boundary-types': `off`,
+    '@typescript-eslint/no-var-requires': `off`,
     'import/order': [
       `error`,
       {

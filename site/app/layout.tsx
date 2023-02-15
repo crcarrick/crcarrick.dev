@@ -1,6 +1,9 @@
-import StyledComponentsRegistry from '~/lib/registry'
+import { cx } from 'class-variance-authority'
 
-import '~/styles/global.scss'
+import { Link } from '~/components'
+import { roboto, robotoMono, robotoSlab } from '~/fonts'
+
+import '~/styles/global.css'
 
 export default function RootLayout({
   children,
@@ -8,10 +11,18 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={cx(
+        roboto.variable,
+        robotoMono.variable,
+        robotoSlab.variable
+      )}
+    >
       <head />
       <body>
-        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        <Link type="internal" href="" context="article">Projects</Link>
+        {children}
       </body>
     </html>
   )

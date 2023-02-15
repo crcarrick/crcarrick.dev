@@ -1,0 +1,11 @@
+@tailwind base;
+
+@layer base {
+  :root {
+    --space-xs: calc((1 / 8) * theme('lineHeight.normal'));
+    --space-sm: calc((1 / 6) * theme('lineHeight.normal'));
+    --space-md: calc((1 / 4) * theme('lineHeight.normal'));
+    --space-lg: calc((1 / 2) * theme('lineHeight.normal'));
+    --space-xl: calc((1 / 1) * theme('lineHeight.normal'));
+  }
+}

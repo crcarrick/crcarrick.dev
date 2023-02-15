@@ -1,33 +1,29 @@
-import Link from 'next/link'
-import styled, { css } from 'styled-components'
+import { cva } from '~/utils/cva'
 
-import { supports } from '~/utils/mixins'
-
-const BaseStyle = css`
-  text-decoration: none;
-  color: inherit;
-  cursor: pointer;
-
-  &:active,
-  &:hover,
-  &:focus {
-    outline: none;
-    text-decoration-line: underline;
-    text-decoration-color: var(--color-primary);
-    ${supports(
-      css`
-        text-decoration-thickness: var(--border-width);
-      `
-    )}
+export const link = cva(
+  [
+    'no-underline',
+    'cursor-pointer',
+    'pseudo:outline-none',
+    'pseudo:underline',
+    'pseudo:decoration-primary',
+    'pseudo:decoration-2',
+  ],
+  {
+    variants: {
+      context: {
+        nav: ['p-md', 'uppercase', 'underline-offset-2'],
+        article: [
+          'text-text',
+          'underline',
+          'decoration-primary',
+          'decoration-2',
+          'underline-offset-2',
+          'hocus:no-underline',
+          'hocus:bg-primary',
+          'hocus:text-white',
+        ],
+      },
+    },
   }
-
-  // TODO: Add contextual styles for {Nav} & {Article}
-`
-
-export const InternalLink = styled(Link)`
-  ${BaseStyle}
-`
-
-export const ExternalLink = styled.a`
-  ${BaseStyle}
-`
+)

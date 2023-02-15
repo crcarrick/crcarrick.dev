@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './color.css';
+@import './font.css';
+@import './dark.css';
+@import './space.css';
+
+@layer base {
+  [data-nextjs-scroll-focus-boundary] {
+    display: contents;
+  }
+}
+
+[data-nextjs-scroll-focus-boundary] {
+  display: contents;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: theme('colors.dark');
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: theme('borderRadius.DEFAULT');
+  background-color: theme('colors.red');
+}
+
+@supports (scrollbar-width: thin) and
+  (scrollbar-color: theme('colors.red') theme('colors.dark')) {
+  * {
+    scrollbar-color: theme('colors.red') theme('colors.dark');
+    scrollbar-width: thin;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+html {
+  font-size: theme('fontSize.base');
+}
+
+body {
+  transition: background-color 0.3s ease 0s;
+  margin: 0;
+  background-color: theme('colors.white');
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  border-radius: 0;
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: theme('fontFamily.serif');
+}

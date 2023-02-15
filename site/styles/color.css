@@ -1,0 +1,26 @@
+@tailwind base;
+
+@layer base {
+  :root {
+    --color-red: 234 103 108;
+    --color-blue: 63 61 86;
+    --color-pink: 255 121 198;
+    --color-dark: 48 50 61;
+    --color-black: 33 34 42;
+    --color-white: 242 242 242;
+    --color-green: 87 184 148;
+    --color-yellow: 237 216 61;
+    --color-purple: 148 123 211;
+    --color-true-black: 0 0 0;
+    --color-true-white: 255 255 255;
+
+    --color-body: var(--color-white);
+    --color-text: var(--color-dark);
+    --color-primary: var(--color-red);
+    --color-accent: var(--color-dark);
+    --color-info: var(--color-blue);
+    --color-danger: var(--color-red);
+    --color-warning: var(--color-yellow);
+    --color-success: var(--color-green);
+  }
+}

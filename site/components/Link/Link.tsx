@@ -1,8 +1,7 @@
-'use client'
+import { type VariantProps } from 'class-variance-authority'
+import NextLink, { type LinkProps as NextLinkProps } from 'next/link'
 
-import { type LinkProps as NextLinkProps } from 'next/link'
-
-import * as Styled from './Link.style'
+import { link } from './Link.style'
 
 type LinkType = 'internal' | 'external'
 
@@ -23,14 +22,17 @@ type LinkProps<T extends LinkType> = T extends 'internal'
   ? ExternalLinkProps
   : never
 
+type LinkStyleProps = VariantProps<typeof link>
+
 export default function Link<T extends LinkType>({
   type,
   href,
+  context,
   ...props
-}: LinkProps<T>) {
+}: LinkProps<T> & LinkStyleProps) {
   return type === 'external' ? (
-    <Styled.ExternalLink href={href} {...props} />
+    <a className={link({ context })} href={href} {...props} />
   ) : (
-    <Styled.InternalLink href={href} {...props} />
+    <NextLink className={link({ context })} href={href} {...props} />
   )
 }

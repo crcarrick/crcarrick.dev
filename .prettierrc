@@ -1,5 +1,7 @@
 {
   "semi": false,
   "printWidth": 80,
-  "singleQuote": true
+  "singleQuote": true,
+  "plugins": ["prettier-plugin-css-order", "prettier-plugin-tailwindcss"],
+  "pluginSearchDirs": false
 }

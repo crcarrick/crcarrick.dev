@@ -1,0 +1,14 @@
+<svg height="512" viewBox="0 0 176 176" width="512" aria-labelledby="twitchTitle twitchDesc" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title id="twitchTitle">Twitch Social Icon</title>
+  <desc id="twitchDesc">A black twitch icon that links to my twitch</desc>
+  <g>
+    <g id="twitch">
+      <rect fill="#6441a5" height="176" rx="24" width="176" />
+      <g fill="#fff">
+        <path d="m35.29 52.14v76.51h26.35v14.35h14.36l14.36-14.36h21.64l28.71-28.64v-67h-98.24zm16.77-9.58h79.07v52.61l-16.78 16.74h-26.35l-14.37 14.33v-14.33h-21.57z" />
+        <path d="m78.42 61.7h9.58v28.69h-9.58z" />
+        <path d="m104.76 61.7h9.59v28.69h-9.59z" />
+      </g>
+    </g>
+  </g>
+</svg>

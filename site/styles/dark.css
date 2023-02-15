@@ -1,0 +1,24 @@
+@tailwind base;
+
+@layer base {
+  [data-theme='dark']:root {
+    --color-body: var(--color-black);
+    --color-text: var(--color-true-white);
+    --color-primary: var(--color-purple);
+    --color-accent: var(--color-white);
+  }
+}
+
+[data-theme='dark'] *::-webkit-scrollbar-thumb {
+  background-color: theme('colors.purple');
+}
+
+[data-theme='dark'] body {
+  background-color: theme('colors.black');
+}
+
+@supports (scrollbar-color: theme('colors.purple') theme('colors.dark')) {
+  [data-theme='dark'] * {
+    scrollbar-color: theme('colors.purple') theme('colors.dark');
+  }
+}
