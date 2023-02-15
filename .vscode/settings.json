@@ -11,11 +11,23 @@
     "other": "on",
     "strings": "on"
   },
-
+  // "eslint.nodePath": ".yarn/sdks",
+  // "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
   "prettier.prettierPath": "node_modules/prettier",
+  "search.exclude": {
+    "**/.yarn": true,
+    "**/.pnp.*": true,
+    "**/.next": true
+  },
   "tailwindCSS.experimental.classRegex": [
-    ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
-    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
+    [
+      "cx\\(([^)]*)\\)",
+      "(?:'|\"|`)([^']*)(?:'|\"|`)"
+    ],
+    [
+      "cva\\(([^)]*)\\)",
+      "[\"'`]([^\"'`]*).*?[\"'`]"
+    ]
   ],
   "tailwindCSS.includeLanguages": {
     "css": "css",
@@ -25,6 +37,7 @@
     "typescript": "typescript",
     "typescriptreact": "typescriptreact"
   },
+  // "typescript.tsdk": ".yarn/sdks/typescript/lib",
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "cSpell.words": [

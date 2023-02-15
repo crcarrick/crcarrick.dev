@@ -1,5 +1,3 @@
-import {} from 'tailwindcss'
-
 type PostFrontMatter = {
   readonly title: string
   readonly description: string
