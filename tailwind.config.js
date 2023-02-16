@@ -15,7 +15,7 @@ const baseColors = [
 ].reduce(
   (colors, color) => ({
     ...colors,
-    [color]: `rgb(var(--color-${color}))`,
+    [color]: `rgb(var(--color-${color}-rgb))`,
   }),
   {}
 )
@@ -47,9 +47,9 @@ const backgroundColors = ['info', 'danger', 'warning', 'success'].reduce(
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './app/**/*.{js,ts,jsx,tsx}',
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
+    './src/app/**/*.{js,ts,jsx,tsx}',
+    './src/pages/**/*.{js,ts,jsx,tsx}',
+    './src/components/**/*.{js,ts,jsx,tsx}',
   ],
   darkMode: ['class', '[data-theme="dark"]'],
   plugins: [

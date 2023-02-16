@@ -2,50 +2,28 @@
 
 @layer base {
   :root {
-    --color-red: 234 103 108;
-    --color-blue: 63 61 86;
-    --color-pink: 255 121 198;
-    --color-dark: 48 50 61;
-    --color-black: 33 34 42;
-    --color-white: 242 242 242;
-    --color-green: 87 184 148;
-    --color-yellow: 237 216 61;
-    --color-purple: 148 123 211;
-    --color-true-black: 0 0 0;
-    --color-true-white: 255 255 255;
+    --color-red: #ea676c;
+    --color-green: #57b894;
+    --color-blue: #3f3d56;
+    --color-yellow: #edd83d;
+    --color-purple: #947bd3;
+    --color-pink: #ff79c6;
+    --color-dark: #30323d;
+    --color-black: #21222a;
+    --color-white: #f2f2f2;
+    --color-true-black: #000000;
+    --color-true-white: #ffffff;
 
-    --color-body: var(--color-white);
-    --color-text: var(--color-dark);
-    --color-primary: var(--color-red);
-    --color-accent: var(--color-dark);
-    --color-info: var(--color-blue);
-    --color-danger: var(--color-red);
-    --color-warning: var(--color-yellow);
-    --color-success: var(--color-green);
+    --color-body: var(--color-white-rgb);
+    --color-text: var(--color-dark-rgb);
+    --color-primary: var(--color-red-rgb);
+    --color-accent: var(--color-dark-rgb);
+    --color-info: var(--color-blue-rgb);
+    --color-danger: var(--color-red-rgb);
+    --color-warning: var(--color-yellow-rgb);
+    --color-success: var(--color-green-rgb);
 
-    /* hsl colors in order to lighten / darken */
-    /* TODO: this is kinda gross */
-    --color-black-h: 233deg;
-    --color-black-s: 12%;
-    --color-black-l: 14.7%;
-
-    --color-white-h: 0deg;
-    --color-white-s: 0%;
-    --color-white-l: 94.9%;
-
-    --color-dark-h: 231deg;
-    --color-dark-s: 11.9%;
-    --color-dark-l: 21.4%;
-
-    --color-red-h: 358deg;
-    --color-red-s: 75.7%;
-    --color-red-l: 21.4%;
-
-    --color-purple-h: 257deg;
-    --color-purple-s: 50%;
-    --color-purple-l: 65.5%;
-
-    --bg-card: rgb(var(--color-true-white));
+    --bg-card: rgb(var(--color-true-white-rgb));
     --bg-code: hsl(
       var(--color-dark-h) var(--color-dark-s) calc(var(--color-dark-l) + 5%)
     );

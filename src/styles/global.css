@@ -1,11 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @import './color.css';
 @import './font.css';
 @import './dark.css';
 @import './space.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@typography;
 
 @layer base {
   [data-nextjs-scroll-focus-boundary] {

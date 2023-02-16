@@ -2,10 +2,10 @@
 
 @layer base {
   [data-theme='dark']:root {
-    --color-body: var(--color-black);
-    --color-text: var(--color-true-white);
-    --color-primary: var(--color-purple);
-    --color-accent: var(--color-white);
+    --color-body: var(--color-black-rgb);
+    --color-text: var(--color-true-white-rgb);
+    --color-primary: var(--color-purple-rgb);
+    --color-accent: var(--color-white-rgb);
 
     --bg-card: hsl(
       var(--color-black-h) var(--color-black-s) calc(var(--color-black-l) + 10%)

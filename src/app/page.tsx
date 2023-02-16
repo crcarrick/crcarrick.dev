@@ -1,3 +1,11 @@
+import { Link } from '~/components'
+
 export default function Home() {
-  return <main>Hello World</main>
+  return (
+    <main>
+      <Link href="" type="internal" context="nav">
+        Hello World
+      </Link>
+    </main>
+  )
 }

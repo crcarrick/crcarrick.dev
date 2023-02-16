@@ -3,6 +3,8 @@ import { cx } from '~/utils/cva'
 
 import '~/styles/global.css'
 
+import { Providers } from './providers'
+
 export default function RootLayout({
   children,
 }: {
@@ -14,7 +16,9 @@ export default function RootLayout({
       className={cx(roboto.variable, robotoMono.variable, robotoSlab.variable)}
     >
       <head />
-      <body>{children}</body>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   )
 }
