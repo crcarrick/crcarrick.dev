@@ -1,0 +1,85 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-heading: 'Roboto Slab', Georgia, serif;
+  --font-body: Roboto, Tahoma, sans-serif;
+  --font-code: 'Roboto Mono', Consolas, Monaco, monospace;
+
+  --color-body-light: #f2f2f2;
+  --color-body-dark: #21222a;
+  --color-text-light: #30323d;
+  --color-text-dark: #ffffff;
+  --color-primary-light: #ea676c;
+  --color-primary-dark: #947bd3;
+  --color-accent-light: #30323d;
+  --color-accent-dark: #f2f2f2;
+
+  --color-red: #ea676c;
+  --color-blue: #3f3d56;
+  --color-green: #57b894;
+  --color-yellow: #edd83d;
+  --color-purple: #947bd3;
+  --color-pink: #ff79c6;
+}
+
+:root {
+  --color-primary: #ea676c;
+  --color-body: #f2f2f2;
+  --color-text: #30323d;
+  --color-dark: #30323d;
+  --color-white: #f2f2f2;
+  --hero-shadow: rgba(234, 103, 108, 0.15);
+  --hero-chair: #30323d;
+}
+
+:root.dark {
+  --color-primary: #947bd3;
+  --color-body: #21222a;
+  --color-text: #ffffff;
+  --color-dark: #30323d;
+  --color-white: #f2f2f2;
+  --hero-shadow: rgba(148, 123, 211, 0.15);
+  --hero-chair: #f2f2f2;
+}
+
+body {
+  @apply bg-body-light text-text-light dark:bg-body-dark dark:text-text-dark;
+  @apply font-body antialiased;
+  @apply transition-colors duration-300 ease-in-out;
+}
+
+::selection {
+  @apply bg-primary-light/30 dark:bg-primary-dark/30;
+}
+
+html::-webkit-scrollbar {
+  @apply w-2;
+}
+
+html::-webkit-scrollbar-track {
+  @apply bg-body-light dark:bg-body-dark;
+}
+
+html::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-primary-light dark:bg-primary-dark;
+}
+
+pre {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+pre::-webkit-scrollbar {
+  @apply h-1.5;
+}
+
+pre::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+pre::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-white/20;
+}

@@ -2,40 +2,40 @@
   "name": "crcarrick.dev",
   "private": true,
   "version": "0.0.0",
-  "description": "crcarrick.dev monorepo",
-  "author": "Chris Carrick",
   "scripts": {
-    "develop": "yarn workspace site start",
-    "start": "yarn workspace site start",
-    "build": "yarn workspace site build",
-    "serve": "yarn workspace site serve",
-    "clean": "yarn workspace site clean",
-    "cli": "./bin/cli.mjs"
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "keywords": [
-    "gatsby"
-  ],
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.0.0",
-    "@typescript-eslint/parser": "^4.0.0",
-    "babel-eslint": "^10.0.0",
-    "chalk": "^5.0.0",
-    "commander": "^8.3.0",
-    "eslint": "^7.5.0",
-    "eslint-config-react-app": "^6.0.0",
-    "eslint-plugin-flowtype": "^5.2.0",
-    "eslint-plugin-gatsby": "^1.0.2",
-    "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-jsx-a11y": "^6.3.1",
-    "eslint-plugin-react": "^7.20.3",
-    "eslint-plugin-react-hooks": "^4.0.8"
-  },
-  "workspaces": [
-    "site"
-  ],
   "dependencies": {
-    "@octokit/rest": "^19.0.5",
-    "graphql-request": "^3.7.0",
-    "isomorphic-fetch": "^3.0.0"
-  }
+    "@libsql/client": "latest",
+    "@octokit/rest": "latest",
+    "@vercel/analytics": "^1.6.1",
+    "@vercel/speed-insights": "^1.3.1",
+    "date-fns": "^4.1.0",
+    "gray-matter": "latest",
+    "match-sorter": "latest",
+    "next": "latest",
+    "next-mdx-remote": "latest",
+    "next-themes": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "rehype-pretty-code": "latest",
+    "shiki": "^3.0.0"
+  },
+  "devDependencies": {
+    "@crcarrick/eslint-config": "latest",
+    "@crcarrick/tsconfig": "latest",
+    "@next/eslint-plugin-next": "latest",
+    "@tailwindcss/postcss": "latest",
+    "@tailwindcss/typography": "latest",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "eslint": "^9.25.0",
+    "tailwindcss": "latest",
+    "typescript": "latest"
+  },
+  "packageManager": "pnpm@10.30.3+sha512.c961d1e0a2d8e354ecaa5166b822516668b7f44cb5bd95122d590dd81922f606f5473b6d23ec4a5be05e7fcd18e8488d47d978bbe981872f1145d06e9a740017"
 }
