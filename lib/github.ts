@@ -10,7 +10,7 @@ const OS_MAP: Record<string, string> = {
   '.exe': 'windows',
 }
 
-interface ReleaseAsset {
+export interface ReleaseAsset {
   downloadUrl: string
   name: string
   os: string
