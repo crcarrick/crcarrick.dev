@@ -37,6 +37,9 @@
     "tailwindcss": "latest",
     "typescript": "latest"
   },
+  "pnpm": {
+    "onlyBuiltDependencies": ["sharp"]
+  },
   "engines": {
     "node": ">=24.0.0"
   },
